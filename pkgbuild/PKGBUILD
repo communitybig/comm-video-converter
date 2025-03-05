@@ -1,9 +1,9 @@
 # Maintainer: Tales A. Mendonça <talesam@gmail.com>
 
-pkgname=pkgbuild-template
-pkgdesc="Package template for Communitybig"
+pkgname=comm-big-convert
+pkgdesc="Optimized MKV to MP4 video converter"
 # Uncomment and edit the following lines as needed
-#depends=('')
+depends=('python' 'python-gobject' 'gtk3' 'ffmpeg' 'python-cairo')
 #makedepends=('')
 #optdepends=('')
 #conflicts=('')

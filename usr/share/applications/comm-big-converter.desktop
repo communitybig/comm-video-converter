@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Video Converter
+Comment=Converta vídeos MKV para MP4 com interface gráfica
+Exec=comm-big-converter
+Icon=comm-big-converter
+Terminal=false
+Type=Application
+Categories=AudioVideo;Video;
+Keywords=video;converter;mkv;mp4;ffmpeg;
+StartupNotify=true
