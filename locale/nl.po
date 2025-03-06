@@ -292,6 +292,22 @@ msgid "The selected file does not exist: {0}"
 msgstr "Het geselecteerde bestand bestaat niet: {0}"
 
 # 
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 268
+#: NEEDS WORK
+msgid "Information"
+msgstr "Informatie"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 389
+#: NEEDS WORK
+msgid ""
+"Note: The 'Delete original file' option only applies to MKV files.\n"
+"Your selected file will be converted but not deleted."
+msgstr ""
+"Opmerking: De optie 'Origineel bestand verwijderen' is alleen van toepassing op MKV-bestanden. Het "
+"geselecteerde bestand wordt geconverteerd maar niet verwijderd."
+
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 388
 #: NEEDS WORK
 msgid "Conversion script not found: {0}"
@@ -419,12 +435,6 @@ msgstr ""
 "De conversie is mislukt met foutcode {0}.\n"
 "\n"
 "Controleer het logboek voor meer details."
-
-# 
-# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 268
-#: NEEDS WORK
-msgid "Information"
-msgstr "Informatie"
 
 # 
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 69
@@ -846,22 +856,16 @@ msgid "A graphical frontend for converting MKV videos to MP4"
 msgstr "Een grafische frontend voor het converteren van MKV-video's naar MP4"
 
 # 
-# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 303
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 312
 #: NEEDS WORK
-msgid "v1.0.0"
-msgstr "v1.0.0"
+msgid "Developers"
+msgstr "Ontwikkelaars"
 
 # 
-# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 309
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 323
 #: NEEDS WORK
-msgid "Developer"
-msgstr "Ontwikkelaar"
-
-# 
-# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 314
-#: NEEDS WORK
-msgid "Contact"
-msgstr "Contact opnemen"
+msgid "Websites"
+msgstr "Websites"
 
 # 
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 55

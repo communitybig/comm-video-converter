@@ -288,6 +288,20 @@ msgid "The selected file does not exist: {0}"
 msgstr "선택한 파일이 존재하지 않습니다: {0}"
 
 # 
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 268
+#: NEEDS WORK
+msgid "Information"
+msgstr "정보"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 389
+#: NEEDS WORK
+msgid ""
+"Note: The 'Delete original file' option only applies to MKV files.\n"
+"Your selected file will be converted but not deleted."
+msgstr "참고: '원본 파일 삭제' 옵션은 MKV 파일에만 적용됩니다. 선택한 파일은 변환되지만 삭제되지 않습니다."
+
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 388
 #: NEEDS WORK
 msgid "Conversion script not found: {0}"
@@ -414,12 +428,6 @@ msgstr ""
 "변환이 오류 코드 {0}로 실패했습니다.\n"
 "\n"
 "자세한 내용은 로그를 확인하세요."
-
-# 
-# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 268
-#: NEEDS WORK
-msgid "Information"
-msgstr "정보"
 
 # 
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 69
@@ -841,22 +849,16 @@ msgid "A graphical frontend for converting MKV videos to MP4"
 msgstr "MKV 비디오를 MP4로 변환하는 그래픽 프론트엔드"
 
 # 
-# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 303
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 312
 #: NEEDS WORK
-msgid "v1.0.0"
-msgstr "v1.0.0"
-
-# 
-# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 309
-#: NEEDS WORK
-msgid "Developer"
+msgid "Developers"
 msgstr "개발자"
 
 # 
-# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 314
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 323
 #: NEEDS WORK
-msgid "Contact"
-msgstr "연락처"
+msgid "Websites"
+msgstr "웹사이트"
 
 # 
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 55

@@ -426,6 +426,23 @@ msgstr "所选文件不存在：{0}"
 # 
 # #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
 # 
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 268
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 268
+#: NEEDS WORK
+msgid "Information"
+msgstr "信息"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 389
+#: NEEDS WORK
+msgid ""
+"Note: The 'Delete original file' option only applies to MKV files.\n"
+"Your selected file will be converted but not deleted."
+msgstr "注意：'删除原始文件'选项仅适用于MKV文件。您选择的文件将被转换但不会被删除。"
+
+# 
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 388
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 388
 #: NEEDS WORK
@@ -603,15 +620,6 @@ msgstr ""
 "转换失败，错误代码为 {0}。\n"
 "\n"
 "请查看日志以获取更多详细信息。"
-
-# 
-# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
-# 
-# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 268
-# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 268
-#: NEEDS WORK
-msgid "Information"
-msgstr "信息"
 
 # 
 # #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
@@ -1248,31 +1256,16 @@ msgid "A graphical frontend for converting MKV videos to MP4"
 msgstr "一个用于将MKV视频转换为MP4的图形前端"
 
 # 
-# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
-# 
-# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 303
-# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 303
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 312
 #: NEEDS WORK
-msgid "v1.0.0"
-msgstr "v1.0.0"
-
-# 
-# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
-# 
-# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 309
-# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 309
-#: NEEDS WORK
-msgid "Developer"
+msgid "Developers"
 msgstr "开发者"
 
 # 
-# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
-# 
-# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 314
-# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 314
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 323
 #: NEEDS WORK
-msgid "Contact"
-msgstr "联系"
+msgid "Websites"
+msgstr "网站"
 
 # 
 # #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#

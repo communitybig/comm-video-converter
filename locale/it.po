@@ -292,6 +292,22 @@ msgid "The selected file does not exist: {0}"
 msgstr "Il file selezionato non esiste: {0}"
 
 # 
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 268
+#: NEEDS WORK
+msgid "Information"
+msgstr "Informazioni"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 389
+#: NEEDS WORK
+msgid ""
+"Note: The 'Delete original file' option only applies to MKV files.\n"
+"Your selected file will be converted but not deleted."
+msgstr ""
+"Nota: L'opzione 'Elimina file originale' si applica solo ai file MKV. Il file selezionato verrà "
+"convertito ma non eliminato."
+
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 388
 #: NEEDS WORK
 msgid "Conversion script not found: {0}"
@@ -418,12 +434,6 @@ msgstr ""
 "La conversione è fallita con il codice errore {0}.\n"
 "\n"
 "Controlla il registro per ulteriori dettagli."
-
-# 
-# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 268
-#: NEEDS WORK
-msgid "Information"
-msgstr "Informazioni"
 
 # 
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 69
@@ -845,22 +855,16 @@ msgid "A graphical frontend for converting MKV videos to MP4"
 msgstr "Un'interfaccia grafica per convertire video MKV in MP4"
 
 # 
-# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 303
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 312
 #: NEEDS WORK
-msgid "v1.0.0"
-msgstr "v1.0.0"
+msgid "Developers"
+msgstr "Sviluppatori"
 
 # 
-# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 309
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 323
 #: NEEDS WORK
-msgid "Developer"
-msgstr "Sviluppatore"
-
-# 
-# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 314
-#: NEEDS WORK
-msgid "Contact"
-msgstr "Contatto"
+msgid "Websites"
+msgstr "Siti web"
 
 # 
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 55

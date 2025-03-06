@@ -291,6 +291,22 @@ msgid "The selected file does not exist: {0}"
 msgstr "Vybraný súbor neexistuje: {0}"
 
 # 
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 268
+#: NEEDS WORK
+msgid "Information"
+msgstr "Informácie"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 389
+#: NEEDS WORK
+msgid ""
+"Note: The 'Delete original file' option only applies to MKV files.\n"
+"Your selected file will be converted but not deleted."
+msgstr ""
+"Poznámka: Možnosť 'Odstrániť pôvodný súbor' sa vzťahuje iba na súbory MKV. Vybraný súbor bude "
+"prevedený, ale nebude odstránený."
+
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 388
 #: NEEDS WORK
 msgid "Conversion script not found: {0}"
@@ -417,12 +433,6 @@ msgstr ""
 "Konverzia zlyhala s chybovým kódom {0}.\n"
 "\n"
 "Skontrolujte protokol pre ďalšie podrobnosti."
-
-# 
-# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 268
-#: NEEDS WORK
-msgid "Information"
-msgstr "Informácie"
 
 # 
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 69
@@ -844,22 +854,16 @@ msgid "A graphical frontend for converting MKV videos to MP4"
 msgstr "Grafické rozhranie na konverziu videí MKV na MP4"
 
 # 
-# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 303
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 312
 #: NEEDS WORK
-msgid "v1.0.0"
-msgstr "v1.0.0"
+msgid "Developers"
+msgstr "Vývojári"
 
 # 
-# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 309
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 323
 #: NEEDS WORK
-msgid "Developer"
-msgstr "Vývojár"
-
-# 
-# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 314
-#: NEEDS WORK
-msgid "Contact"
-msgstr "Kontakt"
+msgid "Websites"
+msgstr "Webové stránky"
 
 # 
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 55

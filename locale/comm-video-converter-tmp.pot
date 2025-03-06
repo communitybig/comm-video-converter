@@ -1,0 +1,611 @@
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the comm-video-converter package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# #-#-#-#-#  python.pot (PACKAGE VERSION)  #-#-#-#-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid   ""
+msgstr  "#-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#\n"
+        "Project-Id-Version: comm-video-converter\n"
+        "Report-Msgid-Bugs-To: \n"
+        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+        "Language-Team: LANGUAGE <LL@li.org>\n"
+        "Language: \n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=UTF-8\n"
+        "Content-Transfer-Encoding: 8bit\n"
+        "#-#-#-#-#  python.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+        "Project-Id-Version: PACKAGE VERSION\n"
+        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+        "Language-Team: LANGUAGE <LL@li.org>\n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=UTF-8\n"
+        "Content-Transfer-Encoding: 8bit\n"
+        "Generated-By: pygettext.py 1.5\n"
+#
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 74
+msgid   "Search directory"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 75
+msgid   "Select the folder containing MKV files"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 80
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 216
+msgid   "No directory selected"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 90
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 197
+msgid   "Select Directory"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 101
+msgid   "Simultaneous processes"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 102
+msgid   "Number of conversions to run in parallel"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 115
+msgid   "Minimum MP4 size"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 116
+msgid   "Threshold for considering conversion successful (KB)"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 127
+msgid   "Log file"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 129
+msgid   "Path to save the conversion log"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 133
+msgid   "Delete original MKV files"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 134
+msgid   "Remove source files after successful conversion"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 143
+msgid   "Convert All MKVs"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 188
+msgid   "Batch Conversion Help"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 189
+msgid   "This mode will search for all MKV files in the selected directory and convert them to MP4.\n"
+        "\n"
+        "The original MKV file will only be removed if the MP4 is created successfully and has the defined minimum size."
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 217
+msgid   "Please select a directory to search for MKV files."
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 84
+msgid   "Input file"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 85
+msgid   "Select the video file to convert"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 86
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 372
+msgid   "No file selected"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 91
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 308
+msgid   "Select File"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 102
+msgid   "Output file"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 103
+msgid   "Leave empty to use the same name"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 107
+msgid   "Output folder"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 108
+msgid   "Leave empty to use the same folder"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 127
+msgid   "Delete original MKV file"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 128
+msgid   "Remove original file after successful conversion"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 136
+msgid   "Convert Video"
+msgstr  ""
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 183
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 48
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 297
+msgid   "Comm Video Converter"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 207
+msgid   "A powerful tool for converting video files to MP4 format."
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 214
+msgid   "• GPU-accelerated conversion for NVIDIA, AMD, and Intel GPUs"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 215
+msgid   "• High-quality video processing with customizable settings"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 216
+msgid   "• Support for various video codecs (H.264, H.265/HEVC, AV1, VP9)"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 217
+msgid   "• Subtitle extraction and embedding"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 218
+msgid   "• Batch processing capabilities"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 235
+msgid   "This application uses <b>FFmpeg</b> for reliable, high-performance video conversion. The GPU acceleration significantly reduces conversion time compared to software-only processing."
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 268
+msgid   "Show dialog on startup"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 280
+msgid   "Close"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 315
+msgid   "Video files"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 331
+msgid   "All files"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 355
+msgid   "Select the output folder"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 373
+msgid   "Please select an input file."
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 380
+msgid   "The selected file does not exist: {0}"
+msgstr  ""
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 388
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 267
+msgid   "Information"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 389
+msgid   "Note: The 'Delete original file' option only applies to MKV files.\n"
+        "Your selected file will be converted but not deleted."
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 395
+msgid   "Conversion script not found: {0}"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 19
+msgid   "Converting..."
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 70
+msgid   "Error starting conversion: {0}"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 89
+msgid   "Starting process..."
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 119
+msgid   "Processing video..."
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 143
+msgid   "Time remaining:"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 149
+msgid   "No progress detected. Process may be stuck."
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 171
+msgid   "Conversion cancelled."
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 172
+msgid   "Cancelled"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 185
+msgid   "Completed!"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 186
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 233
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 241
+msgid   "Conversion completed successfully!"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 206
+msgid   "Conversion completed successfully!\n"
+        "\n"
+        "The original file <b>{0}</b> was deleted."
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 215
+msgid   "Conversion completed successfully!\n"
+        "\n"
+        "Could not delete the original file: {0}"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 224
+msgid   "Conversion completed successfully!\n"
+        "\n"
+        "The original file was not deleted because the converted file size looks suspicious."
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 246
+msgid   "Error!"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 247
+msgid   "Conversion failed with code {0}"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 251
+msgid   "The conversion failed with error code {0}.\n"
+        "\n"
+        "Check the log for more details."
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 69
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 103
+msgid   "Single File"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 74
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 104
+msgid   "Multiple Files"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 78
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 105
+msgid   "Settings"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 150
+msgid   "Error"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 72
+msgid   "Encoding Settings"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 76
+msgid   "Auto-detect"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 76
+msgid   "amd"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 76
+msgid   "intel"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 76
+msgid   "nvidia"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 76
+msgid   "software"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 78
+msgid   "GPU"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 79
+msgid   "Select hardware acceleration"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 85
+msgid   "GPU partial mode"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 86
+msgid   "Decode using CPU, encode using GPU"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 91
+msgid   "high"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 91
+msgid   "low"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 91
+msgid   "veryhigh"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 91
+msgid   "verylow"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 91
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 112
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 141
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 166
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 199
+msgid   "Default"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 91
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 141
+msgid   "medium"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 93
+msgid   "Video quality"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 94
+msgid   "Higher quality needs more processing power"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 101
+msgid   "Default (h264)"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 101
+msgid   "av1 (AV1)"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 101
+msgid   "h264 (MP4)"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 101
+msgid   "h265 (HEVC)"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 101
+msgid   "vp9 (VP9)"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 103
+msgid   "Video codec"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 104
+msgid   "Select encoding format"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 118
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 172
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 203
+msgid   "Custom"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 123
+msgid   "Video resolution"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 124
+msgid   "Select output resolution"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 129
+msgid   "Custom resolution"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 130
+msgid   "Ex: 1280x720, 1920x1080"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 141
+msgid   "faster"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 141
+msgid   "slow"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 141
+msgid   "ultrafast"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 141
+msgid   "veryfast"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 141
+msgid   "veryslow"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 143
+msgid   "Compression preset"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 144
+msgid   "Slower presets provide better compression"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 151
+msgid   "Default (extract)"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 151
+msgid   "embedded"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 151
+msgid   "extract (SRT)"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 151
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 226
+msgid   "none"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 153
+msgid   "Subtitle handling"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 161
+msgid   "Audio Settings"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 180
+msgid   "Audio bitrate"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 181
+msgid   "Select common bitrate or enter custom value"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 186
+msgid   "Custom bitrate"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 187
+msgid   "Ex: 128k, 192k, 256k"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 208
+msgid   "Audio channels"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 209
+msgid   "Select common channel configuration"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 214
+msgid   "Custom channels"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 215
+msgid   "Ex: 2 (stereo), 6 (5.1)"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 226
+msgid   "Default (copy)"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 226
+msgid   "copy"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 226
+msgid   "reencode"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 228
+msgid   "Audio handling"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 274
+msgid   "General Options"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 277
+msgid   "Additional FFmpeg options"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 278
+msgid   "Ex: -ss 60 -t 30"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 281
+msgid   "Copy video without reencoding"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 282
+msgid   "Faster but less compatible"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 285
+msgid   "Only extract subtitles"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 286
+msgid   "Extract subtitles to .srt files"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 294
+msgid   "About"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 298
+msgid   "A graphical frontend for converting MKV videos to MP4"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 312
+msgid   "Developers"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 323
+msgid   "Websites"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/progress_dialog.py, line: 55
+msgid   "Multiple files"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/progress_dialog.py, line: 60
+msgid   "Progress"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/progress_dialog.py, line: 81
+msgid   "Starting conversion..."
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/progress_dialog.py, line: 96
+msgid   "Cancel"
+msgstr  ""
+#
+# File: comm-video-converter/usr/share/comm-video-converter/progress_dialog.py, line: 119
+msgid   "Cancelling..."
+msgstr  ""
