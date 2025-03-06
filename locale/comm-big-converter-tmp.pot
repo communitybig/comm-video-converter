@@ -29,116 +29,201 @@ msgstr  "#-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#\n"
         "Content-Transfer-Encoding: 8bit\n"
         "Generated-By: pygettext.py 1.5\n"
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 74
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 74
 msgid   "Search directory"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 75
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 75
 msgid   "Select the folder containing MKV files"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 80
+# File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 216
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 80
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 216
 msgid   "No directory selected"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 90
+# File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 197
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 90
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 197
 msgid   "Select Directory"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 101
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 101
 msgid   "Simultaneous processes"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 102
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 102
 msgid   "Number of conversions to run in parallel"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 115
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 115
 msgid   "Minimum MP4 size"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 116
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 116
 msgid   "Threshold for considering conversion successful (KB)"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 127
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 127
 msgid   "Log file"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 129
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 129
 msgid   "Path to save the conversion log"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 133
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 133
 msgid   "Delete original MKV files"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 134
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 134
 msgid   "Remove source files after successful conversion"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 143
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 143
 msgid   "Convert All MKVs"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 188
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 188
 msgid   "Batch Conversion Help"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 189
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 189
 msgid   "This mode will search for all MKV files in the selected directory and convert them to MP4.\n"
         "\n"
         "The original MKV file will only be removed if the MP4 is created successfully and has the defined minimum size."
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 217
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 217
 msgid   "Please select a directory to search for MKV files."
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 84
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 84
 msgid   "Input file"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 85
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 85
 msgid   "Select the video file to convert"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 86
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 372
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 86
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 372
 msgid   "No file selected"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 91
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 308
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 91
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 308
 msgid   "Select File"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 102
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 102
 msgid   "Output file"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 103
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 103
 msgid   "Leave empty to use the same name"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 107
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 107
 msgid   "Output folder"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 108
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 108
 msgid   "Leave empty to use the same folder"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 127
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 127
 msgid   "Delete original MKV file"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 128
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 128
 msgid   "Remove original file after successful conversion"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 136
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 136
 msgid   "Convert Video"
 msgstr  ""
@@ -147,225 +232,396 @@ msgstr  ""
 #
 # #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 183
+# File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 48
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 294
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 183
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 48
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 294
 msgid   "Comm Video Converter"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 207
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 207
 msgid   "A powerful tool for converting video files to MP4 format."
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 214
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 214
 msgid   "• GPU-accelerated conversion for NVIDIA, AMD, and Intel GPUs"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 215
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 215
 msgid   "• High-quality video processing with customizable settings"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 216
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 216
 msgid   "• Support for various video codecs (H.264, H.265/HEVC, AV1, VP9)"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 217
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 217
 msgid   "• Subtitle extraction and embedding"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 218
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 218
 msgid   "• Batch processing capabilities"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 235
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 235
 msgid   "This application uses <b>FFmpeg</b> for reliable, high-performance video conversion. The GPU acceleration significantly reduces conversion time compared to software-only processing."
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 268
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 268
 msgid   "Show dialog on startup"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 280
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 280
 msgid   "Close"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 315
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 315
 msgid   "Video files"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 331
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 331
 msgid   "All files"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 355
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 355
 msgid   "Select the output folder"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 373
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 373
 msgid   "Please select an input file."
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 380
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 380
 msgid   "The selected file does not exist: {0}"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 388
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 388
 msgid   "Conversion script not found: {0}"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 22
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 22
 msgid   "Converting..."
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 73
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 73
 msgid   "Error starting conversion: {0}"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 92
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 92
 msgid   "Starting process..."
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 122
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 122
 msgid   "Processing video..."
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 146
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 146
 msgid   "Time remaining:"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 152
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 152
 msgid   "No progress detected. Process may be stuck."
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 174
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 174
 msgid   "Conversion cancelled."
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 175
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 175
 msgid   "Cancelled"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 188
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 188
 msgid   "Completed!"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 189
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 234
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 242
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 189
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 234
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 242
 msgid   "Conversion completed successfully!"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 207
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 207
 msgid   "Conversion completed successfully!\n"
         "\n"
         "The original file <b>{0}</b> was deleted."
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 216
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 216
 msgid   "Conversion completed successfully!\n"
         "\n"
         "Could not delete the original file: {0}"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 225
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 225
 msgid   "Conversion completed successfully!\n"
         "\n"
         "The original file was not deleted because the converted file size looks suspicious."
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 247
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 247
 msgid   "Error!"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 248
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 248
 msgid   "Conversion failed with code {0}"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 252
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 252
 msgid   "The conversion failed with error code {0}.\n"
         "\n"
         "Check the log for more details."
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 268
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 268
 msgid   "Information"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 69
+# File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 103
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 69
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 103
 msgid   "Single File"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 74
+# File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 104
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 74
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 104
 msgid   "Multiple Files"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 78
+# File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 105
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 78
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 105
 msgid   "Settings"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 150
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 150
 msgid   "Error"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 71
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 71
 msgid   "Encoding Settings"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
 msgid   "Auto-detect"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
 msgid   "amd"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
 msgid   "intel"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
 msgid   "nvidia"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
 msgid   "software"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 77
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 77
 msgid   "GPU"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 78
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 78
 msgid   "Select hardware acceleration"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 84
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 84
 msgid   "GPU partial mode"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 85
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 85
 msgid   "Decode using CPU, encode using GPU"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
 msgid   "high"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
 msgid   "low"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
 msgid   "veryhigh"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
 msgid   "verylow"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 111
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 165
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 198
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 111
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
@@ -374,234 +630,409 @@ msgstr  ""
 msgid   "Default"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
 msgid   "medium"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 92
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 92
 msgid   "Video quality"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 93
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 93
 msgid   "Higher quality needs more processing power"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
 msgid   "Default (h264)"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
 msgid   "av1 (AV1)"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
 msgid   "h264 (MP4)"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
 msgid   "h265 (HEVC)"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
 msgid   "vp9 (VP9)"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 102
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 102
 msgid   "Video codec"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 103
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 103
 msgid   "Select encoding format"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 117
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 171
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 202
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 117
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 171
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 202
 msgid   "Custom"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 122
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 122
 msgid   "Video resolution"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 123
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 123
 msgid   "Select output resolution"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 128
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 128
 msgid   "Custom resolution"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 129
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 129
 msgid   "Ex: 1280x720, 1920x1080"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
 msgid   "faster"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
 msgid   "slow"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
 msgid   "ultrafast"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
 msgid   "veryfast"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
 msgid   "veryslow"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 142
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 142
 msgid   "Compression preset"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 143
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 143
 msgid   "Slower presets provide better compression"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 150
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 150
 msgid   "Default (extract)"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 150
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 150
 msgid   "embedded"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 150
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 150
 msgid   "extract (SRT)"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 150
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 225
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 150
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 225
 msgid   "none"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 152
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 152
 msgid   "Subtitle handling"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 160
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 160
 msgid   "Audio Settings"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 179
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 179
 msgid   "Audio bitrate"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 180
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 180
 msgid   "Select common bitrate or enter custom value"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 185
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 185
 msgid   "Custom bitrate"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 186
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 186
 msgid   "Ex: 128k, 192k, 256k"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 207
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 207
 msgid   "Audio channels"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 208
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 208
 msgid   "Select common channel configuration"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 213
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 213
 msgid   "Custom channels"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 214
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 214
 msgid   "Ex: 2 (stereo), 6 (5.1)"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 225
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 225
 msgid   "Default (copy)"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 225
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 225
 msgid   "copy"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 225
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 225
 msgid   "reencode"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 227
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 227
 msgid   "Audio handling"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 273
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 273
 msgid   "General Options"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 276
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 276
 msgid   "Additional FFmpeg options"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 277
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 277
 msgid   "Ex: -ss 60 -t 30"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 280
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 280
 msgid   "Copy video without reencoding"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 281
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 281
 msgid   "Faster but less compatible"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 284
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 284
 msgid   "Only extract subtitles"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 285
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 285
 msgid   "Extract subtitles to .srt files"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 291
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 291
 msgid   "About"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 295
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 295
 msgid   "A graphical frontend for converting MKV videos to MP4"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 303
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 303
 msgid   "v1.0.0"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 309
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 309
 msgid   "Developer"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 314
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 314
 msgid   "Contact"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 55
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 55
 msgid   "Multiple files"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 60
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 60
 msgid   "Progress"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 81
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 81
 msgid   "Starting conversion..."
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 96
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 96
 msgid   "Cancel"
 msgstr  ""
 #
+# #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
+#
+# File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 119
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 119
 msgid   "Cancelling..."
 msgstr  ""
