@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the comm-big-converter package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -14,748 +14,876 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 74
+#: NEEDS WORK
 msgid "Search directory"
-msgstr "Search directory"
+msgstr "디렉토리 검색"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 75
+#: NEEDS WORK
 msgid "Select the folder containing MKV files"
-msgstr "Select the folder containing MKV files"
+msgstr "MKV 파일이 포함된 폴더를 선택하세요."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 80
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 216
+#: NEEDS WORK
 msgid "No directory selected"
-msgstr "No directory selected"
+msgstr "선택된 디렉터리가 없습니다"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 90
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 197
+#: NEEDS WORK
 msgid "Select Directory"
-msgstr "Select Directory"
+msgstr "디렉토리 선택"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 101
+#: NEEDS WORK
 msgid "Simultaneous processes"
-msgstr "Simultaneous processes"
+msgstr "동시 프로세스"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 102
+#: NEEDS WORK
 msgid "Number of conversions to run in parallel"
-msgstr "Number of conversions to run in parallel"
+msgstr "병렬로 실행할 변환 수"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 115
+#: NEEDS WORK
 msgid "Minimum MP4 size"
-msgstr "Minimum MP4 size"
+msgstr "최소 MP4 크기"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 116
+#: NEEDS WORK
 msgid "Threshold for considering conversion successful (KB)"
-msgstr "Threshold for considering conversion successful (KB)"
+msgstr "변환 성공으로 간주하는 임계값 (KB)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 127
+#: NEEDS WORK
 msgid "Log file"
-msgstr "Log file"
+msgstr "로그 파일"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 129
+#: NEEDS WORK
 msgid "Path to save the conversion log"
-msgstr "Path to save the conversion log"
+msgstr "변환 로그를 저장할 경로"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 133
+#: NEEDS WORK
 msgid "Delete original MKV files"
-msgstr "Delete original MKV files"
+msgstr "원본 MKV 파일 삭제"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 134
+#: NEEDS WORK
 msgid "Remove source files after successful conversion"
-msgstr "Remove source files after successful conversion"
+msgstr "변환 성공 후 소스 파일 제거"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 143
+#: NEEDS WORK
 msgid "Convert All MKVs"
-msgstr "Convert All MKVs"
+msgstr "모든 MKV 변환"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 188
+#: NEEDS WORK
 msgid "Batch Conversion Help"
-msgstr "Batch Conversion Help"
+msgstr "배치 변환 도움말"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 189
+#: NEEDS WORK
 msgid ""
-"This mode will search for all MKV files in the selected directory and "
-"convert them to MP4.\n"
+"This mode will search for all MKV files in the selected directory and convert them to MP4.\n"
 "\n"
-"The original MKV file will only be removed if the MP4 is created "
-"successfully and has the defined minimum size."
+"The original MKV file will only be removed if the MP4 is created successfully and has the defined "
+"minimum size."
 msgstr ""
-"This mode will search for all MKV files in the selected directory and "
-"convert them to MP4.\n"
+"이 모드는 선택한 디렉토리에서 모든 MKV 파일을 검색하고 이를 MP4로 변환합니다.\n"
 "\n"
-"The original MKV file will only be removed if the MP4 is created "
-"successfully and has the defined minimum size."
+"원본 MKV 파일은 MP4가 성공적으로 생성되고 정의된 최소 크기를 가질 경우에만 제거됩니다."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 217
+#: NEEDS WORK
 msgid "Please select a directory to search for MKV files."
-msgstr "Please select a directory to search for MKV files."
+msgstr "MKV 파일을 검색할 디렉토리를 선택하십시오."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 84
+#: NEEDS WORK
 msgid "Input file"
-msgstr "Input file"
+msgstr "입력 파일"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 85
+#: NEEDS WORK
 msgid "Select the video file to convert"
-msgstr "Select the video file to convert"
+msgstr "비디오 파일을 선택하여 변환하세요."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 86
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 372
+#: NEEDS WORK
 msgid "No file selected"
-msgstr "No file selected"
+msgstr "파일이 선택되지 않았습니다."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 91
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 308
+#: NEEDS WORK
 msgid "Select File"
-msgstr "Select File"
+msgstr "파일 선택"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 102
+#: NEEDS WORK
 msgid "Output file"
-msgstr "Output file"
+msgstr "출력 파일"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 103
+#: NEEDS WORK
 msgid "Leave empty to use the same name"
-msgstr "Leave empty to use the same name"
+msgstr "비워두면 동일한 이름을 사용합니다."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 107
+#: NEEDS WORK
 msgid "Output folder"
-msgstr "Output folder"
+msgstr "출력 폴더"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 108
+#: NEEDS WORK
 msgid "Leave empty to use the same folder"
-msgstr "Leave empty to use the same folder"
+msgstr "비워 두면 동일한 폴더를 사용합니다."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 127
+#: NEEDS WORK
 msgid "Delete original MKV file"
-msgstr "Delete original MKV file"
+msgstr "원본 MKV 파일 삭제"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 128
+#: NEEDS WORK
 msgid "Remove original file after successful conversion"
-msgstr "Remove original file after successful conversion"
+msgstr "변환이 성공적으로 완료된 후 원본 파일 삭제"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 136
+#: NEEDS WORK
 msgid "Convert Video"
-msgstr "Convert Video"
+msgstr "비디오 변환"
 
-#
+# 
 # #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
-#
+# 
 # #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 183
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 48
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 294
+#: NEEDS WORK
 msgid "Comm Video Converter"
-msgstr "Comm Video Converter"
+msgstr "커뮤니케이션 비디오 변환기"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 207
+#: NEEDS WORK
 msgid "A powerful tool for converting video files to MP4 format."
-msgstr "A powerful tool for converting video files to MP4 format."
+msgstr "MP4 형식으로 비디오 파일을 변환하는 강력한 도구."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 214
+#: NEEDS WORK
 msgid "• GPU-accelerated conversion for NVIDIA, AMD, and Intel GPUs"
-msgstr "• GPU-accelerated conversion for NVIDIA, AMD, and Intel GPUs"
+msgstr "• NVIDIA, AMD 및 Intel GPU를 위한 GPU 가속 변환"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 215
+#: NEEDS WORK
 msgid "• High-quality video processing with customizable settings"
-msgstr "• High-quality video processing with customizable settings"
+msgstr "• 사용자 정의 가능한 설정을 갖춘 고품질 비디오 처리"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 216
+#: NEEDS WORK
 msgid "• Support for various video codecs (H.264, H.265/HEVC, AV1, VP9)"
-msgstr "• Support for various video codecs (H.264, H.265/HEVC, AV1, VP9)"
+msgstr "• 다양한 비디오 코덱 지원 (H.264, H.265/HEVC, AV1, VP9)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 217
+#: NEEDS WORK
 msgid "• Subtitle extraction and embedding"
-msgstr "• Subtitle extraction and embedding"
+msgstr "• 자막 추출 및 삽입"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 218
+#: NEEDS WORK
 msgid "• Batch processing capabilities"
-msgstr "• Batch processing capabilities"
+msgstr "• 배치 처리 기능"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 235
+#: NEEDS WORK
 msgid ""
-"This application uses <b>FFmpeg</b> for reliable, high-performance video "
-"conversion. The GPU acceleration significantly reduces conversion time "
-"compared to software-only processing."
-msgstr ""
-"This application uses <b>FFmpeg</b> for reliable, high-performance video "
-"conversion. The GPU acceleration significantly reduces conversion time "
-"compared to software-only processing."
+"This application uses <b>FFmpeg</b> for reliable, high-performance video conversion. The GPU "
+"acceleration significantly reduces conversion time compared to software-only processing."
+msgstr "이 애플리케이션은 신뢰할 수 있고 고성능 비디오 변환을 위해 <b>FFmpeg</b>를 사용합니다. GPU 가속은 소프트웨어 전용 처리에 비해 변환 시간을 크게 단축시킵니다."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 268
+#: NEEDS WORK
 msgid "Show dialog on startup"
-msgstr "Show dialog on startup"
+msgstr "시작 시 대화상자 표시"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 280
+#: NEEDS WORK
 msgid "Close"
-msgstr "Close"
+msgstr "닫기"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 315
+#: NEEDS WORK
 msgid "Video files"
-msgstr "Video files"
+msgstr "비디오 파일"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 331
+#: NEEDS WORK
 msgid "All files"
-msgstr "All files"
+msgstr "모든 파일"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 355
+#: NEEDS WORK
 msgid "Select the output folder"
-msgstr "Select the output folder"
+msgstr "출력 폴더 선택"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 373
+#: NEEDS WORK
 msgid "Please select an input file."
-msgstr "Please select an input file."
+msgstr "입력 파일을 선택하십시오."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 380
+#: NEEDS WORK
 msgid "The selected file does not exist: {0}"
-msgstr "The selected file does not exist: {0}"
+msgstr "선택한 파일이 존재하지 않습니다: {0}"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 388
+#: NEEDS WORK
 msgid "Conversion script not found: {0}"
-msgstr "Conversion script not found: {0}"
+msgstr "변환 스크립트를 찾을 수 없습니다: {0}"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 22
+#: NEEDS WORK
 msgid "Converting..."
-msgstr "Converting..."
+msgstr "변환 중..."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 73
+#: NEEDS WORK
 msgid "Error starting conversion: {0}"
-msgstr "Error starting conversion: {0}"
+msgstr "변환 시작 오류: {0}"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 92
+#: NEEDS WORK
 msgid "Starting process..."
-msgstr "Starting process..."
+msgstr "프로세스 시작 중..."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 122
+#: NEEDS WORK
 msgid "Processing video..."
-msgstr "Processing video..."
+msgstr "비디오 처리 중..."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 146
+#: NEEDS WORK
 msgid "Time remaining:"
-msgstr "Time remaining:"
+msgstr "남은 시간:"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 152
+#: NEEDS WORK
 msgid "No progress detected. Process may be stuck."
-msgstr "No progress detected. Process may be stuck."
+msgstr "진행 상황이 감지되지 않았습니다. 프로세스가 멈췄을 수 있습니다."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 174
+#: NEEDS WORK
 msgid "Conversion cancelled."
-msgstr "Conversion cancelled."
+msgstr "변환이 취소되었습니다."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 175
+#: NEEDS WORK
 msgid "Cancelled"
-msgstr "Cancelled"
+msgstr "취소됨"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 188
+#: NEEDS WORK
 msgid "Completed!"
-msgstr "Completed!"
+msgstr "완료!"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 189
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 234
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 242
+#: NEEDS WORK
 msgid "Conversion completed successfully!"
-msgstr "Conversion completed successfully!"
+msgstr "변환이 성공적으로 완료되었습니다!"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 207
+#: NEEDS WORK
 msgid ""
 "Conversion completed successfully!\n"
 "\n"
 "The original file <b>{0}</b> was deleted."
 msgstr ""
-"Conversion completed successfully!\n"
+"변환이 성공적으로 완료되었습니다!\n"
 "\n"
-"The original file <b>{0}</b> was deleted."
+"원본 파일 <b>{0}</b>이(가) 삭제되었습니다."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 216
+#: NEEDS WORK
 msgid ""
 "Conversion completed successfully!\n"
 "\n"
 "Could not delete the original file: {0}"
 msgstr ""
-"Conversion completed successfully!\n"
+"변환이 성공적으로 완료되었습니다!\n"
 "\n"
-"Could not delete the original file: {0}"
+"원본 파일을 삭제할 수 없습니다: {0}"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 225
+#: NEEDS WORK
 msgid ""
 "Conversion completed successfully!\n"
 "\n"
-"The original file was not deleted because the converted file size looks "
-"suspicious."
+"The original file was not deleted because the converted file size looks suspicious."
 msgstr ""
-"Conversion completed successfully!\n"
+"변환이 성공적으로 완료되었습니다!\n"
 "\n"
-"The original file was not deleted because the converted file size looks "
-"suspicious."
+"변환된 파일 크기가 의심스러워 원본 파일이 삭제되지 않았습니다."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 247
+#: NEEDS WORK
 msgid "Error!"
-msgstr "Error!"
+msgstr "오류!"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 248
+#: NEEDS WORK
 msgid "Conversion failed with code {0}"
-msgstr "Conversion failed with code {0}"
+msgstr "변환 실패, 코드 {0}"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 252
+#: NEEDS WORK
 msgid ""
 "The conversion failed with error code {0}.\n"
 "\n"
 "Check the log for more details."
 msgstr ""
-"The conversion failed with error code {0}.\n"
+"변환이 오류 코드 {0}로 실패했습니다.\n"
 "\n"
-"Check the log for more details."
+"자세한 내용은 로그를 확인하세요."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 268
+#: NEEDS WORK
 msgid "Information"
-msgstr "Information"
+msgstr "정보"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 69
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 103
+#: NEEDS WORK
 msgid "Single File"
-msgstr "Single File"
+msgstr "단일 파일"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 74
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 104
+#: NEEDS WORK
 msgid "Multiple Files"
-msgstr "Multiple Files"
+msgstr "다중 파일"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 78
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 105
+#: NEEDS WORK
 msgid "Settings"
-msgstr "Settings"
+msgstr "설정"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 150
+#: NEEDS WORK
 msgid "Error"
-msgstr "Error"
+msgstr "오류"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 71
+#: NEEDS WORK
 msgid "Encoding Settings"
-msgstr "Encoding Settings"
+msgstr "인코딩 설정"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
+#: NEEDS WORK
 msgid "Auto-detect"
-msgstr "Auto-detect"
+msgstr "자동 감지"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
+#: NEEDS WORK
 msgid "amd"
-msgstr "amd"
+msgstr "엠디"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
+#: NEEDS WORK
 msgid "intel"
-msgstr "intel"
+msgstr "인텔"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
+#: NEEDS WORK
 msgid "nvidia"
-msgstr "nvidia"
+msgstr "엔비디아"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
+#: NEEDS WORK
 msgid "software"
-msgstr "software"
+msgstr "소프트웨어"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 77
+#: NEEDS WORK
 msgid "GPU"
 msgstr "GPU"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 78
+#: NEEDS WORK
 msgid "Select hardware acceleration"
-msgstr "Select hardware acceleration"
+msgstr "하드웨어 가속 선택"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 84
+#: NEEDS WORK
 msgid "GPU partial mode"
-msgstr "GPU partial mode"
+msgstr "GPU 부분 모드"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 85
+#: NEEDS WORK
 msgid "Decode using CPU, encode using GPU"
-msgstr "Decode using CPU, encode using GPU"
+msgstr "CPU를 사용하여 디코딩하고, GPU를 사용하여 인코딩합니다."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
+#: NEEDS WORK
 msgid "high"
-msgstr "high"
+msgstr "높음"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
+#: NEEDS WORK
 msgid "low"
-msgstr "low"
+msgstr "낮음"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
+#: NEEDS WORK
 msgid "veryhigh"
-msgstr "veryhigh"
+msgstr "매우 높음"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
+#: NEEDS WORK
 msgid "verylow"
-msgstr "verylow"
+msgstr "매우 낮음"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 111
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 165
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 198
+#: NEEDS WORK
 msgid "Default"
-msgstr "Default"
+msgstr "기본값"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
+#: NEEDS WORK
 msgid "medium"
-msgstr "medium"
+msgstr "중간"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 92
+#: NEEDS WORK
 msgid "Video quality"
-msgstr "Video quality"
+msgstr "비디오 품질"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 93
+#: NEEDS WORK
 msgid "Higher quality needs more processing power"
-msgstr "Higher quality needs more processing power"
+msgstr "더 높은 품질은 더 많은 처리 능력을 필요로 합니다."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
+#: NEEDS WORK
 msgid "Default (h264)"
-msgstr "Default (h264)"
+msgstr "기본값 (h264)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
+#: NEEDS WORK
 msgid "av1 (AV1)"
 msgstr "av1 (AV1)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
+#: NEEDS WORK
 msgid "h264 (MP4)"
 msgstr "h264 (MP4)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
+#: NEEDS WORK
 msgid "h265 (HEVC)"
 msgstr "h265 (HEVC)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
+#: NEEDS WORK
 msgid "vp9 (VP9)"
 msgstr "vp9 (VP9)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 102
+#: NEEDS WORK
 msgid "Video codec"
-msgstr "Video codec"
+msgstr "비디오 코덱"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 103
+#: NEEDS WORK
 msgid "Select encoding format"
-msgstr "Select encoding format"
+msgstr "인코딩 형식 선택"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 117
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 171
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 202
+#: NEEDS WORK
 msgid "Custom"
-msgstr "Custom"
+msgstr "사용자 정의"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 122
+#: NEEDS WORK
 msgid "Video resolution"
-msgstr "Video resolution"
+msgstr "비디오 해상도"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 123
+#: NEEDS WORK
 msgid "Select output resolution"
-msgstr "Select output resolution"
+msgstr "출력 해상도 선택"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 128
+#: NEEDS WORK
 msgid "Custom resolution"
-msgstr "Custom resolution"
+msgstr "사용자 정의 해상도"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 129
+#: NEEDS WORK
 msgid "Ex: 1280x720, 1920x1080"
-msgstr "Ex: 1280x720, 1920x1080"
+msgstr "1280x720, 1920x1080"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
+#: NEEDS WORK
 msgid "faster"
-msgstr "faster"
+msgstr "더 빠른"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
+#: NEEDS WORK
 msgid "slow"
-msgstr "slow"
+msgstr "느림"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
+#: NEEDS WORK
 msgid "ultrafast"
-msgstr "ultrafast"
+msgstr "초고속"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
+#: NEEDS WORK
 msgid "veryfast"
-msgstr "veryfast"
+msgstr "매우 빠름"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
+#: NEEDS WORK
 msgid "veryslow"
-msgstr "veryslow"
+msgstr "매우 느림"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 142
+#: NEEDS WORK
 msgid "Compression preset"
-msgstr "Compression preset"
+msgstr "압축 프리셋"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 143
+#: NEEDS WORK
 msgid "Slower presets provide better compression"
-msgstr "Slower presets provide better compression"
+msgstr "느린 프리셋은 더 나은 압축을 제공합니다."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 150
+#: NEEDS WORK
 msgid "Default (extract)"
-msgstr "Default (extract)"
+msgstr "기본값 (추출)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 150
+#: NEEDS WORK
 msgid "embedded"
-msgstr "embedded"
+msgstr "임베디드"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 150
+#: NEEDS WORK
 msgid "extract (SRT)"
-msgstr "extract (SRT)"
+msgstr "추출 (SRT)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 150
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 225
+#: NEEDS WORK
 msgid "none"
 msgstr "none"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 152
+#: NEEDS WORK
 msgid "Subtitle handling"
-msgstr "Subtitle handling"
+msgstr "자막 처리"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 160
+#: NEEDS WORK
 msgid "Audio Settings"
-msgstr "Audio Settings"
+msgstr "오디오 설정"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 179
+#: NEEDS WORK
 msgid "Audio bitrate"
-msgstr "Audio bitrate"
+msgstr "오디오 비트 전송률"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 180
+#: NEEDS WORK
 msgid "Select common bitrate or enter custom value"
-msgstr "Select common bitrate or enter custom value"
+msgstr "일반 비트 전송률을 선택하거나 사용자 지정 값을 입력하세요."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 185
+#: NEEDS WORK
 msgid "Custom bitrate"
-msgstr "Custom bitrate"
+msgstr "사용자 정의 비트 전송률"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 186
+#: NEEDS WORK
 msgid "Ex: 128k, 192k, 256k"
-msgstr "Ex: 128k, 192k, 256k"
+msgstr "128k, 192k, 256k"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 207
+#: NEEDS WORK
 msgid "Audio channels"
-msgstr "Audio channels"
+msgstr "오디오 채널"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 208
+#: NEEDS WORK
 msgid "Select common channel configuration"
-msgstr "Select common channel configuration"
+msgstr "공통 채널 구성 선택"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 213
+#: NEEDS WORK
 msgid "Custom channels"
-msgstr "Custom channels"
+msgstr "사용자 정의 채널"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 214
+#: NEEDS WORK
 msgid "Ex: 2 (stereo), 6 (5.1)"
-msgstr "Ex: 2 (stereo), 6 (5.1)"
+msgstr "예: 2 (스테레오), 6 (5.1)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 225
+#: NEEDS WORK
 msgid "Default (copy)"
-msgstr "Default (copy)"
+msgstr "기본값 (복사)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 225
+#: NEEDS WORK
 msgid "copy"
-msgstr "copy"
+msgstr "복사"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 225
+#: NEEDS WORK
 msgid "reencode"
-msgstr "reencode"
+msgstr "재인코딩"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 227
+#: NEEDS WORK
 msgid "Audio handling"
-msgstr "Audio handling"
+msgstr "오디오 처리"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 273
+#: NEEDS WORK
 msgid "General Options"
-msgstr "General Options"
+msgstr "일반 옵션"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 276
+#: NEEDS WORK
 msgid "Additional FFmpeg options"
-msgstr "Additional FFmpeg options"
+msgstr "추가 FFmpeg 옵션"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 277
+#: NEEDS WORK
 msgid "Ex: -ss 60 -t 30"
-msgstr "Ex: -ss 60 -t 30"
+msgstr "-ex: -ss 60 -t 30"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 280
+#: NEEDS WORK
 msgid "Copy video without reencoding"
-msgstr "Copy video without reencoding"
+msgstr "비디오를 재인코딩 없이 복사하기"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 281
+#: NEEDS WORK
 msgid "Faster but less compatible"
-msgstr "Faster but less compatible"
+msgstr "더 빠르지만 호환성이 떨어짐"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 284
+#: NEEDS WORK
 msgid "Only extract subtitles"
-msgstr "Only extract subtitles"
+msgstr "자막만 추출하기"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 285
+#: NEEDS WORK
 msgid "Extract subtitles to .srt files"
-msgstr "Extract subtitles to .srt files"
+msgstr ".srt 파일로 자막 추출"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 291
+#: NEEDS WORK
 msgid "About"
-msgstr "About"
+msgstr "정보"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 295
+#: NEEDS WORK
 msgid "A graphical frontend for converting MKV videos to MP4"
-msgstr "A graphical frontend for converting MKV videos to MP4"
+msgstr "MKV 비디오를 MP4로 변환하는 그래픽 프론트엔드"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 303
+#: NEEDS WORK
 msgid "v1.0.0"
 msgstr "v1.0.0"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 309
+#: NEEDS WORK
 msgid "Developer"
-msgstr "Developer"
+msgstr "개발자"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 314
+#: NEEDS WORK
 msgid "Contact"
-msgstr "Contact"
+msgstr "연락처"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 55
+#: NEEDS WORK
 msgid "Multiple files"
-msgstr "Multiple files"
+msgstr "여러 파일"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 60
+#: NEEDS WORK
 msgid "Progress"
-msgstr "Progress"
+msgstr "진행 상황"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 81
+#: NEEDS WORK
 msgid "Starting conversion..."
-msgstr "Starting conversion..."
+msgstr "변환 시작 중..."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 96
+#: NEEDS WORK
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "취소"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 119
+#: NEEDS WORK
 msgid "Cancelling..."
-msgstr "Cancelling..."
+msgstr "취소 중..."

@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the comm-big-converter package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -14,748 +14,880 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 74
+#: NEEDS WORK
 msgid "Search directory"
-msgstr "Search directory"
+msgstr "Търсене на директория"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 75
+#: NEEDS WORK
 msgid "Select the folder containing MKV files"
-msgstr "Select the folder containing MKV files"
+msgstr "Изберете папката, съдържаща MKV файлове"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 80
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 216
+#: NEEDS WORK
 msgid "No directory selected"
-msgstr "No directory selected"
+msgstr "Не е избрана директория"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 90
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 197
+#: NEEDS WORK
 msgid "Select Directory"
-msgstr "Select Directory"
+msgstr "Изберете директория"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 101
+#: NEEDS WORK
 msgid "Simultaneous processes"
-msgstr "Simultaneous processes"
+msgstr "Симултантни процеси"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 102
+#: NEEDS WORK
 msgid "Number of conversions to run in parallel"
-msgstr "Number of conversions to run in parallel"
+msgstr "Брой конверсии за изпълнение паралелно"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 115
+#: NEEDS WORK
 msgid "Minimum MP4 size"
-msgstr "Minimum MP4 size"
+msgstr "Минимален размер на MP4"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 116
+#: NEEDS WORK
 msgid "Threshold for considering conversion successful (KB)"
-msgstr "Threshold for considering conversion successful (KB)"
+msgstr "Праг за считане на конверсията за успешна (KB)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 127
+#: NEEDS WORK
 msgid "Log file"
-msgstr "Log file"
+msgstr "Лог файл"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 129
+#: NEEDS WORK
 msgid "Path to save the conversion log"
-msgstr "Path to save the conversion log"
+msgstr "Път за запазване на лог файла за конверсия"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 133
+#: NEEDS WORK
 msgid "Delete original MKV files"
-msgstr "Delete original MKV files"
+msgstr "Изтрийте оригиналните MKV файлове"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 134
+#: NEEDS WORK
 msgid "Remove source files after successful conversion"
-msgstr "Remove source files after successful conversion"
+msgstr "Премахнете изходните файлове след успешна конверсия"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 143
+#: NEEDS WORK
 msgid "Convert All MKVs"
-msgstr "Convert All MKVs"
+msgstr "Конвертирайте всички MKV файлове"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 188
+#: NEEDS WORK
 msgid "Batch Conversion Help"
-msgstr "Batch Conversion Help"
+msgstr "Помощ за партидно конвертиране"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 189
+#: NEEDS WORK
 msgid ""
-"This mode will search for all MKV files in the selected directory and "
-"convert them to MP4.\n"
+"This mode will search for all MKV files in the selected directory and convert them to MP4.\n"
 "\n"
-"The original MKV file will only be removed if the MP4 is created "
-"successfully and has the defined minimum size."
+"The original MKV file will only be removed if the MP4 is created successfully and has the defined "
+"minimum size."
 msgstr ""
-"This mode will search for all MKV files in the selected directory and "
-"convert them to MP4.\n"
+"Този режим ще търси всички MKV файлове в избраната директория и ще ги конвертира в MP4.\n"
 "\n"
-"The original MKV file will only be removed if the MP4 is created "
-"successfully and has the defined minimum size."
+"Оригиналният MKV файл ще бъде премахнат само ако MP4 е създаден успешно и има зададения минимален "
+"размер."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 217
+#: NEEDS WORK
 msgid "Please select a directory to search for MKV files."
-msgstr "Please select a directory to search for MKV files."
+msgstr "Моля, изберете директория за търсене на MKV файлове."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 84
+#: NEEDS WORK
 msgid "Input file"
-msgstr "Input file"
+msgstr "Входен файл"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 85
+#: NEEDS WORK
 msgid "Select the video file to convert"
-msgstr "Select the video file to convert"
+msgstr "Изберете видео файла за конвертиране"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 86
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 372
+#: NEEDS WORK
 msgid "No file selected"
-msgstr "No file selected"
+msgstr "Няма избран файл"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 91
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 308
+#: NEEDS WORK
 msgid "Select File"
-msgstr "Select File"
+msgstr "Изберете файл"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 102
+#: NEEDS WORK
 msgid "Output file"
-msgstr "Output file"
+msgstr "Изходен файл"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 103
+#: NEEDS WORK
 msgid "Leave empty to use the same name"
-msgstr "Leave empty to use the same name"
+msgstr "Оставете празно, за да използвате същото име"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 107
+#: NEEDS WORK
 msgid "Output folder"
-msgstr "Output folder"
+msgstr "Изходна папка"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 108
+#: NEEDS WORK
 msgid "Leave empty to use the same folder"
-msgstr "Leave empty to use the same folder"
+msgstr "Оставете празно, за да използвате същата папка"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 127
+#: NEEDS WORK
 msgid "Delete original MKV file"
-msgstr "Delete original MKV file"
+msgstr "Изтрийте оригиналния MKV файл"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 128
+#: NEEDS WORK
 msgid "Remove original file after successful conversion"
-msgstr "Remove original file after successful conversion"
+msgstr "Премахнете оригиналния файл след успешна конверсия"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 136
+#: NEEDS WORK
 msgid "Convert Video"
-msgstr "Convert Video"
+msgstr "Конвертиране на видео"
 
-#
+# 
 # #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
-#
+# 
 # #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 183
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 48
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 294
+#: NEEDS WORK
 msgid "Comm Video Converter"
-msgstr "Comm Video Converter"
+msgstr "Ком Видео Конвертор"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 207
+#: NEEDS WORK
 msgid "A powerful tool for converting video files to MP4 format."
-msgstr "A powerful tool for converting video files to MP4 format."
+msgstr "Мощен инструмент за конвертиране на видео файлове в MP4 формат."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 214
+#: NEEDS WORK
 msgid "• GPU-accelerated conversion for NVIDIA, AMD, and Intel GPUs"
-msgstr "• GPU-accelerated conversion for NVIDIA, AMD, and Intel GPUs"
+msgstr "• GPU-ускорена конверсия за NVIDIA, AMD и Intel GPU"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 215
+#: NEEDS WORK
 msgid "• High-quality video processing with customizable settings"
-msgstr "• High-quality video processing with customizable settings"
+msgstr "• Обработка на видео с високо качество и персонализируеми настройки"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 216
+#: NEEDS WORK
 msgid "• Support for various video codecs (H.264, H.265/HEVC, AV1, VP9)"
-msgstr "• Support for various video codecs (H.264, H.265/HEVC, AV1, VP9)"
+msgstr "• Поддръжка за различни видео кодеци (H.264, H.265/HEVC, AV1, VP9)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 217
+#: NEEDS WORK
 msgid "• Subtitle extraction and embedding"
-msgstr "• Subtitle extraction and embedding"
+msgstr "• Извличане и вграждане на субтитри"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 218
+#: NEEDS WORK
 msgid "• Batch processing capabilities"
-msgstr "• Batch processing capabilities"
+msgstr "• Възможности за партидна обработка"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 235
+#: NEEDS WORK
 msgid ""
-"This application uses <b>FFmpeg</b> for reliable, high-performance video "
-"conversion. The GPU acceleration significantly reduces conversion time "
-"compared to software-only processing."
+"This application uses <b>FFmpeg</b> for reliable, high-performance video conversion. The GPU "
+"acceleration significantly reduces conversion time compared to software-only processing."
 msgstr ""
-"This application uses <b>FFmpeg</b> for reliable, high-performance video "
-"conversion. The GPU acceleration significantly reduces conversion time "
-"compared to software-only processing."
+"Тази програма използва <b>FFmpeg</b> за надеждно, високопроизводително видео конвертиране. "
+"Ускорението с GPU значително намалява времето за конвертиране в сравнение с обработката само със "
+"софтуер."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 268
+#: NEEDS WORK
 msgid "Show dialog on startup"
-msgstr "Show dialog on startup"
+msgstr "Покажи диалог при стартиране"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 280
+#: NEEDS WORK
 msgid "Close"
-msgstr "Close"
+msgstr "Затвори"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 315
+#: NEEDS WORK
 msgid "Video files"
-msgstr "Video files"
+msgstr "Видеофайлове"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 331
+#: NEEDS WORK
 msgid "All files"
-msgstr "All files"
+msgstr "Всички файлове"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 355
+#: NEEDS WORK
 msgid "Select the output folder"
-msgstr "Select the output folder"
+msgstr "Изберете папката за изходни файлове"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 373
+#: NEEDS WORK
 msgid "Please select an input file."
-msgstr "Please select an input file."
+msgstr "Моля, изберете входен файл."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 380
+#: NEEDS WORK
 msgid "The selected file does not exist: {0}"
-msgstr "The selected file does not exist: {0}"
+msgstr "Избраният файл не съществува: {0}"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 388
+#: NEEDS WORK
 msgid "Conversion script not found: {0}"
-msgstr "Conversion script not found: {0}"
+msgstr "Не е намерен скрипт за конвертиране: {0}"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 22
+#: NEEDS WORK
 msgid "Converting..."
-msgstr "Converting..."
+msgstr "Конвертиране..."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 73
+#: NEEDS WORK
 msgid "Error starting conversion: {0}"
-msgstr "Error starting conversion: {0}"
+msgstr "Грешка при стартиране на конверсията: {0}"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 92
+#: NEEDS WORK
 msgid "Starting process..."
-msgstr "Starting process..."
+msgstr "Започване на процеса..."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 122
+#: NEEDS WORK
 msgid "Processing video..."
-msgstr "Processing video..."
+msgstr "Обработка на видео..."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 146
+#: NEEDS WORK
 msgid "Time remaining:"
-msgstr "Time remaining:"
+msgstr "Оставащо време:"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 152
+#: NEEDS WORK
 msgid "No progress detected. Process may be stuck."
-msgstr "No progress detected. Process may be stuck."
+msgstr "Не е открит напредък. Процесът може да е блокиран."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 174
+#: NEEDS WORK
 msgid "Conversion cancelled."
-msgstr "Conversion cancelled."
+msgstr "Конверсията е отменена."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 175
+#: NEEDS WORK
 msgid "Cancelled"
-msgstr "Cancelled"
+msgstr "Отменено"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 188
+#: NEEDS WORK
 msgid "Completed!"
-msgstr "Completed!"
+msgstr "Завършено!"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 189
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 234
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 242
+#: NEEDS WORK
 msgid "Conversion completed successfully!"
-msgstr "Conversion completed successfully!"
+msgstr "Конвертирането е завършено успешно!"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 207
+#: NEEDS WORK
 msgid ""
 "Conversion completed successfully!\n"
 "\n"
 "The original file <b>{0}</b> was deleted."
 msgstr ""
-"Conversion completed successfully!\n"
+"Конвертирането е завършено успешно!\n"
 "\n"
-"The original file <b>{0}</b> was deleted."
+"Оригиналният файл <b>{0}</b> беше изтрит."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 216
+#: NEEDS WORK
 msgid ""
 "Conversion completed successfully!\n"
 "\n"
 "Could not delete the original file: {0}"
 msgstr ""
-"Conversion completed successfully!\n"
+"Конвертирането е завършено успешно!\n"
 "\n"
-"Could not delete the original file: {0}"
+"Не можа да се изтрие оригиналният файл: {0}"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 225
+#: NEEDS WORK
 msgid ""
 "Conversion completed successfully!\n"
 "\n"
-"The original file was not deleted because the converted file size looks "
-"suspicious."
+"The original file was not deleted because the converted file size looks suspicious."
 msgstr ""
-"Conversion completed successfully!\n"
+"Конвертирането беше успешно завършено!\n"
 "\n"
-"The original file was not deleted because the converted file size looks "
-"suspicious."
+"Оригиналният файл не беше изтрит, тъй като размерът на конвертирания файл изглежда подозрителен."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 247
+#: NEEDS WORK
 msgid "Error!"
-msgstr "Error!"
+msgstr "Грешка!"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 248
+#: NEEDS WORK
 msgid "Conversion failed with code {0}"
-msgstr "Conversion failed with code {0}"
+msgstr "Преобразуването не успя с код {0}"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 252
+#: NEEDS WORK
 msgid ""
 "The conversion failed with error code {0}.\n"
 "\n"
 "Check the log for more details."
 msgstr ""
-"The conversion failed with error code {0}.\n"
+"Конверсията не успя с код на грешка {0}.\n"
 "\n"
-"Check the log for more details."
+"Проверете логовете за повече подробности."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 268
+#: NEEDS WORK
 msgid "Information"
-msgstr "Information"
+msgstr "Информация"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 69
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 103
+#: NEEDS WORK
 msgid "Single File"
-msgstr "Single File"
+msgstr "Единствен файл"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 74
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 104
+#: NEEDS WORK
 msgid "Multiple Files"
-msgstr "Multiple Files"
+msgstr "Множество файлов"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 78
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 105
+#: NEEDS WORK
 msgid "Settings"
-msgstr "Settings"
+msgstr "Настройки"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 150
+#: NEEDS WORK
 msgid "Error"
-msgstr "Error"
+msgstr "Грешка"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 71
+#: NEEDS WORK
 msgid "Encoding Settings"
-msgstr "Encoding Settings"
+msgstr "Настройки на кодиране"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
+#: NEEDS WORK
 msgid "Auto-detect"
-msgstr "Auto-detect"
+msgstr "Автоматично откриване"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
+#: NEEDS WORK
 msgid "amd"
-msgstr "amd"
+msgstr "амд"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
+#: NEEDS WORK
 msgid "intel"
-msgstr "intel"
+msgstr "интел"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
+#: NEEDS WORK
 msgid "nvidia"
-msgstr "nvidia"
+msgstr "нвидия"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
+#: NEEDS WORK
 msgid "software"
-msgstr "software"
+msgstr "софтуер"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 77
+#: NEEDS WORK
 msgid "GPU"
-msgstr "GPU"
+msgstr "ГПУ"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 78
+#: NEEDS WORK
 msgid "Select hardware acceleration"
-msgstr "Select hardware acceleration"
+msgstr "Изберете хардуерно ускорение"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 84
+#: NEEDS WORK
 msgid "GPU partial mode"
-msgstr "GPU partial mode"
+msgstr "GPU частичен режим"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 85
+#: NEEDS WORK
 msgid "Decode using CPU, encode using GPU"
-msgstr "Decode using CPU, encode using GPU"
+msgstr "Декодиране с CPU, кодиране с GPU"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
+#: NEEDS WORK
 msgid "high"
-msgstr "high"
+msgstr "висок"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
+#: NEEDS WORK
 msgid "low"
-msgstr "low"
+msgstr "нисък"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
+#: NEEDS WORK
 msgid "veryhigh"
-msgstr "veryhigh"
+msgstr "много високо"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
+#: NEEDS WORK
 msgid "verylow"
-msgstr "verylow"
+msgstr "много ниско"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 111
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 165
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 198
+#: NEEDS WORK
 msgid "Default"
-msgstr "Default"
+msgstr "По подразбиране"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
+#: NEEDS WORK
 msgid "medium"
-msgstr "medium"
+msgstr "среден"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 92
+#: NEEDS WORK
 msgid "Video quality"
-msgstr "Video quality"
+msgstr "Качество на видеото"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 93
+#: NEEDS WORK
 msgid "Higher quality needs more processing power"
-msgstr "Higher quality needs more processing power"
+msgstr "По-високото качество изисква повече изчислителна мощ."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
+#: NEEDS WORK
 msgid "Default (h264)"
-msgstr "Default (h264)"
+msgstr "По подразбиране (h264)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
+#: NEEDS WORK
 msgid "av1 (AV1)"
-msgstr "av1 (AV1)"
+msgstr "ав1 (AV1)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
+#: NEEDS WORK
 msgid "h264 (MP4)"
 msgstr "h264 (MP4)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
+#: NEEDS WORK
 msgid "h265 (HEVC)"
 msgstr "h265 (HEVC)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
+#: NEEDS WORK
 msgid "vp9 (VP9)"
-msgstr "vp9 (VP9)"
+msgstr "вп9 (VP9)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 102
+#: NEEDS WORK
 msgid "Video codec"
-msgstr "Video codec"
+msgstr "Видео кодек"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 103
+#: NEEDS WORK
 msgid "Select encoding format"
-msgstr "Select encoding format"
+msgstr "Изберете формат на кодиране"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 117
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 171
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 202
+#: NEEDS WORK
 msgid "Custom"
-msgstr "Custom"
+msgstr "Персонализиран"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 122
+#: NEEDS WORK
 msgid "Video resolution"
-msgstr "Video resolution"
+msgstr "Резолюция на видеото"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 123
+#: NEEDS WORK
 msgid "Select output resolution"
-msgstr "Select output resolution"
+msgstr "Изберете резолюция на изхода"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 128
+#: NEEDS WORK
 msgid "Custom resolution"
-msgstr "Custom resolution"
+msgstr "Персонализирано разрешение"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 129
+#: NEEDS WORK
 msgid "Ex: 1280x720, 1920x1080"
-msgstr "Ex: 1280x720, 1920x1080"
+msgstr "1280x720, 1920x1080"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
+#: NEEDS WORK
 msgid "faster"
-msgstr "faster"
+msgstr "по-бързо"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
+#: NEEDS WORK
 msgid "slow"
-msgstr "slow"
+msgstr "бавен"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
+#: NEEDS WORK
 msgid "ultrafast"
-msgstr "ultrafast"
+msgstr "ултрабързинa"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
+#: NEEDS WORK
 msgid "veryfast"
-msgstr "veryfast"
+msgstr "много бързо"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
+#: NEEDS WORK
 msgid "veryslow"
-msgstr "veryslow"
+msgstr "много бавно"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 142
+#: NEEDS WORK
 msgid "Compression preset"
-msgstr "Compression preset"
+msgstr "Предустановки за компресия"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 143
+#: NEEDS WORK
 msgid "Slower presets provide better compression"
-msgstr "Slower presets provide better compression"
+msgstr "По-бавните предварителни настройки осигуряват по-добро компресиране."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 150
+#: NEEDS WORK
 msgid "Default (extract)"
-msgstr "Default (extract)"
+msgstr "По подразбиране (извличане)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 150
+#: NEEDS WORK
 msgid "embedded"
-msgstr "embedded"
+msgstr "вграден"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 150
+#: NEEDS WORK
 msgid "extract (SRT)"
-msgstr "extract (SRT)"
+msgstr "извличане (SRT)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 150
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 225
+#: NEEDS WORK
 msgid "none"
 msgstr "none"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 152
+#: NEEDS WORK
 msgid "Subtitle handling"
-msgstr "Subtitle handling"
+msgstr "Обработка на субтитри"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 160
+#: NEEDS WORK
 msgid "Audio Settings"
-msgstr "Audio Settings"
+msgstr "Настройки на звука"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 179
+#: NEEDS WORK
 msgid "Audio bitrate"
-msgstr "Audio bitrate"
+msgstr "Аудио битрейт"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 180
+#: NEEDS WORK
 msgid "Select common bitrate or enter custom value"
-msgstr "Select common bitrate or enter custom value"
+msgstr "Изберете обща битрейт или въведете персонализирана стойност"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 185
+#: NEEDS WORK
 msgid "Custom bitrate"
-msgstr "Custom bitrate"
+msgstr "Персонализиран битрейт"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 186
+#: NEEDS WORK
 msgid "Ex: 128k, 192k, 256k"
-msgstr "Ex: 128k, 192k, 256k"
+msgstr "128k, 192k, 256k"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 207
+#: NEEDS WORK
 msgid "Audio channels"
-msgstr "Audio channels"
+msgstr "Аудиоканали"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 208
+#: NEEDS WORK
 msgid "Select common channel configuration"
-msgstr "Select common channel configuration"
+msgstr "Изберете конфигурация на общия канал"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 213
+#: NEEDS WORK
 msgid "Custom channels"
-msgstr "Custom channels"
+msgstr "Персонализирани канали"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 214
+#: NEEDS WORK
 msgid "Ex: 2 (stereo), 6 (5.1)"
-msgstr "Ex: 2 (stereo), 6 (5.1)"
+msgstr "Пример: 2 (стерео), 6 (5.1)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 225
+#: NEEDS WORK
 msgid "Default (copy)"
-msgstr "Default (copy)"
+msgstr "По подразбиране (копие)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 225
+#: NEEDS WORK
 msgid "copy"
-msgstr "copy"
+msgstr "копирайт"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 225
+#: NEEDS WORK
 msgid "reencode"
-msgstr "reencode"
+msgstr "прекодиране"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 227
+#: NEEDS WORK
 msgid "Audio handling"
-msgstr "Audio handling"
+msgstr "Обработка на аудио"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 273
+#: NEEDS WORK
 msgid "General Options"
-msgstr "General Options"
+msgstr "Общи опции"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 276
+#: NEEDS WORK
 msgid "Additional FFmpeg options"
-msgstr "Additional FFmpeg options"
+msgstr "Допълнителни опции за FFmpeg"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 277
+#: NEEDS WORK
 msgid "Ex: -ss 60 -t 30"
-msgstr "Ex: -ss 60 -t 30"
+msgstr "-ss 60 -t 30"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 280
+#: NEEDS WORK
 msgid "Copy video without reencoding"
-msgstr "Copy video without reencoding"
+msgstr "Копирайте видео без повторно кодиране"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 281
+#: NEEDS WORK
 msgid "Faster but less compatible"
-msgstr "Faster but less compatible"
+msgstr "По-бързо, но по-малко съвместимо"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 284
+#: NEEDS WORK
 msgid "Only extract subtitles"
-msgstr "Only extract subtitles"
+msgstr "Само извлечете субтитри"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 285
+#: NEEDS WORK
 msgid "Extract subtitles to .srt files"
-msgstr "Extract subtitles to .srt files"
+msgstr "Извлечете субтитри в .srt файлове"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 291
+#: NEEDS WORK
 msgid "About"
-msgstr "About"
+msgstr "За програмата"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 295
+#: NEEDS WORK
 msgid "A graphical frontend for converting MKV videos to MP4"
-msgstr "A graphical frontend for converting MKV videos to MP4"
+msgstr "Графичен интерфейс за конвертиране на MKV видеа в MP4"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 303
+#: NEEDS WORK
 msgid "v1.0.0"
 msgstr "v1.0.0"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 309
+#: NEEDS WORK
 msgid "Developer"
-msgstr "Developer"
+msgstr "Разработчик"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 314
+#: NEEDS WORK
 msgid "Contact"
-msgstr "Contact"
+msgstr "Контакт"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 55
+#: NEEDS WORK
 msgid "Multiple files"
-msgstr "Multiple files"
+msgstr "Множество файлов"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 60
+#: NEEDS WORK
 msgid "Progress"
-msgstr "Progress"
+msgstr "Напредък"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 81
+#: NEEDS WORK
 msgid "Starting conversion..."
-msgstr "Starting conversion..."
+msgstr "Започване на конверсия..."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 96
+#: NEEDS WORK
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Отмяна"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 119
+#: NEEDS WORK
 msgid "Cancelling..."
-msgstr "Cancelling..."
+msgstr "Отменяне..."

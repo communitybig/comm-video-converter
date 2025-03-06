@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the comm-big-converter package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -14,748 +14,879 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 74
+#: NEEDS WORK
 msgid "Search directory"
-msgstr "Search directory"
+msgstr "Otsi katalooge"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 75
+#: NEEDS WORK
 msgid "Select the folder containing MKV files"
-msgstr "Select the folder containing MKV files"
+msgstr "Valige kaust, mis sisaldab MKV-faile"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 80
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 216
+#: NEEDS WORK
 msgid "No directory selected"
-msgstr "No directory selected"
+msgstr "Katalooge ei ole valitud"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 90
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 197
+#: NEEDS WORK
 msgid "Select Directory"
-msgstr "Select Directory"
+msgstr "Vali kaust"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 101
+#: NEEDS WORK
 msgid "Simultaneous processes"
-msgstr "Simultaneous processes"
+msgstr "Samaaegsed protsessid"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 102
+#: NEEDS WORK
 msgid "Number of conversions to run in parallel"
-msgstr "Number of conversions to run in parallel"
+msgstr "Paralleelselt käivitatavate konversioonide arv"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 115
+#: NEEDS WORK
 msgid "Minimum MP4 size"
-msgstr "Minimum MP4 size"
+msgstr "Minimaalne MP4 suurus"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 116
+#: NEEDS WORK
 msgid "Threshold for considering conversion successful (KB)"
-msgstr "Threshold for considering conversion successful (KB)"
+msgstr "Konversiooni edukaks lugemise künnis (KB)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 127
+#: NEEDS WORK
 msgid "Log file"
-msgstr "Log file"
+msgstr "Logifail"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 129
+#: NEEDS WORK
 msgid "Path to save the conversion log"
-msgstr "Path to save the conversion log"
+msgstr "Teekond konversioonilogide salvestamiseks"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 133
+#: NEEDS WORK
 msgid "Delete original MKV files"
-msgstr "Delete original MKV files"
+msgstr "Kustuta originaalsed MKV failid"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 134
+#: NEEDS WORK
 msgid "Remove source files after successful conversion"
-msgstr "Remove source files after successful conversion"
+msgstr "Eemalda allikafailid pärast eduka konverteerimist"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 143
+#: NEEDS WORK
 msgid "Convert All MKVs"
-msgstr "Convert All MKVs"
+msgstr "Muuda kõik MKV-d"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 188
+#: NEEDS WORK
 msgid "Batch Conversion Help"
-msgstr "Batch Conversion Help"
+msgstr "Partii konversiooni abi"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 189
+#: NEEDS WORK
 msgid ""
-"This mode will search for all MKV files in the selected directory and "
-"convert them to MP4.\n"
+"This mode will search for all MKV files in the selected directory and convert them to MP4.\n"
 "\n"
-"The original MKV file will only be removed if the MP4 is created "
-"successfully and has the defined minimum size."
+"The original MKV file will only be removed if the MP4 is created successfully and has the defined "
+"minimum size."
 msgstr ""
-"This mode will search for all MKV files in the selected directory and "
-"convert them to MP4.\n"
+"See režiim otsib valitud kaustas kõiki MKV-faile ja konverteerib need MP4-ks.\n"
 "\n"
-"The original MKV file will only be removed if the MP4 is created "
-"successfully and has the defined minimum size."
+"Algne MKV-fail eemaldatakse ainult siis, kui MP4 on edukalt loodud ja sellel on määratud minimaalne "
+"suurus."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/batch_page.py, line: 217
+#: NEEDS WORK
 msgid "Please select a directory to search for MKV files."
-msgstr "Please select a directory to search for MKV files."
+msgstr "Palun valige kataloog, kus otsida MKV-faile."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 84
+#: NEEDS WORK
 msgid "Input file"
-msgstr "Input file"
+msgstr "Sisendfail"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 85
+#: NEEDS WORK
 msgid "Select the video file to convert"
-msgstr "Select the video file to convert"
+msgstr "Valige muundamiseks videofail."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 86
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 372
+#: NEEDS WORK
 msgid "No file selected"
-msgstr "No file selected"
+msgstr "Faili ei ole valitud"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 91
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 308
+#: NEEDS WORK
 msgid "Select File"
-msgstr "Select File"
+msgstr "Vali fail"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 102
+#: NEEDS WORK
 msgid "Output file"
-msgstr "Output file"
+msgstr "Välj väljundfail"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 103
+#: NEEDS WORK
 msgid "Leave empty to use the same name"
-msgstr "Leave empty to use the same name"
+msgstr "Jätke tühi, et kasutada sama nime."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 107
+#: NEEDS WORK
 msgid "Output folder"
-msgstr "Output folder"
+msgstr "Väljefolder"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 108
+#: NEEDS WORK
 msgid "Leave empty to use the same folder"
-msgstr "Leave empty to use the same folder"
+msgstr "Jätke tühi, et kasutada sama kausta."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 127
+#: NEEDS WORK
 msgid "Delete original MKV file"
-msgstr "Delete original MKV file"
+msgstr "Kustuta originaal MKV fail"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 128
+#: NEEDS WORK
 msgid "Remove original file after successful conversion"
-msgstr "Remove original file after successful conversion"
+msgstr "Eemalda originaalfail pärast eduka konverteerimist"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 136
+#: NEEDS WORK
 msgid "Convert Video"
-msgstr "Convert Video"
+msgstr "Muuda videot"
 
-#
+# 
 # #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
-#
+# 
 # #-#-#-#-#  comm-big-converter.pot (comm-big-converter)  #-#-#-#-#
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 183
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 48
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 294
+#: NEEDS WORK
 msgid "Comm Video Converter"
 msgstr "Comm Video Converter"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 207
+#: NEEDS WORK
 msgid "A powerful tool for converting video files to MP4 format."
-msgstr "A powerful tool for converting video files to MP4 format."
+msgstr "Võimas tööriist videofailide MP4 formaati konverteerimiseks."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 214
+#: NEEDS WORK
 msgid "• GPU-accelerated conversion for NVIDIA, AMD, and Intel GPUs"
-msgstr "• GPU-accelerated conversion for NVIDIA, AMD, and Intel GPUs"
+msgstr "• GPU-kiirendatud konverteerimine NVIDIA, AMD ja Intel GPU-de jaoks"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 215
+#: NEEDS WORK
 msgid "• High-quality video processing with customizable settings"
-msgstr "• High-quality video processing with customizable settings"
+msgstr "• Kõrge kvaliteediga videoprotsessimine kohandatavate seadistustega"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 216
+#: NEEDS WORK
 msgid "• Support for various video codecs (H.264, H.265/HEVC, AV1, VP9)"
-msgstr "• Support for various video codecs (H.264, H.265/HEVC, AV1, VP9)"
+msgstr "• Tugi erinevate video koodekite jaoks (H.264, H.265/HEVC, AV1, VP9)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 217
+#: NEEDS WORK
 msgid "• Subtitle extraction and embedding"
-msgstr "• Subtitle extraction and embedding"
+msgstr "• Subtiitrite väljavõtt ja lisamine"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 218
+#: NEEDS WORK
 msgid "• Batch processing capabilities"
-msgstr "• Batch processing capabilities"
+msgstr "• Partii töötlemise võimalused"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 235
+#: NEEDS WORK
 msgid ""
-"This application uses <b>FFmpeg</b> for reliable, high-performance video "
-"conversion. The GPU acceleration significantly reduces conversion time "
-"compared to software-only processing."
+"This application uses <b>FFmpeg</b> for reliable, high-performance video conversion. The GPU "
+"acceleration significantly reduces conversion time compared to software-only processing."
 msgstr ""
-"This application uses <b>FFmpeg</b> for reliable, high-performance video "
-"conversion. The GPU acceleration significantly reduces conversion time "
-"compared to software-only processing."
+"See rakendus kasutab <b>FFmpeg</b> usaldusväärseks, kõrge jõudlusega video konverteerimiseks. GPU "
+"kiirendus vähendab oluliselt konverteerimisaega võrreldes ainult tarkvarapõhise töötlemisega."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 268
+#: NEEDS WORK
 msgid "Show dialog on startup"
-msgstr "Show dialog on startup"
+msgstr "Kuva dialooge käivitamisel"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 280
+#: NEEDS WORK
 msgid "Close"
-msgstr "Close"
+msgstr "Sulge"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 315
+#: NEEDS WORK
 msgid "Video files"
-msgstr "Video files"
+msgstr "Videofailid"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 331
+#: NEEDS WORK
 msgid "All files"
-msgstr "All files"
+msgstr "Kõik failid"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 355
+#: NEEDS WORK
 msgid "Select the output folder"
-msgstr "Select the output folder"
+msgstr "Valige väljundkaust"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 373
+#: NEEDS WORK
 msgid "Please select an input file."
-msgstr "Please select an input file."
+msgstr "Palun valige sisendfail."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 380
+#: NEEDS WORK
 msgid "The selected file does not exist: {0}"
-msgstr "The selected file does not exist: {0}"
+msgstr "Valitud faili ei eksisteeri: {0}"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/single_file_page.py, line: 388
+#: NEEDS WORK
 msgid "Conversion script not found: {0}"
-msgstr "Conversion script not found: {0}"
+msgstr "Muutmis skripti ei leitud: {0}"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 22
+#: NEEDS WORK
 msgid "Converting..."
-msgstr "Converting..."
+msgstr "Muutmine..."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 73
+#: NEEDS WORK
 msgid "Error starting conversion: {0}"
-msgstr "Error starting conversion: {0}"
+msgstr "Viga konversiooni alustamisel: {0}"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 92
+#: NEEDS WORK
 msgid "Starting process..."
-msgstr "Starting process..."
+msgstr "Protsessi käivitamine..."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 122
+#: NEEDS WORK
 msgid "Processing video..."
-msgstr "Processing video..."
+msgstr "Videote töötlemine..."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 146
+#: NEEDS WORK
 msgid "Time remaining:"
-msgstr "Time remaining:"
+msgstr "Jäänud aeg:"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 152
+#: NEEDS WORK
 msgid "No progress detected. Process may be stuck."
-msgstr "No progress detected. Process may be stuck."
+msgstr "Edenemist ei tuvastatud. Protsess võib olla kinni jäänud."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 174
+#: NEEDS WORK
 msgid "Conversion cancelled."
-msgstr "Conversion cancelled."
+msgstr "Muundmine tühistatud."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 175
+#: NEEDS WORK
 msgid "Cancelled"
-msgstr "Cancelled"
+msgstr "Tühistatud"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 188
+#: NEEDS WORK
 msgid "Completed!"
-msgstr "Completed!"
+msgstr "Valmis!"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 189
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 234
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 242
+#: NEEDS WORK
 msgid "Conversion completed successfully!"
-msgstr "Conversion completed successfully!"
+msgstr "Ümberkujundamine lõpetati edukalt!"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 207
+#: NEEDS WORK
 msgid ""
 "Conversion completed successfully!\n"
 "\n"
 "The original file <b>{0}</b> was deleted."
 msgstr ""
-"Conversion completed successfully!\n"
+"Konversioon lõpetati edukalt!\n"
 "\n"
-"The original file <b>{0}</b> was deleted."
+"Algne fail <b>{0}</b> kustutati."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 216
+#: NEEDS WORK
 msgid ""
 "Conversion completed successfully!\n"
 "\n"
 "Could not delete the original file: {0}"
 msgstr ""
-"Conversion completed successfully!\n"
+"Konversioon lõpetati edukalt!\n"
 "\n"
-"Could not delete the original file: {0}"
+"Algset faili ei saanud kustutada: {0}"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 225
+#: NEEDS WORK
 msgid ""
 "Conversion completed successfully!\n"
 "\n"
-"The original file was not deleted because the converted file size looks "
-"suspicious."
+"The original file was not deleted because the converted file size looks suspicious."
 msgstr ""
-"Conversion completed successfully!\n"
+"Konversioon lõpetati edukalt!\n"
 "\n"
-"The original file was not deleted because the converted file size looks "
-"suspicious."
+"Algne fail ei olnud kustutatud, kuna muudetud faili suurus näeb kahtlane välja."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 247
+#: NEEDS WORK
 msgid "Error!"
-msgstr "Error!"
+msgstr "Viga!"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 248
+#: NEEDS WORK
 msgid "Conversion failed with code {0}"
-msgstr "Conversion failed with code {0}"
+msgstr "Muutmine ebaõnnestus koodiga {0}"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 252
+#: NEEDS WORK
 msgid ""
 "The conversion failed with error code {0}.\n"
 "\n"
 "Check the log for more details."
 msgstr ""
-"The conversion failed with error code {0}.\n"
+"Muutmine ebaõnnestus veakoodiga {0}.\n"
 "\n"
-"Check the log for more details."
+"Kontrollige logi lisateabe saamiseks."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/conversion.py, line: 268
+#: NEEDS WORK
 msgid "Information"
-msgstr "Information"
+msgstr "Teave"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 69
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 103
+#: NEEDS WORK
 msgid "Single File"
-msgstr "Single File"
+msgstr "Üksikfail"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 74
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 104
+#: NEEDS WORK
 msgid "Multiple Files"
-msgstr "Multiple Files"
+msgstr "Mitmed failid"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 78
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 105
+#: NEEDS WORK
 msgid "Settings"
-msgstr "Settings"
+msgstr "Seaded"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/comm-big-convert.py, line: 150
+#: NEEDS WORK
 msgid "Error"
-msgstr "Error"
+msgstr "Viga"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 71
+#: NEEDS WORK
 msgid "Encoding Settings"
-msgstr "Encoding Settings"
+msgstr "Kodeerimise seaded"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
+#: NEEDS WORK
 msgid "Auto-detect"
-msgstr "Auto-detect"
+msgstr "Automaatne tuvastamine"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
+#: NEEDS WORK
 msgid "amd"
 msgstr "amd"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
+#: NEEDS WORK
 msgid "intel"
 msgstr "intel"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
+#: NEEDS WORK
 msgid "nvidia"
 msgstr "nvidia"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 75
+#: NEEDS WORK
 msgid "software"
-msgstr "software"
+msgstr "tarkvara"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 77
+#: NEEDS WORK
 msgid "GPU"
 msgstr "GPU"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 78
+#: NEEDS WORK
 msgid "Select hardware acceleration"
-msgstr "Select hardware acceleration"
+msgstr "Vali riistvara kiirenduse"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 84
+#: NEEDS WORK
 msgid "GPU partial mode"
-msgstr "GPU partial mode"
+msgstr "GPU osaline režiim"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 85
+#: NEEDS WORK
 msgid "Decode using CPU, encode using GPU"
-msgstr "Decode using CPU, encode using GPU"
+msgstr "Dekodeeri CPU abil, kodeeri GPU abil"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
+#: NEEDS WORK
 msgid "high"
-msgstr "high"
+msgstr "kõrge"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
+#: NEEDS WORK
 msgid "low"
-msgstr "low"
+msgstr "madal"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
+#: NEEDS WORK
 msgid "veryhigh"
-msgstr "veryhigh"
+msgstr "väga kõrge"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
+#: NEEDS WORK
 msgid "verylow"
-msgstr "verylow"
+msgstr "väga madal"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 111
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 165
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 198
+#: NEEDS WORK
 msgid "Default"
-msgstr "Default"
+msgstr "Vaikimisi"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 90
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
+#: NEEDS WORK
 msgid "medium"
-msgstr "medium"
+msgstr "keskmine"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 92
+#: NEEDS WORK
 msgid "Video quality"
-msgstr "Video quality"
+msgstr "Videokvaliteet"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 93
+#: NEEDS WORK
 msgid "Higher quality needs more processing power"
-msgstr "Higher quality needs more processing power"
+msgstr "Kvaliteetsem vajab rohkem töötlemisvõimet"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
+#: NEEDS WORK
 msgid "Default (h264)"
-msgstr "Default (h264)"
+msgstr "Vaikimisi (h264)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
+#: NEEDS WORK
 msgid "av1 (AV1)"
 msgstr "av1 (AV1)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
+#: NEEDS WORK
 msgid "h264 (MP4)"
 msgstr "h264 (MP4)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
+#: NEEDS WORK
 msgid "h265 (HEVC)"
 msgstr "h265 (HEVC)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 100
+#: NEEDS WORK
 msgid "vp9 (VP9)"
 msgstr "vp9 (VP9)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 102
+#: NEEDS WORK
 msgid "Video codec"
-msgstr "Video codec"
+msgstr "Videokoodek"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 103
+#: NEEDS WORK
 msgid "Select encoding format"
-msgstr "Select encoding format"
+msgstr "Vali kodeerimisvorming"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 117
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 171
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 202
+#: NEEDS WORK
 msgid "Custom"
-msgstr "Custom"
+msgstr "Kohandatud"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 122
+#: NEEDS WORK
 msgid "Video resolution"
-msgstr "Video resolution"
+msgstr "Videomõõde"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 123
+#: NEEDS WORK
 msgid "Select output resolution"
-msgstr "Select output resolution"
+msgstr "Vali väljundi eraldusvõime"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 128
+#: NEEDS WORK
 msgid "Custom resolution"
-msgstr "Custom resolution"
+msgstr "Kohandatud eraldusvõime"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 129
+#: NEEDS WORK
 msgid "Ex: 1280x720, 1920x1080"
-msgstr "Ex: 1280x720, 1920x1080"
+msgstr "1280x720, 1920x1080"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
+#: NEEDS WORK
 msgid "faster"
-msgstr "faster"
+msgstr "kiirem"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
+#: NEEDS WORK
 msgid "slow"
-msgstr "slow"
+msgstr "aeglane"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
+#: NEEDS WORK
 msgid "ultrafast"
-msgstr "ultrafast"
+msgstr "ultra kiire"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
+#: NEEDS WORK
 msgid "veryfast"
-msgstr "veryfast"
+msgstr "väga kiire"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 140
+#: NEEDS WORK
 msgid "veryslow"
-msgstr "veryslow"
+msgstr "väga aeglane"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 142
+#: NEEDS WORK
 msgid "Compression preset"
-msgstr "Compression preset"
+msgstr "Kompresseerimise eelvalik"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 143
+#: NEEDS WORK
 msgid "Slower presets provide better compression"
-msgstr "Slower presets provide better compression"
+msgstr "Aeglasemad eelseaded pakuvad paremat tihendust"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 150
+#: NEEDS WORK
 msgid "Default (extract)"
-msgstr "Default (extract)"
+msgstr "Vaikimisi (ekstrakt)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 150
+#: NEEDS WORK
 msgid "embedded"
-msgstr "embedded"
+msgstr "sisseehitatud"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 150
+#: NEEDS WORK
 msgid "extract (SRT)"
-msgstr "extract (SRT)"
+msgstr "väljavõte (SRT)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 150
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 225
+#: NEEDS WORK
 msgid "none"
-msgstr "none"
+msgstr "string:none"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 152
+#: NEEDS WORK
 msgid "Subtitle handling"
-msgstr "Subtitle handling"
+msgstr "Subtiitrite haldamine"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 160
+#: NEEDS WORK
 msgid "Audio Settings"
-msgstr "Audio Settings"
+msgstr "Heli seadistused"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 179
+#: NEEDS WORK
 msgid "Audio bitrate"
-msgstr "Audio bitrate"
+msgstr "Heli bitikiirus"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 180
+#: NEEDS WORK
 msgid "Select common bitrate or enter custom value"
-msgstr "Select common bitrate or enter custom value"
+msgstr "Vali tavaline bitikiirus või sisesta kohandatud väärtus"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 185
+#: NEEDS WORK
 msgid "Custom bitrate"
-msgstr "Custom bitrate"
+msgstr "Kohandatud bitikiirus"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 186
+#: NEEDS WORK
 msgid "Ex: 128k, 192k, 256k"
-msgstr "Ex: 128k, 192k, 256k"
+msgstr "128k, 192k, 256k"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 207
+#: NEEDS WORK
 msgid "Audio channels"
-msgstr "Audio channels"
+msgstr "Helikanalid"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 208
+#: NEEDS WORK
 msgid "Select common channel configuration"
-msgstr "Select common channel configuration"
+msgstr "Vali tavaline kanalikonfiguratsioon"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 213
+#: NEEDS WORK
 msgid "Custom channels"
-msgstr "Custom channels"
+msgstr "Kohandatud kanalid"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 214
+#: NEEDS WORK
 msgid "Ex: 2 (stereo), 6 (5.1)"
 msgstr "Ex: 2 (stereo), 6 (5.1)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 225
+#: NEEDS WORK
 msgid "Default (copy)"
-msgstr "Default (copy)"
+msgstr "Vaikimisi (koopia)"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 225
+#: NEEDS WORK
 msgid "copy"
-msgstr "copy"
+msgstr "kopeerima"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 225
+#: NEEDS WORK
 msgid "reencode"
-msgstr "reencode"
+msgstr "uuendama"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 227
+#: NEEDS WORK
 msgid "Audio handling"
-msgstr "Audio handling"
+msgstr "Heli käsitlemine"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 273
+#: NEEDS WORK
 msgid "General Options"
-msgstr "General Options"
+msgstr "Üldvalikud"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 276
+#: NEEDS WORK
 msgid "Additional FFmpeg options"
-msgstr "Additional FFmpeg options"
+msgstr "Lisafunktsioonid FFmpeg'i jaoks"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 277
+#: NEEDS WORK
 msgid "Ex: -ss 60 -t 30"
-msgstr "Ex: -ss 60 -t 30"
+msgstr "-ex 60 -t 30"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 280
+#: NEEDS WORK
 msgid "Copy video without reencoding"
-msgstr "Copy video without reencoding"
+msgstr "Kopeeri video ilma uuesti kodeerimata"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 281
+#: NEEDS WORK
 msgid "Faster but less compatible"
-msgstr "Faster but less compatible"
+msgstr "Kiirem, kuid vähem ühilduv"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 284
+#: NEEDS WORK
 msgid "Only extract subtitles"
-msgstr "Only extract subtitles"
+msgstr "Ainult subtiitrid välja võtta"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 285
+#: NEEDS WORK
 msgid "Extract subtitles to .srt files"
-msgstr "Extract subtitles to .srt files"
+msgstr "Ekstraktige subtiitrid .srt failidesse"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 291
+#: NEEDS WORK
 msgid "About"
-msgstr "About"
+msgstr "Teave"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 295
+#: NEEDS WORK
 msgid "A graphical frontend for converting MKV videos to MP4"
-msgstr "A graphical frontend for converting MKV videos to MP4"
+msgstr "Graafiline liides MKV-videote konvertimiseks MP4-ks"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 303
+#: NEEDS WORK
 msgid "v1.0.0"
 msgstr "v1.0.0"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 309
+#: NEEDS WORK
 msgid "Developer"
-msgstr "Developer"
+msgstr "Arendaja"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/settings_page.py, line: 314
+#: NEEDS WORK
 msgid "Contact"
-msgstr "Contact"
+msgstr "Kontakt"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 55
+#: NEEDS WORK
 msgid "Multiple files"
-msgstr "Multiple files"
+msgstr "Mitmed failid"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 60
+#: NEEDS WORK
 msgid "Progress"
-msgstr "Progress"
+msgstr "Edenemine"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 81
+#: NEEDS WORK
 msgid "Starting conversion..."
-msgstr "Starting conversion..."
+msgstr "Alustame konversiooni..."
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 96
+#: NEEDS WORK
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Tühista"
 
-#
+# 
 # File: comm-big-converter/usr/share/comm-big-convert/progress_dialog.py, line: 119
+#: NEEDS WORK
 msgid "Cancelling..."
-msgstr "Cancelling..."
+msgstr "Tühistamine..."
