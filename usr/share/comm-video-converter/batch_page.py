@@ -251,6 +251,23 @@ class BatchPage:
         except Exception as e:
             print(f"Error applying settings: {e}")
         
+        # Check available disk space (this is important for batch operations)
+        try:
+            import shutil
+            free_space = shutil.disk_usage(search_dir).free
+            # Rough estimate: we need at least 10GB or 20% free space for batch operations
+            required_space = max(10 * 1024 * 1024 * 1024, os.path.getsize(search_dir) * 0.2)
+            
+            if free_space < required_space:
+                if not self.app.show_question_dialog(
+                    _("Low Disk Space Warning"),
+                    _("You have limited free disk space. Converting multiple videos may fill "
+                    "your disk. Continue anyway?")
+                ):
+                    return
+        except Exception as e:
+            print(f"Error checking disk space: {e}")
+            
         # Create and display progress dialog
         run_with_progress_dialog(
             self.app,

@@ -1,46 +1,57 @@
 #!/bin/bash
 
-# Formatação com cores e estilos
-negrito='\033[1m'
-italico='\033[3m'
-sublinhado='\033[4m'
-azul='\033[0;34m'
-verde='\033[0;32m'
-vermelho='\033[0;31m'
-amarelo='\033[0;33m'
-ciano='\033[0;36m'
+# Color and style formatting
+bold='\033[1m'
+italic='\033[3m'
+underline='\033[4m'
+blue='\033[0;34m'
+green='\033[0;32m'
+red='\033[0;31m'
+yellow='\033[0;33m'
+cyan='\033[0;36m'
 magenta='\033[0;35m'
-semCor='\033[0m'
+noColor='\033[0m'
 
-# Versão
-ver="1.1.0"
+# Version
+ver="1.1.1"
 
-# Configurações
-# Número máximo de processos simultâneos
+
+# --- Start Configuration
+
+# Path to the converter - CENTRALIZED VARIABLE
+converter_cmd="/usr/bin/comm-converter"
+
+# Maximum number of simultaneous processes
 max_procs=2
-# Tamanho mínimo do arquivo MP4 em KB (padrão: 1MB)
+
+# Minimum MP4 file size in KB (default: 1MB)
 min_mp4_size=1024
-# Diretório padrão para busca de arquivos MKV (padrão: diretório atual)
+
+# Default directory for searching MKV files (default: current directory)
 search_dir="."
-# Arquivo de log
+
+# Log file
 log_file="mkv-mp4-convert.log"
 
-# Função para exibir ajuda
+# --- End Configuration
+
+# Function to display help
 show_help() {
-    create_box "${magenta}AJUDA - SCRIPT DE CONVERSÃO MKV ➡️ MP4${semCor}" "$ciano"
+    create_box "${magenta}HELP - MKV ➡️ MP4 CONVERSION SCRIPT${noColor}" "$cyan"
     echo ""
-    echo -e "${verde}Uso:${semCor} $0 [opções]"
+    echo -e "${green}Usage:${noColor} $0 [options]"
     echo ""
-    echo -e "${verde}Opções:${semCor}"
-    echo -e "  ${amarelo}-h, --help${semCor}            Exibe esta mensagem de ajuda"
-    echo -e "  ${amarelo}-d, --dir${semCor} DIRETÓRIO   Diretório para buscar arquivos MKV (padrão: diretório atual)"
-    echo -e "  ${amarelo}-p, --procs${semCor} NÚMERO    Número máximo de processos simultâneos (padrão: 2)"
-    echo -e "  ${amarelo}-s, --size${semCor} TAMANHO    Tamanho mínimo do arquivo MP4 em KB (padrão: 1024)"
-    echo -e "  ${amarelo}-l, --log${semCor} ARQUIVO     Arquivo de log (padrão: mkv-mp4-convert.log)"
+    echo -e "${green}Options:${noColor}"
+    echo -e "  ${yellow}-h, --help${noColor}            Display this help message"
+    echo -e "  ${yellow}-d, --dir${noColor} DIRECTORY   Directory to search for MKV files (default: current directory)"
+    echo -e "  ${yellow}-p, --procs${noColor} NUMBER    Maximum number of simultaneous processes (default: 2)"
+    echo -e "  ${yellow}-s, --size${noColor} SIZE       Minimum MP4 file size in KB (default: 1024)"
+    echo -e "  ${yellow}-l, --log${noColor} FILE        Log file (default: mkv-mp4-convert.log)"
+    echo -e "  ${yellow}-c, --converter${noColor} PATH  Path to the converter (default: /usr/bin/comm-converter)"
     echo ""
 }
 
-# Processar argumentos da linha de comando
+# Process command line arguments
 while [[ $# -gt 0 ]]; do
     case $1 in
         -h|--help)
@@ -52,7 +63,7 @@ while [[ $# -gt 0 ]]; do
                 search_dir="$2"
                 shift 2
             else
-                create_box "Erro: Diretório inválido: $2" "$vermelho"
+                create_box "Error: Invalid directory: $2" "$red"
                 exit 1
             fi
             ;;
@@ -61,7 +72,7 @@ while [[ $# -gt 0 ]]; do
                 max_procs="$2"
                 shift 2
             else
-                create_box "Erro: Número de processos inválido: $2" "$vermelho"
+                create_box "Error: Invalid number of processes: $2" "$red"
                 exit 1
             fi
             ;;
@@ -70,7 +81,7 @@ while [[ $# -gt 0 ]]; do
                 min_mp4_size="$2"
                 shift 2
             else
-                create_box "Erro: Tamanho mínimo inválido: $2" "$vermelho"
+                create_box "Error: Invalid minimum size: $2" "$red"
                 exit 1
             fi
             ;;
@@ -79,19 +90,28 @@ while [[ $# -gt 0 ]]; do
                 log_file="$2"
                 shift 2
             else
-                create_box "Erro: Nome de arquivo de log inválido: $2" "$vermelho"
+                create_box "Error: Invalid log file name: $2" "$red"
+                exit 1
+            fi
+            ;;
+        -c|--converter)
+            if [ -n "$2" ]; then
+                converter_cmd="$2"
+                shift 2
+            else
+                create_box "Error: Invalid converter path: $2" "$red"
                 exit 1
             fi
             ;;
         *)
-            create_box "Opção desconhecida: $1" "$vermelho"
+            create_box "Unknown option: $1" "$red"
             show_help
             exit 1
             ;;
     esac
 done
 
-# Função para criar uma caixa
+# Function to create a box
 create_box() {
     local message="$1"
     local color="$2"
@@ -99,12 +119,12 @@ create_box() {
     local clean_message=$(echo -e "$message" | sed 's/\x1b\[[0-9;]*m//g')
     local width=$((${#clean_message} + 4))
     
-    echo -e "${color}┌$([[ $width -gt 2 ]] && printf '─%.0s' $(seq 1 $width))┐${semCor}"
-    echo -e "${color}│  ${message}  ${color}│${semCor}"
-    echo -e "${color}└$([[ $width -gt 2 ]] && printf '─%.0s' $(seq 1 $width))┘${semCor}"
+    echo -e "${color}┌$([[ $width -gt 2 ]] && printf '─%.0s' $(seq 1 $width))┐${noColor}"
+    echo -e "${color}│  ${message}  ${color}│${noColor}"
+    echo -e "${color}└$([[ $width -gt 2 ]] && printf '─%.0s' $(seq 1 $width))┘${noColor}"
 }
 
-# Função para criar uma caixa com múltiplas linhas
+# Function to create a multiline box
 create_multiline_box() {
     local content="$1"
     local color="$2"
@@ -121,19 +141,19 @@ create_multiline_box() {
 
     max_width=$((max_width + 4))
 
-    echo -e "${color}┌$([[ $max_width -gt 2 ]] && printf '─%.0s' $(seq 1 $max_width))┐${semCor}"
+    echo -e "${color}┌$([[ $max_width -gt 2 ]] && printf '─%.0s' $(seq 1 $max_width))┐${noColor}"
     if [ -n "$title" ]; then
-        echo -e "${color}│ ${amarelo}$title${color} $(printf ' %.0s' $(seq 1 $((max_width - ${#title} - 2))))│${semCor}"
-        echo -e "${color}├$([[ $max_width -gt 2 ]] && printf '─%.0s' $(seq 1 $max_width))┤${semCor}"
+        echo -e "${color}│ ${yellow}$title${color} $(printf ' %.0s' $(seq 1 $((max_width - ${#title} - 2))))│${noColor}"
+        echo -e "${color}├$([[ $max_width -gt 2 ]] && printf '─%.0s' $(seq 1 $max_width))┤${noColor}"
     fi
     while IFS= read -r line; do
-        printf "${color}│  ${magenta}%-*s${color}  │${semCor}\n" $((max_width-4)) "$line"
+        printf "${color}│  ${magenta}%-*s${color}  │${noColor}\n" $((max_width-4)) "$line"
     done <<< "$content"
-    echo -e "${color}└$([[ $max_width -gt 2 ]] && printf '─%.0s' $(seq 1 $max_width))┘${semCor}"
+    echo -e "${color}└$([[ $max_width -gt 2 ]] && printf '─%.0s' $(seq 1 $max_width))┘${noColor}"
 }
 
-# Função para detectar o tipo de GPU
-detectar_gpu() {
+# Function to detect GPU type
+detect_gpu() {
     local gpu_info=$(lspci | grep -iE 'vga|3d|2d')
     if echo "$gpu_info" | grep -qi 'nvidia'; then
         echo "NVIDIA"
@@ -142,178 +162,171 @@ detectar_gpu() {
     elif echo "$gpu_info" | grep -qi 'amd'; then
         echo "AMD"
     else
-        echo "Desconhecido"
+        echo "Unknown"
     fi
 }
 
-# Função para registrar mensagens no log
+# Function to log messages
 log_message() {
     local msg="$1"
     local timestamp=$(date "+%Y-%m-%d %H:%M:%S")
     echo "[$timestamp] $msg" >> "$log_file"
 }
 
-# Função para converter um arquivo
+# Function to convert a file
 convert_file() {
     local input_file="$1"
-    create_box "Convertendo: ${amarelo}$input_file${semCor}" "$azul"
-    log_message "Iniciando conversão: $input_file"
+    create_box "Converting: ${yellow}$input_file${noColor}" "$blue"
+    log_message "Starting conversion: $input_file"
     
-    # Determinar o nome do arquivo de saída MP4
+    # Determine the output MP4 filename
     local output_file="${input_file%.mkv}.mp4"
     
-    # Definir um trap para SIGINT (Ctrl+C) e outros sinais importantes
+    # Set trap for SIGINT (Ctrl+C) and other important signals
     trap 'handle_interrupt "$input_file"' INT TERM
 
-    ffmpeg_info=$(ffmpeg -i "$input_file" 2>&1)
-    video_bitrate=$(grep -oP 'bitrate: \K[0-9]+' <(echo "$ffmpeg_info"))
-    
-    # Se o arquivo for h264 e o bitrate for menor que 2800, converte apenas o áudio e extrai a legenda
-    if grep -q 'Video: h264' <(echo "$ffmpeg_info") && [[ "$video_bitrate" -lt "2800" ]]; then
-        # Chama a função convert-big com os parâmetros apropriados
-        force_copy_video=1 audio_handling=reencode audio_bitrate=160k convert-big "$input_file"
-    else
-        # Chama a função convert-big com os parâmetros apropriados
-        audio_handling=reencode audio_bitrate=160k convert-big "$input_file"
-    fi
+    # Conversion method without codec verification (works on all GPUs)
+    audio_handling=reencode audio_bitrate=160k $converter_cmd "$input_file"
     
     local conversion_status=$?
     
-    # Verificar se a conversão foi bem-sucedida E se o arquivo MP4 existe
+    # Check if conversion was successful AND the MP4 file exists
     if [ $conversion_status -eq 0 ] && [ -f "$output_file" ]; then
-        # Verificar se o arquivo MP4 tem tamanho razoável
+        # Check if the MP4 file has a reasonable size
         local mp4_size=$(du -k "$output_file" | cut -f1)
         
         if [ $mp4_size -ge $min_mp4_size ]; then
-            create_box "Conversão bem-sucedida: ${verde}$input_file${semCor}" "$verde"
-            create_box "Arquivo MP4 criado (${mp4_size}KB): ${verde}$output_file${semCor}" "$verde"
-            log_message "Conversão bem-sucedida: $input_file -> $output_file (${mp4_size}KB)"
+            create_box "Conversion successful: ${green}$input_file${noColor}" "$green"
+            create_box "MP4 file created (${mp4_size}KB): ${green}$output_file${noColor}" "$green"
+            log_message "Conversion successful: $input_file -> $output_file (${mp4_size}KB)"
             
-            # Remove o arquivo MKV original
+            # Remove the original MKV file
             rm -f "$input_file"
             if [ $? -eq 0 ]; then
-                create_box "Arquivo MKV original removido: ${vermelho}$input_file${semCor}" "$verde"
-                log_message "Arquivo MKV original removido: $input_file"
+                create_box "Original MKV file removed: ${red}$input_file${noColor}" "$green"
+                log_message "Original MKV file removed: $input_file"
             else
-                create_box "Erro ao remover o arquivo MKV original: $input_file" "$vermelho"
-                log_message "ERRO: Falha ao remover o arquivo MKV original: $input_file"
+                create_box "Error removing the original MKV file: $input_file" "$red"
+                log_message "ERROR: Failed to remove original MKV file: $input_file"
             fi
         else
-            create_box "Arquivo MP4 criado, mas muito pequeno (${mp4_size}KB): ${vermelho}$output_file${semCor}" "$vermelho"
-            create_box "MKV original preservado: ${amarelo}$input_file${semCor}" "$amarelo"
-            log_message "ALERTA: Arquivo MP4 muito pequeno (${mp4_size}KB < ${min_mp4_size}KB): $output_file - MKV preservado"
+            create_box "MP4 file created, but too small (${mp4_size}KB): ${red}$output_file${noColor}" "$red"
+            create_box "Original MKV preserved: ${yellow}$input_file${noColor}" "$yellow"
+            log_message "WARNING: MP4 file too small (${mp4_size}KB < ${min_mp4_size}KB): $output_file - MKV preserved"
         fi
     else
-        create_box "Erro na conversão: ${vermelho}$input_file${semCor}" "$vermelho"
+        create_box "Conversion error: ${red}$input_file${noColor}" "$red"
         if [ ! -f "$output_file" ]; then
-            create_box "Arquivo MP4 não foi criado: ${vermelho}$output_file${semCor}" "$vermelho"
-            log_message "ERRO: Falha na conversão, MP4 não criado: $input_file"
+            create_box "MP4 file was not created: ${red}$output_file${noColor}" "$red"
+            log_message "ERROR: Conversion failed, MP4 not created: $input_file"
         else
-            log_message "ERRO: Falha na conversão: $input_file (status: $conversion_status)"
+            log_message "ERROR: Conversion failed: $input_file (status: $conversion_status)"
         fi
     fi
 
-    # Remover o trap após o processo de conversão
+    # Remove the trap after the conversion process
     trap - INT TERM
 }
 
-# Função para lidar com interrupções
+# Function to handle interruptions
 handle_interrupt() {
     local input_file="$1"
-    create_box "Processo de conversão interrompido: ${vermelho}$input_file${semCor}" "$vermelho"
-    log_message "INTERROMPIDO: Conversão interrompida pelo usuário: $input_file"
+    create_box "Conversion process interrupted: ${red}$input_file${noColor}" "$red"
+    log_message "INTERRUPTED: Conversion interrupted by user: $input_file"
     exit 1
 }
 
 ### Main Script ###
 clear
 
-# Verificar se o comando convert-big existe
-if ! command -v convert-big &> /dev/null; then
-    create_box "Erro: O comando 'convert-big' não foi encontrado." "$vermelho"
+# Check if converter command exists
+if ! command -v $converter_cmd &> /dev/null; then
+    create_box "Error: Command '$converter_cmd' not found." "$red"
     exit 1
 fi
 
-# Iniciar o log
-echo "=== Iniciando script de conversão MKV para MP4 v$ver em $(date) ===" > "$log_file"
-log_message "Diretório de busca: $search_dir"
-log_message "Processos simultâneos: $max_procs"
-log_message "Tamanho mínimo do MP4: ${min_mp4_size}KB"
+# Start log
+echo "=== Starting MKV to MP4 conversion script v$ver on $(date) ===" > "$log_file"
+log_message "Search directory: $search_dir"
+log_message "Simultaneous processes: $max_procs"
+log_message "Minimum MP4 size: ${min_mp4_size}KB"
+log_message "Converter used: $converter_cmd"
 
-# Exibir cabeçalho
-create_box "${magenta}SCRIPT DE CONVERSÃO MKV ➡️ MP4${semCor} - Versão: ${amarelo}$ver${semCor}" "$ciano"
+# Display header
+create_box "${magenta}MKV ➡️ MP4 CONVERSION SCRIPT${noColor} - Version: ${yellow}$ver${noColor}" "$cyan"
 echo ""
 
-# Informa o tipo de GPU usada
-tipoGPU=$(detectar_gpu)
-create_box "GPU detectada: ${magenta}$tipoGPU${semCor}" "$ciano"
-log_message "GPU detectada: $tipoGPU"
+# Show detected GPU type
+gpu_type=$(detect_gpu)
+create_box "Detected GPU: ${magenta}$gpu_type${noColor}" "$cyan"
+log_message "Detected GPU: $gpu_type"
 
-# Exibir configurações
-echo -e "${ciano}Configurações:${semCor}"
-echo -e "- Diretório de busca: ${amarelo}$search_dir${semCor}"
-echo -e "- Processos simultâneos: ${amarelo}$max_procs${semCor}"
-echo -e "- Tamanho mínimo do MP4: ${amarelo}${min_mp4_size}KB${semCor}"
-echo -e "- Arquivo de log: ${amarelo}$log_file${semCor}"
+# Display settings
+echo -e "${cyan}Settings:${noColor}"
+echo -e "- Search directory: ${yellow}$search_dir${noColor}"
+echo -e "- Simultaneous processes: ${yellow}$max_procs${noColor}"
+echo -e "- Minimum MP4 size: ${yellow}${min_mp4_size}KB${noColor}"
+echo -e "- Log file: ${yellow}$log_file${noColor}"
+echo -e "- Converter: ${yellow}$converter_cmd${noColor}"
 echo ""
 
-# Encontra todos os arquivos MKV e armazena em um array
+# Find all MKV files and store in an array
 mapfile -t mkv_files < <(find "$search_dir" -type f -name "*.mkv")
 
-# Verifica se foram encontrados arquivos
+# Check if files were found
 if [ ${#mkv_files[@]} -eq 0 ]; then
-    create_box "Nenhum arquivo MKV encontrado em: $search_dir" "$amarelo"
-    log_message "Nenhum arquivo MKV encontrado em: $search_dir"
+    create_box "No MKV files found in: $search_dir" "$yellow"
+    log_message "No MKV files found in: $search_dir"
     exit 0
 fi
 
-# Exibe o número de arquivos encontrados
-create_box "Encontrados ${amarelo}${#mkv_files[@]}${semCor} arquivos MKV." "$azul"
-log_message "Encontrados ${#mkv_files[@]} arquivos MKV para conversão"
+# Show number of files found
+create_box "Found ${yellow}${#mkv_files[@]}${noColor} MKV files." "$blue"
+log_message "Found ${#mkv_files[@]} MKV files for conversion"
 
-# Imprimir todos os arquivos MKV encontrados
-arquivos_mkv=$(printf '%s\n' "${mkv_files[@]}")
-create_multiline_box "$arquivos_mkv" "$ciano" "Arquivos MKV encontrados:"
+# Print all MKV files found
+mkv_file_list=$(printf '%s\n' "${mkv_files[@]}")
+create_multiline_box "$mkv_file_list" "$cyan" "MKV files found:"
 echo ""
 
-# Inicializa o contador
-contador=0
-contador_sucesso=0
-contador_falha=0
+# Initialize counters
+counter=0
+success_counter=0
+failure_counter=0
 
-# Converte cada arquivo
+# Convert each file
 for file in "${mkv_files[@]}"; do
-    ((contador++))
-    create_box "Arquivo #$contador: ${amarelo}$file${semCor}" "$azul"
+    ((counter++))
+    create_box "File #$counter: ${yellow}$file${noColor}" "$blue"
     
-    # Chama a função convert_file em background
+    # Call convert_file function in background
     convert_file "$file" &
 
-    # Verifica o número de processos em background
+    # Check number of background processes
     while [ $(jobs -rp | wc -l) -ge $max_procs ]; do
-        # Aguarda um processo em background terminar
+        # Wait for a background process to finish
         wait -n
     done
 done
 
-# Aguarda todos os processos em background terminarem antes de encerrar o script
+# Wait for all background processes to finish before exiting the script
 wait
 
-# Contar sucessos e falhas no log
-contador_sucesso=$(grep -c "Conversão bem-sucedida" "$log_file")
-contador_falha=$(grep -c "ERRO: Falha na conversão" "$log_file")
-contador_alerta=$(grep -c "ALERTA: Arquivo MP4 muito pequeno" "$log_file")
+# Count successes and failures in the log
+success_counter=$(grep -c "Conversion successful" "$log_file")
+failure_counter=$(grep -c "ERROR: Conversion failed" "$log_file")
+warning_counter=$(grep -c "WARNING: MP4 file too small" "$log_file")
 
-create_box "Total de arquivos processados: ${magenta}$contador${semCor}" "$verde"
-create_box "Arquivos convertidos com sucesso: ${verde}$contador_sucesso${semCor}" "$verde"
-if [ $contador_falha -gt 0 ]; then
-    create_box "Arquivos com falha na conversão: ${vermelho}$contador_falha${semCor}" "$vermelho"
+create_box "Total files processed: ${magenta}$counter${noColor}" "$green"
+create_box "Files successfully converted: ${green}$success_counter${noColor}" "$green"
+if [ $failure_counter -gt 0 ]; then
+    create_box "Files with conversion failure: ${red}$failure_counter${noColor}" "$red"
 fi
-if [ $contador_alerta -gt 0 ]; then
-    create_box "Arquivos com alerta (muito pequenos): ${amarelo}$contador_alerta${semCor}" "$amarelo"
+if [ $warning_counter -gt 0 ]; then
+    create_box "Files with warning (too small): ${yellow}$warning_counter${noColor}" "$yellow"
 fi
 
-create_box "Processo de conversão concluído. Veja o log em: ${amarelo}$log_file${semCor}" "$azul"
+create_box "Conversion process completed. See log at: ${yellow}$log_file${noColor}" "$blue"
 
-# Finalizar o log
-log_message "Finalizado. Total: $contador, Sucesso: $contador_sucesso, Falhas: $contador_falha, Alertas: $contador_alerta"
+# Finalize log
+log_message "Finished. Total: $counter, Success: $success_counter, Failures: $failure_counter, Warnings: $warning_counter"
