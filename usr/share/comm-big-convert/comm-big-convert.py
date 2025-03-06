@@ -11,6 +11,14 @@ import time
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, GLib, Gdk
 
+import gettext
+lang_translations = gettext.translation(
+    "comm-big-converter", localedir="/usr/share/locale", fallback=True
+)
+lang_translations.install()
+# define _ shortcut for translations
+_ = lang_translations.gettext
+
 # Paths to executables
 CONVERT_BIG_PATH = "/usr/bin/convert-big"
 MKV_MP4_ALL_PATH = "/usr/bin/mkv-mp4-all"
@@ -23,7 +31,7 @@ MKV_MP4_ALL_PATH = "/usr/bin/mkv-mp4-all"
 
 class ProgressDialog(Gtk.Dialog):
     def __init__(self, parent, title, command, input_file=None):
-        Gtk.Dialog.__init__(self, title=title, transient_for=parent, flags=0)
+        Gtk.Dialog.__init__(self, title=_(title), transient_for=parent, flags=0)
         self.set_default_size(450, 180)
         self.set_modal(True)
         
@@ -42,13 +50,13 @@ class ProgressDialog(Gtk.Dialog):
         # Label for file
         command_label = Gtk.Label()
         command_label.set_line_wrap(True)
-        file_name = os.path.basename(input_file) if input_file else "Multiple files"
-        command_label.set_markup(f"<b>File:</b> {file_name}")
+        file_name = os.path.basename(input_file) if input_file else _("Multiple files")
+        command_label.set_markup(_("<b>File:</b> {0}").format(file_name))
         command_label.set_xalign(0)
         box.add(command_label)
         
         # Label for status
-        self.status_label = Gtk.Label(label="Starting conversion...")
+        self.status_label = Gtk.Label(label=_("Starting conversion..."))
         self.status_label.set_xalign(0)
         box.add(self.status_label)
         
@@ -59,7 +67,7 @@ class ProgressDialog(Gtk.Dialog):
         box.add(self.progress_bar)
         
         # Cancel button
-        self.cancel_button = Gtk.Button(label="Cancel")
+        self.cancel_button = Gtk.Button(label=_("Cancel"))
         self.cancel_button.connect("clicked", self.on_cancel_clicked)
         box.add(self.cancel_button)
         
@@ -73,9 +81,9 @@ class ProgressDialog(Gtk.Dialog):
             try:
                 self.process.terminate()
                 self.cancelled = True
-                self.status_label.set_text("Conversion canceled.")
+                self.status_label.set_text(_("Conversion canceled."))
                 self.progress_bar.set_fraction(0)
-                self.progress_bar.set_text("Canceled")
+                self.progress_bar.set_text(_("Canceled"))
             except:
                 pass
         self.response(Gtk.ResponseType.CANCEL)
@@ -103,7 +111,7 @@ class ProgressDialog(Gtk.Dialog):
 class VideoConverterApp:
     def __init__(self):
         # Create main window
-        self.window = Gtk.Window(title="Comm Big Converter")
+        self.window = Gtk.Window(title=_("Comm Big Converter"))
         self.window.set_default_size(800, 600)
         self.window.connect("destroy", Gtk.main_quit)
         
@@ -155,7 +163,7 @@ class VideoConverterApp:
         page.set_margin_bottom(10)
         
         # File section
-        file_frame = Gtk.Frame(label="File")
+        file_frame = Gtk.Frame(label=_("File"))
         file_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=5)
         file_box.set_margin_start(10)
         file_box.set_margin_end(10)
@@ -164,8 +172,8 @@ class VideoConverterApp:
         
         # Choose file
         file_box_row = Gtk.Box(spacing=5)
-        file_label = Gtk.Label(label="Input file:")
-        self.file_chooser = Gtk.FileChooserButton(title="Select File")
+        file_label = Gtk.Label(label=_("Input file:"))
+        self.file_chooser = Gtk.FileChooserButton(title=_("Select File"))
         self.file_chooser.set_current_folder(self.last_accessed_directory)
         self.file_chooser.connect("file-set", self.on_file_selected)
         file_box_row.pack_start(file_label, False, False, 0)
@@ -174,18 +182,18 @@ class VideoConverterApp:
         
         # Output file
         output_box_row = Gtk.Box(spacing=5)
-        output_label = Gtk.Label(label="Output file:")
+        output_label = Gtk.Label(label=_("Output file:"))
         self.output_file_entry = Gtk.Entry()
-        self.output_file_entry.set_placeholder_text("Leave empty to use the same name")
+        self.output_file_entry.set_placeholder_text(_("Leave empty to use the same name"))
         output_box_row.pack_start(output_label, False, False, 0)
         output_box_row.pack_start(self.output_file_entry, True, True, 0)
         file_box.pack_start(output_box_row, False, False, 0)
         
         # Output folder
         folder_box_row = Gtk.Box(spacing=5)
-        folder_label = Gtk.Label(label="Output folder:")
+        folder_label = Gtk.Label(label=_("Output folder:"))
         self.output_folder_entry = Gtk.Entry()
-        self.output_folder_entry.set_placeholder_text("Leave empty to use the same folder")
+        self.output_folder_entry.set_placeholder_text(_("Leave empty to use the same folder"))
         folder_button = Gtk.Button()
         folder_button.set_image(Gtk.Image.new_from_icon_name("folder-symbolic", Gtk.IconSize.BUTTON))
         folder_button.connect("clicked", self.on_folder_button_clicked)
@@ -196,7 +204,7 @@ class VideoConverterApp:
         
         # Option to delete original file
         delete_box_row = Gtk.Box(spacing=5)
-        self.delete_original_check = Gtk.CheckButton(label="Delete original MKV file after successful conversion")
+        self.delete_original_check = Gtk.CheckButton(label=_("Delete original MKV file after successful conversion"))
         delete_box_row.pack_start(self.delete_original_check, True, True, 0)
         file_box.pack_start(delete_box_row, False, False, 0)
         
@@ -204,7 +212,7 @@ class VideoConverterApp:
         page.pack_start(file_frame, False, False, 0)
         
         # Encoding section
-        encoding_frame = Gtk.Frame(label="Encoding Settings")
+        encoding_frame = Gtk.Frame(label=_("Encoding Settings"))
         encoding_grid = Gtk.Grid()
         encoding_grid.set_row_spacing(10)
         encoding_grid.set_column_spacing(10)
@@ -214,84 +222,84 @@ class VideoConverterApp:
         encoding_grid.set_margin_bottom(10)
         
         # GPU
-        gpu_label = Gtk.Label(label="GPU:", halign=Gtk.Align.START)
+        gpu_label = Gtk.Label(label=_("GPU:"), halign=Gtk.Align.START)
         self.gpu_combo = Gtk.ComboBoxText()
-        for option in ["Auto-detect", "nvidia", "amd", "intel", "software"]:
+        for option in [_("Auto-detect"), _("nvidia"), _("amd"), _("intel"), _("software")]:
             self.gpu_combo.append_text(option)
         self.gpu_combo.set_active(0)
         encoding_grid.attach(gpu_label, 0, 0, 1, 1)
         encoding_grid.attach(self.gpu_combo, 1, 0, 1, 1)
         
         # Video quality
-        quality_label = Gtk.Label(label="Video quality:", halign=Gtk.Align.START)
+        quality_label = Gtk.Label(label=_("Video quality:"), halign=Gtk.Align.START)
         self.video_quality_combo = Gtk.ComboBoxText()
-        for option in ["Default", "veryhigh", "high", "medium", "low", "verylow"]:
+        for option in [_("Default"), _("veryhigh"), _("high"), _("medium"), _("low"), _("verylow")]:
             self.video_quality_combo.append_text(option)
         self.video_quality_combo.set_active(0)
         encoding_grid.attach(quality_label, 0, 1, 1, 1)
         encoding_grid.attach(self.video_quality_combo, 1, 1, 1, 1)
         
         # Video codec
-        codec_label = Gtk.Label(label="Video codec:", halign=Gtk.Align.START)
+        codec_label = Gtk.Label(label=_("Video codec:"), halign=Gtk.Align.START)
         self.video_encoder_combo = Gtk.ComboBoxText()
-        for option in ["Default (h264)", "h264 (MP4)", "h265 (HEVC)", "av1 (AV1)", "vp9 (VP9)"]:
+        for option in [_("Default (h264)"), _("h264 (MP4)"), _("h265 (HEVC)"), _("av1 (AV1)"), _("vp9 (VP9)")]:
             self.video_encoder_combo.append_text(option)
         self.video_encoder_combo.set_active(0)
         encoding_grid.attach(codec_label, 0, 2, 1, 1)
         encoding_grid.attach(self.video_encoder_combo, 1, 2, 1, 1)
         
         # Preset
-        preset_label = Gtk.Label(label="Compression preset:", halign=Gtk.Align.START)
+        preset_label = Gtk.Label(label=_("Compression preset:"), halign=Gtk.Align.START)
         self.preset_combo = Gtk.ComboBoxText()
-        for option in ["Default", "ultrafast", "veryfast", "faster", "medium", "slow", "veryslow"]:
+        for option in [_("Default"), _("ultrafast"), _("veryfast"), _("faster"), _("medium"), _("slow"), _("veryslow")]:
             self.preset_combo.append_text(option)
         self.preset_combo.set_active(0)
         encoding_grid.attach(preset_label, 0, 3, 1, 1)
         encoding_grid.attach(self.preset_combo, 1, 3, 1, 1)
         
         # Subtitles
-        subtitle_label = Gtk.Label(label="Subtitle handling:", halign=Gtk.Align.START)
+        subtitle_label = Gtk.Label(label=_("Subtitle handling:"), halign=Gtk.Align.START)
         self.subtitle_extract_combo = Gtk.ComboBoxText()
-        for option in ["Default (extract)", "extract (SRT)", "embedded", "none"]:
+        for option in [_("Default (extract)"), _("extract (SRT)"), _("embedded"), _("none")]:
             self.subtitle_extract_combo.append_text(option)
         self.subtitle_extract_combo.set_active(0)
         encoding_grid.attach(subtitle_label, 0, 4, 1, 1)
         encoding_grid.attach(self.subtitle_extract_combo, 1, 4, 1, 1)
         
         # Audio
-        audio_label = Gtk.Label(label="Audio handling:", halign=Gtk.Align.START)
+        audio_label = Gtk.Label(label=_("Audio handling:"), halign=Gtk.Align.START)
         self.audio_handling_combo = Gtk.ComboBoxText()
-        for option in ["Default (copy)", "copy", "reencode", "none"]:
+        for option in [_("Default (copy)"), _("copy"), _("reencode"), _("none")]:
             self.audio_handling_combo.append_text(option)
         self.audio_handling_combo.set_active(0)
         encoding_grid.attach(audio_label, 0, 5, 1, 1)
         encoding_grid.attach(self.audio_handling_combo, 1, 5, 1, 1)
         
         # Audio bitrate
-        bitrate_label = Gtk.Label(label="Audio bitrate:", halign=Gtk.Align.START)
+        bitrate_label = Gtk.Label(label=_("Audio bitrate:"), halign=Gtk.Align.START)
         self.audio_bitrate_entry = Gtk.Entry()
-        self.audio_bitrate_entry.set_placeholder_text("Ex: 128k, 192k, 256k")
+        self.audio_bitrate_entry.set_placeholder_text(_("Ex: 128k, 192k, 256k"))
         encoding_grid.attach(bitrate_label, 0, 6, 1, 1)
         encoding_grid.attach(self.audio_bitrate_entry, 1, 6, 1, 1)
         
         # Audio channels
-        channels_label = Gtk.Label(label="Audio channels:", halign=Gtk.Align.START)
+        channels_label = Gtk.Label(label=_("Audio channels:"), halign=Gtk.Align.START)
         self.audio_channels_entry = Gtk.Entry()
-        self.audio_channels_entry.set_placeholder_text("Ex: 2 (stereo), 6 (5.1)")
+        self.audio_channels_entry.set_placeholder_text(_("Ex: 2 (stereo), 6 (5.1)"))
         encoding_grid.attach(channels_label, 0, 7, 1, 1)
         encoding_grid.attach(self.audio_channels_entry, 1, 7, 1, 1)
         
         # Video resolution
-        resolution_label = Gtk.Label(label="Video resolution:", halign=Gtk.Align.START)
+        resolution_label = Gtk.Label(label=_("Video resolution:"), halign=Gtk.Align.START)
         self.video_resolution_entry = Gtk.Entry()
-        self.video_resolution_entry.set_placeholder_text("Ex: 1280x720, 1920x1080")
+        self.video_resolution_entry.set_placeholder_text(_("Ex: 1280x720, 1920x1080"))
         encoding_grid.attach(resolution_label, 0, 8, 1, 1)
         encoding_grid.attach(self.video_resolution_entry, 1, 8, 1, 1)
         
         # Additional options
-        options_label = Gtk.Label(label="Additional options:", halign=Gtk.Align.START)
+        options_label = Gtk.Label(label=_("Additional options:"), halign=Gtk.Align.START)
         self.options_entry = Gtk.Entry()
-        self.options_entry.set_placeholder_text("Ex: -ss 60 -t 30")
+        self.options_entry.set_placeholder_text(_("Ex: -ss 60 -t 30"))
         encoding_grid.attach(options_label, 0, 9, 1, 1)
         encoding_grid.attach(self.options_entry, 1, 9, 1, 1)
         
@@ -299,17 +307,17 @@ class VideoConverterApp:
         page.pack_start(encoding_frame, False, False, 0)
         
         # Advanced options
-        advanced_frame = Gtk.Frame(label="Advanced Options")
+        advanced_frame = Gtk.Frame(label=_("Advanced Options"))
         advanced_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=5)
         advanced_box.set_margin_start(10)
         advanced_box.set_margin_end(10)
         advanced_box.set_margin_top(10)
         advanced_box.set_margin_bottom(10)
         
-        self.gpu_partial_check = Gtk.CheckButton(label="GPU partial mode (decode using CPU, encode using GPU)")
-        self.force_software_check = Gtk.CheckButton(label="Force CPU decode and encode")
-        self.force_copy_video_check = Gtk.CheckButton(label="Copy video without reencoding")
-        self.only_extract_subtitles_check = Gtk.CheckButton(label="Only extract subtitles to .srt files")
+        self.gpu_partial_check = Gtk.CheckButton(label=_("GPU partial mode (decode using CPU, encode using GPU)"))
+        self.force_software_check = Gtk.CheckButton(label=_("Force CPU decode and encode"))
+        self.force_copy_video_check = Gtk.CheckButton(label=_("Copy video without reencoding"))
+        self.only_extract_subtitles_check = Gtk.CheckButton(label=_("Only extract subtitles to .srt files"))
         
         advanced_box.pack_start(self.gpu_partial_check, False, False, 0)
         advanced_box.pack_start(self.force_software_check, False, False, 0)
@@ -320,7 +328,7 @@ class VideoConverterApp:
         page.pack_start(advanced_frame, False, False, 0)
         
         # Convert button
-        convert_button = Gtk.Button(label="Convert File")
+        convert_button = Gtk.Button(label=_("Convert File"))
         convert_button.get_style_context().add_class("suggested-action")
         convert_button.connect("clicked", self.on_convert_big_button_clicked)
         button_box = Gtk.Box(spacing=10)
@@ -329,7 +337,7 @@ class VideoConverterApp:
         page.pack_start(button_box, False, False, 10)
         
         # Add page to notebook
-        label = Gtk.Label(label="Convert Single File")
+        label = Gtk.Label(label=_("Convert Single File"))
         self.notebook.append_page(page, label)
     
     def create_mkv_mp4_all_page(self):
@@ -341,7 +349,7 @@ class VideoConverterApp:
         page.set_margin_bottom(10)
         
         # Settings
-        settings_frame = Gtk.Frame(label="Batch Conversion Settings")
+        settings_frame = Gtk.Frame(label=_("Batch Conversion Settings"))
         settings_grid = Gtk.Grid()
         settings_grid.set_row_spacing(10)
         settings_grid.set_column_spacing(10)
@@ -351,8 +359,8 @@ class VideoConverterApp:
         settings_grid.set_margin_bottom(10)
         
         # Search directory
-        dir_label = Gtk.Label(label="Search directory:", halign=Gtk.Align.START)
-        self.search_dir_chooser = Gtk.FileChooserButton(title="Select Directory")
+        dir_label = Gtk.Label(label=_("Search directory:"), halign=Gtk.Align.START)
+        self.search_dir_chooser = Gtk.FileChooserButton(title=_("Select Directory"))
         self.search_dir_chooser.set_action(Gtk.FileChooserAction.SELECT_FOLDER)
         self.search_dir_chooser.set_current_folder(self.last_accessed_directory)
         self.search_dir_chooser.connect("file-set", self.on_directory_selected)
@@ -360,7 +368,7 @@ class VideoConverterApp:
         settings_grid.attach(self.search_dir_chooser, 1, 0, 1, 1)
         
         # Simultaneous processes
-        procs_label = Gtk.Label(label="Simultaneous processes:", halign=Gtk.Align.START)
+        procs_label = Gtk.Label(label=_("Simultaneous processes:"), halign=Gtk.Align.START)
         adjustment = Gtk.Adjustment(value=2, lower=1, upper=16, step_increment=1, page_increment=2)
         self.max_procs_spin = Gtk.SpinButton()
         self.max_procs_spin.set_adjustment(adjustment)
@@ -369,7 +377,7 @@ class VideoConverterApp:
         settings_grid.attach(self.max_procs_spin, 1, 1, 1, 1)
         
         # Minimum size
-        size_label = Gtk.Label(label="Minimum MP4 size (KB):", halign=Gtk.Align.START)
+        size_label = Gtk.Label(label=_("Minimum MP4 size (KB):"), halign=Gtk.Align.START)
         adjustment = Gtk.Adjustment(value=1024, lower=1, upper=999999, step_increment=100, page_increment=1000)
         self.min_mp4_size_spin = Gtk.SpinButton()
         self.min_mp4_size_spin.set_adjustment(adjustment)
@@ -378,14 +386,14 @@ class VideoConverterApp:
         settings_grid.attach(self.min_mp4_size_spin, 1, 2, 1, 1)
         
         # Log file
-        log_label = Gtk.Label(label="Log file:", halign=Gtk.Align.START)
+        log_label = Gtk.Label(label=_("Log file:"), halign=Gtk.Align.START)
         self.log_file_entry = Gtk.Entry()
         self.log_file_entry.set_text("mkv-mp4-convert.log")
         settings_grid.attach(log_label, 0, 3, 1, 1)
         settings_grid.attach(self.log_file_entry, 1, 3, 1, 1)
         
         # Option to delete original files
-        self.delete_batch_originals_check = Gtk.CheckButton(label="Delete original MKV files after successful conversion")
+        self.delete_batch_originals_check = Gtk.CheckButton(label=_("Delete original MKV files after successful conversion"))
         settings_grid.attach(self.delete_batch_originals_check, 0, 4, 2, 1)
         
         settings_frame.add(settings_grid)
@@ -394,9 +402,9 @@ class VideoConverterApp:
         # Information
         info_label = Gtk.Label()
         info_label.set_markup(
-            "This mode will search for all MKV files in the selected directory and\n"
+            _("This mode will search for all MKV files in the selected directory and\n"
             "convert them to MP4. The original MKV file will only be removed if the MP4 is created\n"
-            "successfully and has the defined minimum size."
+            "successfully and has the defined minimum size.")
         )
         info_label.set_justify(Gtk.Justification.CENTER)
         info_label.set_margin_top(20)
@@ -404,7 +412,7 @@ class VideoConverterApp:
         page.pack_start(info_label, False, False, 0)
         
         # Convert button
-        convert_button = Gtk.Button(label="Convert All MKVs")
+        convert_button = Gtk.Button(label=_("Convert All MKVs"))
         convert_button.get_style_context().add_class("suggested-action")
         convert_button.connect("clicked", self.on_mkv_mp4_all_button_clicked)
         button_box = Gtk.Box(spacing=10)
@@ -413,7 +421,7 @@ class VideoConverterApp:
         page.pack_start(button_box, False, False, 10)
         
         # Add page to notebook
-        label = Gtk.Label(label="Convert Multiple Files")
+        label = Gtk.Label(label=_("Convert Multiple Files"))
         self.notebook.append_page(page, label)
     
     def create_about_page(self):
@@ -426,7 +434,7 @@ class VideoConverterApp:
         
         # Title
         title_label = Gtk.Label()
-        title_label.set_markup("<span size='x-large' weight='bold'>Comm Big Converter</span>")
+        title_label.set_markup("<span size='x-large' weight='bold'>" + _("Comm Big Converter") + "</span>")
         title_label.set_margin_top(20)
         title_label.set_margin_bottom(20)
         page.pack_start(title_label, False, False, 0)
@@ -434,13 +442,13 @@ class VideoConverterApp:
         # Description
         desc_label = Gtk.Label()
         desc_label.set_markup(
-            "<span size='large'>A graphical frontend for converting MKV videos to MP4</span>"
+            "<span size='large'>" + _("A graphical frontend for converting MKV videos to MP4") + "</span>"
         )
         desc_label.set_margin_bottom(40)
         page.pack_start(desc_label, False, False, 0)
         
         # Developer information
-        dev_frame = Gtk.Frame(label="Developer")
+        dev_frame = Gtk.Frame(label=_("Developer"))
         dev_frame.set_margin_start(50)
         dev_frame.set_margin_end(50)
         
@@ -456,13 +464,13 @@ class VideoConverterApp:
         
         email_box = Gtk.Box(spacing=5)
         email_label = Gtk.Label()
-        email_label.set_markup("<b>Email:</b> talesam@gmail.com")
+        email_label.set_markup("<b>" + _("Email:") + "</b> talesam@gmail.com")
         email_label.set_xalign(0)
         email_box.pack_start(email_label, True, True, 0)
         
         site_box = Gtk.Box(spacing=5)
         site_label = Gtk.Label()
-        site_label.set_markup("<b>Site:</b> https://communitybig.org/")
+        site_label.set_markup("<b>" + _("Site:") + "</b> https://communitybig.org/")
         site_label.set_xalign(0)
         site_box.pack_start(site_label, True, True, 0)
         
@@ -479,17 +487,17 @@ class VideoConverterApp:
         
         # Application version
         version_label = Gtk.Label()
-        version_label.set_markup("<span size='small'>Version 1.0.0</span>")
+        version_label.set_markup("<span size='small'>" + _("Version 1.0.0") + "</span>")
         version_label.set_margin_bottom(20)
         page.pack_end(version_label, False, False, 0)
         
         # Add page to notebook
-        label = Gtk.Label(label="About")
+        label = Gtk.Label(label=_("About"))
         self.notebook.append_page(page, label)
     
     def on_folder_button_clicked(self, button):
         dialog = Gtk.FileChooserDialog(
-            title="Select the output folder",
+            title=_("Select the output folder"),
             parent=self.window,
             action=Gtk.FileChooserAction.SELECT_FOLDER,
         )
@@ -507,7 +515,7 @@ class VideoConverterApp:
     def on_convert_big_button_clicked(self, button):
         # Build command for convert-big.sh
         if not self.file_chooser.get_filename():
-            self.show_error_dialog("Please select an input file.")
+            self.show_error_dialog(_("Please select an input file."))
             return
             
         input_file = self.file_chooser.get_filename()
@@ -519,7 +527,7 @@ class VideoConverterApp:
         env_vars = {}
         
         # Add selected options
-        if self.gpu_combo.get_active_text() != "Auto-detect":
+        if self.gpu_combo.get_active_text() != _("Auto-detect"):
             env_vars["gpu"] = self.gpu_combo.get_active_text().lower()
         
         if self.output_file_entry.get_text():
@@ -528,19 +536,19 @@ class VideoConverterApp:
         if self.output_folder_entry.get_text():
             env_vars["output_folder"] = self.output_folder_entry.get_text()
             
-        if self.video_quality_combo.get_active_text() != "Default":
+        if self.video_quality_combo.get_active_text() != _("Default"):
             env_vars["video_quality"] = self.video_quality_combo.get_active_text().lower()
             
-        if self.video_encoder_combo.get_active_text() != "Default (h264)":
+        if self.video_encoder_combo.get_active_text() != _("Default (h264)"):
             env_vars["video_encoder"] = self.video_encoder_combo.get_active_text().split()[0].lower()
             
-        if self.preset_combo.get_active_text() != "Default":
+        if self.preset_combo.get_active_text() != _("Default"):
             env_vars["preset"] = self.preset_combo.get_active_text().lower()
             
-        if self.subtitle_extract_combo.get_active_text() != "Default (extract)":
+        if self.subtitle_extract_combo.get_active_text() != _("Default (extract)"):
             env_vars["subtitle_extract"] = self.subtitle_extract_combo.get_active_text().lower().split()[0]
             
-        if self.audio_handling_combo.get_active_text() != "Default (copy)":
+        if self.audio_handling_combo.get_active_text() != _("Default (copy)"):
             env_vars["audio_handling"] = self.audio_handling_combo.get_active_text().lower().split()[0]
             
         if self.audio_bitrate_entry.get_text():
@@ -583,7 +591,7 @@ class VideoConverterApp:
     def on_mkv_mp4_all_button_clicked(self, button):
         # Build command for mkv-mp4-all.sh
         if not self.search_dir_chooser.get_filename():
-            self.show_error_dialog("Please select a directory to search for MKV files.")
+            self.show_error_dialog(_("Please select a directory to search for MKV files."))
             return
             
         search_dir = self.search_dir_chooser.get_filename()
@@ -616,7 +624,7 @@ class VideoConverterApp:
     
     def run_with_progress_dialog(self, cmd, title_suffix, input_file=None, delete_original=False):
         cmd_str = " ".join([shlex.quote(arg) for arg in cmd])
-        progress_dialog = ProgressDialog(self.window, "Converting...", title_suffix, input_file)
+        progress_dialog = ProgressDialog(self.window, _("Converting..."), title_suffix, input_file)
         
         # Configure option to delete original file
         if input_file:
@@ -654,7 +662,7 @@ class VideoConverterApp:
             progress_dialog.destroy()
             
         except Exception as e:
-            self.show_error_dialog(f"Error starting conversion: {e}")
+            self.show_error_dialog(_("Error starting conversion: {0}").format(e))
             progress_dialog.destroy()
             self.conversions_running -= 1
     
@@ -690,7 +698,7 @@ class VideoConverterApp:
                     m = float(time_parts[1])
                     s = float(time_parts[2])  # This already includes milliseconds as decimal part
                     duration_secs = h * 3600 + m * 60 + s
-                    GLib.idle_add(progress_dialog.update_status, f"Total duration: {duration_str}")
+                    GLib.idle_add(progress_dialog.update_status, _("Total duration: {0}").format(duration_str))
             
             if "time=" in line:
                 time_match = time_pattern.search(line)
@@ -712,7 +720,7 @@ class VideoConverterApp:
                     remaining_secs = int(remaining_secs % 60)
                     GLib.idle_add(
                         progress_dialog.update_status, 
-                        f"Estimated time remaining: {remaining_mins:02d}:{remaining_secs:02d}"
+                        _("Estimated time remaining: {0:02d}:{1:02d}").format(remaining_mins, remaining_secs)
                     )
             
             # Extract frame and FPS information for conversions without time
@@ -731,7 +739,7 @@ class VideoConverterApp:
                         
                         progress = min(frame_count / estimated_frames, 0.99)  # Never reach 100% until finished
                         GLib.idle_add(progress_dialog.update_progress, progress)
-                        GLib.idle_add(progress_dialog.update_status, f"Frames processed: {frame_count}")
+                        GLib.idle_add(progress_dialog.update_status, _("Frames processed: {0}").format(frame_count))
         
         # Process finished
         return_code = process.wait()
@@ -742,8 +750,8 @@ class VideoConverterApp:
             GLib.idle_add(progress_dialog.mark_success)
             
             # Update progress bar
-            GLib.idle_add(progress_dialog.update_progress, 1.0, "Completed!")
-            GLib.idle_add(progress_dialog.update_status, "Conversion completed successfully!")
+            GLib.idle_add(progress_dialog.update_progress, 1.0, _("Completed!"))
+            GLib.idle_add(progress_dialog.update_status, _("Conversion completed successfully!"))
             
             # Check if we should delete the original file
             if progress_dialog.delete_original and progress_dialog.input_file:
@@ -760,44 +768,44 @@ class VideoConverterApp:
                             os.remove(input_file)
                             GLib.idle_add(
                                 lambda: self.show_info_dialog_and_close_progress(
-                                    f"✅ Conversion completed successfully!\n\nThe original file <b>{os.path.basename(input_file)}</b> was deleted.",
+                                    _("✅ Conversion completed successfully!\n\nThe original file <b>{0}</b> was deleted.").format(os.path.basename(input_file)),
                                     progress_dialog
                                 )
                             )
                         except Exception as e:
                             GLib.idle_add(
                                 lambda: self.show_info_dialog_and_close_progress(
-                                    f"✅ Conversion completed successfully!\n\nCould not delete the original file: {e}",
+                                    _("✅ Conversion completed successfully!\n\nCould not delete the original file: {0}").format(e),
                                     progress_dialog
                                 )
                             )
                     else:
                         GLib.idle_add(
                             lambda: self.show_info_dialog_and_close_progress(
-                                f"✅ Conversion completed successfully!\n\nThe original file was not deleted because the converted file size looks suspicious.",
+                                _("✅ Conversion completed successfully!\n\nThe original file was not deleted because the converted file size looks suspicious."),
                                 progress_dialog
                             )
                         )
                 else:
                     GLib.idle_add(
                         lambda: self.show_info_dialog_and_close_progress(
-                            f"✅ Conversion completed successfully!",
+                            _("✅ Conversion completed successfully!"),
                             progress_dialog
                         )
                     )
             else:
                 GLib.idle_add(
                     lambda: self.show_info_dialog_and_close_progress(
-                        f"✅ Conversion completed successfully!",
+                        _("✅ Conversion completed successfully!"),
                         progress_dialog
                     )
                 )
         else:
-            GLib.idle_add(progress_dialog.update_progress, 0.0, "Error!")
-            GLib.idle_add(progress_dialog.update_status, f"Conversion failed with code {return_code}")
+            GLib.idle_add(progress_dialog.update_progress, 0.0, _("Error!"))
+            GLib.idle_add(progress_dialog.update_status, _("Conversion failed with code {0}").format(return_code))
             GLib.idle_add(
                 lambda: self.show_error_dialog_and_close_progress(
-                    f"❌ The conversion failed with error code {return_code}.\n\nCheck the log for more details.",
+                    _("❌ The conversion failed with error code {0}.\n\nCheck the log for more details.").format(return_code),
                     progress_dialog
                 )
             )
