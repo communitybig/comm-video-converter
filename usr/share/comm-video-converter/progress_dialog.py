@@ -9,7 +9,7 @@ from gi.repository import Gtk, Adw, GLib, Pango
 # Setup translation
 import gettext
 lang_translations = gettext.translation(
-    "comm-big-converter", localedir="/usr/share/locale", fallback=True
+    "comm-video-converter", localedir="/usr/share/locale", fallback=True
 )
 lang_translations.install()
 # define _ shortcut for translations

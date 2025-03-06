@@ -11,7 +11,7 @@ from conversion import run_with_progress_dialog
 # Setup translation
 import gettext
 lang_translations = gettext.translation(
-    "comm-big-converter", localedir="/usr/share/locale", fallback=True
+    "comm-video-converter", localedir="/usr/share/locale", fallback=True
 )
 lang_translations.install()
 # define _ shortcut for translations
@@ -125,7 +125,7 @@ class BatchPage:
         
         # Log file
         self.log_file_entry = Adw.EntryRow(title=_("Log file"))
-        self.log_file_entry.set_text("mkv-mp4-convert.log")
+        self.log_file_entry.set_text("comm-mkv-mp4-converter.log")
         self.log_file_entry.set_tooltip_text(_("Path to save the conversion log"))
         settings_group.add(self.log_file_entry)
         
@@ -169,7 +169,7 @@ class BatchPage:
             
         self.max_procs_spin.set_value(settings.load_setting("max-processes", 2))
         self.min_mp4_size_spin.set_value(settings.load_setting("min-mp4-size", 1024))
-        self.log_file_entry.set_text(settings.load_setting("log-file", "mkv-mp4-convert.log"))
+        self.log_file_entry.set_text(settings.load_setting("log-file", "comm-mkv-mp4-converter.log"))
         self.delete_batch_originals_check.set_active(settings.load_setting("delete-batch-originals", False))
         
         # Connect signals
@@ -212,7 +212,7 @@ class BatchPage:
             print(f"Error selecting directory: {e}")
     
     def on_convert_button_clicked(self, button):
-        # Build command for mkv-mp4-all.sh
+        # Build command for comm-mkv-mp4-all
         if not self.search_dir_label.get_text() or self.search_dir_label.get_text() == _("No directory selected"):
             self.app.show_error_dialog(_("Please select a directory to search for MKV files."))
             return
@@ -232,7 +232,7 @@ class BatchPage:
         self.app.settings_manager.save_setting("log-file", log_file)
         self.app.settings_manager.save_setting("delete-batch-originals", delete_originals)
         
-        # Build command using absolute path to mkv-mp4-all.sh
+        # Build command using absolute path to comm-mkv-mp4-all
         cmd = [MKV_MP4_ALL_PATH, 
                "--dir", search_dir, 
                "--procs", str(max_procs), 

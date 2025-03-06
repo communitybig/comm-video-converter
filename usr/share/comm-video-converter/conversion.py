@@ -5,10 +5,7 @@ import threading
 import re
 import time
 from gi.repository import GLib
-
-# Paths to executables
-CONVERT_BIG_PATH = "/usr/bin/convert-big"
-MKV_MP4_ALL_PATH = "/usr/bin/mkv-mp4-all"
+from constants import CONVERT_BIG_PATH, MKV_MP4_ALL_PATH
 
 # Import translation function
 import gettext
@@ -198,7 +195,9 @@ def monitor_progress(app, process, progress_dialog):
                         output_size = os.path.getsize(output_file)
                         
                         # Consider the conversion successful if the MP4 file exists with reasonable size
-                        if output_size > 1024 * 1024:  # 1MB in bytes
+                        # The size should be at least 1MB or 10% of the original size
+                        min_size_threshold = max(1024 * 1024, input_size * 0.1)  
+                        if output_size > min_size_threshold:
                             try:
                                 os.remove(input_file)
                                 GLib.idle_add(

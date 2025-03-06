@@ -1,5 +1,6 @@
 import os
 from gi.repository import Gtk, Adw
+from constants import APP_DEVELOPERS, APP_WEBSITES
 
 # Setup translation
 import gettext
@@ -288,6 +289,8 @@ class SettingsPage:
         main_content.append(options_group)
     
     def create_about_section(self, main_content):
+        from constants import APP_VERSION, APP_DEVELOPERS, APP_WEBSITES
+        
         about_group = Adw.PreferencesGroup(title=_("About"))
         
         # App info in a compact format
@@ -300,20 +303,32 @@ class SettingsPage:
         app_info_row.add_prefix(app_icon)
         
         # Version label
-        version_label = Gtk.Label(label=_("v1.0.0"))
+        version_label = Gtk.Label(label=f"v{APP_VERSION}")
         app_info_row.add_suffix(version_label)
         
         about_group.add(app_info_row)
         
-        # Developer row
-        dev_row = Adw.ActionRow(title=_("Developer"))
-        dev_row.set_subtitle("Tales A. Mendonça")
-        about_group.add(dev_row)
+        # Developers header
+        devs_header = Adw.ActionRow(title=_("Developers"))
+        about_group.add(devs_header)
         
-        # Contact info row
-        contact_row = Adw.ActionRow(title=_("Contact"))
-        contact_row.set_subtitle("talesam@gmail.com")
-        about_group.add(contact_row)
+        # Create a row for each developer
+        for name in APP_DEVELOPERS:
+            dev_row = Adw.ActionRow()
+            dev_row.set_subtitle(name)
+            dev_row.set_margin_start(24)  # Indent for better hierarchy
+            about_group.add(dev_row)
+        
+        # Websites header
+        sites_header = Adw.ActionRow(title=_("Websites"))
+        about_group.add(sites_header)
+        
+        # Create a row for each website
+        for site in APP_WEBSITES:
+            site_row = Adw.ActionRow()
+            site_row.set_subtitle(site)
+            site_row.set_margin_start(24)  # Indent for better hierarchy
+            about_group.add(site_row)
         
         main_content.append(about_group)
     
@@ -395,3 +410,90 @@ class SettingsPage:
         self.gpu_partial_check.set_active(self.settings_manager.load_setting("gpu-partial", False))
         self.force_copy_video_check.set_active(self.settings_manager.load_setting("force-copy-video", False))
         self.only_extract_subtitles_check.set_active(self.settings_manager.load_setting("only-extract-subtitles", False))
+        
+    def apply_settings_to_env(self, env_vars):
+        """Apply current settings to environment variables for conversion process"""
+        # GPU Selection
+        gpu_index = self.gpu_combo.get_selected()
+        if gpu_index > 0:  # If not "Auto-detect"
+            from constants import GPU_OPTIONS
+            env_vars["gpu"] = GPU_OPTIONS[gpu_index].lower()
+        
+        # Video quality
+        quality_index = self.video_quality_combo.get_selected()
+        if quality_index > 0:  # If not "Default"
+            from constants import VIDEO_QUALITY_OPTIONS
+            env_vars["video_quality"] = VIDEO_QUALITY_OPTIONS[quality_index].lower()
+        
+        # Video codec
+        codec_index = self.video_encoder_combo.get_selected()
+        if codec_index > 0:  # If not "Default"
+            # Extract just the codec name without the description
+            codec = self.video_encoder_combo.get_selected_item().get_string().split()[0].lower()
+            env_vars["video_encoder"] = codec
+        
+        # Video resolution
+        resolution_index = self.video_resolution_combo.get_selected()
+        if resolution_index > 0:  # If not "Default"
+            if resolution_index == len(self.resolution_values) - 1:  # Custom
+                # Use the custom value if it's set
+                if self.custom_resolution_row.get_text():
+                    env_vars["video_resolution"] = self.custom_resolution_row.get_text()
+            else:
+                env_vars["video_resolution"] = self.resolution_values[resolution_index]
+        
+        # Preset
+        preset_index = self.preset_combo.get_selected()
+        if preset_index > 0:  # If not "Default"
+            from constants import PRESET_OPTIONS
+            env_vars["preset"] = PRESET_OPTIONS[preset_index].lower()
+        
+        # Subtitle handling
+        subtitle_index = self.subtitle_extract_combo.get_selected()
+        if subtitle_index > 0:  # If not "Default"
+            from constants import SUBTITLE_OPTIONS
+            # Extract just the first word
+            subtitle_option = SUBTITLE_OPTIONS[subtitle_index].split()[0].lower()
+            env_vars["subtitle_extract"] = subtitle_option
+        
+        # Audio handling
+        audio_index = self.audio_handling_combo.get_selected()
+        if audio_index > 0:  # If not "Default"
+            from constants import AUDIO_OPTIONS
+            # Extract just the first word
+            audio_option = AUDIO_OPTIONS[audio_index].split()[0].lower()
+            env_vars["audio_handling"] = audio_option
+        
+        # Audio bitrate
+        bitrate_index = self.audio_bitrate_combo.get_selected()
+        if bitrate_index > 0:  # If not "Default"
+            if bitrate_index == len(self.bitrate_values) - 1:  # Custom
+                if self.custom_bitrate_row.get_text():
+                    env_vars["audio_bitrate"] = self.custom_bitrate_row.get_text()
+            else:
+                env_vars["audio_bitrate"] = self.bitrate_values[bitrate_index]
+        
+        # Audio channels
+        channels_index = self.audio_channels_combo.get_selected()
+        if channels_index > 0:  # If not "Default"
+            if channels_index == len(self.channels_values) - 1:  # Custom
+                if self.custom_channels_row.get_text():
+                    env_vars["audio_channels"] = self.custom_channels_row.get_text()
+            else:
+                env_vars["audio_channels"] = self.channels_values[channels_index]
+        
+        # Additional options
+        if self.options_entry.get_text():
+            env_vars["options"] = self.options_entry.get_text()
+        
+        # Boolean options
+        if self.gpu_partial_check.get_active():
+            env_vars["gpu_partial"] = "1"
+        
+        if self.force_copy_video_check.get_active():
+            env_vars["force_copy_video"] = "1"
+        
+        if self.only_extract_subtitles_check.get_active():
+            env_vars["only_extract_subtitles"] = "1"
+        
+        return env_vars

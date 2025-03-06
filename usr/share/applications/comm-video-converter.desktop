@@ -1,0 +1,43 @@
+[Desktop Entry]
+Name=Comm Video Converter
+Name[pt]=Conversor de Vídeo Comm
+Name[es]=Convertidor de Video Comm
+Name[bg]=Comm Видео Конвертор
+Name[cs]=Comm Video Převaděč
+Name[da]=Comm Videokonverter
+Name[de]=Comm Video-Konverter
+Name[el]=Μετατροπέας Βίντεο Comm
+Name[et]=Comm Video Teisendaja
+Name[fi]=Comm Videomuunnin
+Name[fr]=Convertisseur Vidéo Comm
+Name[he]=ממיר וידאו Comm
+Name[hr]=Comm Video Pretvarač
+Name[hu]=Comm Videó Átalakító
+Name[is]=Comm Myndbandbreytir
+Name[it]=Convertitore Video Comm
+Name[ja]=Comm ビデオコンバーター
+Name[ko]=Comm 비디오 변환기
+Name[nl]=Comm Videoconverter
+Name[no]=Comm Videokonverterer
+Name[pl]=Konwerter Wideo Comm
+Name[ro]=Convertor Video Comm
+Name[ru]=Конвертер Видео Comm
+Name[sk]=Comm Video Konvertor
+Name[sv]=Comm Videokonverterare
+Name[tr]=Comm Video Dönüştürücü
+Name[uk]=Відео Конвертер Comm
+Name[zh]=Comm 视频转换器
+Comment=GUI and CLI interface for converting videos using FFmpeg with GPU acceleration.
+Exec=comm-video-converter
+Icon=comm-video-converter
+Terminal=false
+Type=Application
+Categories=AudioVideo;Video;
+Keywords=video;converter;mkv;mp4;ffmpeg;
+StartupNotify=true
+
+Actions=SoftwareRender;
+
+[Desktop Action SoftwareRender]
+Name=Software Render
+Exec=SoftwareRender comm-video-converter

@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-exec python /usr/share/comm-big-convert/comm-big-convert.py

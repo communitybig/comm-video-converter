@@ -10,26 +10,30 @@ import os
 APP_ID = "org.communitybig.converter"
 APP_NAME = "Comm Video Converter"
 APP_VERSION = "1.0.0"
-APP_AUTHOR = "Tales A. Mendonça"
-APP_CONTACT = "talesam@gmail.com"
+
+APP_AUTHOR = "Tales A. Mendonça, Bruno Gonçalves Araujo"
+#APP_CONTACT = "@talesam, @bigbruno"
+
+APP_DEVELOPERS = ["Tales A. Mendonça", "Bruno Gonçalves Araujo"]
+APP_WEBSITES = ["communitybig.org", "biglinux.com.br"]
 
 # GSettings schema ID
 SCHEMA_ID = "org.communitybig.converter"
 
 # Paths to executables
-CONVERT_BIG_PATH = "/usr/bin/convert-big"
-MKV_MP4_ALL_PATH = "/usr/bin/mkv-mp4-all"
+CONVERT_BIG_PATH = "/usr/bin/comm-converter"
+MKV_MP4_ALL_PATH = "/usr/bin/comm-mkv-mp4-all"
 
 # During development, use local path if scripts are not installed
 if not os.path.exists(CONVERT_BIG_PATH):
-    CONVERT_BIG_PATH = "./convert-big.sh"
+    CONVERT_BIG_PATH = "./comm-converter"
 if not os.path.exists(MKV_MP4_ALL_PATH):
-    MKV_MP4_ALL_PATH = "./mkv-mp4-all.sh"
+    MKV_MP4_ALL_PATH = "./comm-mkv-mp4-all"
 
 # Default settings
 DEFAULT_MAX_PROCESSES = 2
 DEFAULT_MIN_MP4_SIZE_KB = 1024  # 1MB
-DEFAULT_LOG_FILENAME = "mkv-mp4-convert.log"
+DEFAULT_LOG_FILENAME = "comm-mkv-mp4-converter.log"
 
 # UI constants
 WINDOW_DEFAULT_WIDTH = 800

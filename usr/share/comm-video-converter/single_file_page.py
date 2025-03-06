@@ -11,7 +11,7 @@ from conversion import run_with_progress_dialog
 # Setup translation
 import gettext
 lang_translations = gettext.translation(
-    "comm-big-converter", localedir="/usr/share/locale", fallback=True
+    "comm-video-converter", localedir="/usr/share/locale", fallback=True
 )
 lang_translations.install()
 # define _ shortcut for translations
@@ -380,8 +380,15 @@ class SingleFilePage:
             self.app.show_error_dialog(_("The selected file does not exist: {0}").format(input_file))
             return
         
-        # Check if the file is an MKV
+        # Check if the file is an MKV (for potential deletion)
         is_mkv = input_file.lower().endswith('.mkv')
+        # Notify the user if they try to delete non-MKV files
+        if self.delete_original_check.get_active() and not is_mkv:
+            self.app.show_info_dialog(
+                _("Information"),
+                _("Note: The 'Delete original file' option only applies to MKV files.\n"
+                "Your selected file will be converted but not deleted.")
+            )
         
         # Check if the script exists
         if not os.path.exists(CONVERT_BIG_PATH):

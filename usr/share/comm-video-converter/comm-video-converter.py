@@ -18,7 +18,7 @@ from conversion import run_with_progress_dialog
 # Setup translation
 import gettext
 lang_translations = gettext.translation(
-    "comm-big-converter", localedir="/usr/share/locale", fallback=True
+    "comm-video-converter", localedir="/usr/share/locale", fallback=True
 )
 lang_translations.install()
 # define _ shortcut for translations
@@ -131,15 +131,15 @@ class VideoConverterApp(Adw.Application):
         """Sets the application icon, checking multiple possible paths"""
         icon_paths = [
             # Paths to look for the icon
-            os.path.join(os.path.dirname(os.path.abspath(__file__)), "comm-big-converter.svg"),
-            os.path.expanduser("~/.local/share/icons/hicolor/scalable/apps/comm-big-converter.svg"),
-            "/usr/share/icons/hicolor/scalable/apps/comm-big-converter.svg"
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), "comm-video-converter.svg"),
+            os.path.expanduser("~/.local/share/icons/hicolor/scalable/apps/comm-video-converter.svg"),
+            "/usr/share/icons/hicolor/scalable/apps/comm-video-converter.svg"
         ]
         
         # In GTK4, icons are typically handled by the window, not the application
         for icon_path in icon_paths:
             if (os.path.exists(icon_path)):
-                self.window.set_icon_name("comm-big-converter")
+                self.window.set_icon_name("comm-video-converter")
                 return
         
         # If SVG file not found, use system icon
@@ -157,6 +157,29 @@ class VideoConverterApp(Adw.Application):
         dialog.set_message(title)
         dialog.set_detail(message)
         dialog.show(self.window)
+    
+    def show_question_dialog(self, title, message):
+        """Shows a question dialog with title and message, returns True if user confirms"""
+        dialog = Gtk.AlertDialog()
+        dialog.set_message(title)
+        dialog.set_detail(message)
+        dialog.set_buttons(["Cancel", "Continue"])
+        dialog.set_default_button(0)  # Cancel is default
+        dialog.set_cancel_button(0)   # Cancel button is cancel action
+        
+        result = [False]  # Use list to be modified from callback
+        
+        def on_response(dialog, response):
+            result[0] = (response == 1)  # True if "Continue" was clicked
+        
+        dialog.connect("response", on_response)
+        dialog.show(self.window)
+        
+        # Wait for user response
+        while Gtk.events_pending():
+            Gtk.main_iteration()
+        
+        return result[0]
 
 def main():
     app = VideoConverterApp()

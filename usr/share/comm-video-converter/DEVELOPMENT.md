@@ -1,4 +1,4 @@
-# Comm Big Converter Development Documentation
+# Comm Video Converter Development Documentation
 
 This document provides information for developers working on the Comm Big Converter application. It describes the architecture, file structure, and individual components of the codebase.
 
@@ -15,7 +15,7 @@ Comm Big Converter is a GTK4/Adwaita application for converting video files, bui
 
 ### Main Application
 
-- **comm-big-convert.py**: Entry point for the application. Defines the `VideoConverterApp` class which inherits from `Adw.Application` and sets up the main window with tabs for different conversion modes. Handles application initialization, window creation, and UI setup.
+- **comm-video-converter.py**: Entry point for the application. Defines the `VideoConverterApp` class which inherits from `Adw.Application` and sets up the main window with tabs for different conversion modes. Handles application initialization, window creation, and UI setup.
 
 ### Core Components
 
@@ -37,7 +37,7 @@ Comm Big Converter is a GTK4/Adwaita application for converting video files, bui
 
 ## Application Flow
 
-1. The application starts in `comm-big-convert.py`, creating the main window and tabs
+1. The application starts in `comm-video-converter.py`, creating the main window and tabs
 2. User interacts with one of three interfaces:
    - Single file conversion
    - Batch conversion
@@ -78,8 +78,8 @@ The conversion scripts recognize several environment variables that control the 
 ## Command-Line Tools
 
 The application wraps command-line tools:
-- `/usr/bin/convert-big`: For single file conversion
-- `/usr/bin/mkv-mp4-all`: For batch conversion of MKV files to MP4
+- `/usr/bin/comm-converter`: For single file conversion
+- `/usr/bin/comm-mkv-mp4-all`: For batch conversion of MKV files to MP4
 
 ## Error Handling
 
