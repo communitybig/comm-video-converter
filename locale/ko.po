@@ -889,3 +889,15 @@ msgstr "취소"
 #: NEEDS WORK
 msgid "Cancelling..."
 msgstr "취소 중..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 263
+#: NEEDS WORK
+msgid "Low Disk Space Warning"
+msgstr "디스크 공간 부족 경고"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 264
+#: NEEDS WORK
+msgid "You have limited free disk space. Converting multiple videos may fill your disk. Continue anyway?"
+msgstr "디스크 공간이 제한되어 있습니다. 여러 비디오를 변환하면 디스크가 가득 찰 수 있습니다. 그래도 계속하시겠습니까?"

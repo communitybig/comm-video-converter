@@ -895,3 +895,17 @@ msgstr "Avbryt"
 #: NEEDS WORK
 msgid "Cancelling..."
 msgstr "Avbryter..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 263
+#: NEEDS WORK
+msgid "Low Disk Space Warning"
+msgstr "Advarsel om lav diskplass"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 264
+#: NEEDS WORK
+msgid "You have limited free disk space. Converting multiple videos may fill your disk. Continue anyway?"
+msgstr ""
+"Du har begrenset ledig diskplass. Konvertering av flere videoer kan fylle disken din. Fortsette "
+"uansett?"
