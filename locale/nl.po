@@ -896,3 +896,17 @@ msgstr "Annuleren"
 #: NEEDS WORK
 msgid "Cancelling..."
 msgstr "Annuleren..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 263
+#: NEEDS WORK
+msgid "Low Disk Space Warning"
+msgstr "Waarschuwing voor lage schijfruimte"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 264
+#: NEEDS WORK
+msgid "You have limited free disk space. Converting multiple videos may fill your disk. Continue anyway?"
+msgstr ""
+"U heeft beperkte vrije schijfruimte. Het converteren van meerdere video's kan uw schijf vullen. "
+"Toch doorgaan?"

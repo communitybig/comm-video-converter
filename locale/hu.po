@@ -894,3 +894,17 @@ msgstr "Mégse"
 #: NEEDS WORK
 msgid "Cancelling..."
 msgstr "Mégse..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 263
+#: NEEDS WORK
+msgid "Low Disk Space Warning"
+msgstr "Alacsony lemezterület figyelmeztetés"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 264
+#: NEEDS WORK
+msgid "You have limited free disk space. Converting multiple videos may fill your disk. Continue anyway?"
+msgstr ""
+"Korlátozott szabad lemezterületed van. Több videó átkonvertálása megtöltheti a lemezedet. Folytatod "
+"így is?"

@@ -1317,3 +1317,17 @@ msgstr "Annuluj"
 #: NEEDS WORK
 msgid "Cancelling..."
 msgstr "Скасування..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 263
+#: NEEDS WORK
+msgid "Low Disk Space Warning"
+msgstr "Низький обсяг вільного місця на диску"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/batch_page.py, line: 264
+#: NEEDS WORK
+msgid "You have limited free disk space. Converting multiple videos may fill your disk. Continue anyway?"
+msgstr ""
+"У вас обмежений обсяг вільного місця на диску. Конвертація кількох відео може заповнити ваш диск. "
+"Продовжити все ж?"
