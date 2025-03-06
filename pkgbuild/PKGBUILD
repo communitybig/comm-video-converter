@@ -1,6 +1,6 @@
 # Maintainer: Tales A. Mendonça <talesam@gmail.com>
 
-pkgname=comm-convert-big
+pkgname=comm-big-convert
 pkgdesc="Optimized MKV to MP4 video converter"
 # Uncomment and edit the following lines as needed
 depends=('python' 'python-gobject' 'gtk3' 'ffmpeg' 'python-cairo')
