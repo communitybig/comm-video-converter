@@ -416,12 +416,22 @@ fi
 # Try to encode with the GPU
 eval $ffmpeg_executable $options $gpu $ffmpeg_generic_options
 
+# Store the exit code while preserving $? for later checks
+exit_code=$?
+
 # If encoding not successful, and not exit with 255 (interrupted by user), and not software encoding, try with the second option
-if [[ $? != 0 && $? != 255 && $force_software != 1 && $force_copy_video != 1 ]]; then
+if [[ $exit_code != 0 && $exit_code != 255 && $force_software != 1 && $force_copy_video != 1 ]]; then
     eval $ffmpeg_executable $options $gpu_second_option $ffmpeg_generic_options
+    exit_code=$?
 fi
 
 # If encoding not successful, and not exit with 255 (interrupted by user), and not software encoding, try with software encoding
-if [[ $? != 0 && $? != 255 && $force_software != 1 && $force_copy_video != 1 ]]; then
+if [[ $exit_code != 0 && $exit_code != 255 && $force_software != 1 && $force_copy_video != 1 ]]; then
     eval $ffmpeg_executable $options $software_encode $ffmpeg_generic_options
+    exit_code=$?
+fi
+
+if [[ $exit_code != 0 ]]; then
+    echo -e "${COLOR_YELLOW}Conversion failed with exit code $exit_code.${COLOR_RESET}"
+    exit $exit_code
 fi
