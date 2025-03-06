@@ -103,7 +103,7 @@ class ProgressDialog(Gtk.Dialog):
 class VideoConverterApp:
     def __init__(self):
         # Create main window
-        self.window = Gtk.Window(title="Video Converter")
+        self.window = Gtk.Window(title="Comm Big Converter")
         self.window.set_default_size(800, 600)
         self.window.connect("destroy", Gtk.main_quit)
         
