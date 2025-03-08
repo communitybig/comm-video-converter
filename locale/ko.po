@@ -1282,3 +1282,69 @@ msgstr "먼저 비디오 파일을 선택하세요."
 #: NEEDS WORK
 msgid "Could not load the selected video file"
 msgstr "선택한 비디오 파일을 로드할 수 없습니다."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 330
+#: NEEDS WORK
+msgid "No MKV files found in the selected directory."
+msgstr "선택한 디렉토리에서 MKV 파일을 찾을 수 없습니다."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 334
+#: NEEDS WORK
+msgid "Converting MKV Files"
+msgstr "MKV 파일 변환 중"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 560
+#: NEEDS WORK
+msgid "Conversion completed and original file deleted."
+msgstr "변환이 완료되었고 원본 파일이 삭제되었습니다."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 566
+#: NEEDS WORK
+msgid "Conversion completed but could not delete original: {0}"
+msgstr "변환이 완료되었지만 원본을 삭제할 수 없습니다: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 572
+#: NEEDS WORK
+msgid "Converted but output size looks suspicious - not deleting original."
+msgstr "변환되었지만 출력 크기가 의심스럽습니다 - 원본을 삭제하지 않습니다."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/multi_progress_dialog.py, line: 38
+#: NEEDS WORK
+msgid "Multiple File Conversion"
+msgstr "다중 파일 변환"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/multi_progress_dialog.py, line: 71
+#: NEEDS WORK
+msgid "Starting conversions..."
+msgstr "변환 시작 중..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/multi_progress_dialog.py, line: 87
+#: NEEDS WORK
+msgid "Cancel All"
+msgstr "모두 취소"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/multi_progress_dialog.py, line: 157
+#: NEEDS WORK
+msgid "Cancel this conversion"
+msgstr "이 변환 취소"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/multi_progress_dialog.py, line: 195
+#: NEEDS WORK
+msgid "Cancelling all conversions..."
+msgstr "모든 변환을 취소하는 중..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/multi_progress_dialog.py, line: 293
+#: NEEDS WORK
+msgid "Progress: {0} of {1} completed, {2} failed, {3} active"
+msgstr "진행 상황: {0} 중 {1} 완료, {2} 실패, {3} 활성"

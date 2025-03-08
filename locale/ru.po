@@ -1290,3 +1290,69 @@ msgstr "Пожалуйста, сначала выберите видеофайл
 #: NEEDS WORK
 msgid "Could not load the selected video file"
 msgstr "Не удалось загрузить выбранный видеофайл."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 330
+#: NEEDS WORK
+msgid "No MKV files found in the selected directory."
+msgstr "В выбранном каталоге не найдено файлов MKV."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 334
+#: NEEDS WORK
+msgid "Converting MKV Files"
+msgstr "Конвертация файлов MKV"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 560
+#: NEEDS WORK
+msgid "Conversion completed and original file deleted."
+msgstr "Конвертация завершена, оригинальный файл удалён."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 566
+#: NEEDS WORK
+msgid "Conversion completed but could not delete original: {0}"
+msgstr "Конвертация завершена, но не удалось удалить оригинал: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 572
+#: NEEDS WORK
+msgid "Converted but output size looks suspicious - not deleting original."
+msgstr "Преобразовано, но размер вывода выглядит подозрительно - оригинал не удаляется."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/multi_progress_dialog.py, line: 38
+#: NEEDS WORK
+msgid "Multiple File Conversion"
+msgstr "Массовое преобразование файлов"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/multi_progress_dialog.py, line: 71
+#: NEEDS WORK
+msgid "Starting conversions..."
+msgstr "Начало конвертации..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/multi_progress_dialog.py, line: 87
+#: NEEDS WORK
+msgid "Cancel All"
+msgstr "Отменить все"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/multi_progress_dialog.py, line: 157
+#: NEEDS WORK
+msgid "Cancel this conversion"
+msgstr "Отменить это преобразование"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/multi_progress_dialog.py, line: 195
+#: NEEDS WORK
+msgid "Cancelling all conversions..."
+msgstr "Отмена всех преобразований..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/multi_progress_dialog.py, line: 293
+#: NEEDS WORK
+msgid "Progress: {0} of {1} completed, {2} failed, {3} active"
+msgstr "Прогресс: {0} из {1} завершено, {2} не удалось, {3} активно"

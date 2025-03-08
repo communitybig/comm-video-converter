@@ -1289,3 +1289,69 @@ msgstr "Palun valige esmalt videofail."
 #: NEEDS WORK
 msgid "Could not load the selected video file"
 msgstr "Valitud videofaili ei saanud laadida."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 330
+#: NEEDS WORK
+msgid "No MKV files found in the selected directory."
+msgstr "Valitud kaustas ei leitud MKV-faile."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 334
+#: NEEDS WORK
+msgid "Converting MKV Files"
+msgstr "MKV-failide konverteerimine"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 560
+#: NEEDS WORK
+msgid "Conversion completed and original file deleted."
+msgstr "Konversioon lõpetatud ja originaalfail kustutatud."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 566
+#: NEEDS WORK
+msgid "Conversion completed but could not delete original: {0}"
+msgstr "Ümberkujundamine lõpetatud, kuid originaali kustutamine ebaõnnestus: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 572
+#: NEEDS WORK
+msgid "Converted but output size looks suspicious - not deleting original."
+msgstr "Muudetud, kuid väljundi suurus näeb kahtlane välja - originaali ei kustutata."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/multi_progress_dialog.py, line: 38
+#: NEEDS WORK
+msgid "Multiple File Conversion"
+msgstr "Mitme faili konverteerimine"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/multi_progress_dialog.py, line: 71
+#: NEEDS WORK
+msgid "Starting conversions..."
+msgstr "Alustame teisendusi..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/multi_progress_dialog.py, line: 87
+#: NEEDS WORK
+msgid "Cancel All"
+msgstr "Tühista kõik"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/multi_progress_dialog.py, line: 157
+#: NEEDS WORK
+msgid "Cancel this conversion"
+msgstr "Tühista see konversioon"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/multi_progress_dialog.py, line: 195
+#: NEEDS WORK
+msgid "Cancelling all conversions..."
+msgstr "Kõik konversioonid tühistatakse..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/multi_progress_dialog.py, line: 293
+#: NEEDS WORK
+msgid "Progress: {0} of {1} completed, {2} failed, {3} active"
+msgstr "Edenemine: {0} {1} lõpetatud, {2} ebaõnnestus, {3} aktiivne"
