@@ -212,7 +212,7 @@ class BatchPage:
             print(f"Error selecting directory: {e}")
     
     def on_convert_button_clicked(self, button):
-        # Build command for comm-mkv-mp4-all
+        # Check if directory is selected
         if not self.search_dir_label.get_text() or self.search_dir_label.get_text() == _("No directory selected"):
             self.app.show_error_dialog(_("Please select a directory to search for MKV files."))
             return
@@ -231,16 +231,6 @@ class BatchPage:
         self.app.settings_manager.save_setting("min-mp4-size", min_mp4_size)
         self.app.settings_manager.save_setting("log-file", log_file)
         self.app.settings_manager.save_setting("delete-batch-originals", delete_originals)
-        
-        # Build command using absolute path to comm-mkv-mp4-all
-        cmd = [MKV_MP4_ALL_PATH, 
-               "--dir", search_dir, 
-               "--procs", str(max_procs), 
-               "--size", str(min_mp4_size), 
-               "--log", log_file]
-        
-        if not delete_originals:
-            cmd.append("--nodelete")
         
         # Create environment variables dictionary
         env_vars = os.environ.copy()
@@ -268,12 +258,14 @@ class BatchPage:
         except Exception as e:
             print(f"Error checking disk space: {e}")
             
-        # Create and display progress dialog
-        run_with_progress_dialog(
+        # Use the new multi-progress function
+        from conversion import run_batch_with_multi_progress
+        run_batch_with_multi_progress(
             self.app,
-            cmd,
-            f"Batch conversion ({os.path.basename(search_dir)})",
-            None, 
-            False, 
+            search_dir,
+            max_procs,
+            min_mp4_size,
+            log_file,
+            delete_originals,
             env_vars
         )

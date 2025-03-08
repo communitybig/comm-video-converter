@@ -5,7 +5,7 @@ import gi
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, Gio, Gdk
+from gi.repository import Gtk, Adw, Gio, Gdk, GLib
 
 # Import local modules
 from progress_dialog import ProgressDialog
@@ -30,7 +30,18 @@ SCHEMA_ID = "org.communitybig.converter"
 
 class VideoConverterApp(Adw.Application):
     def __init__(self):
-        super().__init__(application_id="org.communitybig.converter", flags=Gio.ApplicationFlags.FLAGS_NONE)
+        # Use the same application_id as defined in constants.py (APP_ID)
+        super().__init__(application_id="org.communitybig.converter", 
+                        flags=Gio.ApplicationFlags.FLAGS_NONE)
+        
+        # Important: these calls must be made before connect("activate")
+        # and before creating any window for proper GNOME Shell integration
+        self.set_resource_base_path("/org/communitybig/converter")
+        
+        # Set program name to match StartupWMClass in desktop file
+        GLib.set_prgname("comm-video-converter")
+        
+        # Connect the activation signal after settings
         self.connect("activate", self.on_activate)
         
         # Initialize settings manager
@@ -197,22 +208,25 @@ class VideoConverterApp(Adw.Application):
         self.crop_enabled = False
 
     def set_application_icon(self):
-        """Sets the application icon, checking multiple possible paths"""
-        icon_paths = [
-            # Paths to look for the icon
-            os.path.join(os.path.dirname(os.path.abspath(__file__)), "comm-video-converter.svg"),
-            os.path.expanduser("~/.local/share/icons/hicolor/scalable/apps/comm-video-converter.svg"),
-            "/usr/share/icons/hicolor/scalable/apps/comm-video-converter.svg"
-        ]
+        """Sets the application icon, ensuring proper integration with GNOME Shell"""
+        # Set the application icon to ensure proper integration with GNOME Shell dock
         
-        # In GTK4, icons are typically handled by the window, not the application
-        for icon_path in icon_paths:
-            if (os.path.exists(icon_path)):
-                self.window.set_icon_name("comm-video-converter")
-                return
-        
-        # If SVG file not found, use system icon
-        self.window.set_icon_name("video-x-generic")
+        try:
+            # First, try to set the window icon directly
+            self.window.set_icon_name("comm-video-converter")
+            
+            # This ensures the program name matches the StartupWMClass in the .desktop file
+            # This is crucial for GNOME Shell to associate the window with the correct .desktop file
+            GLib.set_prgname("comm-video-converter")
+            
+            print("Application icon configured successfully.")
+        except Exception as e:
+            print(f"Error setting application icon: {e}")
+            # Fallback to generic icon
+            try:
+                self.window.set_icon_name("video-x-generic")
+            except:
+                print("Could not set fallback icon.")
     
     def show_error_dialog(self, message):
         dialog = Gtk.AlertDialog()
