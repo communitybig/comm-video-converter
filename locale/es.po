@@ -909,3 +909,384 @@ msgid "You have limited free disk space. Converting multiple videos may fill you
 msgstr ""
 "Tienes espacio limitado en el disco. Convertir múltiples videos puede llenar tu disco. ¿Continuar "
 "de todos modos?"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 235
+#: NEEDS WORK
+msgid "Previous frame"
+msgstr "Marco anterior"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 242
+#: NEEDS WORK
+msgid "Back 1 second"
+msgstr "Atrás 1 segundo"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 249
+#: NEEDS WORK
+msgid "Back 10 seconds"
+msgstr "Retroceder 10 segundos"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 256
+#: NEEDS WORK
+msgid "Extract current frame"
+msgstr "Extraer fotograma actual"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 263
+#: NEEDS WORK
+msgid "Forward 10 seconds"
+msgstr "Avanzar 10 segundos"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 270
+#: NEEDS WORK
+msgid "Forward 1 second"
+msgstr "Avanzar 1 segundo"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 277
+#: NEEDS WORK
+msgid "Next frame"
+msgstr "Siguiente fotograma"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 299
+#: NEEDS WORK
+msgid "Trim"
+msgstr "Recortar"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 314
+#: NEEDS WORK
+msgid "Start:"
+msgstr "Inicio:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 321
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 341
+#: NEEDS WORK
+msgid "Set"
+msgstr "Conjunto"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 334
+#: NEEDS WORK
+msgid "End:"
+msgstr "Fin:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 337
+#: NEEDS WORK
+msgid "End"
+msgstr "Fin"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 354
+#: NEEDS WORK
+msgid "Duration:"
+msgstr "Duración:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 369
+#: NEEDS WORK
+msgid "Reset trim points"
+msgstr "Restablecer puntos de recorte"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 380
+#: NEEDS WORK
+msgid "Crop"
+msgstr "Recortar"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 414
+#: NEEDS WORK
+msgid "Left"
+msgstr "Izquierda"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 433
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 464
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 495
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 526
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 575
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 604
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 633
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 662
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 691
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 720
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 749
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 778
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 807
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 836
+#: NEEDS WORK
+msgid "Reset to default"
+msgstr "Restablecer a los valores predeterminados"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 445
+#: NEEDS WORK
+msgid "Right"
+msgstr "Derecha"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 476
+#: NEEDS WORK
+msgid "Top"
+msgstr "Superior"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 507
+#: NEEDS WORK
+msgid "Bottom"
+msgstr "Fondo"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 538
+#: NEEDS WORK
+msgid "Final size: calculating..."
+msgstr "Tamaño final: calculando..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 552
+#: NEEDS WORK
+msgid "Video Adjustments"
+msgstr "Ajustes de video"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 555
+#: NEEDS WORK
+msgid "Brightness"
+msgstr "Brillo"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 556
+#: NEEDS WORK
+msgid "Between -1.0 and 1.0. Default: 0.0"
+msgstr "Entre -1.0 y 1.0. Predeterminado: 0.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 584
+#: NEEDS WORK
+msgid "Contrast"
+msgstr "Contraste"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 585
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 614
+#: NEEDS WORK
+msgid "Between 0.0 and 2.0. Default: 1.0"
+msgstr "Entre 0.0 y 2.0. Predeterminado: 1.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 613
+#: NEEDS WORK
+msgid "Saturation"
+msgstr "Saturación"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 642
+#: NEEDS WORK
+msgid "Exposure"
+msgstr "Exposición"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 643
+#: NEEDS WORK
+msgid "Between -3.0 and 3.0 EV. Default: 0.0"
+msgstr "Entre -3.0 y 3.0 EV. Predeterminado: 0.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 671
+#: NEEDS WORK
+msgid "Gamma"
+msgstr "Gamma"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 672
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 701
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 730
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 759
+#: NEEDS WORK
+msgid "Between 0.0 and 16.0. Default: 1.0"
+msgstr "Entre 0.0 y 16.0. Predeterminado: 1.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 700
+#: NEEDS WORK
+msgid "Red Gamma"
+msgstr "Gamma Roja"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 729
+#: NEEDS WORK
+msgid "Green Gamma"
+msgstr "Gamma Verde"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 758
+#: NEEDS WORK
+msgid "Blue Gamma"
+msgstr "Gamma Azul"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 787
+#: NEEDS WORK
+msgid "Gamma Weight"
+msgstr "Peso Gamma"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 788
+#: NEEDS WORK
+msgid "Between 0.0 and 1.0. Default: 1.0"
+msgstr "Entre 0.0 y 1.0. Predeterminado: 1.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 816
+#: NEEDS WORK
+msgid "Hue"
+msgstr "Tono"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 817
+#: NEEDS WORK
+msgid "Between -3.14 and 3.14 radians. Default: 0.0"
+msgstr "Entre -3.14 y 3.14 radianes. Predeterminado: 0.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 848
+#: NEEDS WORK
+msgid "Video Information"
+msgstr "Información del video"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 851
+#: NEEDS WORK
+msgid "Filename"
+msgstr "Nombre de archivo"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 852
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 858
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 864
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 871
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 877
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 883
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 889
+#: NEEDS WORK
+msgid "Unknown"
+msgstr "Desconocido"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 857
+#: NEEDS WORK
+msgid "Resolution"
+msgstr "Resolución"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 863
+#: NEEDS WORK
+msgid "Codec"
+msgstr "Códec"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 870
+#: NEEDS WORK
+msgid "Format"
+msgstr "Formato"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 876
+#: NEEDS WORK
+msgid "File Size"
+msgstr "Tamaño del archivo"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 882
+#: NEEDS WORK
+msgid "Duration"
+msgstr "Duración"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 888
+#: NEEDS WORK
+msgid "Frame Rate"
+msgstr "Tasa de fotogramas"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1070
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1071
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1072
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1073
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1074
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1075
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1076
+#: NEEDS WORK
+msgid "Loading..."
+msgstr "Cargando..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1350
+#: NEEDS WORK
+msgid "Save Frame As"
+msgstr "Guardar fotograma como"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1403
+#: NEEDS WORK
+msgid "Frame Saved"
+msgstr "Marco guardado"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1404
+#: NEEDS WORK
+msgid "Current frame has been saved to {0}"
+msgstr "El marco actual se ha guardado en {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1408
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1412
+#: NEEDS WORK
+msgid "Error saving frame: {0}"
+msgstr "Error al guardar el marco: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1471
+#: NEEDS WORK
+msgid "End of video"
+msgstr "Fin del video"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1519
+#: NEEDS WORK
+msgid "Crop Video"
+msgstr "Recortar video"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1544
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1596
+#: NEEDS WORK
+msgid "Final size"
+msgstr "Tamaño final"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 95
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 125
+#: NEEDS WORK
+msgid "Video Preview"
+msgstr "Vista previa de video"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 140
+#: NEEDS WORK
+msgid "Please select a video file first"
+msgstr "Por favor, seleccione primero un archivo de video."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 145
+#: NEEDS WORK
+msgid "Could not load the selected video file"
+msgstr "No se pudo cargar el archivo de video seleccionado."

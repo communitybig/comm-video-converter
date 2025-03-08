@@ -908,3 +908,384 @@ msgid "You have limited free disk space. Converting multiple videos may fill you
 msgstr ""
 "Teie tasuta kettaruum on piiratud. Mitme video konverteerimine võib teie ketta täita. Kas soovite "
 "ikkagi jätkata?"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 235
+#: NEEDS WORK
+msgid "Previous frame"
+msgstr "Eelmine raam"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 242
+#: NEEDS WORK
+msgid "Back 1 second"
+msgstr "Tagasi 1 sekund"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 249
+#: NEEDS WORK
+msgid "Back 10 seconds"
+msgstr "Tagasi 10 sekundi võrra"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 256
+#: NEEDS WORK
+msgid "Extract current frame"
+msgstr "Ekstraheeri praegune kaader"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 263
+#: NEEDS WORK
+msgid "Forward 10 seconds"
+msgstr "Edasi 10 sekundit"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 270
+#: NEEDS WORK
+msgid "Forward 1 second"
+msgstr "Edasi 1 sekund"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 277
+#: NEEDS WORK
+msgid "Next frame"
+msgstr "Järgmine kaader"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 299
+#: NEEDS WORK
+msgid "Trim"
+msgstr "Lõika ära"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 314
+#: NEEDS WORK
+msgid "Start:"
+msgstr "Algus:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 321
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 341
+#: NEEDS WORK
+msgid "Set"
+msgstr "Seade"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 334
+#: NEEDS WORK
+msgid "End:"
+msgstr "Lõpp:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 337
+#: NEEDS WORK
+msgid "End"
+msgstr "Lõpp"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 354
+#: NEEDS WORK
+msgid "Duration:"
+msgstr "Kestus:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 369
+#: NEEDS WORK
+msgid "Reset trim points"
+msgstr "Lähtestage lõikepunktid"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 380
+#: NEEDS WORK
+msgid "Crop"
+msgstr "Kärpimine"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 414
+#: NEEDS WORK
+msgid "Left"
+msgstr "Vasak"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 433
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 464
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 495
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 526
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 575
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 604
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 633
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 662
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 691
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 720
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 749
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 778
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 807
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 836
+#: NEEDS WORK
+msgid "Reset to default"
+msgstr "Lähtestama vaikeseaded"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 445
+#: NEEDS WORK
+msgid "Right"
+msgstr "Õige"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 476
+#: NEEDS WORK
+msgid "Top"
+msgstr "Üles"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 507
+#: NEEDS WORK
+msgid "Bottom"
+msgstr "Alumine"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 538
+#: NEEDS WORK
+msgid "Final size: calculating..."
+msgstr "Lõplik suurus: arvutatakse..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 552
+#: NEEDS WORK
+msgid "Video Adjustments"
+msgstr "Video seadistused"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 555
+#: NEEDS WORK
+msgid "Brightness"
+msgstr "Heledus"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 556
+#: NEEDS WORK
+msgid "Between -1.0 and 1.0. Default: 0.0"
+msgstr "Vahemikus -1,0 kuni 1,0. Vaikimisi: 0,0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 584
+#: NEEDS WORK
+msgid "Contrast"
+msgstr "Kontrast"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 585
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 614
+#: NEEDS WORK
+msgid "Between 0.0 and 2.0. Default: 1.0"
+msgstr "Vahemikus 0.0 kuni 2.0. Vaikimisi: 1.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 613
+#: NEEDS WORK
+msgid "Saturation"
+msgstr "Saturatsioon"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 642
+#: NEEDS WORK
+msgid "Exposure"
+msgstr "Kokkupuude"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 643
+#: NEEDS WORK
+msgid "Between -3.0 and 3.0 EV. Default: 0.0"
+msgstr "Vahemikus -3.0 kuni 3.0 EV. Vaikimisi: 0.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 671
+#: NEEDS WORK
+msgid "Gamma"
+msgstr "Gamma"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 672
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 701
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 730
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 759
+#: NEEDS WORK
+msgid "Between 0.0 and 16.0. Default: 1.0"
+msgstr "Vahemikus 0.0 kuni 16.0. Vaikimisi: 1.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 700
+#: NEEDS WORK
+msgid "Red Gamma"
+msgstr "Punane Gamma"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 729
+#: NEEDS WORK
+msgid "Green Gamma"
+msgstr "Roheline Gamma"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 758
+#: NEEDS WORK
+msgid "Blue Gamma"
+msgstr "Sinine Gamma"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 787
+#: NEEDS WORK
+msgid "Gamma Weight"
+msgstr "Gamma kaal"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 788
+#: NEEDS WORK
+msgid "Between 0.0 and 1.0. Default: 1.0"
+msgstr "Vahemikus 0,0 kuni 1,0. Vaikimisi: 1,0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 816
+#: NEEDS WORK
+msgid "Hue"
+msgstr "Toon"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 817
+#: NEEDS WORK
+msgid "Between -3.14 and 3.14 radians. Default: 0.0"
+msgstr "Vahemikus -3.14 kuni 3.14 radiaani. Vaikimisi: 0.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 848
+#: NEEDS WORK
+msgid "Video Information"
+msgstr "Video teave"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 851
+#: NEEDS WORK
+msgid "Filename"
+msgstr "Failinimi"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 852
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 858
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 864
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 871
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 877
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 883
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 889
+#: NEEDS WORK
+msgid "Unknown"
+msgstr "Tundmatu"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 857
+#: NEEDS WORK
+msgid "Resolution"
+msgstr "Resolutsioon"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 863
+#: NEEDS WORK
+msgid "Codec"
+msgstr "Koodek"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 870
+#: NEEDS WORK
+msgid "Format"
+msgstr "Formaat"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 876
+#: NEEDS WORK
+msgid "File Size"
+msgstr "Faili suurus"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 882
+#: NEEDS WORK
+msgid "Duration"
+msgstr "Kestus"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 888
+#: NEEDS WORK
+msgid "Frame Rate"
+msgstr "Kaadrisagedus"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1070
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1071
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1072
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1073
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1074
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1075
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1076
+#: NEEDS WORK
+msgid "Loading..."
+msgstr "Laadimine..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1350
+#: NEEDS WORK
+msgid "Save Frame As"
+msgstr "Salvesta raam kui"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1403
+#: NEEDS WORK
+msgid "Frame Saved"
+msgstr "Raam salvestatud"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1404
+#: NEEDS WORK
+msgid "Current frame has been saved to {0}"
+msgstr "Praegune raam on salvestatud {0} juurde."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1408
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1412
+#: NEEDS WORK
+msgid "Error saving frame: {0}"
+msgstr "Viga salvestamisel: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1471
+#: NEEDS WORK
+msgid "End of video"
+msgstr "Video lõpp"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1519
+#: NEEDS WORK
+msgid "Crop Video"
+msgstr "Kärbi videot"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1544
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1596
+#: NEEDS WORK
+msgid "Final size"
+msgstr "Lõplik suurus"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 95
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 125
+#: NEEDS WORK
+msgid "Video Preview"
+msgstr "Video eelvaade"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 140
+#: NEEDS WORK
+msgid "Please select a video file first"
+msgstr "Palun valige esmalt videofail."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 145
+#: NEEDS WORK
+msgid "Could not load the selected video file"
+msgstr "Valitud videofaili ei saanud laadida."

@@ -909,3 +909,384 @@ msgid "You have limited free disk space. Converting multiple videos may fill you
 msgstr ""
 "Имате ограничено свободно дисково пространство. Конвертирането на множество видеа може да запълни "
 "вашия диск. Да продължим все пак?"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 235
+#: NEEDS WORK
+msgid "Previous frame"
+msgstr "Предишен кадър"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 242
+#: NEEDS WORK
+msgid "Back 1 second"
+msgstr "Назад 1 секунда"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 249
+#: NEEDS WORK
+msgid "Back 10 seconds"
+msgstr "Назад 10 секунди"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 256
+#: NEEDS WORK
+msgid "Extract current frame"
+msgstr "Извлечи текущия кадър"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 263
+#: NEEDS WORK
+msgid "Forward 10 seconds"
+msgstr "Напред 10 секунди"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 270
+#: NEEDS WORK
+msgid "Forward 1 second"
+msgstr "Напред 1 секунда"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 277
+#: NEEDS WORK
+msgid "Next frame"
+msgstr "Следващ кадър"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 299
+#: NEEDS WORK
+msgid "Trim"
+msgstr "Остригане"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 314
+#: NEEDS WORK
+msgid "Start:"
+msgstr "Старт:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 321
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 341
+#: NEEDS WORK
+msgid "Set"
+msgstr "Набор"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 334
+#: NEEDS WORK
+msgid "End:"
+msgstr "Край:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 337
+#: NEEDS WORK
+msgid "End"
+msgstr "Край"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 354
+#: NEEDS WORK
+msgid "Duration:"
+msgstr "Продължителност:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 369
+#: NEEDS WORK
+msgid "Reset trim points"
+msgstr "Нулиране на точки на подрязване"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 380
+#: NEEDS WORK
+msgid "Crop"
+msgstr "Изрежи"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 414
+#: NEEDS WORK
+msgid "Left"
+msgstr "Ляво"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 433
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 464
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 495
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 526
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 575
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 604
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 633
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 662
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 691
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 720
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 749
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 778
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 807
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 836
+#: NEEDS WORK
+msgid "Reset to default"
+msgstr "Нулиране до подразбиране"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 445
+#: NEEDS WORK
+msgid "Right"
+msgstr "Дясно"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 476
+#: NEEDS WORK
+msgid "Top"
+msgstr "Връх"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 507
+#: NEEDS WORK
+msgid "Bottom"
+msgstr "Дъно"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 538
+#: NEEDS WORK
+msgid "Final size: calculating..."
+msgstr "Краен размер: изчислява се..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 552
+#: NEEDS WORK
+msgid "Video Adjustments"
+msgstr "Настройки на видеото"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 555
+#: NEEDS WORK
+msgid "Brightness"
+msgstr "Яркост"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 556
+#: NEEDS WORK
+msgid "Between -1.0 and 1.0. Default: 0.0"
+msgstr "Между -1.0 и 1.0. По подразбиране: 0.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 584
+#: NEEDS WORK
+msgid "Contrast"
+msgstr "Контраст"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 585
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 614
+#: NEEDS WORK
+msgid "Between 0.0 and 2.0. Default: 1.0"
+msgstr "Между 0.0 и 2.0. По подразбиране: 1.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 613
+#: NEEDS WORK
+msgid "Saturation"
+msgstr "Насищане"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 642
+#: NEEDS WORK
+msgid "Exposure"
+msgstr "Излагане"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 643
+#: NEEDS WORK
+msgid "Between -3.0 and 3.0 EV. Default: 0.0"
+msgstr "Между -3.0 и 3.0 EV. По подразбиране: 0.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 671
+#: NEEDS WORK
+msgid "Gamma"
+msgstr "Гама"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 672
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 701
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 730
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 759
+#: NEEDS WORK
+msgid "Between 0.0 and 16.0. Default: 1.0"
+msgstr "Между 0.0 и 16.0. По подразбиране: 1.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 700
+#: NEEDS WORK
+msgid "Red Gamma"
+msgstr "Червена Гама"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 729
+#: NEEDS WORK
+msgid "Green Gamma"
+msgstr "Зелена Гама"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 758
+#: NEEDS WORK
+msgid "Blue Gamma"
+msgstr "Синя Гама"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 787
+#: NEEDS WORK
+msgid "Gamma Weight"
+msgstr "Гама тегло"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 788
+#: NEEDS WORK
+msgid "Between 0.0 and 1.0. Default: 1.0"
+msgstr "Между 0.0 и 1.0. По подразбиране: 1.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 816
+#: NEEDS WORK
+msgid "Hue"
+msgstr "Оттенък"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 817
+#: NEEDS WORK
+msgid "Between -3.14 and 3.14 radians. Default: 0.0"
+msgstr "Между -3.14 и 3.14 радиана. По подразбиране: 0.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 848
+#: NEEDS WORK
+msgid "Video Information"
+msgstr "Информация за видео"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 851
+#: NEEDS WORK
+msgid "Filename"
+msgstr "Име на файл"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 852
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 858
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 864
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 871
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 877
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 883
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 889
+#: NEEDS WORK
+msgid "Unknown"
+msgstr "Непознато"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 857
+#: NEEDS WORK
+msgid "Resolution"
+msgstr "Резолюция"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 863
+#: NEEDS WORK
+msgid "Codec"
+msgstr "Кодек"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 870
+#: NEEDS WORK
+msgid "Format"
+msgstr "Формат"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 876
+#: NEEDS WORK
+msgid "File Size"
+msgstr "Размер на файла"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 882
+#: NEEDS WORK
+msgid "Duration"
+msgstr "Продължителност"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 888
+#: NEEDS WORK
+msgid "Frame Rate"
+msgstr "Честота на кадрите"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1070
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1071
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1072
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1073
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1074
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1075
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1076
+#: NEEDS WORK
+msgid "Loading..."
+msgstr "Зареждане..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1350
+#: NEEDS WORK
+msgid "Save Frame As"
+msgstr "Запази кадър като"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1403
+#: NEEDS WORK
+msgid "Frame Saved"
+msgstr "Рамка запазена"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1404
+#: NEEDS WORK
+msgid "Current frame has been saved to {0}"
+msgstr "Текущият кадър е запазен в {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1408
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1412
+#: NEEDS WORK
+msgid "Error saving frame: {0}"
+msgstr "Грешка при запазване на кадър: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1471
+#: NEEDS WORK
+msgid "End of video"
+msgstr "Край на видеото"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1519
+#: NEEDS WORK
+msgid "Crop Video"
+msgstr "Изрежи видео"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1544
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1596
+#: NEEDS WORK
+msgid "Final size"
+msgstr "Краен размер"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 95
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 125
+#: NEEDS WORK
+msgid "Video Preview"
+msgstr "Визуализация на видео"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 140
+#: NEEDS WORK
+msgid "Please select a video file first"
+msgstr "Моля, първо изберете видео файл."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 145
+#: NEEDS WORK
+msgid "Could not load the selected video file"
+msgstr "Не можа да се зареди избраният видео файл."

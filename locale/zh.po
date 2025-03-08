@@ -1323,3 +1323,384 @@ msgstr "低磁盘空间警告"
 #: NEEDS WORK
 msgid "You have limited free disk space. Converting multiple videos may fill your disk. Continue anyway?"
 msgstr "您的磁盘空间有限。转换多个视频可能会占满您的磁盘。仍然继续吗？"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 235
+#: NEEDS WORK
+msgid "Previous frame"
+msgstr "上一帧"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 242
+#: NEEDS WORK
+msgid "Back 1 second"
+msgstr "返回1秒"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 249
+#: NEEDS WORK
+msgid "Back 10 seconds"
+msgstr "返回10秒"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 256
+#: NEEDS WORK
+msgid "Extract current frame"
+msgstr "提取当前帧"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 263
+#: NEEDS WORK
+msgid "Forward 10 seconds"
+msgstr "快进10秒"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 270
+#: NEEDS WORK
+msgid "Forward 1 second"
+msgstr "向前 1 秒"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 277
+#: NEEDS WORK
+msgid "Next frame"
+msgstr "下一个帧"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 299
+#: NEEDS WORK
+msgid "Trim"
+msgstr "修剪"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 314
+#: NEEDS WORK
+msgid "Start:"
+msgstr "开始:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 321
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 341
+#: NEEDS WORK
+msgid "Set"
+msgstr "集"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 334
+#: NEEDS WORK
+msgid "End:"
+msgstr "结束:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 337
+#: NEEDS WORK
+msgid "End"
+msgstr "结束"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 354
+#: NEEDS WORK
+msgid "Duration:"
+msgstr "持续时间："
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 369
+#: NEEDS WORK
+msgid "Reset trim points"
+msgstr "重置修剪点"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 380
+#: NEEDS WORK
+msgid "Crop"
+msgstr "裁剪"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 414
+#: NEEDS WORK
+msgid "Left"
+msgstr "左"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 433
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 464
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 495
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 526
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 575
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 604
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 633
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 662
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 691
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 720
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 749
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 778
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 807
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 836
+#: NEEDS WORK
+msgid "Reset to default"
+msgstr "重置为默认值"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 445
+#: NEEDS WORK
+msgid "Right"
+msgstr "右"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 476
+#: NEEDS WORK
+msgid "Top"
+msgstr "顶部"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 507
+#: NEEDS WORK
+msgid "Bottom"
+msgstr "底部"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 538
+#: NEEDS WORK
+msgid "Final size: calculating..."
+msgstr "最终大小：正在计算..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 552
+#: NEEDS WORK
+msgid "Video Adjustments"
+msgstr "视频调整"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 555
+#: NEEDS WORK
+msgid "Brightness"
+msgstr "亮度"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 556
+#: NEEDS WORK
+msgid "Between -1.0 and 1.0. Default: 0.0"
+msgstr "介于 -1.0 和 1.0 之间。默认值：0.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 584
+#: NEEDS WORK
+msgid "Contrast"
+msgstr "对比度"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 585
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 614
+#: NEEDS WORK
+msgid "Between 0.0 and 2.0. Default: 1.0"
+msgstr "在0.0和2.0之间。默认值：1.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 613
+#: NEEDS WORK
+msgid "Saturation"
+msgstr "饱和度"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 642
+#: NEEDS WORK
+msgid "Exposure"
+msgstr "曝光"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 643
+#: NEEDS WORK
+msgid "Between -3.0 and 3.0 EV. Default: 0.0"
+msgstr "在 -3.0 和 3.0 EV 之间。默认值：0.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 671
+#: NEEDS WORK
+msgid "Gamma"
+msgstr "伽马"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 672
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 701
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 730
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 759
+#: NEEDS WORK
+msgid "Between 0.0 and 16.0. Default: 1.0"
+msgstr "在0.0和16.0之间。默认值：1.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 700
+#: NEEDS WORK
+msgid "Red Gamma"
+msgstr "红伽马"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 729
+#: NEEDS WORK
+msgid "Green Gamma"
+msgstr "绿色伽马"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 758
+#: NEEDS WORK
+msgid "Blue Gamma"
+msgstr "蓝色伽马"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 787
+#: NEEDS WORK
+msgid "Gamma Weight"
+msgstr "伽马权重"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 788
+#: NEEDS WORK
+msgid "Between 0.0 and 1.0. Default: 1.0"
+msgstr "介于 0.0 和 1.0 之间。默认值：1.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 816
+#: NEEDS WORK
+msgid "Hue"
+msgstr "色调"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 817
+#: NEEDS WORK
+msgid "Between -3.14 and 3.14 radians. Default: 0.0"
+msgstr "在 -3.14 和 3.14 弧度之间。默认值：0.0"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 848
+#: NEEDS WORK
+msgid "Video Information"
+msgstr "视频信息"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 851
+#: NEEDS WORK
+msgid "Filename"
+msgstr "文件名"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 852
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 858
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 864
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 871
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 877
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 883
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 889
+#: NEEDS WORK
+msgid "Unknown"
+msgstr "未知"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 857
+#: NEEDS WORK
+msgid "Resolution"
+msgstr "分辨率"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 863
+#: NEEDS WORK
+msgid "Codec"
+msgstr "编解码器"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 870
+#: NEEDS WORK
+msgid "Format"
+msgstr "格式"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 876
+#: NEEDS WORK
+msgid "File Size"
+msgstr "文件大小"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 882
+#: NEEDS WORK
+msgid "Duration"
+msgstr "持续时间"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 888
+#: NEEDS WORK
+msgid "Frame Rate"
+msgstr "帧率"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1070
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1071
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1072
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1073
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1074
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1075
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1076
+#: NEEDS WORK
+msgid "Loading..."
+msgstr "加载中..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1350
+#: NEEDS WORK
+msgid "Save Frame As"
+msgstr "另存为帧"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1403
+#: NEEDS WORK
+msgid "Frame Saved"
+msgstr "帧已保存"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1404
+#: NEEDS WORK
+msgid "Current frame has been saved to {0}"
+msgstr "当前帧已保存到 {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1408
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1412
+#: NEEDS WORK
+msgid "Error saving frame: {0}"
+msgstr "保存帧时出错：{0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1471
+#: NEEDS WORK
+msgid "End of video"
+msgstr "视频结束"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1519
+#: NEEDS WORK
+msgid "Crop Video"
+msgstr "裁剪视频"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1544
+# File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1596
+#: NEEDS WORK
+msgid "Final size"
+msgstr "最终大小"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 95
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 125
+#: NEEDS WORK
+msgid "Video Preview"
+msgstr "视频预览"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 140
+#: NEEDS WORK
+msgid "Please select a video file first"
+msgstr "请先选择一个视频文件"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 145
+#: NEEDS WORK
+msgid "Could not load the selected video file"
+msgstr "无法加载所选的视频文件"
