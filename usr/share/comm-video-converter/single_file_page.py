@@ -414,6 +414,14 @@ class SingleFilePage:
         
         cmd = [CONVERT_BIG_PATH, input_file]
         
+        # Add trim options if applicable
+        trim_options = self.get_trim_command_options()
+        if trim_options:
+            cmd.extend(trim_options)
+        
+        # Reset trim times after conversion
+        self.app.set_trim_times(0, None, 0)
+        
         # Debug output
         print(f"Command: {' '.join(cmd)}")
         print(f"Environment variables: {env_vars}")
@@ -427,3 +435,46 @@ class SingleFilePage:
             self.delete_original_check.get_active(),
             env_vars
         )
+    
+    def get_selected_file_path(self):
+        """Return the currently selected file path or None if no valid file is selected"""
+        file_path = self.file_path_label.get_text()
+        if file_path and file_path != _("No file selected") and os.path.exists(file_path):
+            return file_path
+        return None
+    
+    def get_trim_command_options(self):
+        """Get ffmpeg command options for trimming based on set trim points"""
+        start_time, end_time, duration = self.app.get_trim_times()
+        
+        # Only add trim options if either start_time > 0 or end_time is not None
+        options = []
+        
+        if start_time > 0:
+            # Format start time for ffmpeg (-ss option)
+            start_str = self.format_time_ffmpeg(start_time)
+            options.append("-ss")
+            options.append(start_str)
+        
+        if end_time is not None and end_time < duration:
+            if start_time > 0:
+                # If we have a start time, use -t (duration) instead of -to (end time)
+                trim_duration = end_time - start_time
+                duration_str = self.format_time_ffmpeg(trim_duration)
+                options.append("-t")
+                options.append(duration_str)
+            else:
+                # If no start time, use -to (end time)
+                end_str = self.format_time_ffmpeg(end_time)
+                options.append("-to")
+                options.append(end_str)
+        
+        return options
+
+    def format_time_ffmpeg(self, seconds):
+        """Format time in seconds to HH:MM:SS.mmm format for ffmpeg"""
+        hours = int(seconds) // 3600
+        minutes = (int(seconds) % 3600) // 60
+        seconds_remainder = int(seconds) % 60
+        milliseconds = int((seconds - int(seconds)) * 1000)
+        return f"{hours:02d}:{minutes:02d}:{seconds_remainder:02d}.{milliseconds:03d}"
