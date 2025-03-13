@@ -1,7 +1,6 @@
-#!/usr/bin/env python3
 """
-Constants for the Comm Big Converter application.
-Contains paths to executables, application settings, and other constants.
+Constants for the Comm Video Converter application.
+Global settings, paths, and configuration values.
 """
 
 import os
@@ -11,9 +10,6 @@ APP_ID = "org.communitybig.converter"
 APP_NAME = "Comm Video Converter"
 APP_VERSION = "1.0.0"
 
-APP_AUTHOR = "Tales A. Mendonça, Bruno Gonçalves Araujo"
-#APP_CONTACT = "@talesam, @bigbruno"
-
 APP_DEVELOPERS = ["Tales A. Mendonça", "Bruno Gonçalves Araujo"]
 APP_WEBSITES = ["communitybig.org", "biglinux.com.br"]
 
@@ -21,23 +17,15 @@ APP_WEBSITES = ["communitybig.org", "biglinux.com.br"]
 SCHEMA_ID = "org.communitybig.converter"
 
 # Paths to executables
-CONVERT_BIG_PATH = "/usr/bin/comm-converter"
-MKV_MP4_ALL_PATH = "/usr/bin/comm-mkv-mp4-all"
+CONVERT_SCRIPT_PATH = "/usr/bin/comm-converter"
 
 # During development, use local path if scripts are not installed
-if not os.path.exists(CONVERT_BIG_PATH):
-    CONVERT_BIG_PATH = "./comm-converter"
-if not os.path.exists(MKV_MP4_ALL_PATH):
-    MKV_MP4_ALL_PATH = "./comm-mkv-mp4-all"
-
-# Default settings
-DEFAULT_MAX_PROCESSES = 2
-DEFAULT_MIN_MP4_SIZE_KB = 1024  # 1MB
-DEFAULT_LOG_FILENAME = "comm-mkv-mp4-converter.log"
+if not os.path.exists(CONVERT_SCRIPT_PATH):
+    CONVERT_SCRIPT_PATH = "./comm-converter"
 
 # UI constants
-WINDOW_DEFAULT_WIDTH = 800
-WINDOW_DEFAULT_HEIGHT = 600
+WINDOW_DEFAULT_WIDTH = 900
+WINDOW_DEFAULT_HEIGHT = 620
 CONTENT_MAX_WIDTH = 800
 CONTENT_TIGHTENING_THRESHOLD = 600
 
@@ -46,7 +34,7 @@ VIDEO_FILE_MIME_TYPES = [
     "video/mp4",
     "video/x-matroska",
     "video/x-msvideo",
-    "video/quicktime",
+    "video/quicktime", 
     "video/webm",
     "video/x-flv",
     "video/mpeg",

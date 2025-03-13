@@ -8,14 +8,13 @@ from gi.repository import Gtk, Adw, GLib, Pango
 
 # Setup translation
 import gettext
-lang_translations = gettext.translation(
-    "comm-video-converter", localedir="/usr/share/locale", fallback=True
-)
-lang_translations.install()
-# define _ shortcut for translations
-_ = lang_translations.gettext
+_ = gettext.gettext
 
 class ProgressDialog(Adw.Window):
+    """
+    Dialog window to display conversion progress.
+    Provides UI to monitor and control the conversion process.
+    """
     def __init__(self, parent, title, command, input_file=None):
         super().__init__(title=_(title))
         self.set_default_size(500, 200)
@@ -52,7 +51,7 @@ class ProgressDialog(Adw.Window):
         status_group = Adw.PreferencesGroup()
         
         # File info
-        file_name = os.path.basename(input_file) if input_file else _("Multiple files")
+        file_name = os.path.basename(input_file) if input_file else _("Unknown file")
         self.subtitle_label.set_text(file_name)
         
         # Status row with progress bar
@@ -112,6 +111,7 @@ class ProgressDialog(Adw.Window):
         self.connect("close-request", self.on_close_request)
     
     def on_cancel_clicked(self, button):
+        """Handle cancel button click"""
         # Set cancelled flag first to prevent error messages
         self.cancelled = True
         
@@ -140,6 +140,7 @@ class ProgressDialog(Adw.Window):
         GLib.timeout_add(500, self.close)
     
     def on_close_request(self, *args):
+        """Handle close request"""
         # Just cancel if closed directly
         self.cancelled = True
         
@@ -152,13 +153,16 @@ class ProgressDialog(Adw.Window):
         return False  # Allow window to close
     
     def delayed_close(self):
+        """Close dialog after short delay"""
         self.close()
         return False  # Don't repeat
     
     def set_process(self, process):
+        """Set the conversion process for monitoring"""
         self.process = process
     
     def update_progress(self, fraction, text=None):
+        """Update progress bar"""
         self.progress_bar.set_fraction(fraction)
         if text:
             self.progress_bar.set_text(text)
@@ -166,12 +170,15 @@ class ProgressDialog(Adw.Window):
             self.progress_bar.set_text(f"{int(fraction * 100)}%")
     
     def update_status(self, status):
+        """Update status message text"""
         self.status_label.set_text(status)
     
     def set_delete_original(self, delete_original):
+        """Set whether to delete original file after conversion"""
         self.delete_original = delete_original
     
     def mark_success(self):
+        """Mark conversion as successful and update UI"""
         self.success = True
         # Update status icon to success
         self.status_icon.set_from_icon_name("emblem-ok-symbolic")

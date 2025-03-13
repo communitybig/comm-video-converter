@@ -5,19 +5,18 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw, Gio, Pango, GLib
 
-from constants import CONVERT_BIG_PATH
-from conversion import run_with_progress_dialog
+from constants import CONVERT_SCRIPT_PATH, VIDEO_FILE_MIME_TYPES
+from utils.conversion import run_with_progress_dialog, build_convert_command
 
 # Setup translation
 import gettext
-lang_translations = gettext.translation(
-    "comm-video-converter", localedir="/usr/share/locale", fallback=True
-)
-lang_translations.install()
-# define _ shortcut for translations
-_ = lang_translations.gettext
+_ = gettext.gettext
 
-class SingleFilePage:
+class ConversionPage:
+    """
+    Conversion page UI component.
+    Provides interface for selecting and converting video files.
+    """
     def __init__(self, app):
         self.app = app
         self.page = self._create_page()
@@ -26,16 +25,17 @@ class SingleFilePage:
         self._connect_settings()
         
         # Show help on startup if enabled (default: True)
-        show_help_on_startup = self.app.settings_manager.load_setting("show-single-help-on-startup", True)
+        show_help_on_startup = self.app.settings_manager.load_setting("show-conversion-help-on-startup", True)
         if show_help_on_startup:
             # Use GLib.idle_add to show the dialog after the UI is fully loaded
             GLib.idle_add(self.on_help_clicked, None)
     
     def get_page(self):
+        """Return the page widget"""
         return self.page
     
     def _create_page(self):
-        # Create page for convert-big.sh
+        # Create page for conversion
         page = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         
         # Add ScrolledWindow to enable scrolling when window is small
@@ -114,7 +114,7 @@ class SingleFilePage:
         folder_button.set_icon_name("folder-symbolic")
         folder_button.connect("clicked", self.on_folder_button_clicked)
         folder_button.add_css_class("flat")
-        folder_button.add_css_class("round")
+        folder_button.add_css_class("circular")
         
         output_folder_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         output_folder_box.append(self.output_folder_entry)
@@ -124,13 +124,11 @@ class SingleFilePage:
         file_group.add(output_folder_row)
         
         # Option to delete original file
-        self.delete_original_check = Adw.SwitchRow(title=_("Delete original MKV file"))
+        self.delete_original_check = Adw.SwitchRow(title=_("Delete original file"))
         self.delete_original_check.set_subtitle(_("Remove original file after successful conversion"))
         file_group.add(self.delete_original_check)
         
         main_content.append(file_group)
-
-
         
         # Convert button - ensure this is properly styled and visible
         convert_button = Gtk.Button(label=_("Convert Video"))
@@ -157,7 +155,6 @@ class SingleFilePage:
         # Load settings and update UI
         output_folder = settings.load_setting("output-folder", "")
         delete_original = settings.load_setting("delete-original", False)
-        show_help_on_startup = settings.load_setting("show-single-help-on-startup", True)
         
         self.output_folder_entry.set_text(output_folder)
         self.delete_original_check.set_active(delete_original)
@@ -165,9 +162,12 @@ class SingleFilePage:
         # Connect signals
         self.output_folder_entry.connect("changed", 
                                         lambda w: settings.save_setting("output-folder", w.get_text()))
+        
+        self.delete_original_check.connect("notify::active",
+                                          lambda w, p: settings.save_setting("delete-original", w.get_active()))
     
     def on_help_clicked(self, button):
-        """Show help information for single file mode with a switch to control startup behavior"""
+        """Show help information for conversion mode with a switch to control startup behavior"""
         # Create a dialog window properly using Adw.Window
         dialog = Adw.Window()
         dialog.set_default_size(700, 550)
@@ -215,7 +215,7 @@ class SingleFilePage:
             _("• High-quality video processing with customizable settings"),
             _("• Support for various video codecs (H.264, H.265/HEVC, AV1, VP9)"),
             _("• Subtitle extraction and embedding"),
-            _("• Batch processing capabilities")
+            _("• Video preview with trimming and effects")
         ]
         
         for feature in features_list:
@@ -259,7 +259,7 @@ class SingleFilePage:
         controls_box.set_margin_bottom(12)
         
         # Get current setting value
-        current_value = self.app.settings_manager.load_setting("show-single-help-on-startup", True)
+        current_value = self.app.settings_manager.load_setting("show-conversion-help-on-startup", True)
         
         # Create switch with label
         switch_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
@@ -301,9 +301,10 @@ class SingleFilePage:
         """Handle toggling the switch in the help dialog"""
         value = switch.get_active()
         # Update setting
-        self.app.settings_manager.save_setting("show-single-help-on-startup", value)
+        self.app.settings_manager.save_setting("show-conversion-help-on-startup", value)
     
     def on_file_chooser_clicked(self, button):
+        """Open file chooser dialog to select a video file"""
         dialog = Gtk.FileDialog()
         dialog.set_title(_("Select File"))
         dialog.set_initial_folder(Gio.File.new_for_path(self.app.last_accessed_directory))
@@ -314,17 +315,8 @@ class SingleFilePage:
         video_filter = Gtk.FileFilter()
         video_filter.set_name(_("Video files"))
         # Add common video MIME types
-        video_filter.add_mime_type("video/mp4")
-        video_filter.add_mime_type("video/x-matroska")
-        video_filter.add_mime_type("video/x-msvideo")
-        video_filter.add_mime_type("video/quicktime")
-        video_filter.add_mime_type("video/webm")
-        video_filter.add_mime_type("video/x-flv")
-        video_filter.add_mime_type("video/mpeg")
-        video_filter.add_mime_type("video/3gpp")
-        video_filter.add_mime_type("video/x-ms-wmv")
-        video_filter.add_mime_type("video/ogg")
-        video_filter.add_mime_type("video/mp2t")
+        for mime_type in VIDEO_FILE_MIME_TYPES:
+            video_filter.add_mime_type(mime_type)
         filter_list.append(video_filter)
         
         all_filter = Gtk.FileFilter()
@@ -338,6 +330,7 @@ class SingleFilePage:
         dialog.open(self.app.window, None, self._on_file_chosen)
     
     def _on_file_chosen(self, dialog, result):
+        """Handle selected file from file chooser"""
         try:
             file = dialog.open_finish(result)
             if file:
@@ -347,16 +340,25 @@ class SingleFilePage:
                 # Save last accessed directory to settings
                 self.app.settings_manager.save_setting("last-accessed-directory", 
                                                      self.app.last_accessed_directory)
+                
+                # Auto-set output file name if empty
+                if not self.output_file_entry.get_text():
+                    input_basename = os.path.basename(file_path)
+                    name, ext = os.path.splitext(input_basename)
+                    # Set MP4 as default output extension
+                    self.output_file_entry.set_text(f"{name}.mp4")
         except Exception as e:
             print(f"Error selecting file: {e}")
     
     def on_folder_button_clicked(self, button):
+        """Open folder chooser dialog to select output folder"""
         dialog = Gtk.FileDialog()
         dialog.set_title(_("Select the output folder"))
         dialog.set_initial_folder(Gio.File.new_for_path(self.app.last_accessed_directory))
         dialog.select_folder(self.app.window, None, self._on_folder_chosen)
     
     def _on_folder_chosen(self, dialog, result):
+        """Handle selected folder from folder chooser"""
         try:
             folder = dialog.select_folder_finish(result)
             if folder:
@@ -368,7 +370,8 @@ class SingleFilePage:
             print(f"Error selecting folder: {e}")
     
     def on_convert_button_clicked(self, button):
-        # Build command for convert-big.sh
+        """Handle convert button click, start conversion process"""
+        # Check if input file is selected
         if not self.file_path_label.get_text() or self.file_path_label.get_text() == _("No file selected"):
             self.app.show_error_dialog(_("Please select an input file."))
             return
@@ -380,27 +383,21 @@ class SingleFilePage:
             self.app.show_error_dialog(_("The selected file does not exist: {0}").format(input_file))
             return
         
-        # Check if the file is an MKV (for potential deletion)
-        is_mkv = input_file.lower().endswith('.mkv')
-        # Notify the user if they try to delete non-MKV files
-        if self.delete_original_check.get_active() and not is_mkv:
-            self.app.show_info_dialog(
-                _("Information"),
-                _("Note: The 'Delete original file' option only applies to MKV files.\n"
-                "Your selected file will be converted but not deleted.")
-            )
-        
-        # Check if the script exists
-        if not os.path.exists(CONVERT_BIG_PATH):
-            self.app.show_error_dialog(_("Conversion script not found: {0}").format(CONVERT_BIG_PATH))
+        # Check if the conversion script exists
+        if not os.path.exists(CONVERT_SCRIPT_PATH):
+            self.app.show_error_dialog(_("Conversion script not found: {0}").format(CONVERT_SCRIPT_PATH))
             return
         
         # Build environment variables
         env_vars = os.environ.copy()  # Start with current environment
         
-        # Get settings from settings page
+        # Get settings from settings dialog
         try:
-            self.app.settings_page.apply_settings_to_env(env_vars)
+            # First, show the settings dialog temporarily
+            settings_dialog = self.app.show_settings_dialog()
+            # Apply settings to environment variables
+            if hasattr(settings_dialog, "apply_settings_to_env"):
+                settings_dialog.apply_settings_to_env(env_vars)
         except Exception as e:
             print(f"Error applying settings: {e}")
         
@@ -412,10 +409,11 @@ class SingleFilePage:
         if self.output_folder_entry.get_text():
             env_vars["output_folder"] = self.output_folder_entry.get_text()
         
-        cmd = [CONVERT_BIG_PATH, input_file]
+        # Build the conversion command
+        cmd = [CONVERT_SCRIPT_PATH, input_file]
         
         # Add trim options if applicable
-        trim_options = self.get_trim_command_options()
+        trim_options = self._get_trim_command_options()
         if trim_options:
             cmd.extend(trim_options)
         
@@ -431,7 +429,7 @@ class SingleFilePage:
             self.app,
             cmd,
             f"{os.path.basename(input_file)}",
-            input_file if is_mkv else None,
+            input_file if self.delete_original_check.get_active() else None,
             self.delete_original_check.get_active(),
             env_vars
         )
@@ -443,7 +441,7 @@ class SingleFilePage:
             return file_path
         return None
     
-    def get_trim_command_options(self):
+    def _get_trim_command_options(self):
         """Get ffmpeg command options for trimming based on set trim points"""
         start_time, end_time, duration = self.app.get_trim_times()
         
@@ -452,7 +450,7 @@ class SingleFilePage:
         
         if start_time > 0:
             # Format start time for ffmpeg (-ss option)
-            start_str = self.format_time_ffmpeg(start_time)
+            start_str = self._format_time_ffmpeg(start_time)
             options.append("-ss")
             options.append(start_str)
         
@@ -460,18 +458,18 @@ class SingleFilePage:
             if start_time > 0:
                 # If we have a start time, use -t (duration) instead of -to (end time)
                 trim_duration = end_time - start_time
-                duration_str = self.format_time_ffmpeg(trim_duration)
+                duration_str = self._format_time_ffmpeg(trim_duration)
                 options.append("-t")
                 options.append(duration_str)
             else:
                 # If no start time, use -to (end time)
-                end_str = self.format_time_ffmpeg(end_time)
+                end_str = self._format_time_ffmpeg(end_time)
                 options.append("-to")
                 options.append(end_str)
         
         return options
 
-    def format_time_ffmpeg(self, seconds):
+    def _format_time_ffmpeg(self, seconds):
         """Format time in seconds to HH:MM:SS.mmm format for ffmpeg"""
         hours = int(seconds) // 3600
         minutes = (int(seconds) % 3600) // 60

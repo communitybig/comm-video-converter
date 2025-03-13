@@ -1,34 +1,65 @@
 import os
-from gi.repository import Gtk, Adw
-from constants import APP_DEVELOPERS, APP_WEBSITES
+from gi.repository import Gtk, Adw, Gio
+
+from constants import (
+    APP_VERSION, APP_DEVELOPERS, APP_WEBSITES,
+    GPU_OPTIONS, VIDEO_QUALITY_OPTIONS, VIDEO_CODEC_OPTIONS,
+    PRESET_OPTIONS, SUBTITLE_OPTIONS, AUDIO_OPTIONS
+)
 
 # Setup translation
 import gettext
-_ = gettext.gettext  # Will use the already initialized translation
+_ = gettext.gettext
 
-class SettingsPage:
+class SettingsDialog(Adw.Window):
+    """
+    Settings dialog for application configuration.
+    Transformed from the original settings page.
+    """
     def __init__(self, app):
+        super().__init__(title=_("Settings"))
+        self.set_default_size(800, 700)
+        self.set_modal(True)
+        self.set_transient_for(app.window)
+        self.set_hide_on_close(True)
+        
         self.app = app
         self.settings_manager = app.settings_manager
-        self.create_page()
-    
-    def get_page(self):
-        return self.page
-    
-    def create_page(self):
-        # Create settings page
-        self.page = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         
-        # Add ScrolledWindow to enable scrolling when window is small
+        # Create the dialog content
+        self._create_content()
+        
+        # Connect settings signals
+        self._connect_setting_signals()
+        
+        # Load initial values
+        self._load_settings()
+    
+    def _create_content(self):
+        # Create main container
+        content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        
+        # Add HeaderBar
+        header_bar = Adw.HeaderBar()
+        
+        # Add a close button in the header bar
+        close_button = Gtk.Button()
+        close_button.set_icon_name("window-close-symbolic")
+        close_button.connect("clicked", lambda b: self.close())
+        close_button.add_css_class("flat")
+        header_bar.pack_start(close_button)
+        
+        content_box.append(header_bar)
+        
+        # Add ScrolledWindow for the content
         scrolled_window = Gtk.ScrolledWindow()
         scrolled_window.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
         scrolled_window.set_hexpand(True)
         scrolled_window.set_vexpand(True)
-        self.page.append(scrolled_window)
+        content_box.append(scrolled_window)
         
-        # Container for scrollable content - center vertically
+        # Container for scrollable content
         scrollable_content = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        scrollable_content.set_valign(Gtk.Align.CENTER)  # Center content vertically
         scrollable_content.set_vexpand(True)
         scrolled_window.set_child(scrollable_content)
         
@@ -47,33 +78,21 @@ class SettingsPage:
         main_content.set_margin_bottom(24)
         clamp.set_child(main_content)
         
-        # Encoding settings section
-        self.create_encoding_settings(main_content)
+        # Create settings groups
+        self._create_encoding_settings(main_content)
+        self._create_audio_settings(main_content)
+        self._create_general_options(main_content)
+        self._create_about_section(main_content)
         
-        # Audio settings section
-        self.create_audio_settings(main_content)
-        
-        # Video settings section
-        self.create_video_settings(main_content)
-        
-        # General options section
-        self.create_general_options(main_content)
-        
-        # About section
-        self.create_about_section(main_content)
-        
-        # Connect settings signals
-        self.connect_setting_signals()
-        
-        # Load initial values
-        self.load_settings()
+        # Set dialog content
+        self.set_content(content_box)
     
-    def create_encoding_settings(self, main_content):
+    def _create_encoding_settings(self, main_content):
         encoding_group = Adw.PreferencesGroup(title=_("Encoding Settings"))
         
         # GPU selection
         gpu_model = Gtk.StringList()
-        for option in [_("Auto-detect"), _("nvidia"), _("amd"), _("intel"), _("software")]:
+        for option in GPU_OPTIONS:
             gpu_model.append(option)
         self.gpu_combo = Adw.ComboRow(title=_("GPU"))
         self.gpu_combo.set_subtitle(_("Select hardware acceleration"))
@@ -88,7 +107,7 @@ class SettingsPage:
         
         # Video quality
         quality_model = Gtk.StringList()
-        for option in [_("Default"), _("veryhigh"), _("high"), _("medium"), _("low"), _("verylow")]:
+        for option in VIDEO_QUALITY_OPTIONS:
             quality_model.append(option)
         self.video_quality_combo = Adw.ComboRow(title=_("Video quality"))
         self.video_quality_combo.set_subtitle(_("Higher quality needs more processing power"))
@@ -98,7 +117,7 @@ class SettingsPage:
         
         # Video codec
         codec_model = Gtk.StringList()
-        for option in [_("Default (h264)"), _("h264 (MP4)"), _("h265 (HEVC)"), _("av1 (AV1)"), _("vp9 (VP9)")]:
+        for option in VIDEO_CODEC_OPTIONS:
             codec_model.append(option)
         self.video_encoder_combo = Adw.ComboRow(title=_("Video codec"))
         self.video_encoder_combo.set_subtitle(_("Select encoding format"))
@@ -131,14 +150,14 @@ class SettingsPage:
         self.custom_resolution_row.set_visible(False)  # Initially hidden
         
         # Connect combo box to show/hide custom entry
-        self.video_resolution_combo.connect("notify::selected", self.on_resolution_combo_changed)
+        self.video_resolution_combo.connect("notify::selected", self._on_resolution_combo_changed)
         
         encoding_group.add(self.video_resolution_combo)
         encoding_group.add(self.custom_resolution_row)
         
         # Preset
         preset_model = Gtk.StringList()
-        for option in [_("Default"), _("ultrafast"), _("veryfast"), _("faster"), _("medium"), _("slow"), _("veryslow")]:
+        for option in PRESET_OPTIONS:
             preset_model.append(option)
         self.preset_combo = Adw.ComboRow(title=_("Compression preset"))
         self.preset_combo.set_subtitle(_("Slower presets provide better compression"))
@@ -148,7 +167,7 @@ class SettingsPage:
         
         # Subtitles
         subtitle_model = Gtk.StringList()
-        for option in [_("Default (extract)"), _("extract (SRT)"), _("embedded"), _("none")]:
+        for option in SUBTITLE_OPTIONS:
             subtitle_model.append(option)
         self.subtitle_extract_combo = Adw.ComboRow(title=_("Subtitle handling"))
         self.subtitle_extract_combo.set_model(subtitle_model)
@@ -157,7 +176,7 @@ class SettingsPage:
         
         main_content.append(encoding_group)
     
-    def create_audio_settings(self, main_content):
+    def _create_audio_settings(self, main_content):
         audio_group = Adw.PreferencesGroup(title=_("Audio Settings"))
         
         # Audio bitrate combo with common values
@@ -174,9 +193,6 @@ class SettingsPage:
         for option in self.bitrate_values:
             bitrate_model.append(option)
         
-        # Create a box to hold both the combo and entry
-        bitrate_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        
         self.audio_bitrate_combo = Adw.ComboRow(title=_("Audio bitrate"))
         self.audio_bitrate_combo.set_subtitle(_("Select common bitrate or enter custom value"))
         self.audio_bitrate_combo.set_model(bitrate_model)
@@ -188,7 +204,7 @@ class SettingsPage:
         self.custom_bitrate_row.set_visible(False)  # Initially hidden
         
         # Connect combo box to show/hide custom entry
-        self.audio_bitrate_combo.connect("notify::selected", self.on_bitrate_combo_changed)
+        self.audio_bitrate_combo.connect("notify::selected", self._on_bitrate_combo_changed)
         
         audio_group.add(self.audio_bitrate_combo)
         audio_group.add(self.custom_bitrate_row)
@@ -216,14 +232,14 @@ class SettingsPage:
         self.custom_channels_row.set_visible(False)  # Initially hidden
         
         # Connect combo box to show/hide custom entry
-        self.audio_channels_combo.connect("notify::selected", self.on_channels_combo_changed)
+        self.audio_channels_combo.connect("notify::selected", self._on_channels_combo_changed)
         
         audio_group.add(self.audio_channels_combo)
         audio_group.add(self.custom_channels_row)
         
         # Audio handling
         audio_model = Gtk.StringList()
-        for option in [_("Default (copy)"), _("copy"), _("reencode"), _("none")]:
+        for option in AUDIO_OPTIONS:
             audio_model.append(option)
         self.audio_handling_combo = Adw.ComboRow(title=_("Audio handling"))
         self.audio_handling_combo.set_model(audio_model)
@@ -232,7 +248,7 @@ class SettingsPage:
         
         main_content.append(audio_group)
     
-    def on_bitrate_combo_changed(self, combo, param):
+    def _on_bitrate_combo_changed(self, combo, param):
         selected = combo.get_selected()
         is_custom = selected == len(self.bitrate_values) - 1  # Check if "Custom" is selected
         self.custom_bitrate_row.set_visible(is_custom)
@@ -243,7 +259,7 @@ class SettingsPage:
         elif not is_custom and selected == 0:  # Default selected
             self.settings_manager.save_setting("audio-bitrate", "")
     
-    def on_channels_combo_changed(self, combo, param):
+    def _on_channels_combo_changed(self, combo, param):
         selected = combo.get_selected()
         is_custom = selected == len(self.channels_values) - 1  # Check if "Custom" is selected
         self.custom_channels_row.set_visible(is_custom)
@@ -254,7 +270,7 @@ class SettingsPage:
         elif not is_custom and selected == 0:  # Default selected
             self.settings_manager.save_setting("audio-channels", "")
     
-    def on_resolution_combo_changed(self, combo, param):
+    def _on_resolution_combo_changed(self, combo, param):
         selected = combo.get_selected()
         is_custom = selected == len(self.resolution_values) - 1  # Check if "Custom" is selected
         self.custom_resolution_row.set_visible(is_custom)
@@ -265,15 +281,10 @@ class SettingsPage:
         elif not is_custom and selected == 0:  # Default selected
             self.settings_manager.save_setting("video-resolution", "")
     
-    def create_video_settings(self, main_content):
-        # This section is now empty since we moved the video resolution to encoding settings
-        # We can either leave it empty or remove it completely
-        pass
-    
-    def create_general_options(self, main_content):
+    def _create_general_options(self, main_content):
         options_group = Adw.PreferencesGroup(title=_("General Options"))
         
-        # Additional options - moved from Video settings to General
+        # Additional options
         self.options_entry = Adw.EntryRow(title=_("Additional FFmpeg options"))
         self.options_entry.set_tooltip_text(_("Ex: -ss 60 -t 30"))
         options_group.add(self.options_entry)
@@ -288,14 +299,12 @@ class SettingsPage:
         
         main_content.append(options_group)
     
-    def create_about_section(self, main_content):
-        from constants import APP_VERSION, APP_DEVELOPERS, APP_WEBSITES
-        
+    def _create_about_section(self, main_content):
         about_group = Adw.PreferencesGroup(title=_("About"))
         
         # App info in a compact format
         app_info_row = Adw.ActionRow(title=_("Comm Video Converter"))
-        app_info_row.set_subtitle(_("A graphical frontend for converting MKV videos to MP4"))
+        app_info_row.set_subtitle(_("A graphical frontend for converting videos"))
         
         # App icon
         app_icon = Gtk.Image.new_from_icon_name("video-x-generic")
@@ -332,7 +341,7 @@ class SettingsPage:
         
         main_content.append(about_group)
     
-    def connect_setting_signals(self):
+    def _connect_setting_signals(self):
         """Connect signals for saving settings"""
         # Encoding settings
         self.gpu_combo.connect("notify::selected", lambda w, p: self.settings_manager.save_setting("gpu-selection", w.get_selected()))
@@ -355,7 +364,7 @@ class SettingsPage:
         self.force_copy_video_check.connect("notify::active", lambda w, p: self.settings_manager.save_setting("force-copy-video", w.get_active()))
         self.only_extract_subtitles_check.connect("notify::active", lambda w, p: self.settings_manager.save_setting("only-extract-subtitles", w.get_active()))
     
-    def load_settings(self):
+    def _load_settings(self):
         """Load all settings and update UI"""
         # Encoding settings
         self.gpu_combo.set_selected(self.settings_manager.load_setting("gpu-selection", 0))
@@ -410,19 +419,17 @@ class SettingsPage:
         self.gpu_partial_check.set_active(self.settings_manager.load_setting("gpu-partial", False))
         self.force_copy_video_check.set_active(self.settings_manager.load_setting("force-copy-video", False))
         self.only_extract_subtitles_check.set_active(self.settings_manager.load_setting("only-extract-subtitles", False))
-        
+    
     def apply_settings_to_env(self, env_vars):
         """Apply current settings to environment variables for conversion process"""
         # GPU Selection
         gpu_index = self.gpu_combo.get_selected()
         if gpu_index > 0:  # If not "Auto-detect"
-            from constants import GPU_OPTIONS
             env_vars["gpu"] = GPU_OPTIONS[gpu_index].lower()
         
         # Video quality
         quality_index = self.video_quality_combo.get_selected()
         if quality_index > 0:  # If not "Default"
-            from constants import VIDEO_QUALITY_OPTIONS
             env_vars["video_quality"] = VIDEO_QUALITY_OPTIONS[quality_index].lower()
         
         # Video codec
@@ -445,13 +452,11 @@ class SettingsPage:
         # Preset
         preset_index = self.preset_combo.get_selected()
         if preset_index > 0:  # If not "Default"
-            from constants import PRESET_OPTIONS
             env_vars["preset"] = PRESET_OPTIONS[preset_index].lower()
         
         # Subtitle handling
         subtitle_index = self.subtitle_extract_combo.get_selected()
         if subtitle_index > 0:  # If not "Default"
-            from constants import SUBTITLE_OPTIONS
             # Extract just the first word
             subtitle_option = SUBTITLE_OPTIONS[subtitle_index].split()[0].lower()
             env_vars["subtitle_extract"] = subtitle_option
@@ -459,7 +464,6 @@ class SettingsPage:
         # Audio handling
         audio_index = self.audio_handling_combo.get_selected()
         if audio_index > 0:  # If not "Default"
-            from constants import AUDIO_OPTIONS
             # Extract just the first word
             audio_option = AUDIO_OPTIONS[audio_index].split()[0].lower()
             env_vars["audio_handling"] = audio_option

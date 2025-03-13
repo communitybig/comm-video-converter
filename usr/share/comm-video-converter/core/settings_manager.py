@@ -1,3 +1,4 @@
+# core/settings_manager.py
 import os
 import gi
 
@@ -5,6 +6,10 @@ gi.require_version("Gio", "2.0")
 from gi.repository import Gio
 
 class SettingsManager:
+    """
+    Manages application settings using GSettings.
+    Provides methods to save and load settings with fallback to default values.
+    """
     def __init__(self, schema_id):
         self.schema_id = schema_id
         self.settings = None
@@ -57,6 +62,8 @@ class SettingsManager:
                 return self.settings.get_boolean(key)
             elif value_type == 'i':
                 return self.settings.get_int(key)
+            elif value_type == 'd':
+                return self.settings.get_double(key)
             else:
                 return default
         except Exception as e:
@@ -82,6 +89,8 @@ class SettingsManager:
                 return self.settings.set_boolean(key, bool(value))
             elif value_type == 'i':
                 return self.settings.set_int(key, int(value))
+            elif value_type == 'd':
+                return self.settings.set_double(key, float(value))
             else:
                 print(f"Warning: Unsupported type {value_type} for {key}")
                 return False

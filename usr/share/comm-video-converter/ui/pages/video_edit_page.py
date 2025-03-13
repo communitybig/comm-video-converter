@@ -19,7 +19,7 @@ lang_translations.install()
 # define _ shortcut for translations
 _ = lang_translations.gettext
 
-class VideoPreviewPage:
+class VideoEditPage:
     def __init__(self, app):
         self.app = app
         

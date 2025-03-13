@@ -1,9 +1,4 @@
-#!/usr/bin/env python3
-"""
-Handles video conversion with GPU acceleration, subtitle extraction,
-and video effects processing.
-"""
-
+# core/converter.py
 import os
 import logging
 import json
@@ -12,19 +7,79 @@ from pathlib import Path
 from typing import Optional, Callable, Dict, Any
 
 # Import dataclasses
-from data_models import (
-    ConversionOptions,
-    VideoEffects,
-    CropSettings,
-    TrimSettings,
-    EncodingSettings,
-    AudioSettings,
-    SubtitleSettings,
-)
+from dataclasses import dataclass, field
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 logger = logging.getLogger("comm-converter")
+
+
+# Define as dataclasses que antes estavam em um módulo separado
+@dataclass
+class VideoEffects:
+    brightness: float = 0.0
+    contrast: float = 1.0
+    saturation: float = 1.0
+    gamma: float = 1.0
+    gamma_r: float = 1.0
+    gamma_g: float = 1.0
+    gamma_b: float = 1.0
+    gamma_weight: float = 1.0
+    hue: float = 0.0
+    exposure: float = 0.0
+
+@dataclass
+class CropSettings:
+    left: int = 0
+    top: int = 0
+    width: int = 0
+    height: int = 0
+    right: int = 0
+    bottom: int = 0
+    enabled: bool = False
+
+@dataclass
+class TrimSettings:
+    start_time: float = 0.0
+    end_time: Optional[float] = None
+    duration: float = 0.0
+
+@dataclass
+class EncodingSettings:
+    video_encoder: str = "h264"
+    video_quality: str = "medium"
+    video_resolution: str = ""
+    gpu_selection: int = 0
+    gpu_partial: bool = False
+    preset: str = "medium"
+    use_gpu: bool = True
+
+@dataclass
+class AudioSettings:
+    handling: str = "copy"
+    bitrate: str = ""
+    channels: str = ""
+
+@dataclass
+class SubtitleSettings:
+    mode: str = "extract"
+
+@dataclass
+class ConversionOptions:
+    input_file: str = ""
+    output_file: str = ""
+    output_folder: str = ""
+    video_effects: VideoEffects = field(default_factory=VideoEffects)
+    crop: CropSettings = field(default_factory=CropSettings)
+    trim: TrimSettings = field(default_factory=TrimSettings)
+    encoding: EncodingSettings = field(default_factory=EncodingSettings)
+    audio: AudioSettings = field(default_factory=AudioSettings)
+    subtitle: SubtitleSettings = field(default_factory=SubtitleSettings)
+    additional_options: str = ""
+    force_copy_video: bool = False
+    only_extract_subtitles: bool = False
+    video_width: int = 0
+    video_height: int = 0
 
 
 class VideoConverter:
