@@ -1357,3 +1357,84 @@ msgstr "Alle conversies annuleren..."
 #: NEEDS WORK
 msgid "Progress: {0} of {1} completed, {2} failed, {3} active"
 msgstr "Voortgang: {0} van {1} voltooid, {2} mislukt, {3} actief"
+
+# 
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 118
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 29
+#: NEEDS WORK
+msgid "Conversion"
+msgstr "Conversie"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 119
+#: NEEDS WORK
+msgid "Video Edit"
+msgstr "Videobewerking"
+
+# 
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 176
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 63
+#: NEEDS WORK
+msgid "Help"
+msgstr "Help: Help"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 177
+#: NEEDS WORK
+msgid ""
+"This application helps you convert video files between different formats.\n"
+"\n"
+"• Use the Conversion tab to select and convert video files\n"
+"• Use the Video Edit tab to trim, crop, and adjust video properties\n"
+"• Access settings through the gear icon\n"
+"\n"
+"For more help, visit the website: communitybig.org"
+msgstr ""
+"Deze applicatie helpt je video-bestanden tussen verschillende indelingen te converteren.\n"
+"\n"
+"• Gebruik het tabblad Conversie om video-bestanden te selecteren en te converteren\n"
+"• Gebruik het tabblad Video Bewerken om video te trimmen, bij te snijden en videokenmerken aan te "
+"passen\n"
+"• Toegang tot instellingen via het tandwielpictogram\n"
+"\n"
+"Voor meer hulp, bezoek de website: communitybig.org"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 307
+#: NEEDS WORK
+msgid "A graphical frontend for converting videos"
+msgstr "Een grafische frontend voor het converteren van video's"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/progress_dialog.py, line: 54
+#: NEEDS WORK
+msgid "Unknown file"
+msgstr "Onbekend bestand"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 127
+#: NEEDS WORK
+msgid "Delete original file"
+msgstr "Verwijder origineel bestand"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 218
+#: NEEDS WORK
+msgid "• Video preview with trimming and effects"
+msgstr "• Videovoorvertoning met bijsnijden en effecten"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 58
+#: NEEDS WORK
+msgid "Menu"
+msgstr "Menu"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 64
+#: NEEDS WORK
+msgid "Quit"
+msgstr "Afsluiten"

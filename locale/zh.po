@@ -1770,3 +1770,83 @@ msgstr "取消所有转换..."
 #: NEEDS WORK
 msgid "Progress: {0} of {1} completed, {2} failed, {3} active"
 msgstr "进度：{0} / {1} 完成，{2} 失败，{3} 活动"
+
+# 
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 118
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 29
+#: NEEDS WORK
+msgid "Conversion"
+msgstr "转换"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 119
+#: NEEDS WORK
+msgid "Video Edit"
+msgstr "视频编辑"
+
+# 
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 176
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 63
+#: NEEDS WORK
+msgid "Help"
+msgstr "帮助"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 177
+#: NEEDS WORK
+msgid ""
+"This application helps you convert video files between different formats.\n"
+"\n"
+"• Use the Conversion tab to select and convert video files\n"
+"• Use the Video Edit tab to trim, crop, and adjust video properties\n"
+"• Access settings through the gear icon\n"
+"\n"
+"For more help, visit the website: communitybig.org"
+msgstr ""
+"此应用程序帮助您在不同格式之间转换视频文件。\n"
+"\n"
+"• 使用转换选项卡选择并转换视频文件\n"
+"• 使用视频编辑选项卡修剪、裁剪和调整视频属性\n"
+"• 通过齿轮图标访问设置\n"
+"\n"
+"有关更多帮助，请访问网站：communitybig.org"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 307
+#: NEEDS WORK
+msgid "A graphical frontend for converting videos"
+msgstr "一个用于转换视频的图形前端"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/progress_dialog.py, line: 54
+#: NEEDS WORK
+msgid "Unknown file"
+msgstr "未知文件"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 127
+#: NEEDS WORK
+msgid "Delete original file"
+msgstr "删除原始文件"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 218
+#: NEEDS WORK
+msgid "• Video preview with trimming and effects"
+msgstr "• 视频预览，带修剪和特效"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 58
+#: NEEDS WORK
+msgid "Menu"
+msgstr "菜单"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 64
+#: NEEDS WORK
+msgid "Quit"
+msgstr "退出"

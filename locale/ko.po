@@ -1348,3 +1348,83 @@ msgstr "모든 변환을 취소하는 중..."
 #: NEEDS WORK
 msgid "Progress: {0} of {1} completed, {2} failed, {3} active"
 msgstr "진행 상황: {0} 중 {1} 완료, {2} 실패, {3} 활성"
+
+# 
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 118
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 29
+#: NEEDS WORK
+msgid "Conversion"
+msgstr "변환"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 119
+#: NEEDS WORK
+msgid "Video Edit"
+msgstr "비디오 편집"
+
+# 
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 176
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 63
+#: NEEDS WORK
+msgid "Help"
+msgstr "도움말"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 177
+#: NEEDS WORK
+msgid ""
+"This application helps you convert video files between different formats.\n"
+"\n"
+"• Use the Conversion tab to select and convert video files\n"
+"• Use the Video Edit tab to trim, crop, and adjust video properties\n"
+"• Access settings through the gear icon\n"
+"\n"
+"For more help, visit the website: communitybig.org"
+msgstr ""
+"이 애플리케이션은 다양한 형식 간에 비디오 파일을 변환하는 데 도움을 줍니다.\n"
+"\n"
+"• 변환 탭을 사용하여 비디오 파일을 선택하고 변환합니다.\n"
+"• 비디오 편집 탭을 사용하여 비디오를 자르고, 크롭하고, 비디오 속성을 조정합니다.\n"
+"• 기어 아이콘을 통해 설정에 접근합니다.\n"
+"\n"
+"더 많은 도움을 원하시면 웹사이트를 방문하세요: communitybig.org"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 307
+#: NEEDS WORK
+msgid "A graphical frontend for converting videos"
+msgstr "비디오 변환을 위한 그래픽 프론트엔드"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/progress_dialog.py, line: 54
+#: NEEDS WORK
+msgid "Unknown file"
+msgstr "알 수 없는 파일"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 127
+#: NEEDS WORK
+msgid "Delete original file"
+msgstr "원본 파일 삭제"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 218
+#: NEEDS WORK
+msgid "• Video preview with trimming and effects"
+msgstr "• 비디오 미리보기 및 자르기와 효과"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 58
+#: NEEDS WORK
+msgid "Menu"
+msgstr "메뉴"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 64
+#: NEEDS WORK
+msgid "Quit"
+msgstr "종료"

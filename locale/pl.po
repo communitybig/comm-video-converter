@@ -1357,3 +1357,83 @@ msgstr "Anulowanie wszystkich konwersji..."
 #: NEEDS WORK
 msgid "Progress: {0} of {1} completed, {2} failed, {3} active"
 msgstr "Postęp: {0} z {1} zakończony, {2} niepowodzeń, {3} aktywnych"
+
+# 
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 118
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 29
+#: NEEDS WORK
+msgid "Conversion"
+msgstr "Konwersja"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 119
+#: NEEDS WORK
+msgid "Video Edit"
+msgstr "Edycja Wideo"
+
+# 
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 176
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 63
+#: NEEDS WORK
+msgid "Help"
+msgstr "Pomoc"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 177
+#: NEEDS WORK
+msgid ""
+"This application helps you convert video files between different formats.\n"
+"\n"
+"• Use the Conversion tab to select and convert video files\n"
+"• Use the Video Edit tab to trim, crop, and adjust video properties\n"
+"• Access settings through the gear icon\n"
+"\n"
+"For more help, visit the website: communitybig.org"
+msgstr ""
+"Ta aplikacja pomaga w konwersji plików wideo między różnymi formatami.\n"
+"\n"
+"• Użyj zakładki Konwersja, aby wybrać i przekonwertować pliki wideo\n"
+"• Użyj zakładki Edycja wideo, aby przyciąć, przyciąć i dostosować właściwości wideo\n"
+"• Uzyskaj dostęp do ustawień przez ikonę koła zębatego\n"
+"\n"
+"Aby uzyskać więcej pomocy, odwiedź stronę: communitybig.org"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 307
+#: NEEDS WORK
+msgid "A graphical frontend for converting videos"
+msgstr "Graficzny interfejs do konwersji wideo"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/progress_dialog.py, line: 54
+#: NEEDS WORK
+msgid "Unknown file"
+msgstr "Nieznany plik"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 127
+#: NEEDS WORK
+msgid "Delete original file"
+msgstr "Usuń oryginalny plik"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 218
+#: NEEDS WORK
+msgid "• Video preview with trimming and effects"
+msgstr "• Podgląd wideo z przycinaniem i efektami"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 58
+#: NEEDS WORK
+msgid "Menu"
+msgstr "Menu"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 64
+#: NEEDS WORK
+msgid "Quit"
+msgstr "Zakończ"
