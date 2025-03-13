@@ -16,8 +16,13 @@ class HeaderBar(Gtk.Box):
         super().__init__(orientation=Gtk.Orientation.HORIZONTAL)
         self.app = app
         
+        # Garantir que o Box ocupe toda a largura
+        self.set_hexpand(True)
+        
         # Create the header bar
         self.header_bar = Adw.HeaderBar()
+        # Garantir que o HeaderBar ocupe toda a largura
+        self.header_bar.set_hexpand(True)
         self.append(self.header_bar)
         
         # Create tab buttons container
@@ -31,28 +36,20 @@ class HeaderBar(Gtk.Box):
         self.conversion_button.add_css_class("suggested-action")
         self.tab_box.append(self.conversion_button)
         
-        self.preview_button = Gtk.Button(label=_("Video Preview"))
-        self.preview_button.connect("clicked", self._on_tab_clicked, "preview")
+        self.preview_button = Gtk.Button(label=_("Video Edit"))
+        self.preview_button.connect("clicked", self._on_tab_clicked, "edit")
         self.tab_box.append(self.preview_button)
         
         # Store buttons for easy access
         self.tab_buttons = {
             "conversion": self.conversion_button,
-            "preview": self.preview_button
+            "edit": self.preview_button
         }
         
         # Set title widget for header bar
         self.header_bar.set_title_widget(self.tab_box)
         
-        # Add settings button (gear icon)
-        self.settings_button = Gtk.Button()
-        self.settings_button.set_icon_name("emblem-system-symbolic")
-        self.settings_button.set_tooltip_text(_("Settings"))
-        self.settings_button.add_css_class("flat")
-        self.settings_button.connect("clicked", self._on_settings_clicked)
-        self.header_bar.pack_end(self.settings_button)
-        
-        # Add menu button (three dots)
+        # Add menu button (three dots) - ADICIONAR PRIMEIRO PARA FICAR MAIS À DIREITA
         self.menu_button = Gtk.MenuButton()
         self.menu_button.set_icon_name("open-menu-symbolic")
         self.menu_button.set_tooltip_text(_("Menu"))
@@ -65,6 +62,14 @@ class HeaderBar(Gtk.Box):
         
         self.menu_button.set_menu_model(menu)
         self.header_bar.pack_end(self.menu_button)
+        
+        # Add settings button (gear icon) - ADICIONAR DEPOIS PARA FICAR À ESQUERDA DO MENU
+        self.settings_button = Gtk.Button()
+        self.settings_button.set_icon_name("emblem-system-symbolic")
+        self.settings_button.set_tooltip_text(_("Settings"))
+        self.settings_button.add_css_class("flat")
+        self.settings_button.connect("clicked", self._on_settings_clicked)
+        self.header_bar.pack_end(self.settings_button)
     
     def _on_tab_clicked(self, button, tab_name):
         """Handle tab button clicks"""

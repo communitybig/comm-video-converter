@@ -317,27 +317,27 @@ class SettingsDialog(Adw.Window):
         
         about_group.add(app_info_row)
         
-        # Developers header
-        devs_header = Adw.ActionRow(title=_("Developers"))
-        about_group.add(devs_header)
+        # # Developers header
+        # devs_header = Adw.ActionRow(title=_("Developers"))
+        # about_group.add(devs_header)
         
-        # Create a row for each developer
-        for name in APP_DEVELOPERS:
-            dev_row = Adw.ActionRow()
-            dev_row.set_subtitle(name)
-            dev_row.set_margin_start(24)  # Indent for better hierarchy
-            about_group.add(dev_row)
+        # # Create a row for each developer
+        # for name in APP_DEVELOPERS:
+        #     dev_row = Adw.ActionRow()
+        #     dev_row.set_subtitle(name)
+        #     dev_row.set_margin_start(24)  # Indent for better hierarchy
+        #     about_group.add(dev_row)
         
-        # Websites header
-        sites_header = Adw.ActionRow(title=_("Websites"))
-        about_group.add(sites_header)
+        # # Websites header
+        # sites_header = Adw.ActionRow(title=_("Websites"))
+        # about_group.add(sites_header)
         
-        # Create a row for each website
-        for site in APP_WEBSITES:
-            site_row = Adw.ActionRow()
-            site_row.set_subtitle(site)
-            site_row.set_margin_start(24)  # Indent for better hierarchy
-            about_group.add(site_row)
+        # # Create a row for each website
+        # for site in APP_WEBSITES:
+        #     site_row = Adw.ActionRow()
+        #     site_row.set_subtitle(site)
+        #     site_row.set_margin_start(24)  # Indent for better hierarchy
+        #     about_group.add(site_row)
         
         main_content.append(about_group)
     

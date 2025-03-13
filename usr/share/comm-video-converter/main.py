@@ -17,7 +17,8 @@ from ui.pages.conversion_page import ConversionPage
 from ui.pages.video_edit_page import VideoEditPage
 from ui.dialogs.settings_dialog import SettingsDialog
 from ui.dialogs.progress_dialog import ProgressDialog
-from core.settings_manager import SettingsManager
+#from core.settings_manager import SettingsManager
+from core.json_settings_manager import JsonSettingsManager as SettingsManager
 from utils.conversion import run_with_progress_dialog
 
 # Setup translation

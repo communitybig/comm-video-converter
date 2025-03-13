@@ -23,8 +23,8 @@ class VideoEditPage:
     def __init__(self, app):
         self.app = app
         
-        # Initialize GSettings
-        self.settings = Gio.Settings.new("org.communitybig.converter")
+        # Usar o settings_manager do app em vez de criar uma nova instância de Gio.Settings
+        self.settings = app.settings_manager
         
         self.current_video_path = None
         self.video_duration = 0  # Duration in seconds
@@ -35,28 +35,28 @@ class VideoEditPage:
         self.position_changed_handler_id = None  # Store handler ID for blocking
         self.crop_update_timeout_id = None  # Timer ID for delayed crop updates
         
-        # Crop selection variables - load from GSettings
+        # Crop selection variables - load from settings
         self.video_width = 0
         self.video_height = 0
-        self.crop_left = self.settings.get_int("preview-crop-left")
-        self.crop_right = self.settings.get_int("preview-crop-right")
-        self.crop_top = self.settings.get_int("preview-crop-top")
-        self.crop_bottom = self.settings.get_int("preview-crop-bottom")
+        self.crop_left = self.settings.get_int("preview-crop-left", 0)
+        self.crop_right = self.settings.get_int("preview-crop-right", 0)
+        self.crop_top = self.settings.get_int("preview-crop-top", 0)
+        self.crop_bottom = self.settings.get_int("preview-crop-bottom", 0)
 
-        # Add property adjustment variables - load from GSettings
-        self.brightness = self.settings.get_double("preview-brightness")
-        self.contrast = self.settings.get_double("preview-contrast") 
-        self.saturation = self.settings.get_double("preview-saturation")
+        # Add property adjustment variables - load from settings
+        self.brightness = self.settings.get_double("preview-brightness", 0.0)
+        self.contrast = self.settings.get_double("preview-contrast", 1.0) 
+        self.saturation = self.settings.get_double("preview-saturation", 1.0)
         
-        # Additional adjustment variables - load from GSettings
-        self.gamma = self.settings.get_double("preview-gamma")
-        self.gamma_r = self.settings.get_double("preview-gamma-r")
-        self.gamma_g = self.settings.get_double("preview-gamma-g")
-        self.gamma_b = self.settings.get_double("preview-gamma-b")
-        self.gamma_weight = self.settings.get_double("preview-gamma-weight")
+        # Additional adjustment variables - load from settings
+        self.gamma = self.settings.get_double("preview-gamma", 1.0)
+        self.gamma_r = self.settings.get_double("preview-gamma-r", 1.0)
+        self.gamma_g = self.settings.get_double("preview-gamma-g", 1.0)
+        self.gamma_b = self.settings.get_double("preview-gamma-b", 1.0)
+        self.gamma_weight = self.settings.get_double("preview-gamma-weight", 1.0)
         self.fps = None          # Custom FPS value
-        self.hue = self.settings.get_double("preview-hue")
-        self.exposure = self.settings.get_double("preview-exposure")
+        self.hue = self.settings.get_double("preview-hue", 0.0)
+        self.exposure = self.settings.get_double("preview-exposure", 0.0)
         
         # Frame extraction and caching
         self.frame_cache = {}  # Position -> Pixbuf
