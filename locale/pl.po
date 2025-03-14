@@ -1437,3 +1437,27 @@ msgstr "Menu"
 #: NEEDS WORK
 msgid "Quit"
 msgstr "Zakończ"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 24
+#: NEEDS WORK
+msgid "Video Conversion"
+msgstr "Konwersja wideo"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 133
+#: NEEDS WORK
+msgid "Starting FFmpeg process..."
+msgstr "Rozpoczynanie procesu FFmpeg..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 150
+#: NEEDS WORK
+msgid "Process cancelled by user"
+msgstr "Proces anulowany przez użytkownika"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/progress_dialog.py, line: 73
+#: NEEDS WORK
+msgid "Show Command Output"
+msgstr "Pokaż wynik polecenia"

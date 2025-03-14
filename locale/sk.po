@@ -1435,3 +1435,27 @@ msgstr "Menu"
 #: NEEDS WORK
 msgid "Quit"
 msgstr "Ukončiť"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 24
+#: NEEDS WORK
+msgid "Video Conversion"
+msgstr "Konverzia videa"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 133
+#: NEEDS WORK
+msgid "Starting FFmpeg process..."
+msgstr "Spúšťam proces FFmpeg..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 150
+#: NEEDS WORK
+msgid "Process cancelled by user"
+msgstr "Proces zrušen používateľom"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/progress_dialog.py, line: 73
+#: NEEDS WORK
+msgid "Show Command Output"
+msgstr "Zobraziť výstup príkazu"

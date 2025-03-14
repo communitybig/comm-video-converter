@@ -1435,3 +1435,27 @@ msgstr "Izbornik"
 #: NEEDS WORK
 msgid "Quit"
 msgstr "Izlaz"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 24
+#: NEEDS WORK
+msgid "Video Conversion"
+msgstr "Konverzija videa"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 133
+#: NEEDS WORK
+msgid "Starting FFmpeg process..."
+msgstr "Pokretanje FFmpeg procesa..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 150
+#: NEEDS WORK
+msgid "Process cancelled by user"
+msgstr "Proces otkazan od strane korisnika"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/progress_dialog.py, line: 73
+#: NEEDS WORK
+msgid "Show Command Output"
+msgstr "Prikaži izlaz naredbe"

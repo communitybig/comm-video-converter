@@ -1436,3 +1436,27 @@ msgstr "Menüü"
 #: NEEDS WORK
 msgid "Quit"
 msgstr "Välja"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 24
+#: NEEDS WORK
+msgid "Video Conversion"
+msgstr "Videotee ülekandmine"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 133
+#: NEEDS WORK
+msgid "Starting FFmpeg process..."
+msgstr "FFmpeg protsessi käivitamine..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 150
+#: NEEDS WORK
+msgid "Process cancelled by user"
+msgstr "Protsess tühistatud kasutaja poolt"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/progress_dialog.py, line: 73
+#: NEEDS WORK
+msgid "Show Command Output"
+msgstr "Kuva käskluse väljundit"
