@@ -16,6 +16,13 @@ def run_with_progress_dialog(app, cmd, title_suffix, input_file=None, delete_ori
     """Run a conversion command and show a progress dialog"""
     from ui.dialogs.progress_dialog import ProgressDialog
     
+    # Título correto
+    if not title_suffix or title_suffix == "Unknown file":
+        if input_file:
+            title_suffix = os.path.basename(input_file)
+        else:
+            title_suffix = _("Video Conversion")
+    
     cmd_str = " ".join([shlex.quote(arg) for arg in cmd])
     progress_dialog = ProgressDialog(app.window, _("Converting..."), title_suffix, input_file)
     
@@ -31,6 +38,27 @@ def run_with_progress_dialog(app, cmd, title_suffix, input_file=None, delete_ori
         # Print command for debugging
         print(f"Executing command: {cmd_str}")
         
+        # IMPORTANTE: Verificação do diretório de saída
+        output_folder = None
+        if env_vars and "output_folder" in env_vars:
+            output_folder = env_vars["output_folder"]
+            print(f"Output folder from env_vars: {output_folder}")
+            
+            # Verificar se o diretório existe
+            if not os.path.exists(output_folder):
+                try:
+                    os.makedirs(output_folder, exist_ok=True)
+                    print(f"Created output directory: {output_folder}")
+                except Exception as e:
+                    print(f"Warning: Could not create output directory: {e}")
+            
+            # Garantir que o caminho é absoluto
+            if not os.path.isabs(output_folder):
+                abs_path = os.path.abspath(output_folder)
+                env_vars["output_folder"] = abs_path
+                output_folder = abs_path
+                print(f"Converted relative path to absolute: {abs_path}")
+        
         # Create a process group so we can terminate all related processes
         kwargs = {}
         if hasattr(os, 'setsid'):  # Unix/Linux
@@ -41,6 +69,14 @@ def run_with_progress_dialog(app, cmd, title_suffix, input_file=None, delete_ori
         # If env_vars is passed, use it, otherwise use os.environ
         env = env_vars if env_vars is not None else os.environ.copy()
         
+        # Verificar variáveis críticas de ambiente
+        print("Critical environment variables:")
+        for key in ["output_folder", "output_file"]:
+            if key in env:
+                print(f"  {key}={env[key]}")
+            else:
+                print(f"  {key}=<not set>")
+        
         # Use PIPE for stdout and stderr to monitor progress
         process = subprocess.Popen(
             cmd, 
@@ -50,6 +86,7 @@ def run_with_progress_dialog(app, cmd, title_suffix, input_file=None, delete_ori
             universal_newlines=True,
             bufsize=1,
             env=env,
+            cwd=output_folder,  # CRUCIAL: Define o diretório de trabalho para o diretório de saída
             **kwargs
         )
         
@@ -82,12 +119,18 @@ def monitor_progress(app, process, progress_dialog):
     output_file_pattern = re.compile(r'Output #0.*?\'(.*?)\'')
     
     duration_secs = None
+    current_time_secs = 0
     output_file = None
     last_output_time = time.time()
     processing_start_time = time.time()
     
+    # Variáveis para melhorar a estimativa de tempo
+    progress_samples = []  # Lista para armazenar amostras recentes de progresso
+    sample_window = 10     # Número de amostras para usar na média móvel
+    
     # Set initial status
     GLib.idle_add(progress_dialog.update_status, _("Starting process..."))
+    GLib.idle_add(progress_dialog.add_output_text, _("Starting FFmpeg process..."))
     
     try:
         # Read output line by line
@@ -98,9 +141,13 @@ def monitor_progress(app, process, progress_dialog):
             # Print the raw output for debugging
             print(f"FFMPEG: {line.strip()}")
             
+            # Send output to terminal view
+            GLib.idle_add(progress_dialog.add_output_text, line)
+            
             # Check if the process was cancelled
             if progress_dialog.was_cancelled():
                 print("Process was cancelled, stopping monitor thread")
+                GLib.idle_add(progress_dialog.add_output_text, _("Process cancelled by user"))
                 break
             
             # Capture output file if available
@@ -109,6 +156,7 @@ def monitor_progress(app, process, progress_dialog):
                 if output_match:
                     output_file = output_match.group(1)
                     print(f"Detected output file: {output_file}")
+                    GLib.idle_add(progress_dialog.add_output_text, f"Output file: {output_file}")
             
             # Extract duration if not already done
             if "Duration" in line and not duration_secs:
@@ -117,7 +165,9 @@ def monitor_progress(app, process, progress_dialog):
                     duration_str = duration_match.group(1)
                     h, m, s = map(float, duration_str.split(':'))
                     duration_secs = h * 3600 + m * 60 + s
-                    GLib.idle_add(progress_dialog.update_status, _("Processing video..."))
+                    status_msg = _("Processing video...")
+                    GLib.idle_add(progress_dialog.update_status, status_msg)
+                    GLib.idle_add(progress_dialog.add_output_text, f"Video duration: {duration_str} ({duration_secs:.2f} seconds)")
                     print(f"Detected duration: {duration_secs} seconds")
             
             # Extract current time and calculate progress
@@ -129,32 +179,71 @@ def monitor_progress(app, process, progress_dialog):
                     current_time_secs = h * 3600 + m * 60 + s
                     progress = min(current_time_secs / duration_secs, 1.0)
                     
-                    # Calculate estimated time remaining
-                    if progress > 0:
-                        elapsed_time = time.time() - processing_start_time
-                        estimated_total_time = elapsed_time / progress
-                        remaining_secs = max(0, estimated_total_time - elapsed_time)
-                        remaining_mins = int(remaining_secs / 60)
-                        remaining_secs = int(remaining_secs % 60)
+                    # Armazene o par (tempo_atual, tempo_processamento) para calcular média móvel
+                    elapsed_processing_time = time.time() - processing_start_time
+                    progress_samples.append((current_time_secs, elapsed_processing_time))
+                    
+                    # Mantenha apenas as amostras mais recentes
+                    if len(progress_samples) > sample_window:
+                        progress_samples.pop(0)
+                    
+                    # Calcule a velocidade média de processamento usando as amostras recentes
+                    if len(progress_samples) > 1:
+                        # Use apenas as últimas amostras para calcular a taxa recente
+                        recent_samples = progress_samples[-min(5, len(progress_samples)):]
+                        first_sample = recent_samples[0]
+                        last_sample = recent_samples[-1]
                         
-                        # Update UI with progress and estimated time
+                        time_diff = last_sample[0] - first_sample[0]  # Diferença no tempo do vídeo
+                        processing_diff = last_sample[1] - first_sample[1]  # Diferença no tempo de processamento
+                        
+                        if processing_diff > 0:
+                            # Taxa de processamento = quanto tempo de vídeo é processado por segundo de tempo real
+                            processing_rate = time_diff / processing_diff
+                            
+                            # Tempo restante estimado = (duração_total - tempo_atual) / taxa_processamento
+                            remaining_video_time = duration_secs - current_time_secs
+                            remaining_secs = remaining_video_time / processing_rate
+                            
+                            # Limites razoáveis para o tempo estimado
+                            remaining_secs = max(0, min(remaining_secs, duration_secs * 2))
+                            
+                            remaining_mins = int(remaining_secs / 60)
+                            remaining_secs = int(remaining_secs % 60)
+                            
+                            # Update UI with progress and estimated time
+                            GLib.idle_add(progress_dialog.update_progress, progress)
+                            status_msg = _("Time remaining:") + f" {remaining_mins:02d}:{remaining_secs:02d}"
+                            GLib.idle_add(progress_dialog.update_status, status_msg)
+                    else:
+                        # Se não temos amostras suficientes, apenas atualize o progresso
                         GLib.idle_add(progress_dialog.update_progress, progress)
-                        GLib.idle_add(
-                            progress_dialog.update_status, 
-                            _("Time remaining:") + " {1:02d}:{2:02d}".format(
-                                progress * 100, remaining_mins, remaining_secs)
-                        )
             
             # Check for timeout (no output for 15 seconds)
             if time.time() - last_output_time > 15:
-                GLib.idle_add(progress_dialog.update_status, _("No progress detected. Process may be stuck."))
+                timeout_msg = _("No progress detected. Process may be stuck.")
+                GLib.idle_add(progress_dialog.update_status, timeout_msg)
+                GLib.idle_add(progress_dialog.add_output_text, timeout_msg)
                 print("Process may be stuck - no output for 15 seconds")
+        
+        # Also check stdout for any remaining output (though FFmpeg usually uses stderr)
+        for line in iter(process.stdout.readline, ""):
+            GLib.idle_add(progress_dialog.add_output_text, line)
+            print(f"FFMPEG stdout: {line.strip()}")
+            
+            # Check if the process was cancelled
+            if progress_dialog.was_cancelled():
+                break
         
     except (BrokenPipeError, IOError) as e:
         # This can happen if the process is killed during readline
-        print(f"Process pipe error: {e} - process likely terminated")
+        error_msg = f"Process pipe error: {e} - process likely terminated"
+        print(error_msg)
+        GLib.idle_add(progress_dialog.add_output_text, error_msg)
     except Exception as e:
-        print(f"Error reading process output: {e}")
+        error_msg = f"Error reading process output: {e}"
+        print(error_msg)
+        GLib.idle_add(progress_dialog.add_output_text, error_msg)
     
     # Process finished or was canceled
     try:
@@ -164,18 +253,25 @@ def monitor_progress(app, process, progress_dialog):
                 if process.poll() is None:  # If process is still running
                     process.kill()
                     process.wait(timeout=2)
-                    print("Process terminated after cancellation")
+                    term_msg = "Process terminated after cancellation"
+                    print(term_msg)
+                    GLib.idle_add(progress_dialog.add_output_text, term_msg)
             except Exception as e:
-                print(f"Error killing process after cancellation: {e}")
+                error_msg = f"Error killing process after cancellation: {e}"
+                print(error_msg)
+                GLib.idle_add(progress_dialog.add_output_text, error_msg)
             
             # Update UI for cancellation
-            GLib.idle_add(progress_dialog.update_status, _("Conversion cancelled."))
+            cancel_msg = _("Conversion cancelled.")
+            GLib.idle_add(progress_dialog.update_status, cancel_msg)
             GLib.idle_add(progress_dialog.update_progress, 0.0, _("Cancelled"))
             GLib.idle_add(progress_dialog.cancel_button.set_sensitive, False)
         else:
             # Process finished normally, get return code
             return_code = process.wait()
-            print(f"Process finished with return code: {return_code}")
+            finish_msg = f"Process finished with return code: {return_code}"
+            print(finish_msg)
+            GLib.idle_add(progress_dialog.add_output_text, finish_msg)
             
             # Update user interface from main thread
             if return_code == 0:
@@ -184,7 +280,9 @@ def monitor_progress(app, process, progress_dialog):
                 
                 # Update progress bar
                 GLib.idle_add(progress_dialog.update_progress, 1.0, _("Completed!"))
-                GLib.idle_add(progress_dialog.update_status, _("Conversion completed successfully!"))
+                complete_msg = _("Conversion completed successfully!")
+                GLib.idle_add(progress_dialog.update_status, complete_msg)
+                GLib.idle_add(progress_dialog.add_output_text, complete_msg)
                 
                 # Check if we should delete the original file
                 if progress_dialog.delete_original and progress_dialog.input_file:
@@ -195,12 +293,17 @@ def monitor_progress(app, process, progress_dialog):
                         input_size = os.path.getsize(input_file)
                         output_size = os.path.getsize(output_file)
                         
+                        size_info = f"Input file size: {input_size} bytes, Output file size: {output_size} bytes"
+                        GLib.idle_add(progress_dialog.add_output_text, size_info)
+                        
                         # Consider the conversion successful if the output file exists with reasonable size
                         # The size should be at least 1MB or 10% of the original size
                         min_size_threshold = max(1024 * 1024, input_size * 0.1)  
                         if output_size > min_size_threshold:
                             try:
                                 os.remove(input_file)
+                                delete_msg = f"Original file deleted: {input_file}"
+                                GLib.idle_add(progress_dialog.add_output_text, delete_msg)
                                 GLib.idle_add(
                                     lambda: show_info_dialog_and_close_progress(
                                         app,
@@ -210,6 +313,8 @@ def monitor_progress(app, process, progress_dialog):
                                     )
                                 )
                             except Exception as e:
+                                error_msg = f"Could not delete the original file: {e}"
+                                GLib.idle_add(progress_dialog.add_output_text, error_msg)
                                 GLib.idle_add(
                                     lambda: show_info_dialog_and_close_progress(
                                         app,
@@ -219,6 +324,8 @@ def monitor_progress(app, process, progress_dialog):
                                     )
                                 )
                         else:
+                            size_warning = "The original file was not deleted because the converted file size looks suspicious."
+                            GLib.idle_add(progress_dialog.add_output_text, size_warning)
                             GLib.idle_add(
                                 lambda: show_info_dialog_and_close_progress(
                                     app,
@@ -228,6 +335,8 @@ def monitor_progress(app, process, progress_dialog):
                                 )
                             )
                     else:
+                        output_warning = f"Output file not found or not accessible: {output_file}"
+                        GLib.idle_add(progress_dialog.add_output_text, output_warning)
                         GLib.idle_add(
                             lambda: show_info_dialog_and_close_progress(
                                 app,
@@ -244,8 +353,10 @@ def monitor_progress(app, process, progress_dialog):
                         )
                     )
             else:
+                error_msg = _("Conversion failed with code {0}").format(return_code)
                 GLib.idle_add(progress_dialog.update_progress, 0.0, _("Error!"))
-                GLib.idle_add(progress_dialog.update_status, _("Conversion failed with code {0}").format(return_code))
+                GLib.idle_add(progress_dialog.update_status, error_msg)
+                GLib.idle_add(progress_dialog.add_output_text, error_msg)
                 GLib.idle_add(
                     lambda: show_error_dialog_and_close_progress(
                         app,
@@ -260,7 +371,9 @@ def monitor_progress(app, process, progress_dialog):
     finally:
         # Always decrement the conversion counter - even if exceptions occur
         app.conversions_running -= 1
-        print(f"Conversion finished, active conversions: {app.conversions_running}")
+        completion_msg = f"Conversion finished, active conversions: {app.conversions_running}"
+        print(completion_msg)
+        GLib.idle_add(progress_dialog.add_output_text, completion_msg)
 
 def show_info_dialog_and_close_progress(app, message, progress_dialog):
     """Shows an information dialog and closes the progress dialog"""
@@ -301,5 +414,11 @@ def build_convert_command(input_file, settings):
         value = settings.get(settings_key)
         if value:
             env_vars[env_key] = value
+    
+    # Garantir que temos um diretório de saída definido
+    if "output_folder" not in env_vars and input_file:
+        # Se não estiver definido, use o diretório do arquivo de entrada
+        env_vars["output_folder"] = os.path.dirname(input_file)
+        print(f"Setting output folder to input file directory: {env_vars['output_folder']}")
     
     return cmd, env_vars

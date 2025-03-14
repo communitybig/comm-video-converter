@@ -25,9 +25,23 @@ class ConversionPage:
         self._connect_settings()
         
         # Show help on startup if enabled (default: True)
-        show_help_on_startup = self.app.settings_manager.load_setting("show-conversion-help-on-startup", True)
-        if show_help_on_startup:
-            # Use GLib.idle_add to show the dialog after the UI is fully loaded
+        try:
+            # Try to load the setting
+            show_help_on_startup = self.app.settings_manager.load_setting("show-conversion-help-on-startup", True)
+            print(f"Loaded setting show-conversion-help-on-startup: {show_help_on_startup}")
+            
+            # Check if it's explicitly False (not just None or some other falsy value)
+            if show_help_on_startup is False:
+                print("Help dialog disabled by user setting")
+            else:
+                # Default behavior is to show dialog
+                print("Help dialog will be shown (default or user setting)")
+                # Use GLib.idle_add to show the dialog after the UI is fully loaded
+                GLib.idle_add(self.on_help_clicked, None)
+        except Exception as e:
+            # If there's an error loading the setting, log it and default to showing help
+            print(f"Error loading dialog setting: {e}")
+            print("Defaulting to show help dialog")
             GLib.idle_add(self.on_help_clicked, None)
     
     def get_page(self):
@@ -299,9 +313,50 @@ class ConversionPage:
     
     def _on_dialog_switch_toggled(self, switch, param):
         """Handle toggling the switch in the help dialog"""
-        value = switch.get_active()
-        # Update setting
-        self.app.settings_manager.save_setting("show-conversion-help-on-startup", value)
+        try:
+            value = switch.get_active()
+            
+            # Print debug information
+            print(f"Attempting to save setting: show-conversion-help-on-startup = {value}")
+            
+            # Update setting
+            success = self.app.settings_manager.save_setting("show-conversion-help-on-startup", value)
+            
+            if success:
+                print(f"Successfully saved setting: show-conversion-help-on-startup = {value}")
+            else:
+                print("Warning: Setting may not have been saved properly.")
+                
+        except Exception as e:
+            # Log the error
+            print(f"Error toggling dialog setting: {str(e)}")
+            
+            # Fallback approach - try direct save
+            try:
+                settings_file = os.path.expanduser("~/.config/comm-video-converter/settings.json")
+                os.makedirs(os.path.dirname(settings_file), exist_ok=True)
+                
+                # Load existing settings if available
+                settings = {}
+                if os.path.exists(settings_file):
+                    with open(settings_file, 'r') as f:
+                        import json
+                        try:
+                            settings = json.load(f)
+                        except:
+                            settings = {}
+                
+                # Update the setting
+                settings["show-conversion-help-on-startup"] = switch.get_active()
+                
+                # Write back to file
+                with open(settings_file, 'w') as f:
+                    import json
+                    json.dump(settings, f, indent=2)
+                    
+                print(f"Saved setting using fallback method to: {settings_file}")
+            except Exception as backup_error:
+                print(f"Even fallback saving method failed: {str(backup_error)}")
     
     def on_file_chooser_clicked(self, button):
         """Open file chooser dialog to select a video file"""
@@ -336,10 +391,11 @@ class ConversionPage:
             if file:
                 file_path = file.get_path()
                 self.file_path_label.set_text(file_path)
-                self.app.last_accessed_directory = os.path.dirname(file_path)
+                input_dir = os.path.dirname(file_path)
+                self.app.last_accessed_directory = input_dir
                 # Save last accessed directory to settings
                 self.app.settings_manager.save_setting("last-accessed-directory", 
-                                                     self.app.last_accessed_directory)
+                                                    self.app.last_accessed_directory)
                 
                 # Auto-set output file name if empty
                 if not self.output_file_entry.get_text():
@@ -347,6 +403,12 @@ class ConversionPage:
                     name, ext = os.path.splitext(input_basename)
                     # Set MP4 as default output extension
                     self.output_file_entry.set_text(f"{name}.mp4")
+                    
+                # CORREÇÃO: Auto-set output folder to match input folder
+                # This ensures converted files go to the same directory as originals
+                self.output_folder_entry.set_text(input_dir)
+                # Save this as the default output folder
+                self.app.settings_manager.save_setting("output-folder", input_dir)
         except Exception as e:
             print(f"Error selecting file: {e}")
     
@@ -375,8 +437,12 @@ class ConversionPage:
         if not self.file_path_label.get_text() or self.file_path_label.get_text() == _("No file selected"):
             self.app.show_error_dialog(_("Please select an input file."))
             return
-            
+                
         input_file = self.file_path_label.get_text()
+        
+        # Obtenha o diretório do arquivo de entrada - caminho COMPLETO e ABSOLUTO
+        input_dir = os.path.dirname(os.path.abspath(input_file))
+        print(f"Input file directory (absolute): {input_dir}")
         
         # Check if the file exists
         if not os.path.exists(input_file):
@@ -391,23 +457,59 @@ class ConversionPage:
         # Build environment variables
         env_vars = os.environ.copy()  # Start with current environment
         
-        # Get settings from settings dialog
+        # Em vez de mostrar o diálogo, apenas obtenha as configurações
         try:
-            # First, show the settings dialog temporarily
-            settings_dialog = self.app.show_settings_dialog()
-            # Apply settings to environment variables
-            if hasattr(settings_dialog, "apply_settings_to_env"):
-                settings_dialog.apply_settings_to_env(env_vars)
+            # Carregue as configurações diretamente
+            if hasattr(self.app, "settings_manager") and hasattr(self.app.settings_manager, "json_config"):
+                settings = self.app.settings_manager.json_config
+                
+                # Mapeie as configurações para variáveis de ambiente
+                settings_map = {
+                    "gpu-selection": "gpu",
+                    "video-quality": "video_quality",
+                    "video-codec": "video_encoder",
+                    "preset": "preset",
+                    "subtitle-extract": "subtitle_extract",
+                    "audio-handling": "audio_handling",
+                    "audio-bitrate": "audio_bitrate",
+                    "audio-channels": "audio_channels",
+                    "video-resolution": "video_resolution",
+                    "additional-options": "options",
+                    "gpu-partial": "gpu_partial",
+                    "force-copy-video": "force_copy_video",
+                    "only-extract-subtitles": "only_extract_subtitles"
+                }
+                
+                # Aplique as configurações
+                for settings_key, env_key in settings_map.items():
+                    value = settings.get(settings_key)
+                    if isinstance(value, bool) and value:
+                        env_vars[env_key] = "1"
+                    elif value not in [None, "", False]:
+                        env_vars[env_key] = str(value)
         except Exception as e:
-            print(f"Error applying settings: {e}")
+            print(f"Error loading settings: {e}")
         
         # Add output settings
         output_file_text = self.output_file_entry.get_text()
         if output_file_text:
             env_vars["output_file"] = output_file_text
-            
-        if self.output_folder_entry.get_text():
-            env_vars["output_folder"] = self.output_folder_entry.get_text()
+                
+        # CRUCIAL: Defina o diretório de saída corretamente
+        output_folder = self.output_folder_entry.get_text()
+        if output_folder:
+            # Garanta que é caminho absoluto
+            if not os.path.isabs(output_folder):
+                output_folder = os.path.abspath(output_folder)
+                self.output_folder_entry.set_text(output_folder)
+            env_vars["output_folder"] = output_folder
+            print(f"Using specified output folder: {output_folder}")
+        else:
+            # Se nenhum diretório de saída foi especificado, use o mesmo do arquivo de entrada
+            env_vars["output_folder"] = input_dir
+            # Atualize também o campo na interface para feedback visual
+            self.output_folder_entry.set_text(input_dir)
+            print(f"Using input file directory as output: {input_dir}")
         
         # Build the conversion command
         cmd = [CONVERT_SCRIPT_PATH, input_file]

@@ -68,6 +68,44 @@ class ProgressDialog(Adw.Window):
         status_row.set_activatable(False)
         status_group.add(status_row)
         
+        # Create expandable terminal for FFmpeg output
+        self.terminal_expander = Gtk.Expander()
+        self.terminal_expander.set_label(_("Show Command Output"))
+        self.terminal_expander.add_css_class("caption")
+        self.terminal_expander.set_margin_top(8)
+        self.terminal_expander.set_margin_start(16)
+        self.terminal_expander.set_margin_end(16)
+        self.terminal_expander.set_margin_bottom(16)
+        
+        # Container para o conteúdo do terminal 
+        self.terminal_container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        self.terminal_container.set_visible(False)  # Inicialmente oculto
+        
+        # Create scrolled window for the terminal
+        terminal_scroll = Gtk.ScrolledWindow()
+        terminal_scroll.set_min_content_height(200)
+        terminal_scroll.set_vexpand(True)
+
+        # Create terminal-like TextView
+        self.terminal_view = Gtk.TextView()
+        self.terminal_view.set_editable(False)
+        self.terminal_view.set_cursor_visible(False)
+        self.terminal_view.set_monospace(True)
+        self.terminal_view.add_css_class("terminal")
+        self.terminal_view.add_css_class("monospace")
+        # Dark background and light text for terminal-like appearance
+        self.terminal_view.add_css_class("card")
+        self.terminal_buffer = self.terminal_view.get_buffer()
+
+        # Add text view to scrolled window
+        terminal_scroll.set_child(self.terminal_view)
+        
+        # Add scrolled window to container
+        self.terminal_container.append(terminal_scroll)
+        
+        # Connect expander signal
+        self.terminal_expander.connect("notify::expanded", self._on_expander_toggled)
+        
         # Status message
         message_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         message_box.set_margin_top(8)
@@ -100,6 +138,10 @@ class ProgressDialog(Adw.Window):
         
         main_box.append(button_box)
         
+        # Add expander and container to content box
+        main_box.append(self.terminal_expander)
+        main_box.append(self.terminal_container)
+        
         # Set the window content
         self.set_content(content_box)
         
@@ -109,6 +151,32 @@ class ProgressDialog(Adw.Window):
         
         # Connect to the close-request signal
         self.connect("close-request", self.on_close_request)
+    
+    def _on_expander_toggled(self, expander, pspec):
+        """Handle expander toggle to show/hide terminal"""
+        expanded = expander.get_expanded()
+        self.terminal_container.set_visible(expanded)
+        
+        # Se expandido, garanta que o terminal seja rolado para o final
+        if expanded:
+            end_mark = self.terminal_buffer.create_mark(None, self.terminal_buffer.get_end_iter(), False)
+            self.terminal_view.scroll_to_mark(end_mark, 0.0, True, 0.0, 1.0)
+            self.terminal_buffer.delete_mark(end_mark)
+    
+    def add_output_text(self, text):
+        """Add text to the terminal view."""
+        # Add newline if needed
+        if not text.endswith('\n'):
+            text += '\n'
+        
+        # Insert text at the end
+        end_iter = self.terminal_buffer.get_end_iter()
+        self.terminal_buffer.insert(end_iter, text)
+        
+        # Scroll to the end
+        end_mark = self.terminal_buffer.create_mark(None, self.terminal_buffer.get_end_iter(), False)
+        self.terminal_view.scroll_to_mark(end_mark, 0.0, True, 0.0, 1.0)
+        self.terminal_buffer.delete_mark(end_mark)
     
     def on_cancel_clicked(self, button):
         """Handle cancel button click"""

@@ -82,7 +82,6 @@ class SettingsDialog(Adw.Window):
         self._create_encoding_settings(main_content)
         self._create_audio_settings(main_content)
         self._create_general_options(main_content)
-        self._create_about_section(main_content)
         
         # Set dialog content
         self.set_content(content_box)
@@ -298,48 +297,6 @@ class SettingsDialog(Adw.Window):
         options_group.add(self.only_extract_subtitles_check)
         
         main_content.append(options_group)
-    
-    def _create_about_section(self, main_content):
-        about_group = Adw.PreferencesGroup(title=_("About"))
-        
-        # App info in a compact format
-        app_info_row = Adw.ActionRow(title=_("Comm Video Converter"))
-        app_info_row.set_subtitle(_("A graphical frontend for converting videos"))
-        
-        # App icon
-        app_icon = Gtk.Image.new_from_icon_name("video-x-generic")
-        app_icon.set_pixel_size(32)
-        app_info_row.add_prefix(app_icon)
-        
-        # Version label
-        version_label = Gtk.Label(label=f"v{APP_VERSION}")
-        app_info_row.add_suffix(version_label)
-        
-        about_group.add(app_info_row)
-        
-        # # Developers header
-        # devs_header = Adw.ActionRow(title=_("Developers"))
-        # about_group.add(devs_header)
-        
-        # # Create a row for each developer
-        # for name in APP_DEVELOPERS:
-        #     dev_row = Adw.ActionRow()
-        #     dev_row.set_subtitle(name)
-        #     dev_row.set_margin_start(24)  # Indent for better hierarchy
-        #     about_group.add(dev_row)
-        
-        # # Websites header
-        # sites_header = Adw.ActionRow(title=_("Websites"))
-        # about_group.add(sites_header)
-        
-        # # Create a row for each website
-        # for site in APP_WEBSITES:
-        #     site_row = Adw.ActionRow()
-        #     site_row.set_subtitle(site)
-        #     site_row.set_margin_start(24)  # Indent for better hierarchy
-        #     about_group.add(site_row)
-        
-        main_content.append(about_group)
     
     def _connect_setting_signals(self):
         """Connect signals for saving settings"""

@@ -15,6 +15,7 @@ class JsonSettingsManager:
         "output-folder": "",
         "delete-original": False,
         "show-single-help-on-startup": True,
+        "show-conversion-help-on-startup": True,
         
         # Batch conversion settings
         "search-directory": "",
@@ -98,11 +99,24 @@ class JsonSettingsManager:
     def _save_json(self):
         """Save settings to JSON file"""
         try:
-            # Create directory if it doesn't exist
-            os.makedirs(os.path.dirname(self.json_file), exist_ok=True)
+            # Get the directory path - works with both Path objects and strings
+            directory = self.json_file.parent if isinstance(self.json_file, Path) else os.path.dirname(str(self.json_file))
             
-            with open(self.json_file, 'w') as f:
+            # Print debug info
+            print(f"Saving settings to: {self.json_file}")
+            print(f"Directory: {directory}")
+            
+            # Create directory if needed
+            if str(directory) and str(directory) != '.':
+                os.makedirs(directory, exist_ok=True)
+            
+            # Convert to string for open() if needed
+            filepath_str = str(self.json_file)
+            
+            with open(filepath_str, 'w') as f:
                 json.dump(self.json_config, f, indent=2)
+            
+            print(f"Settings successfully saved")
             return True
         except Exception as e:
             print(f"Error saving settings: {e}")
