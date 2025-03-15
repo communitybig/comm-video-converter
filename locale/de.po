@@ -1462,3 +1462,21 @@ msgstr "Vorgang vom Benutzer abgebrochen"
 #: NEEDS WORK
 msgid "Show Command Output"
 msgstr "Befehlsausgabe anzeigen"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 402
+#: NEEDS WORK
+msgid "Speed:"
+msgstr "Geschwindigkeit:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 157
+#: NEEDS WORK
+msgid "Convert"
+msgstr "Konvertieren"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/progress_page.py, line: 206
+#: NEEDS WORK
+msgid "Command Output"
+msgstr "Befehlsausgabe"

@@ -1459,3 +1459,21 @@ msgstr "Proces anulat de utilizator"
 #: NEEDS WORK
 msgid "Show Command Output"
 msgstr "Afișează ieșirea comenzii"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 402
+#: NEEDS WORK
+msgid "Speed:"
+msgstr "Viteză:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 157
+#: NEEDS WORK
+msgid "Convert"
+msgstr "Converti"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/progress_page.py, line: 206
+#: NEEDS WORK
+msgid "Command Output"
+msgstr "Ieșire comandă"

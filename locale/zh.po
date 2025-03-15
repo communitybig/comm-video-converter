@@ -1874,3 +1874,21 @@ msgstr "用户取消了操作"
 #: NEEDS WORK
 msgid "Show Command Output"
 msgstr "显示命令输出"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 402
+#: NEEDS WORK
+msgid "Speed:"
+msgstr "速度:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 157
+#: NEEDS WORK
+msgid "Convert"
+msgstr "转换"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/progress_page.py, line: 206
+#: NEEDS WORK
+msgid "Command Output"
+msgstr "命令输出"

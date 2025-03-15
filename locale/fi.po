@@ -1460,3 +1460,21 @@ msgstr "Prosessi peruutettu käyttäjän toimesta"
 #: NEEDS WORK
 msgid "Show Command Output"
 msgstr "Näytä komennon tulos"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 402
+#: NEEDS WORK
+msgid "Speed:"
+msgstr "Nope:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 157
+#: NEEDS WORK
+msgid "Convert"
+msgstr "Muunna"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/progress_page.py, line: 206
+#: NEEDS WORK
+msgid "Command Output"
+msgstr "Komentotulos"

@@ -1882,3 +1882,21 @@ msgstr "Kullanıcı tarafından işlem iptal edildi"
 #: NEEDS WORK
 msgid "Show Command Output"
 msgstr "Komut Çıktısını Göster"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 402
+#: NEEDS WORK
+msgid "Speed:"
+msgstr "Hız:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 157
+#: NEEDS WORK
+msgid "Convert"
+msgstr "Dönüştür"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/progress_page.py, line: 206
+#: NEEDS WORK
+msgid "Command Output"
+msgstr "Komut Çıktısı"
