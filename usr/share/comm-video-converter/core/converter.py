@@ -28,6 +28,7 @@ class VideoEffects:
     hue: float = 0.0
     exposure: float = 0.0
 
+
 @dataclass
 class CropSettings:
     left: int = 0
@@ -38,11 +39,13 @@ class CropSettings:
     bottom: int = 0
     enabled: bool = False
 
+
 @dataclass
 class TrimSettings:
     start_time: float = 0.0
     end_time: Optional[float] = None
     duration: float = 0.0
+
 
 @dataclass
 class EncodingSettings:
@@ -54,15 +57,18 @@ class EncodingSettings:
     preset: str = "medium"
     use_gpu: bool = True
 
+
 @dataclass
 class AudioSettings:
     handling: str = "copy"
     bitrate: str = ""
     channels: str = ""
 
+
 @dataclass
 class SubtitleSettings:
     mode: str = "extract"
+
 
 @dataclass
 class ConversionOptions:
@@ -225,9 +231,14 @@ class VideoConverter:
 
     def _find_ffmpeg_executable(self) -> str:
         """Find the best FFmpeg executable available"""
-        if os.path.exists("/usr/lib/jellyfin-ffmpeg/ffmpeg"):
-            return "/usr/lib/jellyfin-ffmpeg/ffmpeg"
-        return "ffmpeg"
+        # Execute the command to find the executable
+        subprocess.run(
+            ["show_executable=1", "comm-converter"],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        return result.stdout
 
     def set_progress_callback(self, callback: Callable[[float, str], None]) -> None:
         """Set a callback function for progress updates"""
@@ -609,31 +620,33 @@ class VideoConverter:
     def get_video_info(self) -> Dict[str, Any]:
         """
         Get detailed information about the video file using ffprobe
-        
+
         Returns:
             dict: A dictionary containing video information with streams and format details
         """
         if not self.options.input_file or not os.path.exists(self.options.input_file):
             print(f"Error: Input file not found: {self.options.input_file}")
             return {}
-            
+
         try:
             # Use ffprobe to get video information in JSON format
             cmd = [
                 "ffprobe",
-                "-v", "quiet",
-                "-print_format", "json",
+                "-v",
+                "quiet",
+                "-print_format",
+                "json",
                 "-show_format",
                 "-show_streams",
-                self.options.input_file
+                self.options.input_file,
             ]
-            
+
             result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-            
+
             # Parse the JSON output
             info = json.loads(result.stdout)
             return info
-            
+
         except subprocess.CalledProcessError as e:
             print(f"Error running ffprobe: {e}")
             if e.stderr:
@@ -645,68 +658,75 @@ class VideoConverter:
         except Exception as e:
             print(f"Unexpected error getting video info: {e}")
             import traceback
+
             traceback.print_exc()
             return {}
 
-    def extract_frame(self, position: float, output_file: str, quality: int = 2) -> bool:
+    def extract_frame(
+        self, position: float, output_file: str, quality: int = 2
+    ) -> bool:
         """
         Extract a single frame from the video at the given position with all effects applied
-        
+
         Args:
             position (float): Position in seconds to extract frame from
             output_file (str): Path where to save the extracted frame
             quality (int): JPEG quality level (1-31, lower is better)
-            
+
         Returns:
             bool: True if frame extraction was successful
         """
         if not self.options.input_file or not os.path.exists(self.options.input_file):
             print(f"Error: Input file not found: {self.options.input_file}")
             return False
-        
+
         try:
             # Build video filter options based on current settings
             video_filter = self._build_video_filter()
-            
+
             # Format the time position in HH:MM:SS.mmm format
             position_str = self._format_time(position)
-            
+
             # Build the FFmpeg command
             cmd = [
                 self.ffmpeg_executable,
                 "-y",  # Overwrite output files without asking
-                "-ss", position_str,  # Seek to position
-                "-i", self.options.input_file,  # Input file
-                "-vframes", "1",  # Extract one frame
-                "-q:v", str(quality),  # Set quality level
+                "-ss",
+                position_str,  # Seek to position
+                "-i",
+                self.options.input_file,  # Input file
+                "-vframes",
+                "1",  # Extract one frame
+                "-q:v",
+                str(quality),  # Set quality level
             ]
-            
+
             # Add filter if we have any
             if video_filter:
                 cmd.extend(["-vf", video_filter])
-            
+
             # Add output file
             cmd.append(output_file)
-            
+
             # Run the command
             print(f"Extracting frame at position {position_str} to {output_file}")
-            result = subprocess.run(cmd, 
-                                   stderr=subprocess.PIPE, 
-                                   stdout=subprocess.PIPE, 
-                                   text=True)
-            
+            result = subprocess.run(
+                cmd, stderr=subprocess.PIPE, stdout=subprocess.PIPE, text=True
+            )
+
             if result.returncode != 0:
                 print(f"Frame extraction failed: {result.stderr}")
                 return False
-            
+
             return os.path.exists(output_file)
-            
+
         except Exception as e:
             print(f"Error extracting frame: {str(e)}")
             import traceback
+
             traceback.print_exc()
             return False
-    
+
     def _format_time(self, seconds: float) -> str:
         """Format seconds as HH:MM:SS.mmm for FFmpeg"""
         hours = int(seconds // 3600)
@@ -717,36 +737,36 @@ class VideoConverter:
     def convert_with_progress(self, progress_dialog) -> tuple:
         """
         Run the conversion process with progress updates to a progress dialog
-        
+
         Args:
             progress_dialog: Progress dialog object with update_progress and update_status methods
-            
+
         Returns:
             tuple: (success, output_path, error_message)
         """
         if not self.options.input_file or not os.path.exists(self.options.input_file):
             return False, None, f"Input file not found: {self.options.input_file}"
-        
+
         if not self.options.output_file:
             return False, None, "No output file specified"
-        
+
         try:
             # Store the progress dialog to reference it later
             self.progress_dialog = progress_dialog
-            
+
             # Make sure we're using the latest settings from settings manager
             if self.settings_manager:
                 self._init_from_settings_manager()
-            
+
             # Build the FFmpeg command
             cmd = self._build_ffmpeg_command()
             if not cmd:
                 return False, None, "Failed to build FFmpeg command"
-            
+
             # Print the full FFmpeg command for debugging
             cmd_str = " ".join(cmd)
             print(f"Running FFmpeg command: {cmd_str}")
-            
+
             # Start the conversion process
             process = subprocess.Popen(
                 cmd,
@@ -754,25 +774,28 @@ class VideoConverter:
                 stderr=subprocess.PIPE,
                 text=True,
                 bufsize=1,
-                universal_newlines=True
+                universal_newlines=True,
             )
-            
+
             # Store the process in the progress dialog to allow cancellation
             if hasattr(progress_dialog, "set_process"):
                 progress_dialog.set_process(process)
-            
+
             # Initialize variables for tracking progress
             duration = None
             elapsed_time = 0
             output_file_created = False
-            
+
             # Process FFmpeg output in real-time
             for line in process.stderr:
                 # Check if we've been cancelled
-                if hasattr(progress_dialog, "was_cancelled") and progress_dialog.was_cancelled():
+                if (
+                    hasattr(progress_dialog, "was_cancelled")
+                    and progress_dialog.was_cancelled()
+                ):
                     process.terminate()
                     return False, None, "Conversion cancelled by user"
-                
+
                 # Extract video duration if not already known
                 if not duration and "Duration:" in line:
                     try:
@@ -781,7 +804,7 @@ class VideoConverter:
                         duration = h * 3600 + m * 60 + s
                     except Exception as e:
                         print(f"Error parsing duration: {e}")
-                
+
                 # Extract current time position
                 if duration and "time=" in line:
                     try:
@@ -791,7 +814,7 @@ class VideoConverter:
                             elapsed_time = h * 3600 + m * 60 + s
                         else:
                             elapsed_time = float(time_str)
-                        
+
                         # Calculate and report progress
                         if elapsed_time > 0 and duration > 0:
                             progress = min(0.99, elapsed_time / duration)
@@ -803,32 +826,35 @@ class VideoConverter:
                             )
                     except Exception as e:
                         print(f"Error parsing progress: {e}")
-                
+
                 # Check if output file was created
                 if not output_file_created and os.path.exists(self.options.output_file):
                     output_file_created = True
-                
+
                 # Print FFmpeg output for debugging
                 print(line.strip())
-            
+
             # Wait for process to finish
             process.wait()
-            
+
             # Check if successful
-            success = (process.returncode == 0)
-            
+            success = process.returncode == 0
+
             if success:
                 progress_dialog.update_progress(1.0, "100%")
                 progress_dialog.update_status("Conversion completed successfully!")
-                logger.info(f"Conversion completed successfully: {self.options.output_file}")
+                logger.info(
+                    f"Conversion completed successfully: {self.options.output_file}"
+                )
                 return True, self.options.output_file, None
             else:
                 error_message = "Conversion failed with unknown error"
                 return False, None, error_message
-                
+
         except Exception as e:
             logger.error(f"Error during conversion: {e}")
             import traceback
+
             traceback.print_exc()
             return False, None, f"Error during conversion: {str(e)}"
 
@@ -836,17 +862,17 @@ class VideoConverter:
         """Build the FFmpeg command based on conversion options"""
         if not self.options.input_file or not self.options.output_file:
             return []
-        
+
         # Basic FFmpeg command
         cmd = [self.ffmpeg_executable, "-y"]  # -y to overwrite output without asking
-        
+
         # Add trim start option if set
         if self.options.trim.start_time and self.options.trim.start_time > 0:
             cmd.extend(["-ss", str(self.options.trim.start_time)])
-        
+
         # Input file
         cmd.extend(["-i", self.options.input_file])
-        
+
         # Add trim end option if set (use -t for duration after input)
         if self.options.trim.end_time and self.options.trim.end_time > 0:
             if self.options.trim.start_time and self.options.trim.start_time > 0:
@@ -857,12 +883,12 @@ class VideoConverter:
             else:
                 # Use -to when no start time specified
                 cmd.extend(["-to", str(self.options.trim.end_time)])
-        
+
         # Video filters for effects and crop
         video_filter = self._build_video_filter()
         if video_filter:
             cmd.extend(["-vf", video_filter])
-        
+
         # Video codec options
         if self.options.force_copy_video:
             # Just copy the video stream without re-encoding
@@ -872,7 +898,7 @@ class VideoConverter:
             encoder = self.options.encoding.video_encoder
             quality = self.options.encoding.video_quality
             preset = self.options.encoding.preset
-            
+
             if encoder == "h264":
                 cmd.extend(["-c:v", "libx264"])
                 cmd.extend(["-crf", str(self.QUALITY_PRESETS[quality]["cq_value"])])
@@ -894,7 +920,7 @@ class VideoConverter:
                 cmd.extend(["-c:v", "libx264"])
                 cmd.extend(["-crf", "23"])
                 cmd.extend(["-preset", "medium"])
-        
+
         # Audio handling
         if self.options.audio.handling == "copy":
             cmd.extend(["-c:a", "copy"])
@@ -906,7 +932,7 @@ class VideoConverter:
                 cmd.extend(["-ac", self.options.audio.channels])
         elif self.options.audio.handling == "none":
             cmd.extend(["-an"])  # No audio
-        
+
         # Subtitle handling
         if self.options.subtitle.mode == "extract":
             cmd.extend(["-c:s", "mov_text"])  # Extract subtitles in MP4 format
@@ -914,8 +940,8 @@ class VideoConverter:
             cmd.extend(["-c:s", "copy"])  # Copy subtitles as-is
         elif self.options.subtitle.mode == "none":
             cmd.extend(["-sn"])  # No subtitles
-        
+
         # Add output file
         cmd.append(self.options.output_file)
-        
+
         return cmd
