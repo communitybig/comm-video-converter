@@ -6,10 +6,11 @@ Main entry point for Comm Video Converter application.
 import os
 import sys
 import gi
+from collections import deque
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, Gio, GLib
+from gi.repository import Gtk, Adw, Gio, GLib, Gdk
 
 # Import local modules
 from constants import APP_ID
@@ -45,6 +46,9 @@ class VideoConverterApp(Adw.Application):
         # Connect the activation signal
         self.connect("activate", self.on_activate)
 
+        # Setup command line handling
+        self.connect("handle-local-options", self.on_handle_local_options)
+
         # Initialize settings manager
         self.settings_manager = SettingsManager(APP_ID)
 
@@ -58,6 +62,12 @@ class VideoConverterApp(Adw.Application):
         self.progress_widgets = []  # Add this to track active conversion widgets
         # Track the previous page to return after conversion completes
         self.previous_page = "conversion"
+
+        # Conversion queue
+        self.conversion_queue = deque()
+        self.currently_converting = False
+        self.auto_convert = False  # Disable auto-conversion by default - only convert when button is clicked
+        self.queue_display_widgets = []  # Track widgets for queue display
 
         # Video trimming state
         self.trim_start_time = 0
@@ -100,6 +110,9 @@ class VideoConverterApp(Adw.Application):
         # Configure application icon
         self.set_application_icon()
 
+        # Set up drag and drop support
+        self._setup_drag_and_drop()
+
         # Create main content
         main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
 
@@ -135,6 +148,297 @@ class VideoConverterApp(Adw.Application):
 
         # Show window
         self.window.present()
+
+        # Process any files passed on command line
+        if self.queued_files:
+            for file_path in self.queued_files:
+                self.add_to_conversion_queue(file_path)
+            self.queued_files = []
+
+    def _setup_drag_and_drop(self):
+        """Set up drag and drop support for the window"""
+        drop_target = Gtk.DropTarget.new(Gio.File, Gdk.DragAction.COPY)
+        drop_target.connect("drop", self.on_drop)
+        self.window.add_controller(drop_target)
+
+    def on_drop(self, drop_target, value, x, y):
+        """Handle dropped files"""
+        if isinstance(value, Gio.File):
+            file_path = value.get_path()
+            if file_path and os.path.exists(file_path):
+                self.add_file_to_queue(file_path)
+                return True
+        return False
+
+    def on_handle_local_options(self, app, options):
+        """Handle command line parameters"""
+        self.queued_files = []
+
+        # Use sys.argv to get command-line arguments instead of options.get_arguments()
+        args = sys.argv
+
+        # Skip first argument (program name)
+        if len(args) > 1:
+            for arg in args[1:]:
+                if os.path.isfile(arg):
+                    self.queued_files.append(arg)
+
+        return -1  # Continue processing
+
+    def add_file_to_queue(self, file_path):
+        """Add a file to the conversion queue"""
+        if file_path and os.path.exists(file_path):
+            # Update last accessed directory
+            input_dir = os.path.dirname(file_path)
+            self.last_accessed_directory = input_dir
+            self.settings_manager.save_setting("last-accessed-directory", input_dir)
+
+            # Add file to queue
+            if file_path not in self.conversion_queue:
+                self.conversion_queue.append(file_path)
+                queue_len = len(self.conversion_queue)
+                print(
+                    f"Added file to queue: {os.path.basename(file_path)}, Queue size: {queue_len}"
+                )
+
+                # If conversion page is available, update UI
+                if hasattr(self, "conversion_page"):
+                    # Update the queue display
+                    self.conversion_page.update_queue_display()
+
+                return True
+            else:
+                print(f"File already in queue: {file_path}")
+                return False
+        return False
+
+    def add_to_conversion_queue(self, file_path):
+        """Add a file to the conversion queue without starting conversion"""
+        return self.add_file_to_queue(file_path)
+
+    def select_files_for_queue(self):
+        """Open a file chooser to select multiple files to add to the queue"""
+        dialog = Gtk.FileDialog()
+        dialog.set_title(_("Select Video Files"))
+
+        # Set current folder to last accessed directory
+        if self.last_accessed_directory and os.path.exists(
+            self.last_accessed_directory
+        ):
+            dialog.set_initial_folder(
+                Gio.File.new_for_path(self.last_accessed_directory)
+            )
+
+        # Simplify file filters for more reliable behavior
+        filter_list = Gio.ListStore.new(Gtk.FileFilter)
+
+        # Create a filter for common video file extensions only - no MIME types
+        video_filter = Gtk.FileFilter()
+        video_filter.set_name(_("Video Files"))
+
+        # Just add the most common video extensions
+        for ext in [
+            "mp4",
+            "mkv",
+            "webm",
+            "mov",
+            "avi",
+            "wmv",
+            "mpeg",
+            "m4v",
+            "ts",
+            "flv",
+        ]:
+            # Add both lowercase and uppercase versions
+            video_filter.add_pattern(f"*.{ext}")
+            video_filter.add_pattern(f"*.{ext.upper()}")
+
+        filter_list.append(video_filter)
+
+        # Add an "All Files" filter
+        filter_all = Gtk.FileFilter()
+        filter_all.set_name(_("All Files"))
+        filter_all.add_pattern("*")
+        filter_list.append(filter_all)
+
+        dialog.set_filters(filter_list)
+        dialog.set_default_filter(video_filter)
+
+        # Configure for multiple selection
+        dialog.open_multiple(self.window, None, self._on_files_selected_for_queue)
+
+    def _on_files_selected_for_queue(self, dialog, result):
+        """Handle selected files from the file chooser dialog"""
+        try:
+            files_list = dialog.open_multiple_finish(result)
+            if files_list:
+                # Get files list from Gio.ListModel
+                files = []
+                # Convert to a standard Python list to avoid GTK4 iterator issues
+                for i in range(files_list.get_n_items()):
+                    file_obj = files_list.get_item(i)
+                    if file_obj:
+                        files.append(file_obj)
+
+                # Now process the files from our Python list
+                for file in files:
+                    file_path = file.get_path()
+                    if file_path and os.path.exists(file_path):
+                        # Add all files to queue
+                        self.add_file_to_queue(file_path)
+
+        except Exception as e:
+            print(f"Error selecting files: {e}")
+            import traceback
+
+            traceback.print_exc()  # Print full traceback for better debugging
+            self.show_error_dialog(_("Error selecting files: {0}").format(str(e)))
+
+    def clear_queue(self):
+        """Clear the conversion queue"""
+        self.conversion_queue.clear()
+        if hasattr(self, "conversion_page"):
+            self.conversion_page.update_queue_display()
+        print("Conversion queue cleared")
+
+    def remove_from_queue(self, file_path):
+        """Remove a specific file from the queue"""
+        if file_path in self.conversion_queue:
+            self.conversion_queue.remove(file_path)
+            if hasattr(self, "conversion_page"):
+                self.conversion_page.update_queue_display()
+            print(f"Removed {os.path.basename(file_path)} from queue")
+            return True
+        return False
+
+    def start_queue_processing(self):
+        """Start processing the conversion queue"""
+        if self.conversion_queue:
+            print("Starting queue processing")
+            # Set flag to indicate we're processing a queue (for proper dialog handling)
+            self._was_queue_processing = True
+
+            # Ensure the header bar buttons remain disabled during queue processing
+            self.header_bar.set_tabs_sensitive(False)
+
+            # Set currently_converting to False first to allow processing to start
+            was_converting = self.currently_converting
+            self.currently_converting = False
+
+            # Switch to progress tab before starting queue processing
+            self.show_progress_page()
+
+            # Start queue processing with a slight delay to ensure UI is ready
+            GLib.timeout_add(300, self.process_next_in_queue)
+
+            if was_converting:
+                print(
+                    "Note: Conversion was already in progress but we forced a restart"
+                )
+
+    def process_next_in_queue(self):
+        """Process the next file in the conversion queue"""
+        # Bail out early if queue is empty to avoid errors
+        if not self.conversion_queue:
+            print("Queue is empty, nothing to process")
+            self.currently_converting = False
+            return False  # Stop any timeout callbacks
+
+        # If already converting, don't start another one
+        if self.currently_converting:
+            print("Already converting, not starting another conversion")
+            return False  # Stop any timeout callbacks
+
+        print("Processing next item in queue...")
+        self.currently_converting = True
+
+        # Get the next file to process
+        file_path = self.conversion_queue[0]
+        # Save reference to the file being processed
+        self.current_processing_file = file_path
+
+        print(f"Processing file: {os.path.basename(file_path)}")
+
+        # Update conversion page if available and start conversion
+        if hasattr(self, "conversion_page"):
+            # First set the file to update the UI
+            self.conversion_page.set_file(file_path)
+
+            # Start conversion with a small delay
+            GLib.timeout_add(300, self._force_start_conversion)
+
+        return False  # Don't repeat
+
+    def _force_start_conversion(self):
+        """Helper to force start conversion with proper error handling"""
+        try:
+            print("Forcing conversion to start automatically...")
+            if hasattr(self, "conversion_page"):
+                self.conversion_page.force_start_conversion()
+            return False  # Don't repeat
+        except Exception as e:
+            print(f"Error starting automatic conversion: {e}")
+            self.currently_converting = False  # Reset flag to allow retry
+            return False  # Don't repeat
+
+    def conversion_completed(self, success):
+        """Called when a conversion is completed"""
+        print(f"Conversion completed with success={success}")
+        self.currently_converting = False
+
+        # Re-enable convert button on the conversion page
+        if hasattr(self, "conversion_page"):
+            GLib.idle_add(
+                lambda: self.conversion_page.convert_button.set_sensitive(True)
+            )
+
+        # If there are files in queue and conversion was successful, remove the first item (current)
+        if (
+            self.conversion_queue
+            and success
+            and hasattr(self, "current_processing_file")
+        ):
+            # Remove the specific file that was processed
+            try:
+                self.conversion_queue.remove(self.current_processing_file)
+                print(
+                    f"Removed completed file from queue: {os.path.basename(self.current_processing_file)}"
+                )
+            except ValueError:
+                # The file might have been removed already or wasn't in the queue
+                print(f"File not found in queue, may have been removed already")
+
+            # Clear the current processing file reference
+            self.current_processing_file = None
+
+            # Update the queue display
+            if hasattr(self, "conversion_page"):
+                GLib.idle_add(self.conversion_page.update_queue_display)
+
+        # Process next file in queue if any
+        if self.conversion_queue:
+            remaining = len(self.conversion_queue)
+            print(f"Queue has {remaining} file(s) remaining, processing next file")
+            GLib.timeout_add(500, self.process_next_in_queue)
+        else:
+            print("Queue is now empty")
+
+            # Queue is complete, re-enable tab navigation
+            GLib.idle_add(self.header_bar.set_tabs_sensitive, True)
+
+            # Only show notification that all conversions are complete if we were processing a queue
+            if hasattr(self, "_was_queue_processing") and self._was_queue_processing:
+                GLib.idle_add(
+                    lambda: self.show_info_dialog(
+                        _("Queue Processing Complete"),
+                        _("All files in the queue have been processed."),
+                    )
+                )
+                # Reset the flag
+                self._was_queue_processing = False
+
+                # Return to the conversion page after all conversions are done
+                GLib.idle_add(self.return_to_previous_page)
 
     def activate_tab(self, tab_name):
         """Switch to the specified tab and update button styling"""
@@ -287,6 +591,21 @@ class VideoConverterApp(Adw.Application):
 
         dialog.connect("response", on_response)
         dialog.show(self.window)
+
+    def show_file_details(self, file_path):
+        """Show details or preview of a file from queue"""
+        # Switch to video edit tab with this file
+        if self.video_edit_page:
+            try:
+                # Attempt to load the file in the video edit page
+                if self.video_edit_page.set_video(file_path):
+                    # Switch to the edit tab
+                    self.activate_tab("edit")
+                else:
+                    self.show_error_dialog(_("Could not preview this video file"))
+            except Exception as e:
+                print(f"Error previewing file: {e}")
+                self.show_error_dialog(_("Error previewing file: {0}").format(str(e)))
 
 
 def main():

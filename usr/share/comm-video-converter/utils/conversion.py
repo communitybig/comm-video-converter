@@ -18,6 +18,32 @@ def run_with_progress_dialog(
     app, cmd, title_suffix, input_file=None, delete_original=False, env_vars=None
 ):
     """Run a conversion command and show progress on the Progress page"""
+    # Use app's global setting for deleting original files if not explicitly set
+    if hasattr(app, "delete_original_after_conversion"):
+        delete_original = app.delete_original_after_conversion
+
+    # Initialize env_vars if None
+    if env_vars is None:
+        env_vars = os.environ.copy()
+
+    # Handle output folder settings - Critical fix for path duplication
+    output_folder = app.settings_manager.load_setting("output-folder", "")
+    if output_folder and output_folder.strip():
+        # Make sure it's absolute and normalized
+        output_folder = os.path.normpath(os.path.abspath(output_folder.strip()))
+
+        # Set in environment with no trailing slash to prevent path issues
+        if output_folder.endswith(os.sep):
+            output_folder = output_folder[:-1]
+
+        env_vars["output_folder"] = output_folder
+        print(f"Set output folder: {output_folder}")
+
+        # Important: Don't specify output file with path, only filename
+        if "output_file" in env_vars and os.path.dirname(env_vars["output_file"]):
+            env_vars["output_file"] = os.path.basename(env_vars["output_file"])
+            print(f"Using basename for output file: {env_vars['output_file']}")
+
     # Título correto
     if not title_suffix or title_suffix == "Unknown file":
         if input_file:
@@ -35,48 +61,23 @@ def run_with_progress_dialog(
         # Print command for debugging
         print(f"Executing command: {cmd_str}")
 
-        # IMPORTANTE: Verificação do diretório de saída
-        output_folder = None
-        if env_vars and "output_folder" in env_vars:
-            output_folder = env_vars["output_folder"]
-            print(f"Output folder from env_vars: {output_folder}")
-
-            # Verificar se o diretório existe
-            if not os.path.exists(output_folder):
-                try:
-                    os.makedirs(output_folder, exist_ok=True)
-                    print(f"Created output directory: {output_folder}")
-                except Exception as e:
-                    print(f"Warning: Could not create output directory: {e}")
-
-            # Garantir que o caminho é absoluto
-            if not os.path.isabs(output_folder):
-                abs_path = os.path.abspath(output_folder)
-                env_vars["output_folder"] = abs_path
-                output_folder = abs_path
-                print(f"Converted relative path to absolute: {abs_path}")
-
         # Create a process group so we can terminate all related processes
         kwargs = {}
         if hasattr(os, "setsid"):  # Unix/Linux
-            kwargs["preexec_fn"] = (
-                os.setsid
-            )  # Create new session, process becomes leader
+            kwargs["preexec_fn"] = os.setsid
         elif hasattr(subprocess, "CREATE_NEW_PROCESS_GROUP"):  # Windows
             kwargs["creationflags"] = subprocess.CREATE_NEW_PROCESS_GROUP
 
-        # If env_vars is passed, use it, otherwise use os.environ
-        env = env_vars if env_vars is not None else os.environ.copy()
-
-        # Verificar variáveis críticas de ambiente
-        print("Critical environment variables:")
+        # Print the final environment variables for debugging
+        print("Final environment variables for conversion:")
         for key in ["output_folder", "output_file"]:
-            if key in env:
-                print(f"  {key}={env[key]}")
+            if key in env_vars:
+                print(f"  {key}={env_vars[key]}")
             else:
                 print(f"  {key}=<not set>")
 
         # Use PIPE for stdout and stderr to monitor progress
+        # CRITICAL: Never set cwd parameter - let the script handle paths
         process = subprocess.Popen(
             cmd,
             stdout=subprocess.PIPE,
@@ -84,8 +85,7 @@ def run_with_progress_dialog(
             stdin=subprocess.PIPE,
             universal_newlines=True,
             bufsize=1,
-            env=env,
-            cwd=output_folder,
+            env=env_vars,
             **kwargs,
         )
 
@@ -93,6 +93,19 @@ def run_with_progress_dialog(
         progress_item = app.progress_page.add_conversion(
             title_suffix, input_file, process
         )
+
+        # Flag to track if this is part of a queue processing
+        # Store the file being processed for reliable tracking
+        if input_file:
+            app.current_processing_file = input_file
+
+        # Flag to indicate it's a queue item if queue has files
+        is_queue_processing = len(app.conversion_queue) > 0
+        progress_item.is_queue_processing = is_queue_processing
+        progress_item.input_file_path = input_file  # Store the input file path
+
+        # Also store the input file path in progress_item for later reference
+        progress_item.original_input_file = input_file
 
         # Configure option to delete original file
         if input_file:
@@ -104,6 +117,30 @@ def run_with_progress_dialog(
         )
         monitor_thread.daemon = True
         monitor_thread.start()
+
+        # Function to handle process completion
+        def on_conversion_complete(process, result):
+            try:
+                # Cleanup if we were asked to delete the original file after successful conversion
+                if (
+                    result == 0
+                    and delete_original
+                    and input_file
+                    and os.path.exists(input_file)
+                ):
+                    try:
+                        os.remove(input_file)
+                        print(f"Deleted original file: {input_file}")
+                    except Exception as del_error:
+                        print(f"Error deleting file {input_file}: {del_error}")
+
+                # Notify the application that conversion is complete
+                GLib.idle_add(lambda: app.conversion_completed(result == 0))
+
+            except Exception as e:
+                print(f"Error in conversion completion handler: {e}")
+                # Still notify app even if there's an error in the handler
+                GLib.idle_add(lambda: app.conversion_completed(False))
 
     except Exception as e:
         app.show_error_dialog(_("Error starting conversion: {0}").format(e))
@@ -528,16 +565,22 @@ def monitor_progress(app, process, progress_item):
                                 os.remove(input_file)
                                 delete_msg = f"Original file deleted: {input_file}"
                                 GLib.idle_add(progress_item.add_output_text, delete_msg)
-                                GLib.idle_add(
-                                    lambda: show_info_dialog_and_close_progress(
-                                        app,
-                                        _(
-                                            "Conversion completed successfully!\n\n"
-                                            "The original file <b>{0}</b> was deleted."
-                                        ).format(os.path.basename(input_file)),
-                                        progress_item,
-                                    )
+                                is_queue_processing = (
+                                    hasattr(progress_item, "is_queue_processing")
+                                    and progress_item.is_queue_processing
                                 )
+                                if not is_queue_processing:
+                                    # Only show dialogs for individual conversions (not queue items)
+                                    GLib.idle_add(
+                                        lambda: show_info_dialog_and_close_progress(
+                                            app,
+                                            _(
+                                                "Conversion completed successfully!\n\n"
+                                                "The original file <b>{0}</b> was deleted."
+                                            ).format(os.path.basename(input_file)),
+                                            progress_item,
+                                        )
+                                    )
                             except Exception as e:
                                 error_msg = f"Could not delete the original file: {e}"
                                 GLib.idle_add(progress_item.add_output_text, error_msg)
@@ -577,44 +620,73 @@ def monitor_progress(app, process, progress_item):
                             )
                         )
                 else:
-                    GLib.idle_add(
-                        lambda: show_info_dialog_and_close_progress(
-                            app,
-                            _("Conversion completed successfully!"),
-                            progress_item,
-                        )
+                    # Only show completion dialog if not processing a queue
+                    is_queue_processing = (
+                        hasattr(progress_item, "is_queue_processing")
+                        and progress_item.is_queue_processing
                     )
+                    if not is_queue_processing:
+                        GLib.idle_add(
+                            lambda: show_info_dialog_and_close_progress(
+                                app,
+                                _("Conversion completed successfully!"),
+                                progress_item,
+                            )
+                        )
+                    else:
+                        # For queue items, just remove from progress page after delay without dialog
+                        GLib.timeout_add(
+                            3000,
+                            lambda: app.progress_page.remove_conversion(
+                                progress_item.conversion_id
+                            ),
+                        )
 
-                # Remove from progress page after delay
+                # Clean up progress page regardless
                 GLib.timeout_add(
                     5000,
                     lambda: app.progress_page.remove_conversion(
                         progress_item.conversion_id
                     ),
                 )
+
+                # CRITICAL: Notify the app that conversion is complete to trigger next queue item
+                # This must be called directly with idle_add for reliable behavior
+                GLib.idle_add(lambda: app.conversion_completed(True))
+
             else:
                 error_msg = _("Conversion failed with code {0}").format(return_code)
                 GLib.idle_add(progress_item.update_progress, 0.0, _("Error!"))
                 GLib.idle_add(progress_item.update_status, error_msg)
                 GLib.idle_add(progress_item.add_output_text, error_msg)
-                GLib.idle_add(
-                    lambda: show_error_dialog_and_close_progress(
-                        app,
-                        _(
-                            "The conversion failed with error code {0}.\n\n"
-                            "Check the log for more details."
-                        ).format(return_code),
-                        progress_item,
-                    )
-                )
 
-                # Keep the error visible longer, but still remove eventually
-                GLib.timeout_add(
-                    10000,
-                    lambda: app.progress_page.remove_conversion(
-                        progress_item.conversion_id
-                    ),
+                # Update to check for queue processing here too
+                is_queue_processing = (
+                    hasattr(progress_item, "is_queue_processing")
+                    and progress_item.is_queue_processing
                 )
+                if not is_queue_processing:
+                    GLib.idle_add(
+                        lambda: show_error_dialog_and_close_progress(
+                            app,
+                            _(
+                                "The conversion failed with error code {0}.\n\n"
+                                "Check the log for more details."
+                            ).format(return_code),
+                            progress_item,
+                        )
+                    )
+                else:
+                    # Just remove the item after a delay without showing dialog
+                    GLib.timeout_add(
+                        5000,
+                        lambda: app.progress_page.remove_conversion(
+                            progress_item.conversion_id
+                        ),
+                    )
+
+                # CRITICAL: Notify the app about failed conversion as well
+                GLib.idle_add(lambda: app.conversion_completed(False))
 
             # Disable cancel button
             GLib.idle_add(progress_item.cancel_button.set_sensitive, False)

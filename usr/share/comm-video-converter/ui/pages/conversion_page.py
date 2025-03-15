@@ -101,32 +101,11 @@ class ConversionPage:
         help_button.connect("clicked", self.on_help_clicked)
         file_group.set_header_suffix(help_button)
 
-        # Input file row
-        file_row = Adw.ActionRow(title=_("Input file"))
-        file_row.set_subtitle(_("Select the video file to convert"))
-        self.file_path_label = Gtk.Label(label=_("No file selected"))
-        self.file_path_label.set_ellipsize(Pango.EllipsizeMode.MIDDLE)
-        self.file_path_label.set_hexpand(True)
-        self.file_path_label.set_halign(Gtk.Align.START)
-
-        self.file_chooser_button = Gtk.Button(label=_("Select File"))
-        self.file_chooser_button.connect("clicked", self.on_file_chooser_clicked)
-        self.file_chooser_button.add_css_class("pill")
-        self.file_chooser_button.add_css_class("flat")
-
-        file_row.add_suffix(self.file_path_label)
-        file_row.add_suffix(self.file_chooser_button)
-        file_row.set_activatable_widget(self.file_chooser_button)
-        file_group.add(file_row)
-
-        # Output file row
-        self.output_file_entry = Adw.EntryRow(title=_("Output file"))
-        self.output_file_entry.set_tooltip_text(_("Leave empty to use the same name"))
-        file_group.add(self.output_file_entry)
-
         # Output folder row
         output_folder_row = Adw.ActionRow(title=_("Output folder"))
-        output_folder_row.set_subtitle(_("Leave empty to use the same folder"))
+        output_folder_row.set_subtitle(
+            _("Leave empty to use the same folder as input files")
+        )
 
         self.output_folder_entry = Gtk.Entry()
         self.output_folder_entry.set_hexpand(True)
@@ -145,29 +124,76 @@ class ConversionPage:
         file_group.add(output_folder_row)
 
         # Option to delete original file
-        self.delete_original_check = Adw.SwitchRow(title=_("Delete original file"))
+        self.delete_original_check = Adw.SwitchRow(title=_("Delete original files"))
         self.delete_original_check.set_subtitle(
-            _("Remove original file after successful conversion")
+            _("Remove original files after successful conversion")
         )
         file_group.add(self.delete_original_check)
 
         main_content.append(file_group)
 
-        # Convert button - ensure this is properly styled and visible
-        convert_button = Gtk.Button(label=_("Convert"))
-        convert_button.add_css_class("suggested-action")
-        convert_button.add_css_class("pill")  # Rounded button style
-        convert_button.set_hexpand(False)  # Don't expand horizontally
-        convert_button.set_halign(Gtk.Align.CENTER)  # Center align the button
-        convert_button.connect("clicked", self.on_convert_button_clicked)
+        # Queue section
+        queue_group = Adw.PreferencesGroup(title=_("Conversion Queue"))
 
-        button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-        button_box.set_spacing(10)
-        button_box.set_margin_top(24)
-        button_box.set_margin_bottom(24)  # Add bottom margin
-        button_box.set_halign(Gtk.Align.CENTER)
-        button_box.append(convert_button)
-        main_content.append(button_box)
+        # Create a queue listbox with a scrolled window
+        queue_scroll = Gtk.ScrolledWindow()
+        queue_scroll.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
+        queue_scroll.set_min_content_height(200)  # Increased height
+        queue_scroll.set_max_content_height(300)  # Increased height
+
+        # Create a listbox for the queue items
+        self.queue_listbox = Gtk.ListBox()
+        self.queue_listbox.add_css_class("boxed-list")
+        self.queue_listbox.set_selection_mode(Gtk.SelectionMode.SINGLE)
+        self.queue_listbox.connect("row-activated", self.on_queue_item_activated)
+        queue_scroll.set_child(self.queue_listbox)
+
+        # Add the listbox to an ActionRow to provide padding
+        queue_list_row = Adw.ActionRow()
+        queue_list_row.set_activatable(False)
+        queue_list_row.add_suffix(queue_scroll)
+        queue_list_row.set_title("")  # Empty title for proper layout
+        queue_group.add(queue_list_row)
+
+        # Create button box for queue management
+        queue_buttons_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        queue_buttons_box.set_halign(Gtk.Align.CENTER)
+        queue_buttons_box.set_spacing(12)
+        queue_buttons_box.set_margin_top(12)
+        queue_buttons_box.set_margin_bottom(12)
+
+        # Queue management buttons
+        clear_queue_button = Gtk.Button(label=_("Clear Queue"))
+        clear_queue_button.connect("clicked", self.on_clear_queue_clicked)
+        clear_queue_button.add_css_class("pill")
+        queue_buttons_box.append(clear_queue_button)
+
+        # Add files button (always adds to queue)
+        add_files_button = Gtk.Button(label=_("Add Files"))
+        add_files_button.connect("clicked", self.on_add_files_clicked)
+        add_files_button.add_css_class("pill")
+        add_files_button.add_css_class("suggested-action")
+        queue_buttons_box.append(add_files_button)
+
+        # Single convert button that processes the queue
+        convert_button = Gtk.Button(label=_("Convert All"))
+        convert_button.add_css_class("pill")
+        convert_button.add_css_class("suggested-action")
+        convert_button.connect("clicked", self.on_convert_clicked)
+        self.convert_button = convert_button  # Store reference for enabling/disabling
+        queue_buttons_box.append(convert_button)
+
+        # Add the button box to an action row for proper layout
+        queue_buttons_row = Adw.ActionRow()
+        queue_buttons_row.set_activatable(False)
+        queue_buttons_row.add_suffix(queue_buttons_box)
+        queue_buttons_row.set_title("")  # Empty title for proper layout
+        queue_group.add(queue_buttons_row)
+
+        main_content.append(queue_group)
+
+        # Update the queue display initially
+        self.update_queue_display()
 
         return page
 
@@ -384,62 +410,9 @@ class ConversionPage:
             except Exception as backup_error:
                 print(f"Even fallback saving method failed: {str(backup_error)}")
 
-    def on_file_chooser_clicked(self, button):
-        """Open file chooser dialog to select a video file"""
-        dialog = Gtk.FileDialog()
-        dialog.set_title(_("Select File"))
-        dialog.set_initial_folder(
-            Gio.File.new_for_path(self.app.last_accessed_directory)
-        )
-
-        # Create filter for video files
-        filter_list = Gio.ListStore.new(Gtk.FileFilter)
-
-        video_filter = Gtk.FileFilter()
-        video_filter.set_name(_("Video files"))
-        # Add common video MIME types
-        for mime_type in VIDEO_FILE_MIME_TYPES:
-            video_filter.add_mime_type(mime_type)
-        filter_list.append(video_filter)
-
-        all_filter = Gtk.FileFilter()
-        all_filter.set_name(_("All files"))
-        all_filter.add_pattern("*")
-        filter_list.append(all_filter)
-
-        dialog.set_filters(filter_list)
-        dialog.set_default_filter(video_filter)
-
-        dialog.open(self.app.window, None, self._on_file_chosen)
-
-    def _on_file_chosen(self, dialog, result):
-        """Handle selected file from file chooser"""
-        try:
-            file = dialog.open_finish(result)
-            if file:
-                file_path = file.get_path()
-                self.file_path_label.set_text(file_path)
-                input_dir = os.path.dirname(file_path)
-                self.app.last_accessed_directory = input_dir
-                # Save last accessed directory to settings
-                self.app.settings_manager.save_setting(
-                    "last-accessed-directory", self.app.last_accessed_directory
-                )
-
-                # Auto-set output file name if empty
-                if not self.output_file_entry.get_text():
-                    input_basename = os.path.basename(file_path)
-                    name, ext = os.path.splitext(input_basename)
-                    # Set MP4 as default output extension
-                    self.output_file_entry.set_text(f"{name}.mp4")
-
-                # CORREÇÃO: Auto-set output folder to match input folder
-                # This ensures converted files go to the same directory as originals
-                self.output_folder_entry.set_text(input_dir)
-                # Save this as the default output folder
-                self.app.settings_manager.save_setting("output-folder", input_dir)
-        except Exception as e:
-            print(f"Error selecting file: {e}")
+    def on_add_files_clicked(self, button):
+        """Open file chooser to add files to the queue"""
+        self.app.select_files_for_queue()
 
     def on_folder_button_clicked(self, button):
         """Open folder chooser dialog to select output folder"""
@@ -462,47 +435,172 @@ class ConversionPage:
         except Exception as e:
             print(f"Error selecting folder: {e}")
 
-    def on_convert_button_clicked(self, button):
-        """Handle convert button click, start conversion process"""
-        # Check if input file is selected
-        if not self.file_path_label.get_text() or self.file_path_label.get_text() == _(
-            "No file selected"
+    def on_convert_clicked(self, button):
+        """Start processing the queue"""
+        # If queue is empty, show error
+        if not self.app.conversion_queue:
+            self.app.show_error_dialog(_("Please add files to the queue first."))
+            return
+
+        # Set the global delete original setting based on checkbox
+        self.app.delete_original_after_conversion = (
+            self.delete_original_check.get_active()
+        )
+
+        # Set the global output folder setting
+        output_folder = self.output_folder_entry.get_text().strip()
+        if output_folder:
+            self.app.settings_manager.save_setting("output-folder", output_folder)
+
+        # Start queue processing
+        self.app.start_queue_processing()
+
+    def on_clear_queue_clicked(self, button):
+        """Clear all files from the queue"""
+        self.app.clear_queue()
+
+    def on_queue_item_activated(self, listbox, row):
+        """Handle selection of a queue item - preview or view details"""
+        if row and hasattr(row, "file_path") and row.file_path:
+            # Show file details dialog or preview
+            file_path = row.file_path
+            if os.path.exists(file_path):
+                self.app.show_file_details(file_path)
+
+    def update_queue_display(self):
+        """Update the queue display with current items"""
+        # Clear existing items
+        while True:
+            row = self.queue_listbox.get_first_child()
+            if row:
+                self.queue_listbox.remove(row)
+            else:
+                break
+
+        # Add current queue items
+        for file_path in self.app.conversion_queue:
+            if not os.path.exists(file_path):
+                continue
+
+            # Create a row for the file using ActionRow for better styling
+            row = Adw.ActionRow()
+
+            # Set title with filename and make it more prominent
+            filename = os.path.basename(file_path)
+            row.set_title(filename)
+            row.set_title_lines(1)  # Ensure title gets one full line
+
+            # Set directory as subtitle, but limit its display
+            directory = os.path.dirname(file_path)
+            row.set_subtitle(directory)
+            row.set_subtitle_lines(1)  # Limit subtitle to one line
+
+            # Ensure the row expands to fill available space
+            row.set_hexpand(True)
+
+            # Add remove button with proper spacing
+            remove_button = Gtk.Button()
+            remove_button.set_icon_name("list-remove-symbolic")
+            remove_button.add_css_class("flat")
+            remove_button.add_css_class("circular")
+            remove_button.set_tooltip_text(_("Remove from queue"))
+            remove_button.set_valign(Gtk.Align.CENTER)
+            remove_button.connect("clicked", self.on_remove_from_queue, file_path)
+
+            # Use a box to add some margin to the button
+            button_box = Gtk.Box()
+            button_box.set_margin_start(12)  # Add space before the button
+            button_box.append(remove_button)
+
+            row.add_suffix(button_box)
+
+            # Make row activatable (clickable)
+            row.set_activatable(True)
+
+            # Store the file path using a standard Python attribute
+            row.file_path = file_path
+
+            # Add to listbox
+            self.queue_listbox.append(row)
+
+            # Ensure the listbox allocates sufficient height per row
+            row.set_margin_top(4)
+            row.set_margin_bottom(4)
+
+        # Show a message if the queue is empty
+        if len(self.app.conversion_queue) == 0:
+            empty_label = Gtk.Label(label=_("Queue is empty. Add files to convert."))
+            empty_label.set_margin_top(12)
+            empty_label.set_margin_bottom(12)
+            empty_label.add_css_class("dim-label")
+            self.queue_listbox.append(empty_label)
+
+        # Enable or disable convert button based on queue state
+        self.convert_button.set_sensitive(len(self.app.conversion_queue) > 0)
+
+    def on_remove_from_queue(self, button, file_path):
+        """Remove a specific file from the queue"""
+        self.app.remove_from_queue(file_path)
+        self.update_queue_display()
+
+    def get_selected_file_path(self):
+        """Get currently selected file in queue or None"""
+        for i in range(len(self.app.conversion_queue)):
+            file_path = self.app.conversion_queue[i]
+            if os.path.exists(file_path):
+                return file_path
+        return None
+
+    def set_file(self, file_path):
+        """Set the current file path for conversion (required for queue processing)"""
+        if file_path and os.path.exists(file_path):
+            # Store the current file to be processed
+            self.current_file_path = file_path
+
+            # Update output folder to match input folder
+            input_dir = os.path.dirname(file_path)
+            self.output_folder_entry.set_text(input_dir)
+
+            # Keep last accessed directory updated
+            self.app.last_accessed_directory = input_dir
+            self.app.settings_manager.save_setting("last-accessed-directory", input_dir)
+            return True
+        return False
+
+    def force_start_conversion(self):
+        """Start conversion process with the currently selected file"""
+        # Check if we have a file to convert
+        if not hasattr(self, "current_file_path") or not os.path.exists(
+            self.current_file_path
         ):
-            self.app.show_error_dialog(_("Please select an input file."))
-            return
+            print("Cannot start conversion: No valid file selected")
+            return False
 
-        input_file = self.file_path_label.get_text()
+        # Get the file to convert
+        input_file = self.current_file_path
+        print(f"Starting conversion for: {input_file}")
 
-        # Obtenha o diretório do arquivo de entrada - caminho COMPLETO e ABSOLUTO
+        # Get absolute path to input directory
         input_dir = os.path.dirname(os.path.abspath(input_file))
-        print(f"Input file directory (absolute): {input_dir}")
-
-        # Check if the file exists
-        if not os.path.exists(input_file):
-            self.app.show_error_dialog(
-                _("The selected file does not exist: {0}").format(input_file)
-            )
-            return
 
         # Check if the conversion script exists
         if not os.path.exists(CONVERT_SCRIPT_PATH):
             self.app.show_error_dialog(
                 _("Conversion script not found: {0}").format(CONVERT_SCRIPT_PATH)
             )
-            return
+            return False
 
         # Build environment variables
         env_vars = os.environ.copy()  # Start with current environment
 
-        # Em vez de mostrar o diálogo, apenas obtenha as configurações
+        # Load app settings for conversion
         try:
-            # Carregue as configurações diretamente
             if hasattr(self.app, "settings_manager") and hasattr(
                 self.app.settings_manager, "json_config"
             ):
                 settings = self.app.settings_manager.json_config
 
-                # Mapeie as configurações para variáveis de ambiente
+                # Map settings to environment variables
                 settings_map = {
                     "gpu-selection": "gpu",
                     "video-quality": "video_quality",
@@ -519,7 +617,7 @@ class ConversionPage:
                     "only-extract-subtitles": "only_extract_subtitles",
                 }
 
-                # Aplique as configurações
+                # Apply settings
                 for settings_key, env_key in settings_map.items():
                     value = settings.get(settings_key)
                     if isinstance(value, bool) and value:
@@ -529,25 +627,15 @@ class ConversionPage:
         except Exception as e:
             print(f"Error loading settings: {e}")
 
-        # Add output settings
-        output_file_text = self.output_file_entry.get_text()
-        if output_file_text:
-            env_vars["output_file"] = output_file_text
-
-        # CRUCIAL: Defina o diretório de saída corretamente
+        # Set output folder
         output_folder = self.output_folder_entry.get_text()
         if output_folder:
-            # Garanta que é caminho absoluto
             if not os.path.isabs(output_folder):
                 output_folder = os.path.abspath(output_folder)
-                self.output_folder_entry.set_text(output_folder)
             env_vars["output_folder"] = output_folder
             print(f"Using specified output folder: {output_folder}")
         else:
-            # Se nenhum diretório de saída foi especificado, use o mesmo do arquivo de entrada
             env_vars["output_folder"] = input_dir
-            # Atualize também o campo na interface para feedback visual
-            self.output_folder_entry.set_text(input_dir)
             print(f"Using input file directory as output: {input_dir}")
 
         # Build the conversion command
@@ -561,30 +649,20 @@ class ConversionPage:
         # Reset trim times after conversion
         self.app.set_trim_times(0, None, 0)
 
-        # Debug output
-        print(f"Command: {' '.join(cmd)}")
-        print(f"Environment variables: {env_vars}")
+        # Delete original setting
+        delete_original = self.delete_original_check.get_active()
 
         # Create and display progress dialog
         run_with_progress_dialog(
             self.app,
             cmd,
             f"{os.path.basename(input_file)}",
-            input_file if self.delete_original_check.get_active() else None,
-            self.delete_original_check.get_active(),
+            input_file if delete_original else None,
+            delete_original,
             env_vars,
         )
 
-    def get_selected_file_path(self):
-        """Return the currently selected file path or None if no valid file is selected"""
-        file_path = self.file_path_label.get_text()
-        if (
-            file_path
-            and file_path != _("No file selected")
-            and os.path.exists(file_path)
-        ):
-            return file_path
-        return None
+        return True
 
     def _get_trim_command_options(self):
         """Get ffmpeg command options for trimming based on set trim points"""

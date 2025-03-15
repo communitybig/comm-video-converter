@@ -181,7 +181,8 @@ fi
 input_file="$1"
 
 # Remove extension from the input file
-input_file_without_extension=${input_file%.*}
+input_file_without_extension=${input_file##*/}
+input_file_without_extension=${input_file_without_extension%.*}
 
 # Check if the output_folder variable exists and variable output_file not exists
 if [[ -n $output_folder && -z $output_file ]]; then
