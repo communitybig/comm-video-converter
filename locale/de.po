@@ -1480,3 +1480,111 @@ msgstr "Konvertieren"
 #: NEEDS WORK
 msgid "Command Output"
 msgstr "Befehlsausgabe"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 222
+#: NEEDS WORK
+msgid "Select Video Files"
+msgstr "Videodateien auswählen"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 237
+#: NEEDS WORK
+msgid "Video Files"
+msgstr "Videodateien"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 260
+#: NEEDS WORK
+msgid "All Files"
+msgstr "Alle Dateien"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 295
+#: NEEDS WORK
+msgid "Error selecting files: {0}"
+msgstr "Fehler beim Auswählen von Dateien: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 433
+#: NEEDS WORK
+msgid "Queue Processing Complete"
+msgstr "Warteschlangenverarbeitung abgeschlossen"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 434
+#: NEEDS WORK
+msgid "All files in the queue have been processed."
+msgstr "Alle Dateien in der Warteschlange wurden verarbeitet."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 605
+#: NEEDS WORK
+msgid "Could not preview this video file"
+msgstr "Konnte diese Videodatei nicht in der Vorschau anzeigen."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 608
+#: NEEDS WORK
+msgid "Error previewing file: {0}"
+msgstr "Fehler beim Vorschauen der Datei: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 107
+#: NEEDS WORK
+msgid "Leave empty to use the same folder as input files"
+msgstr "Lassen Sie das Feld leer, um denselben Ordner wie die Eingabedateien zu verwenden."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 127
+#: NEEDS WORK
+msgid "Delete original files"
+msgstr "Ursprüngliche Dateien löschen"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 129
+#: NEEDS WORK
+msgid "Remove original files after successful conversion"
+msgstr "Ursprüngliche Dateien nach erfolgreicher Konvertierung entfernen"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 136
+#: NEEDS WORK
+msgid "Conversion Queue"
+msgstr "Konvertierungswarteschlange"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 166
+#: NEEDS WORK
+msgid "Clear Queue"
+msgstr "Warteschlange leeren"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 172
+#: NEEDS WORK
+msgid "Add Files"
+msgstr "Dateien hinzufügen"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 179
+#: NEEDS WORK
+msgid "Convert All"
+msgstr "Alle konvertieren"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 442
+#: NEEDS WORK
+msgid "Please add files to the queue first."
+msgstr "Bitte fügen Sie zuerst Dateien zur Warteschlange hinzu."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 506
+#: NEEDS WORK
+msgid "Remove from queue"
+msgstr "Aus der Warteschlange entfernen"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 532
+#: NEEDS WORK
+msgid "Queue is empty. Add files to convert."
+msgstr "Warteschlange ist leer. Fügen Sie Dateien zum Konvertieren hinzu."

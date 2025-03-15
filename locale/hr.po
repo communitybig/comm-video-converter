@@ -1477,3 +1477,111 @@ msgstr "Pretvori"
 #: NEEDS WORK
 msgid "Command Output"
 msgstr "Izlaz naredbe"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 222
+#: NEEDS WORK
+msgid "Select Video Files"
+msgstr "Odaberite video datoteke"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 237
+#: NEEDS WORK
+msgid "Video Files"
+msgstr "Video datoteke"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 260
+#: NEEDS WORK
+msgid "All Files"
+msgstr "Svi datoteke"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 295
+#: NEEDS WORK
+msgid "Error selecting files: {0}"
+msgstr "Greška pri odabiru datoteka: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 433
+#: NEEDS WORK
+msgid "Queue Processing Complete"
+msgstr "Obrada reda završena"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 434
+#: NEEDS WORK
+msgid "All files in the queue have been processed."
+msgstr "Svi datoteke u redu su obrađene."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 605
+#: NEEDS WORK
+msgid "Could not preview this video file"
+msgstr "Nije moguće pregledati ovu video datoteku."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 608
+#: NEEDS WORK
+msgid "Error previewing file: {0}"
+msgstr "Greška pri pregledavanju datoteke: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 107
+#: NEEDS WORK
+msgid "Leave empty to use the same folder as input files"
+msgstr "Ostavite prazno za korištenje iste mape kao ulazne datoteke"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 127
+#: NEEDS WORK
+msgid "Delete original files"
+msgstr "Izbriši izvorne datoteke"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 129
+#: NEEDS WORK
+msgid "Remove original files after successful conversion"
+msgstr "Ukloni izvorne datoteke nakon uspješne konverzije"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 136
+#: NEEDS WORK
+msgid "Conversion Queue"
+msgstr "Redoslijed konverzije"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 166
+#: NEEDS WORK
+msgid "Clear Queue"
+msgstr "Isprazni red čekanja"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 172
+#: NEEDS WORK
+msgid "Add Files"
+msgstr "Dodaj datoteke"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 179
+#: NEEDS WORK
+msgid "Convert All"
+msgstr "Pretvori sve"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 442
+#: NEEDS WORK
+msgid "Please add files to the queue first."
+msgstr "Molimo dodajte datoteke u red čekanja prvo."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 506
+#: NEEDS WORK
+msgid "Remove from queue"
+msgstr "Ukloni iz reda"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 532
+#: NEEDS WORK
+msgid "Queue is empty. Add files to convert."
+msgstr "Red čekanja je prazan. Dodajte datoteke za konverziju."

@@ -1892,3 +1892,111 @@ msgstr "转换"
 #: NEEDS WORK
 msgid "Command Output"
 msgstr "命令输出"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 222
+#: NEEDS WORK
+msgid "Select Video Files"
+msgstr "选择视频文件"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 237
+#: NEEDS WORK
+msgid "Video Files"
+msgstr "视频文件"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 260
+#: NEEDS WORK
+msgid "All Files"
+msgstr "所有文件"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 295
+#: NEEDS WORK
+msgid "Error selecting files: {0}"
+msgstr "选择文件时出错: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 433
+#: NEEDS WORK
+msgid "Queue Processing Complete"
+msgstr "队列处理完成"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 434
+#: NEEDS WORK
+msgid "All files in the queue have been processed."
+msgstr "队列中的所有文件已被处理。"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 605
+#: NEEDS WORK
+msgid "Could not preview this video file"
+msgstr "无法预览此视频文件"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 608
+#: NEEDS WORK
+msgid "Error previewing file: {0}"
+msgstr "预览文件时出错：{0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 107
+#: NEEDS WORK
+msgid "Leave empty to use the same folder as input files"
+msgstr "留空以使用与输入文件相同的文件夹"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 127
+#: NEEDS WORK
+msgid "Delete original files"
+msgstr "删除原始文件"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 129
+#: NEEDS WORK
+msgid "Remove original files after successful conversion"
+msgstr "成功转换后删除原始文件"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 136
+#: NEEDS WORK
+msgid "Conversion Queue"
+msgstr "转换队列"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 166
+#: NEEDS WORK
+msgid "Clear Queue"
+msgstr "清空队列"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 172
+#: NEEDS WORK
+msgid "Add Files"
+msgstr "添加文件"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 179
+#: NEEDS WORK
+msgid "Convert All"
+msgstr "转换所有"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 442
+#: NEEDS WORK
+msgid "Please add files to the queue first."
+msgstr "请先将文件添加到队列中。"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 506
+#: NEEDS WORK
+msgid "Remove from queue"
+msgstr "从队列中移除"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 532
+#: NEEDS WORK
+msgid "Queue is empty. Add files to convert."
+msgstr "队列为空。请添加要转换的文件。"
