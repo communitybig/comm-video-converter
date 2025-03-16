@@ -1477,3 +1477,117 @@ msgstr "Umbreyta"
 #: NEEDS WORK
 msgid "Command Output"
 msgstr "Skiptaúttak"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 243
+#: NEEDS WORK
+msgid "Select Video Files"
+msgstr "Veldu vídeofaila"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 258
+#: NEEDS WORK
+msgid "Video Files"
+msgstr "Vefskráir"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 281
+#: NEEDS WORK
+msgid "All Files"
+msgstr "Öll skrár"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 316
+#: NEEDS WORK
+msgid "Error selecting files: {0}"
+msgstr "Villa að velja skrár: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 454
+#: NEEDS WORK
+msgid "Queue Processing Complete"
+msgstr "Röð vinnslu lokið"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 455
+#: NEEDS WORK
+msgid "All files in the queue have been processed."
+msgstr "Öll skrár í biðröðinni hafa verið unnar."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 626
+#: NEEDS WORK
+msgid "Could not preview this video file"
+msgstr "Ekki tókst að forsýna þessa vídeóskrá."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 629
+#: NEEDS WORK
+msgid "Error previewing file: {0}"
+msgstr "Villa við að forsýna skrá: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 99
+#: NEEDS WORK
+msgid "Conversion Queue"
+msgstr "Umbúnaðaraðgerðaskrá"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 157
+#: NEEDS WORK
+msgid "Clear Queue"
+msgstr "Tæma biðröð"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 163
+#: NEEDS WORK
+msgid "Add Files"
+msgstr "Bæta við skrám"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 170
+#: NEEDS WORK
+msgid "Convert All"
+msgstr "Breyta allt"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 210
+#: NEEDS WORK
+msgid "Output folder:"
+msgstr "Útgangsfangsstaður:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 218
+#: NEEDS WORK
+msgid "Same as input folder"
+msgstr "Sama og inntaksmöppu"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 237
+#: NEEDS WORK
+msgid "Delete original files"
+msgstr "Eyða upprunalegu skrám"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 495
+#: NEEDS WORK
+msgid "Please add files to the queue first."
+msgstr "Vinsamlegast bættu skrám við biðröðina fyrst."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 644
+#: NEEDS WORK
+msgid "Preview in editor"
+msgstr "Forskoða í ritlinum"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 652
+#: NEEDS WORK
+msgid "Remove from queue"
+msgstr "Fjarlægja úr biðröð"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 680
+#: NEEDS WORK
+msgid "Queue is empty. Add files to convert."
+msgstr "Biðröð er tóm. Bættu við skrám til að breyta."

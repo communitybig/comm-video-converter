@@ -1478,3 +1478,117 @@ msgstr "Muunna"
 #: NEEDS WORK
 msgid "Command Output"
 msgstr "Komentotulos"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 243
+#: NEEDS WORK
+msgid "Select Video Files"
+msgstr "Valitse videotiedostot"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 258
+#: NEEDS WORK
+msgid "Video Files"
+msgstr "Videotiedostot"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 281
+#: NEEDS WORK
+msgid "All Files"
+msgstr "Kaikki tiedostot"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 316
+#: NEEDS WORK
+msgid "Error selecting files: {0}"
+msgstr "Virhe tiedostojen valinnassa: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 454
+#: NEEDS WORK
+msgid "Queue Processing Complete"
+msgstr "Jonon käsittely valmis"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 455
+#: NEEDS WORK
+msgid "All files in the queue have been processed."
+msgstr "Kaikki jonossa olevat tiedostot on käsitelty."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 626
+#: NEEDS WORK
+msgid "Could not preview this video file"
+msgstr "Ei voitu esikatsella tätä videotiedostoa"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 629
+#: NEEDS WORK
+msgid "Error previewing file: {0}"
+msgstr "Virhe tiedoston esikatselussa: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 99
+#: NEEDS WORK
+msgid "Conversion Queue"
+msgstr "Muunna jono"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 157
+#: NEEDS WORK
+msgid "Clear Queue"
+msgstr "Tyhjennä jonot"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 163
+#: NEEDS WORK
+msgid "Add Files"
+msgstr "Lisää tiedostoja"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 170
+#: NEEDS WORK
+msgid "Convert All"
+msgstr "Muuta kaikki"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 210
+#: NEEDS WORK
+msgid "Output folder:"
+msgstr "Tulostuskansio:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 218
+#: NEEDS WORK
+msgid "Same as input folder"
+msgstr "Sama kuin syöttöhakemisto"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 237
+#: NEEDS WORK
+msgid "Delete original files"
+msgstr "Poista alkuperäiset tiedostot"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 495
+#: NEEDS WORK
+msgid "Please add files to the queue first."
+msgstr "Ole hyvä ja lisää tiedostot ensin jonoon."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 644
+#: NEEDS WORK
+msgid "Preview in editor"
+msgstr "Esikatselu editorissa"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 652
+#: NEEDS WORK
+msgid "Remove from queue"
+msgstr "Poista jonosta"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 680
+#: NEEDS WORK
+msgid "Queue is empty. Add files to convert."
+msgstr "Jonos on tyhjentynyt. Lisää muunnettavat tiedostot."

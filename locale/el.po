@@ -1480,3 +1480,117 @@ msgstr "Μετατροπή"
 #: NEEDS WORK
 msgid "Command Output"
 msgstr "Έξοδος Εντολής"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 243
+#: NEEDS WORK
+msgid "Select Video Files"
+msgstr "Επιλέξτε Αρχεία Βίντεο"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 258
+#: NEEDS WORK
+msgid "Video Files"
+msgstr "Αρχεία Βίντεο"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 281
+#: NEEDS WORK
+msgid "All Files"
+msgstr "Όλα τα Αρχεία"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 316
+#: NEEDS WORK
+msgid "Error selecting files: {0}"
+msgstr "Σφάλμα κατά την επιλογή αρχείων: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 454
+#: NEEDS WORK
+msgid "Queue Processing Complete"
+msgstr "Η επεξεργασία της ουράς ολοκληρώθηκε"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 455
+#: NEEDS WORK
+msgid "All files in the queue have been processed."
+msgstr "Όλα τα αρχεία στην ουρά έχουν επεξεργαστεί."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 626
+#: NEEDS WORK
+msgid "Could not preview this video file"
+msgstr "Δεν ήταν δυνατή η προεπισκόπηση αυτού του αρχείου βίντεο."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 629
+#: NEEDS WORK
+msgid "Error previewing file: {0}"
+msgstr "Σφάλμα προεπισκόπησης αρχείου: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 99
+#: NEEDS WORK
+msgid "Conversion Queue"
+msgstr "Ουρά Μετατροπής"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 157
+#: NEEDS WORK
+msgid "Clear Queue"
+msgstr "Καθαρισμός Ουράς"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 163
+#: NEEDS WORK
+msgid "Add Files"
+msgstr "Προσθήκη Αρχείων"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 170
+#: NEEDS WORK
+msgid "Convert All"
+msgstr "Μετατροπή Όλων"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 210
+#: NEEDS WORK
+msgid "Output folder:"
+msgstr "Φάκελος εξόδου:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 218
+#: NEEDS WORK
+msgid "Same as input folder"
+msgstr "Ίδιο με τον φάκελο εισόδου"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 237
+#: NEEDS WORK
+msgid "Delete original files"
+msgstr "Διαγραφή αρχικών αρχείων"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 495
+#: NEEDS WORK
+msgid "Please add files to the queue first."
+msgstr "Παρακαλώ προσθέστε αρχεία στην ουρά πρώτα."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 644
+#: NEEDS WORK
+msgid "Preview in editor"
+msgstr "Προεπισκόπηση στον επεξεργαστή"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 652
+#: NEEDS WORK
+msgid "Remove from queue"
+msgstr "Αφαίρεση από την ουρά"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 680
+#: NEEDS WORK
+msgid "Queue is empty. Add files to convert."
+msgstr "Η ουρά είναι κενή. Προσθέστε αρχεία προς μετατροπή."
