@@ -167,12 +167,38 @@ class VideoConverterApp(Adw.Application):
         filelist_drop_target.connect("drop", self.on_drop_filelist)
         self.window.add_controller(filelist_drop_target)
 
+    def is_valid_video_file(self, file_path):
+        """Check if the file has a valid video extension"""
+        if not file_path:
+            return False
+
+        # List of supported video extensions
+        valid_extensions = [
+            ".mp4",
+            ".mkv",
+            ".webm",
+            ".mov",
+            ".avi",
+            ".wmv",
+            ".mpeg",
+            ".m4v",
+            ".ts",
+            ".flv",
+        ]
+
+        # Check if the file has a valid extension (case insensitive)
+        ext = os.path.splitext(file_path)[1].lower()
+        return ext in valid_extensions
+
     def on_drop_file(self, drop_target, value, x, y):
         """Handle single dropped file"""
         if isinstance(value, Gio.File):
             file_path = value.get_path()
             if file_path and os.path.exists(file_path):
-                return self.add_file_to_queue(file_path)
+                if self.is_valid_video_file(file_path):
+                    return self.add_file_to_queue(file_path)
+                else:
+                    print(f"Rejected file with invalid extension: {file_path}")
         return False
 
     def on_drop_filelist(self, drop_target, value, x, y):
@@ -186,8 +212,11 @@ class VideoConverterApp(Adw.Application):
                     and (file_path := file.get_path())
                     and os.path.exists(file_path)
                 ):
-                    if self.add_file_to_queue(file_path):
-                        files_added += 1
+                    if self.is_valid_video_file(file_path):
+                        if self.add_file_to_queue(file_path):
+                            files_added += 1
+                    else:
+                        print(f"Rejected file with invalid extension: {file_path}")
             return files_added > 0
         return False
 
