@@ -1478,3 +1478,117 @@ msgstr "Konvertera"
 #: NEEDS WORK
 msgid "Command Output"
 msgstr "Kommandoutdata"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 222
+#: NEEDS WORK
+msgid "Select Video Files"
+msgstr "Välj videofiler"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 237
+#: NEEDS WORK
+msgid "Video Files"
+msgstr "Videofiler"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 260
+#: NEEDS WORK
+msgid "All Files"
+msgstr "Alla filer"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 295
+#: NEEDS WORK
+msgid "Error selecting files: {0}"
+msgstr "Fel vid val av filer: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 433
+#: NEEDS WORK
+msgid "Queue Processing Complete"
+msgstr "Köhantering Slutförd"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 434
+#: NEEDS WORK
+msgid "All files in the queue have been processed."
+msgstr "Alla filer i kön har bearbetats."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 605
+#: NEEDS WORK
+msgid "Could not preview this video file"
+msgstr "Kunde inte förhandsgranska den här videofilen"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 608
+#: NEEDS WORK
+msgid "Error previewing file: {0}"
+msgstr "Fel vid förhandsgranskning av fil: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 99
+#: NEEDS WORK
+msgid "Conversion Queue"
+msgstr "Konverteringskö"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 142
+#: NEEDS WORK
+msgid "Clear Queue"
+msgstr "Rensa kö"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 148
+#: NEEDS WORK
+msgid "Add Files"
+msgstr "Lägg till filer"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 155
+#: NEEDS WORK
+msgid "Convert All"
+msgstr "Konvertera allt"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 195
+#: NEEDS WORK
+msgid "Output folder:"
+msgstr "Utmatningsmapp:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 203
+#: NEEDS WORK
+msgid "Same as input folder"
+msgstr "Samma som inmatningsmapp"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 222
+#: NEEDS WORK
+msgid "Delete original files"
+msgstr "Ta bort originalfiler"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 480
+#: NEEDS WORK
+msgid "Please add files to the queue first."
+msgstr "Vänligen lägg till filer i kön först."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 661
+#: NEEDS WORK
+msgid "Preview in editor"
+msgstr "Förhandsgranska i redigeraren"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 669
+#: NEEDS WORK
+msgid "Remove from queue"
+msgstr "Ta bort från kö"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 697
+#: NEEDS WORK
+msgid "Queue is empty. Add files to convert."
+msgstr "Kön är tom. Lägg till filer för att konvertera."

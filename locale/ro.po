@@ -1477,3 +1477,117 @@ msgstr "Converti"
 #: NEEDS WORK
 msgid "Command Output"
 msgstr "Ieșire comandă"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 222
+#: NEEDS WORK
+msgid "Select Video Files"
+msgstr "Selectați fișiere video"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 237
+#: NEEDS WORK
+msgid "Video Files"
+msgstr "Fișiere video"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 260
+#: NEEDS WORK
+msgid "All Files"
+msgstr "Toate fișierele"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 295
+#: NEEDS WORK
+msgid "Error selecting files: {0}"
+msgstr "Eroare la selectarea fișierelor: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 433
+#: NEEDS WORK
+msgid "Queue Processing Complete"
+msgstr "Procesarea cozii completă"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 434
+#: NEEDS WORK
+msgid "All files in the queue have been processed."
+msgstr "Toate fișierele din coadă au fost procesate."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 605
+#: NEEDS WORK
+msgid "Could not preview this video file"
+msgstr "Nu s-a putut previzualiza acest fișier video."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 608
+#: NEEDS WORK
+msgid "Error previewing file: {0}"
+msgstr "Eroare la previzualizarea fișierului: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 99
+#: NEEDS WORK
+msgid "Conversion Queue"
+msgstr "Coada de conversie"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 142
+#: NEEDS WORK
+msgid "Clear Queue"
+msgstr "Șterge Coada"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 148
+#: NEEDS WORK
+msgid "Add Files"
+msgstr "Adaugă fișiere"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 155
+#: NEEDS WORK
+msgid "Convert All"
+msgstr "Converti totul"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 195
+#: NEEDS WORK
+msgid "Output folder:"
+msgstr "Folder de ieșire:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 203
+#: NEEDS WORK
+msgid "Same as input folder"
+msgstr "Același ca folderul de intrare"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 222
+#: NEEDS WORK
+msgid "Delete original files"
+msgstr "Șterge fișierele originale"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 480
+#: NEEDS WORK
+msgid "Please add files to the queue first."
+msgstr "Vă rugăm să adăugați fișierele în coadă mai întâi."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 661
+#: NEEDS WORK
+msgid "Preview in editor"
+msgstr "Previzualizare în editor"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 669
+#: NEEDS WORK
+msgid "Remove from queue"
+msgstr "Elimină din coadă"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 697
+#: NEEDS WORK
+msgid "Queue is empty. Add files to convert."
+msgstr "Coada este goală. Adăugați fișiere pentru a le converti."

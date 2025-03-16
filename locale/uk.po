@@ -1901,3 +1901,117 @@ msgstr "Перетворити"
 #: NEEDS WORK
 msgid "Command Output"
 msgstr "Командний вивід"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 222
+#: NEEDS WORK
+msgid "Select Video Files"
+msgstr "Виберіть відеофайли"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 237
+#: NEEDS WORK
+msgid "Video Files"
+msgstr "Відеофайли"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 260
+#: NEEDS WORK
+msgid "All Files"
+msgstr "Усі файли"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 295
+#: NEEDS WORK
+msgid "Error selecting files: {0}"
+msgstr "Помилка вибору файлів: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 433
+#: NEEDS WORK
+msgid "Queue Processing Complete"
+msgstr "Обробка черги завершена"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 434
+#: NEEDS WORK
+msgid "All files in the queue have been processed."
+msgstr "Усі файли в черзі були оброблені."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 605
+#: NEEDS WORK
+msgid "Could not preview this video file"
+msgstr "Не вдалося попередньо переглянути цей відеофайл"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 608
+#: NEEDS WORK
+msgid "Error previewing file: {0}"
+msgstr "Помилка попереднього перегляду файлу: {0}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 99
+#: NEEDS WORK
+msgid "Conversion Queue"
+msgstr "Конвертаційна черга"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 142
+#: NEEDS WORK
+msgid "Clear Queue"
+msgstr "Очистити чергу"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 148
+#: NEEDS WORK
+msgid "Add Files"
+msgstr "Додати файли"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 155
+#: NEEDS WORK
+msgid "Convert All"
+msgstr "Перетворити все"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 195
+#: NEEDS WORK
+msgid "Output folder:"
+msgstr "Вихідна папка:"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 203
+#: NEEDS WORK
+msgid "Same as input folder"
+msgstr "Також як вхідна папка"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 222
+#: NEEDS WORK
+msgid "Delete original files"
+msgstr "Видалити оригінальні файли"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 480
+#: NEEDS WORK
+msgid "Please add files to the queue first."
+msgstr "Будь ласка, спочатку додайте файли до черги."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 661
+#: NEEDS WORK
+msgid "Preview in editor"
+msgstr "Перегляд у редакторі"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 669
+#: NEEDS WORK
+msgid "Remove from queue"
+msgstr "Видалити з черги"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 697
+#: NEEDS WORK
+msgid "Queue is empty. Add files to convert."
+msgstr "队列为空。请添加要转换的文件。"
