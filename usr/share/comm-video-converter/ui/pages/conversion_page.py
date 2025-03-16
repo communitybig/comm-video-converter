@@ -3,7 +3,7 @@ import gi
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, Gio, Pango, GLib
+from gi.repository import Gtk, Adw, Gio, Pango, GLib, Gdk
 
 from constants import CONVERT_SCRIPT_PATH, VIDEO_FILE_MIME_TYPES
 from utils.conversion import run_with_progress_dialog
@@ -66,9 +66,9 @@ class ConversionPage:
         scrolled_window.set_vexpand(True)
         page.append(scrolled_window)
 
-        # Container for scrollable content - center vertically
+        # Container for scrollable content - use FILL alignment for full height
         scrollable_content = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        scrollable_content.set_valign(Gtk.Align.CENTER)  # Center content vertically
+        scrollable_content.set_valign(Gtk.Align.FILL)
         scrollable_content.set_vexpand(True)
         scrolled_window.set_child(scrollable_content)
 
@@ -76,84 +76,59 @@ class ConversionPage:
         clamp = Adw.Clamp()
         clamp.set_maximum_size(800)
         clamp.set_tightening_threshold(600)
+        clamp.set_vexpand(True)  # Make clamp expand vertically
         scrollable_content.append(clamp)
 
         # Main content box inside the clamp
         main_content = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        main_content.set_spacing(24)  # Larger spacing between groups
+        main_content.set_spacing(16)
         main_content.set_margin_start(12)
         main_content.set_margin_end(12)
         main_content.set_margin_top(24)
         main_content.set_margin_bottom(24)
+        main_content.set_vexpand(True)
         clamp.set_child(main_content)
 
-        # File section using Adw.PreferencesGroup
-        file_group = Adw.PreferencesGroup()
+        # ===== QUEUE SECTION FIRST =====
+        # Create a wrapper box that will expand to fill available space
+        queue_wrapper = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        queue_wrapper.set_vexpand(True)
+        queue_wrapper.set_valign(Gtk.Align.FILL)
+        queue_wrapper.set_hexpand(True)
 
-        # Add help button to the header with a larger icon but same button size
-        help_button = Gtk.Button()
-        icon = Gtk.Image.new_from_icon_name("help-about-symbolic")
-        icon.set_pixel_size(22)
-        icon.add_css_class("accent")
-        help_button.set_child(icon)
-        help_button.add_css_class("flat")
-        help_button.add_css_class("circular")
-        help_button.connect("clicked", self.on_help_clicked)
-        file_group.set_header_suffix(help_button)
-
-        # Output folder row
-        output_folder_row = Adw.ActionRow(title=_("Output folder"))
-        output_folder_row.set_subtitle(
-            _("Leave empty to use the same folder as input files")
-        )
-
-        self.output_folder_entry = Gtk.Entry()
-        self.output_folder_entry.set_hexpand(True)
-
-        folder_button = Gtk.Button()
-        folder_button.set_icon_name("folder-symbolic")
-        folder_button.connect("clicked", self.on_folder_button_clicked)
-        folder_button.add_css_class("flat")
-        folder_button.add_css_class("circular")
-
-        output_folder_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
-        output_folder_box.append(self.output_folder_entry)
-        output_folder_box.append(folder_button)
-
-        output_folder_row.add_suffix(output_folder_box)
-        file_group.add(output_folder_row)
-
-        # Option to delete original file
-        self.delete_original_check = Adw.SwitchRow(title=_("Delete original files"))
-        self.delete_original_check.set_subtitle(
-            _("Remove original files after successful conversion")
-        )
-        file_group.add(self.delete_original_check)
-
-        main_content.append(file_group)
-
-        # Queue section
         queue_group = Adw.PreferencesGroup(title=_("Conversion Queue"))
+        queue_group.set_hexpand(True)
+        queue_group.set_vexpand(True)  # Set to expand - most critical element
+        queue_group.set_valign(Gtk.Align.FILL)
 
         # Create a queue listbox with a scrolled window
         queue_scroll = Gtk.ScrolledWindow()
         queue_scroll.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
-        queue_scroll.set_min_content_height(200)  # Increased height
-        queue_scroll.set_max_content_height(300)  # Increased height
+        queue_scroll.set_vexpand(True)
+        queue_scroll.set_hexpand(True)
+        # Remove fixed size constraints to allow dynamic resizing
+        queue_scroll.set_propagate_natural_height(False)
+        queue_scroll.set_propagate_natural_width(False)
 
         # Create a listbox for the queue items
         self.queue_listbox = Gtk.ListBox()
-        self.queue_listbox.add_css_class("boxed-list")
         self.queue_listbox.set_selection_mode(Gtk.SelectionMode.SINGLE)
         self.queue_listbox.connect("row-activated", self.on_queue_item_activated)
+        self.queue_listbox.set_hexpand(True)
+        self.queue_listbox.set_vexpand(True)
+        self.queue_listbox.set_valign(Gtk.Align.FILL)
         queue_scroll.set_child(self.queue_listbox)
 
-        # Add the listbox to an ActionRow to provide padding
-        queue_list_row = Adw.ActionRow()
-        queue_list_row.set_activatable(False)
-        queue_list_row.add_suffix(queue_scroll)
-        queue_list_row.set_title("")  # Empty title for proper layout
-        queue_group.add(queue_list_row)
+        # Create a content box for the queue to allow flexible layout
+        queue_content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        queue_content_box.set_vexpand(True)
+        queue_content_box.set_hexpand(True)
+
+        # Add the queue scroll window directly to the content box
+        queue_content_box.append(queue_scroll)
+
+        # Add the content box to the queue group
+        queue_group.add(queue_content_box)
 
         # Create button box for queue management
         queue_buttons_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
@@ -161,6 +136,7 @@ class ConversionPage:
         queue_buttons_box.set_spacing(12)
         queue_buttons_box.set_margin_top(12)
         queue_buttons_box.set_margin_bottom(12)
+        queue_buttons_box.set_vexpand(False)  # Explicitly don't expand
 
         # Queue management buttons
         clear_queue_button = Gtk.Button(label=_("Clear Queue"))
@@ -183,14 +159,76 @@ class ConversionPage:
         self.convert_button = convert_button  # Store reference for enabling/disabling
         queue_buttons_box.append(convert_button)
 
-        # Add the button box to an action row for proper layout
-        queue_buttons_row = Adw.ActionRow()
-        queue_buttons_row.set_activatable(False)
-        queue_buttons_row.add_suffix(queue_buttons_box)
-        queue_buttons_row.set_title("")  # Empty title for proper layout
-        queue_group.add(queue_buttons_row)
+        # Add the button box directly to the queue group
+        queue_button_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        queue_button_container.set_vexpand(False)  # Explicitly don't expand
+        queue_button_container.set_halign(Gtk.Align.CENTER)
+        queue_button_container.append(queue_buttons_box)
+        queue_group.add(queue_button_container)
 
-        main_content.append(queue_group)
+        # Add the queue group to the wrapper
+        queue_wrapper.append(queue_group)
+
+        # Add the wrapper to main content
+        main_content.append(queue_wrapper)
+
+        # ===== FILE OPTIONS SECTION (MOVED TO BOTTOM) =====
+        # Create a single-row layout for output folder and delete original
+        options_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        options_box.set_spacing(12)
+        options_box.set_margin_top(16)
+        options_box.set_vexpand(False)  # Ensure this doesn't steal space
+
+        # Help button
+        help_button = Gtk.Button()
+        icon = Gtk.Image.new_from_icon_name("help-about-symbolic")
+        icon.set_pixel_size(22)
+        icon.add_css_class("accent")
+        help_button.set_child(icon)
+        help_button.add_css_class("flat")
+        help_button.add_css_class("circular")
+        help_button.connect("clicked", self.on_help_clicked)
+        help_button.set_valign(Gtk.Align.CENTER)
+        options_box.append(help_button)
+
+        # Output folder section - using a box instead of ActionRow
+        folder_label = Gtk.Label(label=_("Output folder:"))
+        folder_label.set_halign(Gtk.Align.START)
+        folder_label.set_valign(Gtk.Align.CENTER)
+        options_box.append(folder_label)
+
+        # Output folder entry
+        self.output_folder_entry = Gtk.Entry()
+        self.output_folder_entry.set_hexpand(True)
+        self.output_folder_entry.set_placeholder_text(_("Same as input folder"))
+        options_box.append(self.output_folder_entry)
+
+        # Folder button
+        folder_button = Gtk.Button()
+        folder_button.set_icon_name("folder-symbolic")
+        folder_button.connect("clicked", self.on_folder_button_clicked)
+        folder_button.add_css_class("flat")
+        folder_button.add_css_class("circular")
+        folder_button.set_valign(Gtk.Align.CENTER)
+        options_box.append(folder_button)
+
+        # Separator between folder and delete switch
+        separator = Gtk.Separator(orientation=Gtk.Orientation.VERTICAL)
+        separator.set_margin_start(8)
+        separator.set_margin_end(8)
+        options_box.append(separator)
+
+        # Delete original checkbox
+        delete_label = Gtk.Label(label=_("Delete original files"))
+        delete_label.set_halign(Gtk.Align.START)
+        delete_label.set_valign(Gtk.Align.CENTER)
+        options_box.append(delete_label)
+
+        self.delete_original_check = Gtk.Switch()
+        self.delete_original_check.set_valign(Gtk.Align.CENTER)
+        options_box.append(self.delete_original_check)
+
+        main_content.append(options_box)
 
         # Update the queue display initially
         self.update_queue_display()
@@ -477,66 +515,203 @@ class ConversionPage:
             else:
                 break
 
+        # Remove any styling that might be inherited from the header bar
+        # Apply a CSS provider that overrides any header-related styles
+        css_provider = Gtk.CssProvider()
+        css_provider.load_from_data(
+            b"""
+            /* Override any styling from header bar */
+            box.vertical,
+            box.horizontal {
+                padding: 0;
+                margin: 0;
+                border-spacing: 0;
+            }
+            /* Ensure listbox uses full width */
+            listbox {
+                padding: 0;
+                margin: 0;
+                min-width: 100%;
+            }
+            /* Force rows to use full width with no margins */
+            listboxrow {
+                padding: 0;
+                margin: 0;
+                min-width: 100%;
+            }
+            """
+        )
+        Gtk.StyleContext.add_provider_for_display(
+            Gdk.Display.get_default(),
+            css_provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
+        )
+
+        # Make sure the queue listbox itself has no margins
+        self.queue_listbox.set_margin_start(0)
+        self.queue_listbox.set_margin_end(0)
+        self.queue_listbox.set_margin_top(0)
+        self.queue_listbox.set_margin_bottom(0)
+
         # Add current queue items
-        for file_path in self.app.conversion_queue:
+        for index, file_path in enumerate(self.app.conversion_queue):
             if not os.path.exists(file_path):
                 continue
 
-            # Create a row for the file using ActionRow for better styling
-            row = Adw.ActionRow()
-
-            # Set title with filename and make it more prominent
-            filename = os.path.basename(file_path)
-            row.set_title(filename)
-            row.set_title_lines(1)  # Ensure title gets one full line
-
-            # Set directory as subtitle, but limit its display
-            directory = os.path.dirname(file_path)
-            row.set_subtitle(directory)
-            row.set_subtitle_lines(1)  # Limit subtitle to one line
-
-            # Ensure the row expands to fill available space
+            # Create list row with full width
+            row = Gtk.ListBoxRow()
+            row.set_activatable(True)
+            row.file_path = file_path
             row.set_hexpand(True)
 
-            # Add remove button with proper spacing
-            remove_button = Gtk.Button()
-            remove_button.set_icon_name("list-remove-symbolic")
+            # Explicitly set all margins to 0
+            row.set_margin_start(0)
+            row.set_margin_end(0)
+            row.set_margin_top(0)
+            row.set_margin_bottom(0)
+
+            main_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+            main_box.set_spacing(12)
+            main_box.set_hexpand(True)
+
+            # No vertical margins within items, but keep spacing between items
+            main_box.set_margin_top(4)
+            main_box.set_margin_bottom(4)
+            main_box.set_margin_start(0)
+            main_box.set_margin_end(0)
+
+            number_label = Gtk.Label(label=str(index + 1))
+            number_label.set_width_chars(2)
+            number_label.set_xalign(0.5)
+            number_label.set_margin_start(4)  # Small margin for spacing only
+            main_box.append(number_label)
+
+            # 2. FILE INFO COLUMN - takes up most space
+            info_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+            info_box.set_spacing(4)
+            info_box.set_hexpand(True)  # This column should expand
+
+            # Filename row with icon
+            name_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+            name_box.set_spacing(4)
+            name_box.set_hexpand(True)
+
+            # File type icon
+            file_icon = Gtk.Image.new_from_icon_name("video-x-generic")
+            file_icon.set_pixel_size(16)
+            name_box.append(file_icon)
+
+            # Filename (bold)
+            filename = os.path.basename(file_path)
+            name_label = Gtk.Label(label=filename)
+            name_label.set_hexpand(True)
+            name_label.set_halign(Gtk.Align.START)
+            name_label.set_ellipsize(Pango.EllipsizeMode.MIDDLE)
+            name_label.set_xalign(0)  # Left align
+            name_box.append(name_label)
+
+            info_box.append(name_box)
+
+            # Directory path row
+            path_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+            path_box.set_spacing(4)
+            path_box.set_hexpand(True)
+
+            # Path prefix icon
+            folder_icon = Gtk.Image.new_from_icon_name("folder-symbolic")
+            folder_icon.set_pixel_size(12)
+            path_box.append(folder_icon)
+
+            # Path label
+            directory = os.path.dirname(file_path)
+            path_label = Gtk.Label(label=directory)
+            path_label.set_hexpand(True)
+            path_label.set_halign(Gtk.Align.START)
+            path_label.set_ellipsize(Pango.EllipsizeMode.START)
+            path_label.set_xalign(0)  # Left align
+            path_box.append(path_label)
+
+            info_box.append(path_box)
+            main_box.append(info_box)
+
+            # 3. SIZE COLUMN - fixed width
+            try:
+                file_size = os.path.getsize(file_path) / (1024 * 1024)
+                size_label = Gtk.Label(label=f"{file_size:.1f} MB")
+                size_label.set_width_chars(8)
+                size_label.set_xalign(1)  # Right align
+                size_label.set_valign(Gtk.Align.CENTER)
+                main_box.append(size_label)
+            except:
+                # Add a spacer if we can't get the file size
+                spacer = Gtk.Box()
+                spacer.set_size_request(70, 1)
+                main_box.append(spacer)
+
+            # 4. BUTTONS COLUMN - minimal margin
+            buttons_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+            buttons_box.set_spacing(4)
+            buttons_box.set_valign(Gtk.Align.CENTER)
+            buttons_box.set_margin_end(4)  # Minimal margin
+
+            # Edit/Preview button
+            edit_button = Gtk.Button.new_from_icon_name("document-edit-symbolic")
+            edit_button.add_css_class("flat")
+            edit_button.add_css_class("circular")
+            edit_button.set_tooltip_text(_("Preview in editor"))
+            edit_button.connect("clicked", self.on_preview_file, file_path)
+            buttons_box.append(edit_button)
+
+            # Remove button
+            remove_button = Gtk.Button.new_from_icon_name("user-trash-symbolic")
             remove_button.add_css_class("flat")
             remove_button.add_css_class("circular")
             remove_button.set_tooltip_text(_("Remove from queue"))
-            remove_button.set_valign(Gtk.Align.CENTER)
             remove_button.connect("clicked", self.on_remove_from_queue, file_path)
+            buttons_box.append(remove_button)
 
-            # Use a box to add some margin to the button
-            button_box = Gtk.Box()
-            button_box.set_margin_start(12)  # Add space before the button
-            button_box.append(remove_button)
+            main_box.append(buttons_box)
 
-            row.add_suffix(button_box)
+            # Set the main box as the row's child
+            row.set_child(main_box)
 
-            # Make row activatable (clickable)
-            row.set_activatable(True)
-
-            # Store the file path using a standard Python attribute
-            row.file_path = file_path
-
-            # Add to listbox
+            # Add row to listbox with alternating background
+            if index % 2 == 1:
+                row.add_css_class("alternate-row")
             self.queue_listbox.append(row)
-
-            # Ensure the listbox allocates sufficient height per row
-            row.set_margin_top(4)
-            row.set_margin_bottom(4)
 
         # Show a message if the queue is empty
         if len(self.app.conversion_queue) == 0:
+            empty_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+            empty_box.set_margin_top(24)
+            empty_box.set_margin_bottom(24)
+            empty_box.set_spacing(12)
+            empty_box.set_valign(Gtk.Align.CENTER)
+            empty_box.set_hexpand(True)  # Make sure this expands horizontally
+
+            empty_icon = Gtk.Image.new_from_icon_name("folder-open-symbolic")
+            empty_icon.set_pixel_size(48)
+            empty_icon.add_css_class("dim-label")
+            empty_box.append(empty_icon)
+
             empty_label = Gtk.Label(label=_("Queue is empty. Add files to convert."))
-            empty_label.set_margin_top(12)
-            empty_label.set_margin_bottom(12)
             empty_label.add_css_class("dim-label")
-            self.queue_listbox.append(empty_label)
+            empty_box.append(empty_label)
+
+            # Add the empty state in a row to ensure consistent layout
+            empty_row = Gtk.ListBoxRow()
+            empty_row.set_selectable(False)
+            empty_row.set_child(empty_box)
+            empty_row.set_hexpand(True)
+
+            self.queue_listbox.append(empty_row)
 
         # Enable or disable convert button based on queue state
         self.convert_button.set_sensitive(len(self.app.conversion_queue) > 0)
+
+    def on_preview_file(self, button, file_path):
+        """Preview a file in the video editor"""
+        self.app.show_file_details(file_path)
 
     def on_remove_from_queue(self, button, file_path):
         """Remove a specific file from the queue"""
