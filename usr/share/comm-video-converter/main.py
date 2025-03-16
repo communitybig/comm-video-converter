@@ -157,17 +157,49 @@ class VideoConverterApp(Adw.Application):
 
     def _setup_drag_and_drop(self):
         """Set up drag and drop support for the window"""
-        drop_target = Gtk.DropTarget.new(Gio.File, Gdk.DragAction.COPY)
-        drop_target.connect("drop", self.on_drop)
-        self.window.add_controller(drop_target)
+        # Create a drop target for direct Gio.File drops (single file)
+        file_drop_target = Gtk.DropTarget.new(Gio.File, Gdk.DragAction.COPY)
+        file_drop_target.connect("drop", self.on_drop_file)
+        self.window.add_controller(file_drop_target)
 
-    def on_drop(self, drop_target, value, x, y):
-        """Handle dropped files"""
+        # Create a drop target for Gdk.FileList (multiple files)
+        filelist_drop_target = Gtk.DropTarget.new(Gdk.FileList, Gdk.DragAction.COPY)
+        filelist_drop_target.connect("drop", self.on_drop_filelist)
+        self.window.add_controller(filelist_drop_target)
+
+    def on_drop_file(self, drop_target, value, x, y):
+        """Handle single dropped files"""
         if isinstance(value, Gio.File):
             file_path = value.get_path()
             if file_path and os.path.exists(file_path):
                 self.add_file_to_queue(file_path)
                 return True
+        return False
+
+    def on_drop_filelist(self, drop_target, value, x, y):
+        """Handle multiple dropped files using Gdk.FileList"""
+        if isinstance(value, Gdk.FileList):
+            # Process each file in the list
+            files_added = 0
+            # Get the files list and iterate through it directly
+            files = value.get_files()
+            for file in files:
+                if file:
+                    file_path = file.get_path()
+                    if file_path and os.path.exists(file_path):
+                        if self.add_file_to_queue(file_path):
+                            files_added += 1
+
+            # Return True if we added at least one file
+            return files_added > 0
+        return False
+
+    def on_drop(self, drop_target, value, x, y):
+        """Legacy handler - redirects to appropriate handler based on value type"""
+        if isinstance(value, Gio.File):
+            return self.on_drop_file(drop_target, value, x, y)
+        elif isinstance(value, Gdk.FileList):
+            return self.on_drop_filelist(drop_target, value, x, y)
         return False
 
     def on_handle_local_options(self, app, options):

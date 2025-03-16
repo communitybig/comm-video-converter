@@ -3,7 +3,7 @@ import gi
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, Gio, Pango, GLib, Gdk
+from gi.repository import Gtk, Adw, Gio, Pango, GLib
 
 from constants import CONVERT_SCRIPT_PATH, VIDEO_FILE_MIME_TYPES
 from utils.conversion import run_with_progress_dialog
@@ -106,6 +106,8 @@ class ConversionPage:
         queue_scroll.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
         queue_scroll.set_vexpand(True)
         queue_scroll.set_hexpand(True)
+        queue_scroll.add_css_class("card")
+
         # Remove fixed size constraints to allow dynamic resizing
         queue_scroll.set_propagate_natural_height(False)
         queue_scroll.set_propagate_natural_width(False)
@@ -117,6 +119,19 @@ class ConversionPage:
         self.queue_listbox.set_hexpand(True)
         self.queue_listbox.set_vexpand(True)
         self.queue_listbox.set_valign(Gtk.Align.FILL)
+        css_provider = Gtk.CssProvider()
+        css_provider.load_from_data(b"""
+            .transparent-background {
+                background-color: transparent;
+            }
+        """)
+        Gtk.StyleContext.add_provider_for_display(
+            self.queue_listbox.get_display(),
+            css_provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
+        )
+        self.queue_listbox.add_css_class("transparent-background")
+
         queue_scroll.set_child(self.queue_listbox)
 
         # Create a content box for the queue to allow flexible layout
@@ -514,38 +529,6 @@ class ConversionPage:
                 self.queue_listbox.remove(row)
             else:
                 break
-
-        # Remove any styling that might be inherited from the header bar
-        # Apply a CSS provider that overrides any header-related styles
-        css_provider = Gtk.CssProvider()
-        css_provider.load_from_data(
-            b"""
-            /* Override any styling from header bar */
-            box.vertical,
-            box.horizontal {
-                padding: 0;
-                margin: 0;
-                border-spacing: 0;
-            }
-            /* Ensure listbox uses full width */
-            listbox {
-                padding: 0;
-                margin: 0;
-                min-width: 100%;
-            }
-            /* Force rows to use full width with no margins */
-            listboxrow {
-                padding: 0;
-                margin: 0;
-                min-width: 100%;
-            }
-            """
-        )
-        Gtk.StyleContext.add_provider_for_display(
-            Gdk.Display.get_default(),
-            css_provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
-        )
 
         # Make sure the queue listbox itself has no margins
         self.queue_listbox.set_margin_start(0)
