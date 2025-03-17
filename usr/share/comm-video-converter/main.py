@@ -69,6 +69,10 @@ class VideoConverterApp(Adw.Application):
         self.crop_x = self.crop_y = self.crop_width = self.crop_height = 0
         self.crop_enabled = False
 
+        # Add a tracking variable to prevent double loading during previews
+        self.previewing_specific_file = False
+        self.preview_file_path = None
+
         # Setup application actions
         self._setup_actions()
 
@@ -182,15 +186,15 @@ class VideoConverterApp(Adw.Application):
 
         ext = os.path.splitext(file_path)[1].lower()
         return ext in valid_extensions
-    
+
     def process_path_recursively(self, path):
         """Process a path (file or folder) recursively adding all valid video files to the queue"""
         if not os.path.exists(path):
             print(f"Path does not exist: {path}")
             return 0
-        
+
         files_added = 0
-        
+
         if os.path.isfile(path):
             # If it's a single file, just add it if valid
             if self.is_valid_video_file(path):
@@ -205,7 +209,7 @@ class VideoConverterApp(Adw.Application):
                     if self.is_valid_video_file(file_path):
                         if self.add_file_to_queue(file_path):
                             files_added += 1
-        
+
         return files_added
 
     def on_drop_file(self, drop_target, value, x, y):
@@ -222,7 +226,11 @@ class VideoConverterApp(Adw.Application):
         if isinstance(value, Gdk.FileList):
             files_added = 0
             for file in value.get_files():
-                if file and (file_path := file.get_path()) and os.path.exists(file_path):
+                if (
+                    file
+                    and (file_path := file.get_path())
+                    and os.path.exists(file_path)
+                ):
                     files_added += self.process_path_recursively(file_path)
             return files_added > 0
         return False
@@ -388,14 +396,23 @@ class VideoConverterApp(Adw.Application):
         """Switch to the specified tab and update button styling"""
         # Special handling for edit tab - need to load a video
         if tab_name == "edit" and self.conversion_page:
-            file_path = self.conversion_page.get_selected_file_path()
-            if not file_path:
-                self.show_error_dialog(_("Please select a video file first"))
-                return
+            # Check if we're already previewing a specific file
+            if self.previewing_specific_file and self.preview_file_path:
+                # We're already handling a preview request, just switch to the tab
+                print(
+                    f"Already previewing a specific file, skipping auto-load: {self.preview_file_path}"
+                )
+                pass  # Just switch to the tab below
+            else:
+                # Normal auto-select behavior
+                file_path = self.conversion_page.get_selected_file_path()
+                if not file_path:
+                    self.show_error_dialog(_("Please select a video file first"))
+                    return
 
-            if not self.video_edit_page.set_video(file_path):
-                self.show_error_dialog(_("Could not load the selected video file"))
-                return
+                if not self.video_edit_page.set_video(file_path):
+                    self.show_error_dialog(_("Could not load the selected video file"))
+                    return
 
         # Remember previous page unless switching to progress
         if tab_name != "progress" and self.stack.get_visible_child_name() != "progress":
@@ -404,6 +421,11 @@ class VideoConverterApp(Adw.Application):
         # Update UI
         self.stack.set_visible_child_name(tab_name)
         self.header_bar.activate_tab(tab_name)
+
+        # Reset the preview tracking after the tab is switched
+        if tab_name != "edit":
+            self.previewing_specific_file = False
+            self.preview_file_path = None
 
     def show_progress_page(self):
         """Show progress page and disable tab navigation"""
@@ -538,15 +560,54 @@ class VideoConverterApp(Adw.Application):
 
     def show_file_details(self, file_path):
         """Preview a file in the editor"""
+        if not file_path or not os.path.exists(file_path):
+            print(f"Cannot preview - invalid file path: {file_path}")
+            self.show_error_dialog(_("Could not preview this video file"))
+            return False
+
         if self.video_edit_page:
             try:
+                print(f"Attempting to preview file: {file_path}")
+
+                # Set the preview tracking variables BEFORE any loading happens
+                self.previewing_specific_file = True
+                self.preview_file_path = file_path
+
+                # Ensure no other file is being loaded at the same time
+                if (
+                    hasattr(self.video_edit_page, "loading_video")
+                    and self.video_edit_page.loading_video
+                ):
+                    print("Another video is currently loading, will retry in 1 second")
+                    # Schedule a retry after a short delay
+                    GLib.timeout_add(
+                        1000, lambda fp=file_path: self.show_file_details(fp)
+                    )
+                    return True
+
+                # Try to set the video and verify success
                 if self.video_edit_page.set_video(file_path):
-                    self.activate_tab("edit")
+                    # Switch to edit tab - slightly delayed to ensure UI updates
+                    GLib.idle_add(lambda: self.activate_tab("edit"))
+                    return True
                 else:
+                    print(f"Failed to set video for preview: {file_path}")
+                    self.previewing_specific_file = False  # Reset on failure
+                    self.preview_file_path = None
                     self.show_error_dialog(_("Could not preview this video file"))
+                    return False
             except Exception as e:
                 print(f"Error previewing file: {e}")
+                import traceback
+
+                traceback.print_exc()
+                self.previewing_specific_file = False  # Reset on exception
+                self.preview_file_path = None
                 self.show_error_dialog(_("Error previewing file: {0}").format(str(e)))
+                return False
+        else:
+            print("Video edit page not initialized")
+            return False
 
     # GIO Application overrides
     def do_open(self, files, n_files, hint):
@@ -620,7 +681,7 @@ class VideoConverterApp(Adw.Application):
 
         # Allow multiple file selection
         dialog.open_multiple(self.window, None, self._on_files_selected)
-        
+
     def select_folder_for_queue(self):
         """Open folder chooser to select a folder with video files"""
         dialog = Gtk.FileDialog()
@@ -631,10 +692,10 @@ class VideoConverterApp(Adw.Application):
         folder_filter = Gtk.FileFilter()
         folder_filter.set_name(_("Folders"))
         folder_filter.add_mime_type("inode/directory")
-        
+
         filters = Gio.ListStore.new(Gtk.FileFilter)
         filters.append(folder_filter)
-        
+
         try:
             # This might not be supported on all GTK versions
             dialog.set_filters(filters)
@@ -650,7 +711,7 @@ class VideoConverterApp(Adw.Application):
                 print(f"Error setting initial folder: {e}")
 
         dialog.select_folder(self.window, None, self._on_folder_selected)
-        
+
     def _on_folder_selected(self, dialog, result):
         """Handle selected folder from folder chooser dialog"""
         try:
@@ -661,32 +722,48 @@ class VideoConverterApp(Adw.Application):
                     # Verificar explicitamente se é um diretório
                     if os.path.isdir(folder_path):
                         files_added = self.process_path_recursively(folder_path)
-                        
+
                         # Update last accessed directory
                         if files_added > 0:
                             self.last_accessed_directory = folder_path
                             self.settings_manager.save_setting(
                                 "last-accessed-directory", self.last_accessed_directory
                             )
-                            
+
                             # Provide feedback about the number of files added
-                            message = _("{} video files have been added to the queue.").format(files_added)
-                            GLib.idle_add(lambda msg=message: self.show_info_dialog(_("Files Added"), msg))
+                            message = _(
+                                "{} video files have been added to the queue."
+                            ).format(files_added)
+                            GLib.idle_add(
+                                lambda msg=message: self.show_info_dialog(
+                                    _("Files Added"), msg
+                                )
+                            )
                         elif files_added == 0:
                             # Não encontrou nenhum arquivo de vídeo válido
-                            GLib.idle_add(lambda: self.show_info_dialog(
-                                _("No Files Found"),
-                                _("No valid video files were found in the selected folder.")
-                            ))
+                            GLib.idle_add(
+                                lambda: self.show_info_dialog(
+                                    _("No Files Found"),
+                                    _(
+                                        "No valid video files were found in the selected folder."
+                                    ),
+                                )
+                            )
                     else:
                         # Foi selecionado um arquivo, não uma pasta
-                        GLib.idle_add(lambda: self.show_error_dialog(
-                            _("Please select a folder, not a file.")
-                        ))
+                        GLib.idle_add(
+                            lambda: self.show_error_dialog(
+                                _("Please select a folder, not a file.")
+                            )
+                        )
         except Exception as e:
             print(f"Error selecting folder: {e}")
             error_msg = str(e)
-            GLib.idle_add(lambda msg=error_msg: self.show_error_dialog(_("Error selecting folder: {}").format(msg)))
+            GLib.idle_add(
+                lambda msg=error_msg: self.show_error_dialog(
+                    _("Error selecting folder: {}").format(msg)
+                )
+            )
 
     def _on_files_selected(self, dialog, result):
         """Handle selected files from file chooser dialog"""
@@ -707,16 +784,24 @@ class VideoConverterApp(Adw.Application):
                         self.settings_manager.save_setting(
                             "last-accessed-directory", self.last_accessed_directory
                         )
-                        
+
                         # Provide feedback about the number of files added
                         if files_added > 1:
-                            message = _("{} video files have been added to the queue.").format(files_added)
-                            GLib.idle_add(lambda: self.show_info_dialog(_("Files Added"), message))
+                            message = _(
+                                "{} video files have been added to the queue."
+                            ).format(files_added)
+                            GLib.idle_add(
+                                lambda: self.show_info_dialog(_("Files Added"), message)
+                            )
         except Exception as error:
             print(f"Error selecting files: {error}")
             # Capture error em uma variável local para evitar problemas de escopo
             error_msg = str(error)
-            GLib.idle_add(lambda: self.show_error_dialog(_("Error selecting files: {}").format(error_msg)))
+            GLib.idle_add(
+                lambda: self.show_error_dialog(
+                    _("Error selecting files: {}").format(error_msg)
+                )
+            )
 
 
 def main():

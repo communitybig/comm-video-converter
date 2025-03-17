@@ -3,13 +3,11 @@ import gi
 import subprocess
 import json
 import tempfile
-import io
-from PIL import Image
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 gi.require_version("GdkPixbuf", "2.0")
-from gi.repository import Gtk, Adw, GLib, Gio, Gdk, GdkPixbuf
+from gi.repository import Gtk, Adw, GLib, Gio, Gdk
 
 # Setup translation
 import gettext
@@ -55,6 +53,12 @@ class VideoEditPage:
         self.fps = None  # Custom FPS value
         self.hue = self.settings.get_double("preview-hue", 0.0)
         self.exposure = self.settings.get_double("preview-exposure", 0.0)
+
+        # Frame extraction and caching
+        self.frame_cache = {}  # Position -> Pixbuf
+        self.max_cache_size = (
+            10  # Limit cache to 10 frames to avoid excessive memory usage
+        )
 
         # Create a temp directory if it doesn't exist
         try:
@@ -120,6 +124,7 @@ class VideoEditPage:
         self.current_video_path = None
 
         # Reset frame cache and position
+        self.frame_cache = {}
         self.current_position = 0
 
         # Load video with a slight delay to ensure UI updates properly
@@ -398,21 +403,6 @@ class VideoEditPage:
 
         # Add playback controls as the first element in the scrollable content
         main_content.append(playback_group)
-
-        # Add a reset all settings button in its own group
-        reset_all_group = Adw.PreferencesGroup()
-        reset_all_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-        reset_all_box.set_margin_top(12)
-        reset_all_box.set_margin_bottom(12)
-        reset_all_box.set_halign(Gtk.Align.CENTER)
-
-        reset_all_button = Gtk.Button(label=_("Reset All Settings"))
-        reset_all_button.add_css_class("destructive-action")  # Red styling for warning
-        reset_all_button.connect("clicked", self.on_reset_all_settings)
-        reset_all_box.append(reset_all_button)
-
-        reset_all_group.add(reset_all_box)
-        main_content.append(reset_all_group)
 
         # Add all other control sections to the scrollable area
         # Improved trimming controls - with consistent styling like crop section
@@ -1377,7 +1367,7 @@ class VideoEditPage:
             return False
 
     def extract_frame(self, position):
-        """Extract a frame at the specified position using FFmpeg directly to memory"""
+        """Extract a frame at the specified position using FFmpeg"""
         if not self.current_video_path:
             print("Cannot extract frame - no video loaded")
             return None
@@ -1391,13 +1381,30 @@ class VideoEditPage:
                 f"Warning: Video path mismatch when extracting frame: current={self.current_video_path}, requested={self.requested_video_path}"
             )
 
+        # Check if frame is in cache first
+        cache_key = f"{position:.2f}"
+        if cache_key in self.frame_cache:
+            print(f"Using cached frame for position {position}")
+            self.preview_image.set_file(self.frame_cache[cache_key])
+            self.current_position = position
+            self.update_position_display(position)
+            return True
+
         try:
-            # Validate position is within valid range
+            # More aggressive validation to ensure position is within valid range
+            # For added safety, keep position at least 0.1 seconds from the end
             safe_end = max(0, self.video_duration - 0.1)
+
             if position >= safe_end:
+                print(
+                    f"Position {position} exceeds safe video duration {safe_end}, limiting to safe end"
+                )
                 position = safe_end
-                # Update current_position and slider without triggering events
+                # Also update the current_position to avoid future erroneous seeks
                 self.current_position = position
+
+                # Update slider position without triggering the change event
+                # Use proper handler blocking with saved handler ID
                 if hasattr(self, "position_scale") and hasattr(
                     self, "position_changed_handler_id"
                 ):
@@ -1407,48 +1414,65 @@ class VideoEditPage:
                         self.position_changed_handler_id
                     )
 
-            # Build filter string for FFmpeg
+            # Generate a temp filename for the frame
+            output_file = os.path.join(
+                self.temp_preview_dir, f"frame_{int(position * 100)}.jpg"
+            )
+
+            # Create filter string for FFmpeg
             filters = []
 
-            # Add crop filter if needed
+            # Add crop filter if any crop value is non-zero
             if (
                 self.crop_left > 0
                 or self.crop_right > 0
                 or self.crop_top > 0
                 or self.crop_bottom > 0
             ):
+                # Calculate crop dimensions directly from crop values
                 crop_width = self.video_width - self.crop_left - self.crop_right
                 crop_height = self.video_height - self.crop_top - self.crop_bottom
+
+                # Add the crop filter with the calculated values
                 filters.append(
                     f"crop={crop_width}:{crop_height}:{self.crop_left}:{self.crop_top}"
                 )
 
-            # Add hue adjustment
+            # Add hue adjustment (separate filter from eq) - using both h (hue) and s (saturation) parameters
             if self.hue != 0.0:
-                hue_degrees = self.hue * 180 / 3.14159
+                # FFmpeg hue filter uses degrees (0-360) rather than radians, convert for better control
+                hue_degrees = self.hue * 180 / 3.14159  # Convert radians to degrees
                 filters.append(f"hue=h={hue_degrees}")
 
-            # Add exposure adjustment
+            # Add exposure adjustment (separate filter)
             if self.exposure != 0.0:
+                # Use proper exposure filter
                 filters.append(f"exposure=exposure={self.exposure}")
 
             # Add color adjustments
             eq_parts = []
             if self.brightness != 0:
                 eq_parts.append(f"brightness={self.brightness}")
+
             if self.contrast != 1.0:
                 ff_contrast = (self.contrast - 1.0) * 2
                 eq_parts.append(f"contrast={ff_contrast}")
+
             if self.saturation != 1.0:
                 eq_parts.append(f"saturation={self.saturation}")
+
             if self.gamma != 1.0:
                 eq_parts.append(f"gamma={self.gamma}")
+
             if self.gamma_r != 1.0:
                 eq_parts.append(f"gamma_r={self.gamma_r}")
+
             if self.gamma_g != 1.0:
                 eq_parts.append(f"gamma_g={self.gamma_g}")
+
             if self.gamma_b != 1.0:
                 eq_parts.append(f"gamma_b={self.gamma_b}")
+
             if self.gamma_weight != 1.0:
                 eq_parts.append(f"gamma_weight={self.gamma_weight}")
 
@@ -1457,11 +1481,13 @@ class VideoEditPage:
 
             filter_arg = ",".join(filters) if filters else "null"
 
-            # Optimized FFmpeg command - using MJPEG which is faster to encode/decode than PNG
+            # Print the filter for debugging
+            print(f"FFmpeg filter: {filter_arg}")
+
+            # Build FFmpeg command to extract frame
             cmd = [
                 "ffmpeg",
-                "-loglevel",
-                "error",  # Reduce log output for performance
+                "-y",
                 "-ss",
                 str(position),
                 "-i",
@@ -1470,49 +1496,58 @@ class VideoEditPage:
                 filter_arg,
                 "-vframes",
                 "1",
-                "-c:v",
-                "mjpeg",  # Use MJPEG instead of PNG - much faster
                 "-q:v",
-                "3",  # Quality setting (1-31, lower is better)
+                "2",  # High quality
                 "-f",
-                "image2pipe",
-                "-",
+                "image2",
+                output_file,
             ]
 
-            # Execute FFmpeg directly and capture output
-            process = subprocess.run(cmd, capture_output=True, check=False)
+            # Run FFmpeg
+            print(
+                f"Extracting frame from {os.path.basename(self.current_video_path)} at position {position}"
+            )
+            result = subprocess.run(cmd, capture_output=True, text=True, check=False)
 
-            if process.returncode != 0:
-                print(
-                    f"FFmpeg error: {process.stderr.decode('utf-8', errors='replace')}"
+            if result.returncode != 0:
+                print(f"FFmpeg error: {result.stderr}")
+                error_msg = (
+                    result.stderr.splitlines()[0] if result.stderr else "Unknown error"
                 )
+                print(f"Frame extraction error: {error_msg}")
                 return False
 
-            # Create a memory input stream directly from the stdout bytes
-            if process.stdout:
-                # Convert the byte data directly to a memory stream
-                input_stream = Gio.MemoryInputStream.new_from_bytes(
-                    GLib.Bytes.new(process.stdout)
-                )
+            # Load the image if it was created
+            if os.path.exists(output_file):
+                print(f"Frame extracted successfully to {output_file}")
 
-                # Create a pixbuf from the stream first
-                pixbuf = GdkPixbuf.Pixbuf.new_from_stream(input_stream, None)
+                # Create a Gio.File from the path
+                file = Gio.File.new_for_path(output_file)
 
-                # Then create a texture from the pixbuf
-                texture = Gdk.Texture.new_for_pixbuf(pixbuf)
+                # Set the image using set_file (proper GTK4 method)
+                self.preview_image.set_file(file)
 
-                # Set the image in the UI
-                self.preview_image.set_paintable(texture)
+                # Cache the file reference
+                self.frame_cache[cache_key] = file
 
-                # Update position tracking
+                # Trim cache if it gets too large
+                if len(self.frame_cache) > self.max_cache_size:
+                    oldest_key = list(self.frame_cache.keys())[0]
+                    del self.frame_cache[oldest_key]
+
+                # Save the current position
                 self.current_position = position
-                self.update_position_display(position)
-                self.update_frame_counter(position)
 
-                return True
+                # Update position display with milliseconds
+                self.update_position_display(position)
+
+                # Calculate and update frame number
+                self.update_frame_counter(position)
             else:
-                print("Error: No image data received from ffmpeg")
-                return False
+                print(f"Error: Frame file was not created at {output_file}")
+                print("Error: Failed to extract frame")
+
+            return True
 
         except Exception as e:
             print(f"Error extracting frame: {e}")
@@ -1520,11 +1555,6 @@ class VideoEditPage:
 
             traceback.print_exc()
             return False
-
-    def invalidate_current_frame_cache(self):
-        """Invalidate the cache for the current position - no longer needed"""
-        # This is now a no-op since we're not caching frames
-        pass
 
     def update_position_display(self, position):
         """Update position display with milliseconds"""
@@ -1780,9 +1810,6 @@ class VideoEditPage:
         # Clear the timeout ID since it has completed
         self.crop_update_timeout_id = None
 
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
-
         # Refresh the preview with the new crop settings
         self.extract_frame(self.current_position)
 
@@ -1792,20 +1819,20 @@ class VideoEditPage:
     def reset_crop_value(self, position):
         """Reset a specific crop value to 0"""
         if position == "left":
-            self.crop_left = 0
-            self.settings.set_int("preview-crop-left", 0)
+            self.settings.reset("preview-crop-left")
+            self.crop_left = self.settings.get_int("preview-crop-left")
             self.crop_left_spin.set_value(self.crop_left)
         elif position == "right":
-            self.crop_right = 0
-            self.settings.set_int("preview-crop-right", 0)
+            self.settings.reset("preview-crop-right")
+            self.crop_right = self.settings.get_int("preview-crop-right")
             self.crop_right_spin.set_value(self.crop_right)
         elif position == "top":
-            self.crop_top = 0
-            self.settings.set_int("preview-crop-top", 0)
+            self.settings.reset("preview-crop-top")
+            self.crop_top = self.settings.get_int("preview-crop-top")
             self.crop_top_spin.set_value(self.crop_top)
         elif position == "bottom":
-            self.crop_bottom = 0
-            self.settings.set_int("preview-crop-bottom", 0)
+            self.settings.reset("preview-crop-bottom")
+            self.crop_bottom = self.settings.get_int("preview-crop-bottom")
             self.crop_bottom_spin.set_value(self.crop_bottom)
 
     def update_crop_spinbuttons(self):
@@ -1833,9 +1860,6 @@ class VideoEditPage:
         if value_label:
             value_label.set_text(f"{self.brightness:.1f}")
 
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
-
         # Update current frame with new settings
         self.extract_frame(self.current_position)
 
@@ -1848,9 +1872,6 @@ class VideoEditPage:
 
         if value_label:
             value_label.set_text(f"{self.contrast:.1f}")
-
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
 
         # Update current frame with new settings
         self.extract_frame(self.current_position)
@@ -1865,40 +1886,28 @@ class VideoEditPage:
         if value_label:
             value_label.set_text(f"{self.saturation:.1f}")
 
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
-
         # Update current frame with new settings
         self.extract_frame(self.current_position)
 
     def reset_brightness(self):
         """Reset brightness to default"""
-        # Default brightness is 0.0
-        self.settings.set_double("preview-brightness", 0.0)
-        self.brightness = 0.0
+        self.settings.reset("preview-brightness")
+        self.brightness = self.settings.get_double("preview-brightness")
         self.brightness_scale.set_value(self.brightness)
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
         self.extract_frame(self.current_position)
 
     def reset_contrast(self):
         """Reset contrast to default"""
-        # Default contrast is 1.0
-        self.settings.set_double("preview-contrast", 1.0)
-        self.contrast = 1.0
+        self.settings.reset("preview-contrast")
+        self.contrast = self.settings.get_double("preview-contrast")
         self.contrast_scale.set_value(self.contrast)
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
         self.extract_frame(self.current_position)
 
     def reset_saturation(self):
         """Reset saturation to default"""
-        # Default saturation is 1.0
-        self.settings.set_double("preview-saturation", 1.0)
-        self.saturation = 1.0
+        self.settings.reset("preview-saturation")
+        self.saturation = self.settings.get_double("preview-saturation")
         self.saturation_scale.set_value(self.saturation)
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
         self.extract_frame(self.current_position)
 
     def show_error(self, message):
@@ -1929,8 +1938,6 @@ class VideoEditPage:
         self.settings.set_double("preview-gamma", self.gamma)
         if value_label:
             value_label.set_text(f"{self.gamma:.1f}")
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
         self.extract_frame(self.current_position)
 
     def on_gamma_r_changed(self, scale, value_label=None):
@@ -1939,8 +1946,6 @@ class VideoEditPage:
         self.settings.set_double("preview-gamma-r", self.gamma_r)
         if value_label:
             value_label.set_text(f"{self.gamma_r:.1f}")
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
         self.extract_frame(self.current_position)
 
     def on_gamma_g_changed(self, scale, value_label=None):
@@ -1949,8 +1954,6 @@ class VideoEditPage:
         self.settings.set_double("preview-gamma-g", self.gamma_g)
         if value_label:
             value_label.set_text(f"{self.gamma_g:.1f}")
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
         self.extract_frame(self.current_position)
 
     def on_gamma_b_changed(self, scale, value_label=None):
@@ -1959,8 +1962,6 @@ class VideoEditPage:
         self.settings.set_double("preview-gamma-b", self.gamma_b)
         if value_label:
             value_label.set_text(f"{self.gamma_b:.1f}")
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
         self.extract_frame(self.current_position)
 
     def on_gamma_weight_changed(self, scale, value_label=None):
@@ -1969,8 +1970,6 @@ class VideoEditPage:
         self.settings.set_double("preview-gamma-weight", self.gamma_weight)
         if value_label:
             value_label.set_text(f"{self.gamma_weight:.2f}")
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
         self.extract_frame(self.current_position)
 
     def on_hue_changed(self, scale, value_label=None):
@@ -1979,8 +1978,6 @@ class VideoEditPage:
         self.settings.set_double("preview-hue", self.hue)
         if value_label:
             value_label.set_text(f"{self.hue:.2f}")
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
         self.extract_frame(self.current_position)
 
     def on_exposure_changed(self, scale, value_label=None):
@@ -1989,79 +1986,56 @@ class VideoEditPage:
         self.settings.set_double("preview-exposure", self.exposure)
         if value_label:
             value_label.set_text(f"{self.exposure:.1f}")
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
         self.extract_frame(self.current_position)
 
     # Add reset functions for new adjustments
     def reset_gamma(self):
         """Reset gamma to default"""
-        # Default gamma is 1.0
-        self.settings.set_double("preview-gamma", 1.0)
-        self.gamma = 1.0
+        self.settings.reset("preview-gamma")
+        self.gamma = self.settings.get_double("preview-gamma")
         self.gamma_scale.set_value(self.gamma)
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
         self.extract_frame(self.current_position)
 
     def reset_gamma_r(self):
         """Reset red gamma to default"""
-        # Default gamma_r is 1.0
-        self.settings.set_double("preview-gamma-r", 1.0)
-        self.gamma_r = 1.0
+        self.settings.reset("preview-gamma-r")
+        self.gamma_r = self.settings.get_double("preview-gamma-r")
         self.gamma_r_scale.set_value(self.gamma_r)
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
         self.extract_frame(self.current_position)
 
     def reset_gamma_g(self):
         """Reset green gamma to default"""
-        # Default gamma_g is 1.0
-        self.settings.set_double("preview-gamma-g", 1.0)
-        self.gamma_g = 1.0
+        self.settings.reset("preview-gamma-g")
+        self.gamma_g = self.settings.get_double("preview-gamma-g")
         self.gamma_g_scale.set_value(self.gamma_g)
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
         self.extract_frame(self.current_position)
 
     def reset_gamma_b(self):
         """Reset blue gamma to default"""
-        # Default gamma_b is 1.0
-        self.settings.set_double("preview-gamma-b", 1.0)
-        self.gamma_b = 1.0
+        self.settings.reset("preview-gamma-b")
+        self.gamma_b = self.settings.get_double("preview-gamma-b")
         self.gamma_b_scale.set_value(self.gamma_b)
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
         self.extract_frame(self.current_position)
 
     def reset_gamma_weight(self):
         """Reset gamma weight to default"""
-        # Default gamma_weight is 1.0
-        self.settings.set_double("preview-gamma-weight", 1.0)
-        self.gamma_weight = 1.0
+        self.settings.reset("preview-gamma-weight")
+        self.gamma_weight = self.settings.get_double("preview-gamma-weight")
         self.gamma_weight_scale.set_value(self.gamma_weight)
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
         self.extract_frame(self.current_position)
 
     def reset_hue(self):
         """Reset hue to default"""
-        # Default hue is 0.0
-        self.settings.set_double("preview-hue", 0.0)
-        self.hue = 0.0
+        self.settings.reset("preview-hue")
+        self.hue = self.settings.get_double("preview-hue")
         self.hue_scale.set_value(self.hue)
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
         self.extract_frame(self.current_position)
 
     def reset_exposure(self):
         """Reset exposure to default"""
-        # Default exposure is 0.0
-        self.settings.set_double("preview-exposure", 0.0)
-        self.exposure = 0.0
+        self.settings.reset("preview-exposure")
+        self.exposure = self.settings.get_double("preview-exposure")
         self.exposure_scale.set_value(self.exposure)
-        # Invalidate cache for current position before extracting new frame
-        self.invalidate_current_frame_cache()
         self.extract_frame(self.current_position)
 
     def on_slider_motion(self, controller, x, y):
@@ -2145,75 +2119,3 @@ class VideoEditPage:
         # Hide the tooltip popover when mouse leaves the slider
         if hasattr(self, "tooltip_popover"):
             self.tooltip_popover.popdown()
-
-    def on_reset_all_settings(self, button):
-        """Reset all video settings to their default values"""
-        # Reset crop values
-        self.crop_left = 0
-        self.crop_right = 0
-        self.crop_top = 0
-        self.crop_bottom = 0
-
-        # Update settings
-        self.settings.set_int("preview-crop-left", 0)
-        self.settings.set_int("preview-crop-right", 0)
-        self.settings.set_int("preview-crop-top", 0)
-        self.settings.set_int("preview-crop-bottom", 0)
-
-        # Update spinbuttons
-        self.crop_left_spin.set_value(0)
-        self.crop_right_spin.set_value(0)
-        self.crop_top_spin.set_value(0)
-        self.crop_bottom_spin.set_value(0)
-
-        # Reset adjustment values
-        self.brightness = 0.0
-        self.contrast = 1.0
-        self.saturation = 1.0
-        self.gamma = 1.0
-        self.gamma_r = 1.0
-        self.gamma_g = 1.0
-        self.gamma_b = 1.0
-        self.gamma_weight = 1.0
-        self.hue = 0.0
-        self.exposure = 0.0
-
-        # Update settings
-        self.settings.set_double("preview-brightness", 0.0)
-        self.settings.set_double("preview-contrast", 1.0)
-        self.settings.set_double("preview-saturation", 1.0)
-        self.settings.set_double("preview-gamma", 1.0)
-        self.settings.set_double("preview-gamma-r", 1.0)
-        self.settings.set_double("preview-gamma-g", 1.0)
-        self.settings.set_double("preview-gamma-b", 1.0)
-        self.settings.set_double("preview-gamma-weight", 1.0)
-        self.settings.set_double("preview-hue", 0.0)
-        self.settings.set_double("preview-exposure", 0.0)
-
-        # Update slider values
-        self.brightness_scale.set_value(0.0)
-        self.contrast_scale.set_value(1.0)
-        self.saturation_scale.set_value(1.0)
-        self.gamma_scale.set_value(1.0)
-        self.gamma_r_scale.set_value(1.0)
-        self.gamma_g_scale.set_value(1.0)
-        self.gamma_b_scale.set_value(1.0)
-        self.gamma_weight_scale.set_value(1.0)
-        self.hue_scale.set_value(0.0)
-        self.exposure_scale.set_value(0.0)
-
-        # Reset trim points
-        self.start_time = 0
-        if self.video_duration > 0:
-            self.end_time = self.video_duration
-        self.update_trim_display()
-
-        # Invalidate cache and update preview
-        self.invalidate_current_frame_cache()
-        self.extract_frame(self.current_position)
-
-        # Show success message
-        self.app.show_info_dialog(
-            _("Settings Reset"),
-            _("All video editing settings have been reset to their default values."),
-        )

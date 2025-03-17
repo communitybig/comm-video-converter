@@ -96,9 +96,25 @@ class ConversionPage:
         queue_wrapper.set_valign(Gtk.Align.FILL)
         queue_wrapper.set_hexpand(True)
 
+        # Create help button to be placed in the PreferencesGroup header
+        help_button = Gtk.Button()
+        help_button.set_icon_name("help-about-symbolic")
+        help_button.add_css_class("accent")
+        help_button.add_css_class("flat")
+        help_button.add_css_class("circular")
+        help_button.set_tooltip_text(_("Show help"))
+        help_button.connect("clicked", self.on_help_clicked)
+        help_button.set_valign(Gtk.Align.CENTER)
+
+        # Create the PreferencesGroup with title and help button as header suffix
         queue_group = Adw.PreferencesGroup(title=_("Conversion Queue"))
+
+        # Set the help button as the header_suffix to position it on the right
+        # This is the proper way to add buttons to PreferencesGroup headers in Adwaita
+        queue_group.set_header_suffix(help_button)
+
         queue_group.set_hexpand(True)
-        queue_group.set_vexpand(True)  # Set to expand - most critical element
+        queue_group.set_vexpand(True)
         queue_group.set_valign(Gtk.Align.FILL)
 
         # Create a queue listbox with a scrolled window
@@ -159,31 +175,51 @@ class ConversionPage:
         clear_queue_button.add_css_class("pill")
         queue_buttons_box.append(clear_queue_button)
 
-        # Create a split button for adding files/folders
-        split_button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-        split_button_box.add_css_class("linked")  # Makes the buttons appear connected
+        # Create a proper AdwSplitButton which has integrated button and menu
+        self.add_button = Adw.SplitButton(label=_("Add Files"))
+        self.add_button.set_tooltip_text(_("Add video files to queue"))
+        self.add_button.add_css_class("suggested-action")
+        # Don't add pill class here as it won't work properly
+        self.add_button.connect("clicked", self.on_add_files_clicked)
 
-        # Main button (default action: add files)
-        self.add_files_button = Gtk.Button(label=_("Add Files"))
-        self.add_files_button.connect("clicked", self.on_add_files_clicked)
-        self.add_files_button.add_css_class("suggested-action")
-        split_button_box.append(self.add_files_button)
+        # Add custom CSS to style the SplitButton with rounded corners
+        css_provider = Gtk.CssProvider()
+        css_provider.load_from_data(b"""
+            splitbutton.suggested-action {
+                border-radius: 99px;
+            }
+            
+            /* Style for the dropdown button part */
+            splitbutton > button:last-child {
+                border-top-right-radius: 99px;
+                border-bottom-right-radius: 99px;
+            }
+            
+            /* Style for the main button part */
+            splitbutton > button:first-child {
+                border-top-left-radius: 99px;
+                border-bottom-left-radius: 99px;
+            }
+        """)
 
-        # Menu button with arrow
-        self.add_menu_button = Gtk.MenuButton()
-        self.add_menu_button.set_icon_name("pan-down-symbolic")  # Down arrow icon
-        self.add_menu_button.add_css_class("suggested-action")
+        Gtk.StyleContext.add_provider_for_display(
+            self.add_button.get_display(),
+            css_provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
+        )
 
-        # Create menu model
+        # Create menu model for the dropdown
         menu = Gio.Menu()
-        menu.append(_("Add Files"), "app.add_files")
-        menu.append(_("Add Folder"), "app.add_folder")
+        menu_item = Gio.MenuItem.new(_("Add Folder"), "app.add_folder")
+        icon = Gio.ThemedIcon.new("folder-symbolic")
+        menu_item.set_icon(icon)
+        menu.append_item(menu_item)
 
-        self.add_menu_button.set_menu_model(menu)
-        split_button_box.append(self.add_menu_button)
+        # Set the menu model for the dropdown part
+        self.add_button.set_menu_model(menu)
 
-        # Add the split_button_box to the queue_buttons_box
-        queue_buttons_box.append(split_button_box)
+        # Add the split button to the button box
+        queue_buttons_box.append(self.add_button)
 
         # Single convert button that processes the queue
         convert_button = Gtk.Button(label=_("Convert All"))
@@ -206,36 +242,34 @@ class ConversionPage:
         # Add the wrapper to main content
         main_content.append(queue_wrapper)
 
-        # ===== FILE OPTIONS SECTION (MOVED TO BOTTOM) =====
         # Create a single-row layout for output folder and delete original
         options_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         options_box.set_spacing(12)
         options_box.set_margin_top(16)
         options_box.set_vexpand(False)  # Ensure this doesn't steal space
 
-        # Help button
-        help_button = Gtk.Button()
-        icon = Gtk.Image.new_from_icon_name("help-about-symbolic")
-        icon.set_pixel_size(22)
-        icon.add_css_class("accent")
-        help_button.set_child(icon)
-        help_button.add_css_class("flat")
-        help_button.add_css_class("circular")
-        help_button.connect("clicked", self.on_help_clicked)
-        help_button.set_valign(Gtk.Align.CENTER)
-        options_box.append(help_button)
+        # Create ComboBox for folder options
+        folder_options_store = Gtk.StringList()
+        folder_options_store.append(_("Save in the same folder as the original file"))
+        folder_options_store.append(_("Folder to save"))
 
-        # Output folder section - using a box instead of ActionRow
-        folder_label = Gtk.Label(label=_("Output folder:"))
-        folder_label.set_halign(Gtk.Align.START)
-        folder_label.set_valign(Gtk.Align.CENTER)
-        options_box.append(folder_label)
+        self.folder_combo = Gtk.DropDown()
+        self.folder_combo.set_model(folder_options_store)
+        self.folder_combo.set_selected(0)  # Default to "Same as input"
+        self.folder_combo.set_valign(Gtk.Align.CENTER)
+        options_box.append(self.folder_combo)
+
+        # Folder entry box (container that can be shown/hidden)
+        self.folder_entry_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        self.folder_entry_box.set_spacing(4)
+        self.folder_entry_box.set_visible(False)  # Initially hidden
+        self.folder_entry_box.set_hexpand(True)
 
         # Output folder entry
         self.output_folder_entry = Gtk.Entry()
         self.output_folder_entry.set_hexpand(True)
-        self.output_folder_entry.set_placeholder_text(_("Same as input folder"))
-        options_box.append(self.output_folder_entry)
+        self.output_folder_entry.set_placeholder_text(_("Select folder"))
+        self.folder_entry_box.append(self.output_folder_entry)
 
         # Folder button
         folder_button = Gtk.Button()
@@ -244,23 +278,33 @@ class ConversionPage:
         folder_button.add_css_class("flat")
         folder_button.add_css_class("circular")
         folder_button.set_valign(Gtk.Align.CENTER)
-        options_box.append(folder_button)
+        self.folder_entry_box.append(folder_button)
 
-        # Separator between folder and delete switch
-        separator = Gtk.Separator(orientation=Gtk.Orientation.VERTICAL)
-        separator.set_margin_start(8)
-        separator.set_margin_end(8)
-        options_box.append(separator)
+        options_box.append(self.folder_entry_box)
 
-        # Delete original checkbox
+        # Connect combo box signal
+        self.folder_combo.connect("notify::selected", self._on_folder_type_changed)
+
+        # Create a spacer to push delete controls to the right
+        spacer = Gtk.Box()
+        spacer.set_hexpand(True)
+        options_box.append(spacer)
+
+        # Delete original checkbox - now aligned to the right
+        delete_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        delete_box.set_spacing(8)
+        delete_box.set_halign(Gtk.Align.END)
+
         delete_label = Gtk.Label(label=_("Delete original files"))
-        delete_label.set_halign(Gtk.Align.START)
+        delete_label.set_halign(Gtk.Align.END)
         delete_label.set_valign(Gtk.Align.CENTER)
-        options_box.append(delete_label)
+        delete_box.append(delete_label)
 
         self.delete_original_check = Gtk.Switch()
         self.delete_original_check.set_valign(Gtk.Align.CENTER)
-        options_box.append(self.delete_original_check)
+        delete_box.append(self.delete_original_check)
+
+        options_box.append(delete_box)
 
         main_content.append(options_box)
 
@@ -276,8 +320,16 @@ class ConversionPage:
         # Load settings and update UI
         output_folder = settings.load_setting("output-folder", "")
         delete_original = settings.load_setting("delete-original", False)
+        use_custom_folder = settings.load_setting("use-custom-output-folder", False)
 
+        # Set folder combo selection and visibility
+        self.folder_combo.set_selected(1 if use_custom_folder else 0)
+        self.folder_entry_box.set_visible(use_custom_folder)
+
+        # Set output folder path if using custom folder
         self.output_folder_entry.set_text(output_folder)
+
+        # Set delete original switch
         self.delete_original_check.set_active(delete_original)
 
         # Connect signals
@@ -661,7 +713,10 @@ class ConversionPage:
             edit_button.add_css_class("flat")
             edit_button.add_css_class("circular")
             edit_button.set_tooltip_text(_("Preview in editor"))
-            edit_button.connect("clicked", self.on_preview_file, file_path)
+            # Use lambda to properly capture the specific file_path in the closure
+            edit_button.connect(
+                "clicked", lambda b, fp=file_path: self.on_preview_file(b, fp)
+            )
             buttons_box.append(edit_button)
 
             # Remove button
@@ -713,7 +768,14 @@ class ConversionPage:
 
     def on_preview_file(self, button, file_path):
         """Preview a file in the video editor"""
-        self.app.show_file_details(file_path)
+        # Make sure we're using the specific file path that was clicked
+        if file_path and os.path.exists(file_path):
+            print(f"Previewing file from button click: {file_path}")
+            # Call preview directly without delay
+            self.app.show_file_details(file_path)
+        else:
+            print(f"Error: Invalid file path for preview: {file_path}")
+            self.app.show_error_dialog(_("Could not preview this video file"))
 
     def on_remove_from_queue(self, button, file_path):
         """Remove a specific file from the queue"""
@@ -804,14 +866,22 @@ class ConversionPage:
         except Exception as e:
             print(f"Error loading settings: {e}")
 
-        # Set output folder
-        output_folder = self.output_folder_entry.get_text()
-        if output_folder:
-            if not os.path.isabs(output_folder):
-                output_folder = os.path.abspath(output_folder)
-            env_vars["output_folder"] = output_folder
-            print(f"Using specified output folder: {output_folder}")
+        # Set output folder based on selection
+        use_custom_folder = self.folder_combo.get_selected() == 1
+
+        if use_custom_folder:
+            output_folder = self.output_folder_entry.get_text()
+            if output_folder:
+                if not os.path.isabs(output_folder):
+                    output_folder = os.path.abspath(output_folder)
+                env_vars["output_folder"] = output_folder
+                print(f"Using specified output folder: {output_folder}")
+            else:
+                # Fallback to input directory if custom folder is empty
+                env_vars["output_folder"] = input_dir
+                print(f"Using input file directory as output (fallback): {input_dir}")
         else:
+            # Use same folder as input
             env_vars["output_folder"] = input_dir
             print(f"Using input file directory as output: {input_dir}")
 
@@ -876,3 +946,20 @@ class ConversionPage:
         seconds_remainder = int(seconds) % 60
         milliseconds = int((seconds - int(seconds)) * 1000)
         return f"{hours:02d}:{minutes:02d}:{seconds_remainder:02d}.{milliseconds:03d}"
+
+    def _on_folder_type_changed(self, combo, param):
+        """Handle folder type combo change"""
+        selected = combo.get_selected()
+        use_custom_folder = selected == 1  # "Custom folder" option is selected
+
+        # Show/hide folder entry when selection changes
+        self.folder_entry_box.set_visible(use_custom_folder)
+
+        # Save setting
+        self.app.settings_manager.save_setting(
+            "use-custom-output-folder", use_custom_folder
+        )
+
+        # If not using custom folder, clear the path
+        if not use_custom_folder:
+            self.app.settings_manager.save_setting("output-folder", "")
