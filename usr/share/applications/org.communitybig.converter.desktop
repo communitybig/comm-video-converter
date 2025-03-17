@@ -38,6 +38,7 @@ Categories=AudioVideo;Video;
 Keywords=video;converter;mkv;mp4;ffmpeg;
 DBusActivatable=true
 X-GNOME-UsesNotifications=true
+MimeType=video/mp4;video/x-matroska;video/webm;video/quicktime;video/x-msvideo;video/x-ms-wmv;video/mpeg;video/x-m4v;video/mp2t;video/x-flv;
 
 Actions=SoftwareRender;
 

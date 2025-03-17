@@ -6,6 +6,11 @@ import subprocess
 from pathlib import Path
 from typing import Optional, Callable, Dict, Any
 
+# Setup translation
+import gettext
+
+_ = gettext.gettext
+
 # Import dataclasses
 from dataclasses import dataclass, field
 
@@ -14,7 +19,6 @@ logging.basicConfig(level=logging.INFO, format="%(message)s")
 logger = logging.getLogger("comm-converter")
 
 
-# Define as dataclasses que antes estavam em um módulo separado
 @dataclass
 class VideoEffects:
     brightness: float = 0.0

@@ -3,6 +3,11 @@ import os
 import json
 from pathlib import Path
 
+# Setup translation
+import gettext
+
+_ = gettext.gettext
+
 
 class JsonSettingsManager:
     """

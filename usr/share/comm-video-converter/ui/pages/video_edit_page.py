@@ -12,12 +12,7 @@ from gi.repository import Gtk, Adw, GLib, Gio, Gdk
 # Setup translation
 import gettext
 
-lang_translations = gettext.translation(
-    "comm-video-converter", localedir="/usr/share/locale", fallback=True
-)
-lang_translations.install()
-# define _ shortcut for translations
-_ = lang_translations.gettext
+_ = gettext.gettext
 
 
 class VideoEditPage:
