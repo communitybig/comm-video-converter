@@ -1592,3 +1592,65 @@ msgstr "Remover da fila"
 #: NEEDS WORK
 msgid "Queue is empty. Add files to convert."
 msgstr "A fila está vazia. Adicione arquivos para converter."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 627
+#: NEEDS WORK
+msgid "Select Folder with Video Files"
+msgstr "Selecionar Pasta com Arquivos de Vídeo"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 632
+#: NEEDS WORK
+msgid "Folders"
+msgstr "Pastas"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 673
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 713
+#: NEEDS WORK
+msgid "{} video files have been added to the queue."
+msgstr "Arquivos de vídeo foram adicionados à fila."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 674
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 714
+#: NEEDS WORK
+msgid "Files Added"
+msgstr "Arquivos Adicionados"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 678
+#: NEEDS WORK
+msgid "No Files Found"
+msgstr "Nenhum arquivo encontrado"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 679
+#: NEEDS WORK
+msgid "No valid video files were found in the selected folder."
+msgstr "Nenhum arquivo de vídeo válido foi encontrado na pasta selecionada."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 684
+#: NEEDS WORK
+msgid "Please select a folder, not a file."
+msgstr "Por favor, selecione uma pasta, não um arquivo."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 689
+#: NEEDS WORK
+msgid "Error selecting folder: {}"
+msgstr "Erro ao selecionar a pasta: {}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 719
+#: NEEDS WORK
+msgid "Error selecting files: {}"
+msgstr "Erro ao selecionar arquivos: {}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 180
+#: NEEDS WORK
+msgid "Add Folder"
+msgstr "Adicionar Pasta"
