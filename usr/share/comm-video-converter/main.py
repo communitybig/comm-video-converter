@@ -78,6 +78,8 @@ class VideoConverterApp(Adw.Application):
             "about": self.on_about_action,
             "help": self.on_help_action,
             "quit": lambda a, p: self.quit(),
+            "add_files": lambda a, p: self.select_files_for_queue(),
+            "add_folder": lambda a, p: self.select_folder_for_queue(),
         }
 
         for name, callback in actions.items():
@@ -180,33 +182,48 @@ class VideoConverterApp(Adw.Application):
 
         ext = os.path.splitext(file_path)[1].lower()
         return ext in valid_extensions
-
-    def on_drop_file(self, drop_target, value, x, y):
-        """Handle single dropped file"""
-        if isinstance(value, Gio.File):
-            file_path = value.get_path()
-            if file_path and os.path.exists(file_path):
-                if self.is_valid_video_file(file_path):
-                    return self.add_file_to_queue(file_path)
-                else:
-                    print(f"Rejected file with invalid extension: {file_path}")
-        return False
-
-    def on_drop_filelist(self, drop_target, value, x, y):
-        """Handle multiple dropped files"""
-        if isinstance(value, Gdk.FileList):
-            files_added = 0
-            for file in value.get_files():
-                if (
-                    file
-                    and (file_path := file.get_path())
-                    and os.path.exists(file_path)
-                ):
+    
+    def process_path_recursively(self, path):
+        """Process a path (file or folder) recursively adding all valid video files to the queue"""
+        if not os.path.exists(path):
+            print(f"Path does not exist: {path}")
+            return 0
+        
+        files_added = 0
+        
+        if os.path.isfile(path):
+            # If it's a single file, just add it if valid
+            if self.is_valid_video_file(path):
+                if self.add_file_to_queue(path):
+                    files_added += 1
+        elif os.path.isdir(path):
+            # If it's a directory, walk through it recursively
+            print(f"Processing directory recursively: {path}")
+            for root, dirs, files in os.walk(path):
+                for file in files:
+                    file_path = os.path.join(root, file)
                     if self.is_valid_video_file(file_path):
                         if self.add_file_to_queue(file_path):
                             files_added += 1
-                    else:
-                        print(f"Rejected file with invalid extension: {file_path}")
+        
+        return files_added
+
+    def on_drop_file(self, drop_target, value, x, y):
+        """Handle single dropped file or folder"""
+        if isinstance(value, Gio.File):
+            file_path = value.get_path()
+            if file_path and os.path.exists(file_path):
+                files_added = self.process_path_recursively(file_path)
+                return files_added > 0
+        return False
+
+    def on_drop_filelist(self, drop_target, value, x, y):
+        """Handle multiple dropped files or folders"""
+        if isinstance(value, Gdk.FileList):
+            files_added = 0
+            for file in value.get_files():
+                if file and (file_path := file.get_path()) and os.path.exists(file_path):
+                    files_added += self.process_path_recursively(file_path)
             return files_added > 0
         return False
 
@@ -601,36 +618,105 @@ class VideoConverterApp(Adw.Application):
         filters.append(filter)
         dialog.set_filters(filters)
 
-        # Allow multiple file selection - corrected method name
+        # Allow multiple file selection
         dialog.open_multiple(self.window, None, self._on_files_selected)
+        
+    def select_folder_for_queue(self):
+        """Open folder chooser to select a folder with video files"""
+        dialog = Gtk.FileDialog()
+        dialog.set_title(_("Select Folder with Video Files"))
+        dialog.set_modal(True)
+
+        # Try to set a filter that only shows directories
+        folder_filter = Gtk.FileFilter()
+        folder_filter.set_name(_("Folders"))
+        folder_filter.add_mime_type("inode/directory")
+        
+        filters = Gio.ListStore.new(Gtk.FileFilter)
+        filters.append(folder_filter)
+        
+        try:
+            # This might not be supported on all GTK versions
+            dialog.set_filters(filters)
+        except Exception as e:
+            print(f"Could not set folder filter: {e}")
+
+        # Set initial folder to last accessed directory
+        if hasattr(self, "last_accessed_directory") and self.last_accessed_directory:
+            try:
+                initial_folder = Gio.File.new_for_path(self.last_accessed_directory)
+                dialog.set_initial_folder(initial_folder)
+            except Exception as e:
+                print(f"Error setting initial folder: {e}")
+
+        dialog.select_folder(self.window, None, self._on_folder_selected)
+        
+    def _on_folder_selected(self, dialog, result):
+        """Handle selected folder from folder chooser dialog"""
+        try:
+            folder = dialog.select_folder_finish(result)
+            if folder:
+                folder_path = folder.get_path()
+                if folder_path and os.path.exists(folder_path):
+                    # Verificar explicitamente se é um diretório
+                    if os.path.isdir(folder_path):
+                        files_added = self.process_path_recursively(folder_path)
+                        
+                        # Update last accessed directory
+                        if files_added > 0:
+                            self.last_accessed_directory = folder_path
+                            self.settings_manager.save_setting(
+                                "last-accessed-directory", self.last_accessed_directory
+                            )
+                            
+                            # Provide feedback about the number of files added
+                            message = _("{} video files have been added to the queue.").format(files_added)
+                            GLib.idle_add(lambda msg=message: self.show_info_dialog(_("Files Added"), msg))
+                        elif files_added == 0:
+                            # Não encontrou nenhum arquivo de vídeo válido
+                            GLib.idle_add(lambda: self.show_info_dialog(
+                                _("No Files Found"),
+                                _("No valid video files were found in the selected folder.")
+                            ))
+                    else:
+                        # Foi selecionado um arquivo, não uma pasta
+                        GLib.idle_add(lambda: self.show_error_dialog(
+                            _("Please select a folder, not a file.")
+                        ))
+        except Exception as e:
+            print(f"Error selecting folder: {e}")
+            error_msg = str(e)
+            GLib.idle_add(lambda msg=error_msg: self.show_error_dialog(_("Error selecting folder: {}").format(msg)))
 
     def _on_files_selected(self, dialog, result):
         """Handle selected files from file chooser dialog"""
         try:
-            # Use open_multiple_finish instead of select_multiple_finish
             files = dialog.open_multiple_finish(result)
             if files:
                 files_added = 0
                 for file in files:
                     file_path = file.get_path()
-                    if (
-                        file_path
-                        and os.path.exists(file_path)
-                        and self.is_valid_video_file(file_path)
-                    ):
-                        if self.add_file_to_queue(file_path):
-                            files_added += 1
+                    if file_path and os.path.exists(file_path):
+                        files_added += self.process_path_recursively(file_path)
 
                 # Update last accessed directory if files were selected
-                if files_added > 0:
+                if files_added > 0 and len(files) > 0:
                     first_file = files[0].get_path()
                     if first_file:
                         self.last_accessed_directory = os.path.dirname(first_file)
                         self.settings_manager.save_setting(
                             "last-accessed-directory", self.last_accessed_directory
                         )
-        except Exception as e:
-            print(f"Error selecting files: {e}")
+                        
+                        # Provide feedback about the number of files added
+                        if files_added > 1:
+                            message = _("{} video files have been added to the queue.").format(files_added)
+                            GLib.idle_add(lambda: self.show_info_dialog(_("Files Added"), message))
+        except Exception as error:
+            print(f"Error selecting files: {error}")
+            # Capture error em uma variável local para evitar problemas de escopo
+            error_msg = str(error)
+            GLib.idle_add(lambda: self.show_error_dialog(_("Error selecting files: {}").format(error_msg)))
 
 
 def main():

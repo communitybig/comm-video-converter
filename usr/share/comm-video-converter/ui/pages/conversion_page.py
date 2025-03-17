@@ -159,12 +159,31 @@ class ConversionPage:
         clear_queue_button.add_css_class("pill")
         queue_buttons_box.append(clear_queue_button)
 
-        # Add files button (always adds to queue)
-        add_files_button = Gtk.Button(label=_("Add Files"))
-        add_files_button.connect("clicked", self.on_add_files_clicked)
-        add_files_button.add_css_class("pill")
-        add_files_button.add_css_class("suggested-action")
-        queue_buttons_box.append(add_files_button)
+        # Create a split button for adding files/folders
+        split_button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        split_button_box.add_css_class("linked")  # Makes the buttons appear connected
+
+        # Main button (default action: add files)
+        self.add_files_button = Gtk.Button(label=_("Add Files"))
+        self.add_files_button.connect("clicked", self.on_add_files_clicked)
+        self.add_files_button.add_css_class("suggested-action")
+        split_button_box.append(self.add_files_button)
+
+        # Menu button with arrow
+        self.add_menu_button = Gtk.MenuButton()
+        self.add_menu_button.set_icon_name("pan-down-symbolic")  # Down arrow icon
+        self.add_menu_button.add_css_class("suggested-action")
+
+        # Create menu model
+        menu = Gio.Menu()
+        menu.append(_("Add Files"), "app.add_files")
+        menu.append(_("Add Folder"), "app.add_folder")
+
+        self.add_menu_button.set_menu_model(menu)
+        split_button_box.append(self.add_menu_button)
+
+        # Add the split_button_box to the queue_buttons_box
+        queue_buttons_box.append(split_button_box)
 
         # Single convert button that processes the queue
         convert_button = Gtk.Button(label=_("Convert All"))
