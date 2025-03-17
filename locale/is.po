@@ -1591,3 +1591,65 @@ msgstr "Fjarlægja úr biðröð"
 #: NEEDS WORK
 msgid "Queue is empty. Add files to convert."
 msgstr "Biðröð er tóm. Bættu við skrám til að breyta."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 627
+#: NEEDS WORK
+msgid "Select Folder with Video Files"
+msgstr "Veldu möppu með vídeóskrám"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 632
+#: NEEDS WORK
+msgid "Folders"
+msgstr "Skrár"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 673
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 713
+#: NEEDS WORK
+msgid "{} video files have been added to the queue."
+msgstr "Vefnótur hafa verið bætt við biðröðina."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 674
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 714
+#: NEEDS WORK
+msgid "Files Added"
+msgstr "Skrár bættar við"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 678
+#: NEEDS WORK
+msgid "No Files Found"
+msgstr "Engin fundin ekki."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 679
+#: NEEDS WORK
+msgid "No valid video files were found in the selected folder."
+msgstr "Engin gilt vefmyndaskrár fundust ekki í valda möppunni."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 684
+#: NEEDS WORK
+msgid "Please select a folder, not a file."
+msgstr "Vinsamlegast veldu möppu, ekki skrá."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 689
+#: NEEDS WORK
+msgid "Error selecting folder: {}"
+msgstr "Villa ekki að velja möppu: {}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 719
+#: NEEDS WORK
+msgid "Error selecting files: {}"
+msgstr "Villa að velja skrár: {}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 180
+#: NEEDS WORK
+msgid "Add Folder"
+msgstr "Bæta við möppu"

@@ -1592,3 +1592,65 @@ msgstr "Fjern fra kø"
 #: NEEDS WORK
 msgid "Queue is empty. Add files to convert."
 msgstr "Kø er tom. Legg til filer for å konvertere."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 627
+#: NEEDS WORK
+msgid "Select Folder with Video Files"
+msgstr "Velg mappe med videofiler"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 632
+#: NEEDS WORK
+msgid "Folders"
+msgstr "Mapper."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 673
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 713
+#: NEEDS WORK
+msgid "{} video files have been added to the queue."
+msgstr "Videofiler har blitt lagt til i køen."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 674
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 714
+#: NEEDS WORK
+msgid "Files Added"
+msgstr "Filer lagt til"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 678
+#: NEEDS WORK
+msgid "No Files Found"
+msgstr "Ingen filer funnet"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 679
+#: NEEDS WORK
+msgid "No valid video files were found in the selected folder."
+msgstr "Ingen gyldige videofiler ble funnet i den valgte mappen."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 684
+#: NEEDS WORK
+msgid "Please select a folder, not a file."
+msgstr "Vennligst velg en mappe, ikke en fil."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 689
+#: NEEDS WORK
+msgid "Error selecting folder: {}"
+msgstr "Feil ved valg av mappe: {}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 719
+#: NEEDS WORK
+msgid "Error selecting files: {}"
+msgstr "Feil ved valg av filer: {}"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 180
+#: NEEDS WORK
+msgid "Add Folder"
+msgstr "Legg til mappe"
