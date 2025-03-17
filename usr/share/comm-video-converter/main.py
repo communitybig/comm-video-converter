@@ -24,9 +24,6 @@ from core.json_settings_manager import JsonSettingsManager as SettingsManager
 # Setup translation
 import gettext
 
-# Setup translation
-import gettext
-
 _ = gettext.gettext
 
 

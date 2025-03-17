@@ -2,9 +2,6 @@ import os
 import gi
 import subprocess
 import json
-import tempfile
-import io
-from PIL import Image
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
@@ -56,27 +53,9 @@ class VideoEditPage:
         self.hue = self.settings.get_double("preview-hue", 0.0)
         self.exposure = self.settings.get_double("preview-exposure", 0.0)
 
-        # Create a temp directory if it doesn't exist
-        try:
-            self.temp_preview_dir = tempfile.mkdtemp(prefix="comm-video-preview-")
-            print(f"Created temp directory: {self.temp_preview_dir}")
-        except Exception as e:
-            print(f"Error creating temp directory: {e}")
-            # Fallback to /tmp if mkdtemp fails
-            self.temp_preview_dir = "/tmp/comm-video-preview"
-            os.makedirs(self.temp_preview_dir, exist_ok=True)
-
-        # Make sure the temp directory is writable
-        if not os.access(self.temp_preview_dir, os.W_OK):
-            print(f"Warning: Temp directory {self.temp_preview_dir} is not writable")
-            # Try to fix permissions
-            try:
-                os.chmod(self.temp_preview_dir, 0o755)
-            except:
-                pass
-
-        # Create a dictionary to store tooltips for different sliders
+        # Create a dictionary to store tooltips for different sliders and buttons
         self.adjustment_tooltips = {}
+        self.button_tooltips = {}
 
         self.page = self._create_page()
 
@@ -337,49 +316,51 @@ class VideoEditPage:
         # Previous/next frame buttons
         prev_frame_button = Gtk.Button()
         prev_frame_button.set_icon_name("go-previous-symbolic")
-        prev_frame_button.set_tooltip_text(_("Previous frame"))
+        self.add_tooltip_to_button(prev_frame_button, _("Previous frame"))
         prev_frame_button.connect("clicked", lambda b: self.seek_relative(-1 / 25))
         nav_box.append(prev_frame_button)
 
         # Step back 1 second
         step_back_button = Gtk.Button()
         step_back_button.set_icon_name("media-seek-backward-symbolic")
-        step_back_button.set_tooltip_text(_("Back 1 second"))
+        self.add_tooltip_to_button(step_back_button, _("Back 1 second"))
         step_back_button.connect("clicked", lambda b: self.seek_relative(-1))
         nav_box.append(step_back_button)
 
         # Step back 10 seconds
         step_back10_button = Gtk.Button()
         step_back10_button.set_icon_name("media-skip-backward-symbolic")
-        step_back10_button.set_tooltip_text(_("Back 10 seconds"))
+        self.add_tooltip_to_button(step_back10_button, _("Back 10 seconds"))
         step_back10_button.connect("clicked", lambda b: self.seek_relative(-10))
         nav_box.append(step_back10_button)
 
-        # Extract frame button
-        self.extract_button = Gtk.Button()
-        self.extract_button.set_icon_name("camera-photo-symbolic")
-        self.extract_button.set_tooltip_text(_("Extract current frame"))
-        self.extract_button.connect("clicked", self.on_extract_frame)
-        nav_box.append(self.extract_button)
+        # Reset button (replacing extract frame button)
+        reset_button = Gtk.Button()
+
+        reset_button = Gtk.Button(label=_("Reset"))
+        reset_button.add_css_class("destructive-action")  # Red styling for warning
+        self.add_tooltip_to_button(reset_button, _("Reset all settings"))
+        reset_button.connect("clicked", self.on_reset_all_settings)
+        nav_box.append(reset_button)
 
         # Step forward 10 seconds
         step_fwd10_button = Gtk.Button()
         step_fwd10_button.set_icon_name("media-skip-forward-symbolic")
-        step_fwd10_button.set_tooltip_text(_("Forward 10 seconds"))
+        self.add_tooltip_to_button(step_fwd10_button, _("Forward 10 seconds"))
         step_fwd10_button.connect("clicked", lambda b: self.seek_relative(10))
         nav_box.append(step_fwd10_button)
 
         # Step forward 1 second
         step_fwd_button = Gtk.Button()
         step_fwd_button.set_icon_name("media-seek-forward-symbolic")
-        step_fwd_button.set_tooltip_text(_("Forward 1 second"))
+        self.add_tooltip_to_button(step_fwd_button, _("Forward 1 second"))
         step_fwd_button.connect("clicked", lambda b: self.seek_relative(1))
         nav_box.append(step_fwd_button)
 
         # Next frame button
         next_frame_button = Gtk.Button()
         next_frame_button.set_icon_name("go-next-symbolic")
-        next_frame_button.set_tooltip_text(_("Next frame"))
+        self.add_tooltip_to_button(next_frame_button, _("Next frame"))
         next_frame_button.connect("clicked", lambda b: self.seek_relative(1 / 25))
         nav_box.append(next_frame_button)
 
@@ -399,24 +380,9 @@ class VideoEditPage:
         # Add playback controls as the first element in the scrollable content
         main_content.append(playback_group)
 
-        # Add a reset all settings button in its own group
-        reset_all_group = Adw.PreferencesGroup()
-        reset_all_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-        reset_all_box.set_margin_top(12)
-        reset_all_box.set_margin_bottom(12)
-        reset_all_box.set_halign(Gtk.Align.CENTER)
-
-        reset_all_button = Gtk.Button(label=_("Reset All Settings"))
-        reset_all_button.add_css_class("destructive-action")  # Red styling for warning
-        reset_all_button.connect("clicked", self.on_reset_all_settings)
-        reset_all_box.append(reset_all_button)
-
-        reset_all_group.add(reset_all_box)
-        main_content.append(reset_all_group)
-
         # Add all other control sections to the scrollable area
         # Improved trimming controls - with consistent styling like crop section
-        trim_group = Adw.PreferencesGroup(title=_("Trim"))
+        trim_group = Adw.PreferencesGroup(title=_("Trim by Time"))
 
         # Create an ActionRow for trim controls
         trim_row = Adw.ActionRow()
@@ -431,40 +397,34 @@ class VideoEditPage:
         start_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         start_box.set_hexpand(True)
 
-        start_label = Gtk.Label(label=_("Start:"))
-        start_label.set_halign(Gtk.Align.END)
-
         self.start_time_label = Gtk.Label(label="0:00.000")
         self.start_time_label.set_halign(Gtk.Align.START)
         self.start_time_label.set_width_chars(8)
 
-        set_start_button = Gtk.Button(label=_("Set"))
+        set_start_button = Gtk.Button(label=_("Start"))
+        self.add_tooltip_to_button(
+            set_start_button, _("Set timeline marked time as start")
+        )
         set_start_button.connect("clicked", self.on_set_start_time)
-        set_start_button.add_css_class("pill")
 
-        start_box.append(start_label)
-        start_box.append(self.start_time_label)
         start_box.append(set_start_button)
+        start_box.append(self.start_time_label)
         trim_box.append(start_box)
 
         # End time section
         end_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         end_box.set_hexpand(True)
 
-        end_label = Gtk.Label(label=_("End:"))
-        end_label.set_halign(Gtk.Align.END)
-
-        self.end_time_label = Gtk.Label(label=_("End"))
+        self.end_time_label = Gtk.Label()
         self.end_time_label.set_halign(Gtk.Align.START)
         self.end_time_label.set_width_chars(8)
 
-        set_end_button = Gtk.Button(label=_("Set"))
+        set_end_button = Gtk.Button(label=_("End"))
+        self.add_tooltip_to_button(set_end_button, _("Set timeline marked time as end"))
         set_end_button.connect("clicked", self.on_set_end_time)
-        set_end_button.add_css_class("pill")
 
-        end_box.append(end_label)
-        end_box.append(self.end_time_label)
         end_box.append(set_end_button)
+        end_box.append(self.end_time_label)
         trim_box.append(end_box)
 
         # Duration section
@@ -486,7 +446,7 @@ class VideoEditPage:
         reset_button.set_icon_name("edit-undo-symbolic")
         reset_button.add_css_class("flat")
         reset_button.add_css_class("circular")
-        reset_button.set_tooltip_text(_("Reset trim points"))
+        self.add_tooltip_to_button(reset_button, _("Reset trim points"))
         reset_button.connect("clicked", self.on_reset_trim_points)
         trim_box.append(reset_button)
 
@@ -497,7 +457,7 @@ class VideoEditPage:
         main_content.append(trim_group)
 
         # Crop controls - using margin-based approach (left, right, top, bottom)
-        crop_group = Adw.PreferencesGroup(title=_("Crop"))
+        crop_group = Adw.PreferencesGroup(title=_("Crop by Edges"))
 
         # Crop dimension controls with new terminology
         crop_controls_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
@@ -530,7 +490,7 @@ class VideoEditPage:
         left_box.set_hexpand(True)
         left_box.set_halign(Gtk.Align.CENTER)
 
-        left_label = Gtk.Label(label=_("Left"))
+        left_label = Gtk.Label(label=_("Left Side"))
         left_label.set_halign(Gtk.Align.CENTER)
         left_box.append(left_label)
 
@@ -549,7 +509,7 @@ class VideoEditPage:
         left_reset.set_icon_name("edit-undo-symbolic")
         left_reset.add_css_class("flat")
         left_reset.add_css_class("circular")
-        left_reset.set_tooltip_text(_("Reset to default"))
+        self.add_tooltip_to_button(left_reset, _("Reset to default"))
         left_reset.connect("clicked", lambda b: self.reset_crop_value("left"))
         left_input_box.append(left_reset)
 
@@ -561,7 +521,7 @@ class VideoEditPage:
         right_box.set_hexpand(True)
         right_box.set_halign(Gtk.Align.CENTER)
 
-        right_label = Gtk.Label(label=_("Right"))
+        right_label = Gtk.Label(label=_("Right Side"))
         right_label.set_halign(Gtk.Align.CENTER)
         right_box.append(right_label)
 
@@ -580,7 +540,7 @@ class VideoEditPage:
         right_reset.set_icon_name("edit-undo-symbolic")
         right_reset.add_css_class("flat")
         right_reset.add_css_class("circular")
-        right_reset.set_tooltip_text(_("Reset to default"))
+        self.add_tooltip_to_button(right_reset, _("Reset to default"))
         right_reset.connect("clicked", lambda b: self.reset_crop_value("right"))
         right_input_box.append(right_reset)
 
@@ -592,7 +552,7 @@ class VideoEditPage:
         top_box.set_hexpand(True)
         top_box.set_halign(Gtk.Align.CENTER)
 
-        top_label = Gtk.Label(label=_("Top"))
+        top_label = Gtk.Label(label=_("Top Side"))
         top_label.set_halign(Gtk.Align.CENTER)
         top_box.append(top_label)
 
@@ -611,7 +571,7 @@ class VideoEditPage:
         top_reset.set_icon_name("edit-undo-symbolic")
         top_reset.add_css_class("flat")
         top_reset.add_css_class("circular")
-        top_reset.set_tooltip_text(_("Reset to default"))
+        self.add_tooltip_to_button(top_reset, _("Reset to default"))
         top_reset.connect("clicked", lambda b: self.reset_crop_value("top"))
         top_input_box.append(top_reset)
 
@@ -623,7 +583,7 @@ class VideoEditPage:
         bottom_box.set_hexpand(True)
         bottom_box.set_halign(Gtk.Align.CENTER)
 
-        bottom_label = Gtk.Label(label=_("Bottom"))
+        bottom_label = Gtk.Label(label=_("Bottom Side"))
         bottom_label.set_halign(Gtk.Align.CENTER)
         bottom_box.append(bottom_label)
 
@@ -642,7 +602,7 @@ class VideoEditPage:
         bottom_reset.set_icon_name("edit-undo-symbolic")
         bottom_reset.add_css_class("flat")
         bottom_reset.add_css_class("circular")
-        bottom_reset.set_tooltip_text(_("Reset to default"))
+        self.add_tooltip_to_button(bottom_reset, _("Reset to default"))
         bottom_reset.connect("clicked", lambda b: self.reset_crop_value("bottom"))
         bottom_input_box.append(bottom_reset)
 
@@ -697,7 +657,7 @@ class VideoEditPage:
         brightness_reset.set_icon_name("edit-undo-symbolic")
         brightness_reset.add_css_class("flat")
         brightness_reset.add_css_class("circular")
-        brightness_reset.set_tooltip_text(_("Reset to default"))
+        self.add_tooltip_to_button(brightness_reset, _("Reset to default"))
         brightness_reset.connect("clicked", lambda b: self.reset_brightness())
 
         brightness_box.append(self.brightness_scale)
@@ -730,7 +690,7 @@ class VideoEditPage:
         contrast_reset.set_icon_name("edit-undo-symbolic")
         contrast_reset.add_css_class("flat")
         contrast_reset.add_css_class("circular")
-        contrast_reset.set_tooltip_text(_("Reset to default"))
+        self.add_tooltip_to_button(contrast_reset, _("Reset to default"))
         contrast_reset.connect("clicked", lambda b: self.reset_contrast())
 
         contrast_box.append(self.contrast_scale)
@@ -763,7 +723,7 @@ class VideoEditPage:
         saturation_reset.set_icon_name("edit-undo-symbolic")
         saturation_reset.add_css_class("flat")
         saturation_reset.add_css_class("circular")
-        saturation_reset.set_tooltip_text(_("Reset to default"))
+        self.add_tooltip_to_button(saturation_reset, _("Reset to default"))
         saturation_reset.connect("clicked", lambda b: self.reset_saturation())
 
         saturation_box.append(self.saturation_scale)
@@ -796,7 +756,7 @@ class VideoEditPage:
         exposure_reset.set_icon_name("edit-undo-symbolic")
         exposure_reset.add_css_class("flat")
         exposure_reset.add_css_class("circular")
-        exposure_reset.set_tooltip_text(_("Reset to default"))
+        self.add_tooltip_to_button(exposure_reset, _("Reset to default"))
         exposure_reset.connect("clicked", lambda b: self.reset_exposure())
 
         exposure_box.append(self.exposure_scale)
@@ -827,7 +787,7 @@ class VideoEditPage:
         gamma_reset.set_icon_name("edit-undo-symbolic")
         gamma_reset.add_css_class("flat")
         gamma_reset.add_css_class("circular")
-        gamma_reset.set_tooltip_text(_("Reset to default"))
+        self.add_tooltip_to_button(gamma_reset, _("Reset to default"))
         gamma_reset.connect("clicked", lambda b: self.reset_gamma())
 
         gamma_box.append(self.gamma_scale)
@@ -858,7 +818,7 @@ class VideoEditPage:
         gamma_r_reset.set_icon_name("edit-undo-symbolic")
         gamma_r_reset.add_css_class("flat")
         gamma_r_reset.add_css_class("circular")
-        gamma_r_reset.set_tooltip_text(_("Reset to default"))
+        self.add_tooltip_to_button(gamma_r_reset, _("Reset to default"))
         gamma_r_reset.connect("clicked", lambda b: self.reset_gamma_r())
 
         gamma_r_box.append(self.gamma_r_scale)
@@ -889,7 +849,7 @@ class VideoEditPage:
         gamma_g_reset.set_icon_name("edit-undo-symbolic")
         gamma_g_reset.add_css_class("flat")
         gamma_g_reset.add_css_class("circular")
-        gamma_g_reset.set_tooltip_text(_("Reset to default"))
+        self.add_tooltip_to_button(gamma_g_reset, _("Reset to default"))
         gamma_g_reset.connect("clicked", lambda b: self.reset_gamma_g())
 
         gamma_g_box.append(self.gamma_g_scale)
@@ -920,7 +880,7 @@ class VideoEditPage:
         gamma_b_reset.set_icon_name("edit-undo-symbolic")
         gamma_b_reset.add_css_class("flat")
         gamma_b_reset.add_css_class("circular")
-        gamma_b_reset.set_tooltip_text(_("Reset to default"))
+        self.add_tooltip_to_button(gamma_b_reset, _("Reset to default"))
         gamma_b_reset.connect("clicked", lambda b: self.reset_gamma_b())
 
         gamma_b_box.append(self.gamma_b_scale)
@@ -953,7 +913,7 @@ class VideoEditPage:
         gamma_weight_reset.set_icon_name("edit-undo-symbolic")
         gamma_weight_reset.add_css_class("flat")
         gamma_weight_reset.add_css_class("circular")
-        gamma_weight_reset.set_tooltip_text(_("Reset to default"))
+        self.add_tooltip_to_button(gamma_weight_reset, _("Reset to default"))
         gamma_weight_reset.connect("clicked", lambda b: self.reset_gamma_weight())
 
         gamma_weight_box.append(self.gamma_weight_scale)
@@ -984,7 +944,7 @@ class VideoEditPage:
         hue_reset.set_icon_name("edit-undo-symbolic")
         hue_reset.add_css_class("flat")
         hue_reset.add_css_class("circular")
-        hue_reset.set_tooltip_text(_("Reset to default"))
+        self.add_tooltip_to_button(hue_reset, _("Reset to default"))
         hue_reset.connect("clicked", lambda b: self.reset_hue())
 
         hue_box.append(self.hue_scale)
@@ -1075,6 +1035,66 @@ class VideoEditPage:
         motion_controller.connect("motion", self.on_adjustment_motion)
         motion_controller.connect("leave", self.on_adjustment_leave)
         slider.add_controller(motion_controller)
+
+    def add_tooltip_to_button(self, button, tooltip_text):
+        """Add custom tooltip functionality to any button"""
+        # Create a unique tooltip popover for this button
+        tooltip_popover = Gtk.Popover()
+        tooltip_popover.set_autohide(False)
+        tooltip_popover.set_position(Gtk.PositionType.TOP)
+
+        # Add a label to the popover
+        tooltip_label = Gtk.Label()
+        tooltip_label.set_text(tooltip_text)
+        tooltip_label.set_margin_start(8)
+        tooltip_label.set_margin_end(8)
+        tooltip_label.set_margin_top(4)
+        tooltip_label.set_margin_bottom(4)
+        tooltip_popover.set_child(tooltip_label)
+
+        # Store the tooltip popover in our dictionary with the button as the key
+        self.button_tooltips[button] = {
+            "popover": tooltip_popover,
+            "label": tooltip_label,
+            "text": tooltip_text,
+        }
+
+        # Add motion controller to show/hide tooltip
+        motion_controller = Gtk.EventControllerMotion.new()
+        motion_controller.connect("enter", self.on_button_enter)
+        motion_controller.connect("leave", self.on_button_leave)
+        button.add_controller(motion_controller)
+
+        # Remove the standard tooltip if it exists
+        button.set_tooltip_text(None)
+
+    def on_button_enter(self, controller, *args):
+        """Show tooltip when mouse enters a button"""
+        button = controller.get_widget()
+
+        # Check if we have a tooltip for this button
+        if button not in self.button_tooltips:
+            return
+
+        tooltip_data = self.button_tooltips[button]
+        tooltip_popover = tooltip_data["popover"]
+
+        # Position tooltip above button
+        rect = Gdk.Rectangle()
+        rect.x = button.get_width() / 2
+        rect.y = 0
+        rect.width = 1
+        rect.height = 1
+
+        tooltip_popover.set_pointing_to(rect)
+        tooltip_popover.set_parent(button)
+        tooltip_popover.popup()
+
+    def on_button_leave(self, controller, *args):
+        """Hide tooltip when mouse leaves a button"""
+        button = controller.get_widget()
+        if button in self.button_tooltips:
+            self.button_tooltips[button]["popover"].popdown()
 
     def find_slider_gizmo(self, slider):
         """Find the GtkGizmo child that represents the actual slider track"""
@@ -1711,24 +1731,6 @@ class VideoEditPage:
             GLib.source_remove(self.position_update_id)
             self.position_update_id = None
 
-        # Remove the temp directory and its contents
-        try:
-            if hasattr(self, "temp_preview_dir") and os.path.exists(
-                self.temp_preview_dir
-            ):
-                # Remove all files first
-                for file in os.listdir(self.temp_preview_dir):
-                    try:
-                        os.remove(os.path.join(self.temp_preview_dir, file))
-                    except Exception as e:
-                        print(f"Error removing temp file: {e}")
-
-                # Then try to remove the directory
-                os.rmdir(self.temp_preview_dir)
-                print(f"Removed temp directory: {self.temp_preview_dir}")
-        except Exception as e:
-            print(f"Error cleaning up temp directory: {e}")
-
     def set_crop_visibility(self, visible=True):
         """Show or hide crop functionality - optimized version"""
         # Fast direct lookup by title
@@ -2147,6 +2149,52 @@ class VideoEditPage:
             self.tooltip_popover.popdown()
 
     def on_reset_all_settings(self, button):
+        """Show confirmation dialog before resetting all settings"""
+        # Create dialog first, then set properties
+        dialog = Adw.MessageDialog()
+        dialog.set_heading(_("Reset All Settings"))
+        dialog.set_body(
+            _(
+                "Are you sure you want to reset all video editing settings to their default values?"
+            )
+        )
+
+        # Set parent window properly
+        if hasattr(self.app, "get_active_window") and callable(
+            self.app.get_active_window
+        ):
+            parent_window = self.app.get_active_window()
+            if parent_window:
+                dialog.set_transient_for(parent_window)
+
+        # Add cancel button
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.set_response_appearance("cancel", Adw.ResponseAppearance.DEFAULT)
+
+        # Add confirm button
+        dialog.add_response("reset", _("Reset"))
+        dialog.set_response_appearance("reset", Adw.ResponseAppearance.DESTRUCTIVE)
+
+        # Set default response
+        dialog.set_default_response("cancel")
+        dialog.set_close_response("cancel")
+
+        # Connect response handler
+        dialog.connect("response", self._on_reset_confirmed)
+
+        # Show dialog
+        dialog.present()
+
+    def _on_reset_confirmed(self, dialog, response):
+        """Handle the response from the reset confirmation dialog"""
+        if response != "reset":
+            # User canceled the operation
+            return
+
+        # User confirmed, proceed with reset
+        self._perform_reset_all_settings()
+
+    def _perform_reset_all_settings(self):
         """Reset all video settings to their default values"""
         # Reset crop values
         self.crop_left = 0

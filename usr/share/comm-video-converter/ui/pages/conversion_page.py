@@ -5,7 +5,7 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw, Gio, Pango, GLib
 
-from constants import CONVERT_SCRIPT_PATH, VIDEO_FILE_MIME_TYPES
+from constants import CONVERT_SCRIPT_PATH
 from utils.conversion import run_with_progress_dialog
 
 # Setup translation

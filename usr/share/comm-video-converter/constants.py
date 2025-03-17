@@ -34,20 +34,34 @@ VIDEO_FILE_MIME_TYPES = [
     "video/mp4",
     "video/x-matroska",
     "video/x-msvideo",
-    "video/quicktime", 
+    "video/quicktime",
     "video/webm",
     "video/x-flv",
     "video/mpeg",
     "video/3gpp",
     "video/x-ms-wmv",
     "video/ogg",
-    "video/mp2t"
+    "video/mp2t",
 ]
 
 # Encoding options
 GPU_OPTIONS = ["Auto-detect", "nvidia", "amd", "intel", "software"]
 VIDEO_QUALITY_OPTIONS = ["Default", "veryhigh", "high", "medium", "low", "verylow"]
-VIDEO_CODEC_OPTIONS = ["Default (h264)", "h264 (MP4)", "h265 (HEVC)", "av1 (AV1)", "vp9 (VP9)"]
-PRESET_OPTIONS = ["Default", "ultrafast", "veryfast", "faster", "medium", "slow", "veryslow"]
+VIDEO_CODEC_OPTIONS = [
+    "Default (h264)",
+    "h264 (MP4)",
+    "h265 (HEVC)",
+    "av1 (AV1)",
+    "vp9 (VP9)",
+]
+PRESET_OPTIONS = [
+    "Default",
+    "ultrafast",
+    "veryfast",
+    "faster",
+    "medium",
+    "slow",
+    "veryslow",
+]
 SUBTITLE_OPTIONS = ["Default (extract)", "extract (SRT)", "embedded", "none"]
 AUDIO_OPTIONS = ["Default (copy)", "copy", "reencode", "none"]

@@ -5,9 +5,9 @@
   "output-folder": "/home/bruno/tales/converter2",
   "delete-original": false,
   "preview-crop-left": 0,
-  "preview-crop-right": 124,
-  "preview-crop-top": 90,
-  "preview-crop-bottom": 41,
+  "preview-crop-right": 0,
+  "preview-crop-top": 0,
+  "preview-crop-bottom": 0,
   "preview-brightness": 0.0,
   "preview-gamma-g": 1.0,
   "preview-gamma-b": 1.0,
@@ -17,5 +17,7 @@
   "preview-saturation": 1.0,
   "preview-exposure": 0.0,
   "preview-gamma": 1.0,
-  "preview-gamma-r": 1.0
+  "preview-gamma-r": 1.0,
+  "force-copy-video": false,
+  "video-quality": 0
 }
