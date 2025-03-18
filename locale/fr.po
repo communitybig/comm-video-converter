@@ -1654,3 +1654,126 @@ msgstr "Erreur lors de la sélection des fichiers : {}"
 #: NEEDS WORK
 msgid "Add Folder"
 msgstr "Ajouter un dossier"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 340
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2175
+#: NEEDS WORK
+msgid "Reset"
+msgstr "Réinitialiser"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 342
+#: NEEDS WORK
+msgid "Reset all settings"
+msgstr "Réinitialiser tous les paramètres"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 385
+#: NEEDS WORK
+msgid "Trim by Time"
+msgstr "Couper par temps"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 404
+#: NEEDS WORK
+msgid "Start"
+msgstr "Démarrer"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 406
+#: NEEDS WORK
+msgid "Set timeline marked time as start"
+msgstr "Définir le moment marqué sur la timeline comme début"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 423
+#: NEEDS WORK
+msgid "Set timeline marked time as end"
+msgstr "Définir la chronologie marquée comme fin"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 460
+#: NEEDS WORK
+msgid "Crop by Edges"
+msgstr "Recadrer par les bords"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 493
+#: NEEDS WORK
+msgid "Left Side"
+msgstr "Côté gauche"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 524
+#: NEEDS WORK
+msgid "Right Side"
+msgstr "Côté Droit"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 555
+#: NEEDS WORK
+msgid "Top Side"
+msgstr "Côté supérieur"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 586
+#: NEEDS WORK
+msgid "Bottom Side"
+msgstr "Côté inférieur"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2155
+#: NEEDS WORK
+msgid "Reset All Settings"
+msgstr "Réinitialiser tous les paramètres"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2157
+#: NEEDS WORK
+msgid "Are you sure you want to reset all video editing settings to their default values?"
+msgstr ""
+"Êtes-vous sûr de vouloir réinitialiser tous les paramètres d'édition vidéo à leurs valeurs par "
+"défaut ?"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2265
+#: NEEDS WORK
+msgid "Settings Reset"
+msgstr "Réinitialisation des paramètres"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2266
+#: NEEDS WORK
+msgid "All video editing settings have been reset to their default values."
+msgstr "Tous les paramètres de montage vidéo ont été réinitialisés à leurs valeurs par défaut."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 105
+#: NEEDS WORK
+msgid "Show help"
+msgstr "Afficher l'aide"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 180
+#: NEEDS WORK
+msgid "Add video files to queue"
+msgstr "Ajouter des fichiers vidéo à la file d'attente"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 253
+#: NEEDS WORK
+msgid "Save in the same folder as the original file"
+msgstr "Enregistrer dans le même dossier que le fichier original"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 254
+#: NEEDS WORK
+msgid "Folder to save"
+msgstr "Dossier de sauvegarde"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 271
+#: NEEDS WORK
+msgid "Select folder"
+msgstr "Sélectionner le dossier"

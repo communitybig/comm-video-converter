@@ -1653,3 +1653,124 @@ msgstr "Fejl ved valg af filer: {}"
 #: NEEDS WORK
 msgid "Add Folder"
 msgstr "Tilføj mappe"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 340
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2175
+#: NEEDS WORK
+msgid "Reset"
+msgstr "Nulstil"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 342
+#: NEEDS WORK
+msgid "Reset all settings"
+msgstr "Nulstil alle indstillinger"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 385
+#: NEEDS WORK
+msgid "Trim by Time"
+msgstr "Trim efter tid"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 404
+#: NEEDS WORK
+msgid "Start"
+msgstr "Start"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 406
+#: NEEDS WORK
+msgid "Set timeline marked time as start"
+msgstr "Sæt tidslinje markeret tid som start"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 423
+#: NEEDS WORK
+msgid "Set timeline marked time as end"
+msgstr "Sæt tidslinje markeret tid som slut."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 460
+#: NEEDS WORK
+msgid "Crop by Edges"
+msgstr "Beskær efter kanter"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 493
+#: NEEDS WORK
+msgid "Left Side"
+msgstr "Venstre side"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 524
+#: NEEDS WORK
+msgid "Right Side"
+msgstr "Højre side"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 555
+#: NEEDS WORK
+msgid "Top Side"
+msgstr "Øverste side"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 586
+#: NEEDS WORK
+msgid "Bottom Side"
+msgstr "Bundside"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2155
+#: NEEDS WORK
+msgid "Reset All Settings"
+msgstr "Nulstil alle indstillinger"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2157
+#: NEEDS WORK
+msgid "Are you sure you want to reset all video editing settings to their default values?"
+msgstr "Er du sikker på, at du vil nulstille alle videoredigeringsindstillinger til deres standardværdier?"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2265
+#: NEEDS WORK
+msgid "Settings Reset"
+msgstr "Indstillinger Nulstil"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2266
+#: NEEDS WORK
+msgid "All video editing settings have been reset to their default values."
+msgstr "Alle video redigeringsindstillinger er blevet nulstillet til deres standardværdier."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 105
+#: NEEDS WORK
+msgid "Show help"
+msgstr "Vis hjælp"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 180
+#: NEEDS WORK
+msgid "Add video files to queue"
+msgstr "Tilføj videofiler til køen"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 253
+#: NEEDS WORK
+msgid "Save in the same folder as the original file"
+msgstr "Gem i den samme mappe som den originale fil"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 254
+#: NEEDS WORK
+msgid "Folder to save"
+msgstr "Mappe til at gemme"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 271
+#: NEEDS WORK
+msgid "Select folder"
+msgstr "Vælg mappe"

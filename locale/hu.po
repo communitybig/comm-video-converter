@@ -1654,3 +1654,126 @@ msgstr "Hiba a fájlok kiválasztásakor: {}"
 #: NEEDS WORK
 msgid "Add Folder"
 msgstr "Mappa hozzáadása"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 340
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2175
+#: NEEDS WORK
+msgid "Reset"
+msgstr "Visszaállítás"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 342
+#: NEEDS WORK
+msgid "Reset all settings"
+msgstr "Minden beállítás visszaállítása"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 385
+#: NEEDS WORK
+msgid "Trim by Time"
+msgstr "Idő szerinti levágás"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 404
+#: NEEDS WORK
+msgid "Start"
+msgstr "Kezdés"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 406
+#: NEEDS WORK
+msgid "Set timeline marked time as start"
+msgstr "Állítsa be az idővonal jelölt időpontját kezdésként"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 423
+#: NEEDS WORK
+msgid "Set timeline marked time as end"
+msgstr "Állítsa be az idővonal jelölt idejét végnek"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 460
+#: NEEDS WORK
+msgid "Crop by Edges"
+msgstr "Élek szerinti vágás"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 493
+#: NEEDS WORK
+msgid "Left Side"
+msgstr "Bal oldal"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 524
+#: NEEDS WORK
+msgid "Right Side"
+msgstr "Jobb oldal"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 555
+#: NEEDS WORK
+msgid "Top Side"
+msgstr "Felső oldal"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 586
+#: NEEDS WORK
+msgid "Bottom Side"
+msgstr "Alsó oldal"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2155
+#: NEEDS WORK
+msgid "Reset All Settings"
+msgstr "Minden beállítás visszaállítása"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2157
+#: NEEDS WORK
+msgid "Are you sure you want to reset all video editing settings to their default values?"
+msgstr ""
+"Biztos benne, hogy vissza szeretné állítani az összes videószerkesztési beállítást az "
+"alapértelmezett értékekre?"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2265
+#: NEEDS WORK
+msgid "Settings Reset"
+msgstr "Beállítások visszaállítása"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2266
+#: NEEDS WORK
+msgid "All video editing settings have been reset to their default values."
+msgstr "Minden videószerkesztési beállítás vissza lett állítva az alapértelmezett értékekre."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 105
+#: NEEDS WORK
+msgid "Show help"
+msgstr "Segítség megjelenítése"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 180
+#: NEEDS WORK
+msgid "Add video files to queue"
+msgstr "Videófájlok hozzáadása a várólistához"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 253
+#: NEEDS WORK
+msgid "Save in the same folder as the original file"
+msgstr "Mentés az eredeti fájl mappájába"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 254
+#: NEEDS WORK
+msgid "Folder to save"
+msgstr "Mentési mappa"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 271
+#: NEEDS WORK
+msgid "Select folder"
+msgstr "Mappa kiválasztása"

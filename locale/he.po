@@ -1648,3 +1648,124 @@ msgstr "שגיאה בבחירת קבצים: {}"
 #: NEEDS WORK
 msgid "Add Folder"
 msgstr "הוסף תיקייה"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 340
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2175
+#: NEEDS WORK
+msgid "Reset"
+msgstr "איפוס"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 342
+#: NEEDS WORK
+msgid "Reset all settings"
+msgstr "אפס את כל ההגדרות"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 385
+#: NEEDS WORK
+msgid "Trim by Time"
+msgstr "גזירה לפי זמן"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 404
+#: NEEDS WORK
+msgid "Start"
+msgstr "התחל"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 406
+#: NEEDS WORK
+msgid "Set timeline marked time as start"
+msgstr "הגדר את הזמן המסומן כזמן התחלה"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 423
+#: NEEDS WORK
+msgid "Set timeline marked time as end"
+msgstr "סמן את הזמן המוגדר כקצה של ציר הזמן"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 460
+#: NEEDS WORK
+msgid "Crop by Edges"
+msgstr "גזירה לפי קצוות"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 493
+#: NEEDS WORK
+msgid "Left Side"
+msgstr "צד שמאל"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 524
+#: NEEDS WORK
+msgid "Right Side"
+msgstr "צד ימין"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 555
+#: NEEDS WORK
+msgid "Top Side"
+msgstr "צד עליון"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 586
+#: NEEDS WORK
+msgid "Bottom Side"
+msgstr "צד תחתון"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2155
+#: NEEDS WORK
+msgid "Reset All Settings"
+msgstr "אפס את כל ההגדרות"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2157
+#: NEEDS WORK
+msgid "Are you sure you want to reset all video editing settings to their default values?"
+msgstr "האם אתה בטוח שברצונך לאפס את כל הגדרות עריכת הווידאו לערכים ברירת המחדל שלהם?"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2265
+#: NEEDS WORK
+msgid "Settings Reset"
+msgstr "איפוס הגדרות"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2266
+#: NEEDS WORK
+msgid "All video editing settings have been reset to their default values."
+msgstr "כל הגדרות עריכת הווידאו הוחזרו לערכים ברירת המחדל שלהם."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 105
+#: NEEDS WORK
+msgid "Show help"
+msgstr "הצג עזרה"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 180
+#: NEEDS WORK
+msgid "Add video files to queue"
+msgstr "הוסף קבצי וידאו לתור"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 253
+#: NEEDS WORK
+msgid "Save in the same folder as the original file"
+msgstr "שמור באותו תיקייה כמו הקובץ המקורי"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 254
+#: NEEDS WORK
+msgid "Folder to save"
+msgstr "תיקייה לשמירה"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 271
+#: NEEDS WORK
+msgid "Select folder"
+msgstr "בחר תיקייה"

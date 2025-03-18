@@ -2068,3 +2068,124 @@ msgstr "选择文件时出错：{}"
 #: NEEDS WORK
 msgid "Add Folder"
 msgstr "添加文件夹"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 340
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2175
+#: NEEDS WORK
+msgid "Reset"
+msgstr "重置"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 342
+#: NEEDS WORK
+msgid "Reset all settings"
+msgstr "重置所有设置"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 385
+#: NEEDS WORK
+msgid "Trim by Time"
+msgstr "按时间修剪"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 404
+#: NEEDS WORK
+msgid "Start"
+msgstr "开始"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 406
+#: NEEDS WORK
+msgid "Set timeline marked time as start"
+msgstr "设置时间线标记时间为开始"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 423
+#: NEEDS WORK
+msgid "Set timeline marked time as end"
+msgstr "将时间线标记的时间设置为结束"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 460
+#: NEEDS WORK
+msgid "Crop by Edges"
+msgstr "按边缘裁剪"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 493
+#: NEEDS WORK
+msgid "Left Side"
+msgstr "左侧"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 524
+#: NEEDS WORK
+msgid "Right Side"
+msgstr "右侧"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 555
+#: NEEDS WORK
+msgid "Top Side"
+msgstr "顶部"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 586
+#: NEEDS WORK
+msgid "Bottom Side"
+msgstr "底部"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2155
+#: NEEDS WORK
+msgid "Reset All Settings"
+msgstr "重置所有设置"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2157
+#: NEEDS WORK
+msgid "Are you sure you want to reset all video editing settings to their default values?"
+msgstr "您确定要将所有视频编辑设置重置为默认值吗？"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2265
+#: NEEDS WORK
+msgid "Settings Reset"
+msgstr "设置重置"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2266
+#: NEEDS WORK
+msgid "All video editing settings have been reset to their default values."
+msgstr "所有视频编辑设置已重置为默认值。"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 105
+#: NEEDS WORK
+msgid "Show help"
+msgstr "显示帮助"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 180
+#: NEEDS WORK
+msgid "Add video files to queue"
+msgstr "将视频文件添加到队列"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 253
+#: NEEDS WORK
+msgid "Save in the same folder as the original file"
+msgstr "保存在与原文件相同的文件夹中"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 254
+#: NEEDS WORK
+msgid "Folder to save"
+msgstr "保存文件夹"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 271
+#: NEEDS WORK
+msgid "Select folder"
+msgstr "选择文件夹"
