@@ -822,13 +822,6 @@ class ConversionPage:
         # Get absolute path to input directory
         input_dir = os.path.dirname(os.path.abspath(input_file))
 
-        # Check if the conversion script exists
-        if not os.path.exists(CONVERT_SCRIPT_PATH):
-            self.app.show_error_dialog(
-                _("Conversion script not found: {0}").format(CONVERT_SCRIPT_PATH)
-            )
-            return False
-
         # Build environment variables
         env_vars = os.environ.copy()  # Start with current environment
 
@@ -838,33 +831,207 @@ class ConversionPage:
                 self.app.settings_manager, "json_config"
             ):
                 settings = self.app.settings_manager.json_config
+                print(f"Loaded settings: {settings}")
 
-                # Map settings to environment variables
-                settings_map = {
-                    "gpu-selection": "gpu",
-                    "video-quality": "video_quality",
-                    "video-codec": "video_encoder",
-                    "preset": "preset",
-                    "subtitle-extract": "subtitle_extract",
-                    "audio-handling": "audio_handling",
+                # Define mappings from UI indices to expected string values
+                # Important: First entry in settings is "Default" which should be omitted or mapped to default value
+                gpu_mapping = [
+                    "auto",
+                    "nvidia",
+                    "amd",
+                    "intel",
+                    "software",
+                ]  # Match constants.py
+                quality_mapping = [
+                    "default",
+                    "veryhigh",
+                    "high",
+                    "medium",
+                    "low",
+                    "verylow",
+                    "superlow",
+                ]  # Match constants.py
+
+                # Update codec mapping to match VIDEO_CODEC_OPTIONS from constants.py:
+                # ["Default (h264)", "h264 (MP4)", "h265 (HEVC)", "av1 (AV1)", "vp9 (VP9)"]
+                codec_mapping = ["h264", "h264", "h265", "av1", "vp9"]
+
+                preset_mapping = [
+                    "default",
+                    "ultrafast",
+                    "veryfast",
+                    "faster",
+                    "medium",
+                    "slow",
+                    "veryslow",
+                ]
+
+                # Fix subtitle mapping to match SUBTITLE_OPTIONS:
+                # ["Default (extract)", "extract (SRT)", "embedded", "none"]
+                subtitle_mapping = ["extract", "extract", "embedded", "none"]
+
+                audio_mapping = ["copy", "reencode", "none"]
+
+                # Map value indices to their string equivalents and handle "Default" option
+                if "gpu-selection" in settings:
+                    idx = int(settings["gpu-selection"])
+                    print(f"Processing GPU selection: index {idx}")
+                    if 0 < idx < len(gpu_mapping):  # Skip index 0 (Default/Auto)
+                        env_vars["gpu"] = gpu_mapping[idx]
+                        print(f"Setting gpu={env_vars['gpu']}")
+
+                if "video-quality" in settings:
+                    idx = int(settings["video-quality"])
+                    print(f"Processing video quality: index {idx}")
+                    if 0 < idx < len(quality_mapping):  # Skip index 0 (Default)
+                        env_vars["video_quality"] = quality_mapping[idx]
+                        print(f"Setting video_quality={env_vars['video_quality']}")
+                    elif idx == 4:  # Special case for "low"
+                        env_vars["video_quality"] = "low"
+                        print("Setting video_quality=low")
+                    elif idx == 5:  # Special case for "verylow"
+                        env_vars["video_quality"] = "verylow"
+                        print("Setting video_quality=verylow")
+                    elif idx == 6:  # Special case for "superlow"
+                        env_vars["video_quality"] = "superlow"
+                        print("Setting video_quality=superlow")
+
+                if "video-codec" in settings:
+                    idx = int(settings["video-codec"])
+                    print(f"Processing video codec: index {idx}")
+                    if 0 <= idx < len(codec_mapping):
+                        env_vars["video_encoder"] = codec_mapping[idx]
+                        print(f"Setting video_encoder={env_vars['video_encoder']}")
+
+                if "preset" in settings:
+                    idx = int(settings["preset"])
+                    if 0 <= idx < len(preset_mapping):
+                        env_vars["preset"] = preset_mapping[idx]
+                        print(f"Setting preset={env_vars['preset']}")
+
+                if "subtitle-extract" in settings:
+                    idx = int(settings["subtitle-extract"])
+                    if 0 <= idx < len(subtitle_mapping):
+                        env_vars["subtitle_extract"] = subtitle_mapping[idx]
+                        print(
+                            f"Setting subtitle_extract={env_vars['subtitle_extract']}"
+                        )
+
+                if "audio-handling" in settings:
+                    idx = int(settings["audio-handling"])
+                    if 0 <= idx < len(audio_mapping):
+                        env_vars["audio_handling"] = audio_mapping[idx]
+                        print(f"Setting audio_handling={env_vars['audio_handling']}")
+
+                # Handle non-index settings directly
+                direct_settings_map = {
                     "audio-bitrate": "audio_bitrate",
                     "audio-channels": "audio_channels",
                     "video-resolution": "video_resolution",
                     "additional-options": "options",
+                }
+
+                # Apply direct settings
+                for settings_key, env_key in direct_settings_map.items():
+                    value = settings.get(settings_key)
+                    if value not in [None, "", False, 0]:
+                        env_vars[env_key] = str(value)
+                        print(f"Setting {env_key}={env_vars[env_key]}")
+
+                # Handle boolean settings
+                bool_settings_map = {
                     "gpu-partial": "gpu_partial",
                     "force-copy-video": "force_copy_video",
                     "only-extract-subtitles": "only_extract_subtitles",
                 }
 
-                # Apply settings
-                for settings_key, env_key in settings_map.items():
+                # Apply boolean settings
+                for settings_key, env_key in bool_settings_map.items():
                     value = settings.get(settings_key)
-                    if isinstance(value, bool) and value:
+                    if value is True:
                         env_vars[env_key] = "1"
-                    elif value not in [None, "", False]:
-                        env_vars[env_key] = str(value)
+                        print(f"Setting {env_key}=1")
+
+                # Initialize main filter string - will contain all filters
+                all_filters = []
+
+                # Add resolution filter if set
+                if "video_resolution" in env_vars:
+                    resolution = env_vars["video_resolution"]
+                    if resolution and resolution.lower() != "default":
+                        all_filters.append(f"scale={resolution}")
+
+                # Extract video editing settings if available
+                if hasattr(self.app, "video_edit_page") and self.app.video_edit_page:
+                    edit_page = self.app.video_edit_page
+
+                    # Add crop filter if any crop value is non-zero
+                    if (
+                        edit_page.crop_left > 0
+                        or edit_page.crop_right > 0
+                        or edit_page.crop_top > 0
+                        or edit_page.crop_bottom > 0
+                    ):
+                        # Calculate crop dimensions
+                        crop_width = (
+                            edit_page.video_width
+                            - edit_page.crop_left
+                            - edit_page.crop_right
+                        )
+                        crop_height = (
+                            edit_page.video_height
+                            - edit_page.crop_top
+                            - edit_page.crop_bottom
+                        )
+                        all_filters.append(
+                            f"crop={crop_width}:{crop_height}:{edit_page.crop_left}:{edit_page.crop_top}"
+                        )
+
+                    # Build video filters for color/gamma/etc adjustments
+                    # Add hue adjustment
+                    if edit_page.hue != 0.0:
+                        hue_degrees = edit_page.hue * 180 / 3.14159
+                        all_filters.append(f"hue=h={hue_degrees}")
+
+                    # Add exposure adjustment
+                    if edit_page.exposure != 0.0:
+                        all_filters.append(f"exposure=exposure={edit_page.exposure}")
+
+                    # Add eq filter for brightness, contrast, saturation, gamma, etc.
+                    eq_parts = []
+                    if edit_page.brightness != 0.0:
+                        eq_parts.append(f"brightness={edit_page.brightness}")
+                    if edit_page.contrast != 1.0:
+                        ff_contrast = (edit_page.contrast - 1.0) * 2
+                        eq_parts.append(f"contrast={ff_contrast}")
+                    if edit_page.saturation != 1.0:
+                        eq_parts.append(f"saturation={edit_page.saturation}")
+                    if edit_page.gamma != 1.0:
+                        eq_parts.append(f"gamma={edit_page.gamma}")
+                    if edit_page.gamma_r != 1.0:
+                        eq_parts.append(f"gamma_r={edit_page.gamma_r}")
+                    if edit_page.gamma_g != 1.0:
+                        eq_parts.append(f"gamma_g={edit_page.gamma_g}")
+                    if edit_page.gamma_b != 1.0:
+                        eq_parts.append(f"gamma_b={edit_page.gamma_b}")
+                    if edit_page.gamma_weight != 1.0:
+                        eq_parts.append(f"gamma_weight={edit_page.gamma_weight}")
+
+                    if eq_parts:
+                        all_filters.append("eq=" + ":".join(eq_parts))
+
+                # Format the full video filter string for ffmpeg
+                if all_filters:
+                    video_filter_string = ",".join(all_filters)
+                    # Format as expected by comm-converter (without quotes - script will add them)
+                    env_vars["video_filter"] = f"-vf {video_filter_string}"
+                    print(f"Setting video_filter: {env_vars['video_filter']}")
+
         except Exception as e:
-            print(f"Error loading settings: {e}")
+            print(f"Error setting up conversion environment: {e}")
+            import traceback
+
+            traceback.print_exc()
 
         # Set output folder based on selection
         use_custom_folder = self.folder_combo.get_selected() == 1
@@ -898,6 +1065,48 @@ class ConversionPage:
 
         # Delete original setting
         delete_original = self.delete_original_check.get_active()
+
+        # Log the command and environment variables for debugging
+        print("\n=== CONVERSION COMMAND ===")
+        print(f"Command: {' '.join(cmd)}")
+        print("\n=== ENVIRONMENT VARIABLES ===")
+        conversion_vars = {
+            k: v
+            for k, v in env_vars.items()
+            if k
+            in [
+                "gpu",
+                "video_quality",
+                "video_encoder",
+                "preset",
+                "subtitle_extract",
+                "audio_handling",
+                "audio_bitrate",
+                "audio_channels",
+                "video_resolution",
+                "options",
+                "gpu_partial",
+                "force_copy_video",
+                "only_extract_subtitles",
+                "video_filter",
+                "output_folder",
+            ]
+        }
+
+        # Show raw settings value for debugging
+        if "video-quality" in settings:
+            print(f"Raw video-quality setting: {settings['video-quality']}")
+        else:
+            print("video-quality setting not found in config")
+
+        if "video-codec" in settings:
+            print(f"Raw video-codec setting: {settings['video-codec']}")
+        else:
+            print("video-codec setting not found in config")
+
+        for key, value in conversion_vars.items():
+            print(f"{key}={value}")
+        print("===========================\n")
 
         # Create and display progress dialog
         run_with_progress_dialog(

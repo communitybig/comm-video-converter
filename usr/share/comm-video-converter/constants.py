@@ -46,7 +46,15 @@ VIDEO_FILE_MIME_TYPES = [
 
 # Encoding options
 GPU_OPTIONS = ["Auto-detect", "nvidia", "amd", "intel", "software"]
-VIDEO_QUALITY_OPTIONS = ["Default", "veryhigh", "high", "medium", "low", "verylow"]
+VIDEO_QUALITY_OPTIONS = [
+    "Default",
+    "veryhigh",
+    "high",
+    "medium",
+    "low",
+    "verylow",
+    "superlow",
+]
 VIDEO_CODEC_OPTIONS = [
     "Default (h264)",
     "h264 (MP4)",

@@ -19,5 +19,8 @@
   "preview-gamma": 1.0,
   "preview-gamma-r": 1.0,
   "force-copy-video": false,
-  "video-quality": 0
+  "video-quality": 0,
+  "video-codec": 0,
+  "video-resolution": "",
+  "subtitle-extract": 2
 }

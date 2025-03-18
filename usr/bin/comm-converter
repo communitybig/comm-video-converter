@@ -341,6 +341,12 @@ case $video_quality in
         global_quality=30
         cq_value_nvidia=34
         ;;
+    superlow)
+        cq_value=38
+        qp_value=33
+        global_quality=33
+        cq_value_nvidia=38
+        ;;
 esac
 
 # If preset is not specified, use medium for GPU and faster for software encoding
@@ -378,9 +384,10 @@ case $video_encoder in
         encoder_nvenc="$general_params -c:v av1_nvenc -rc:v constqp -qp $qp_value -b:v 0K -tune:v hq -preset:v p$nvidia_preset -temporal-aq 1 -rc-lookahead 100"
         encoder_vaapi="$general_params -c:v av1_vaapi -preset $preset -look_ahead_depth 100 -global_quality $global_quality"
         encoder_qsv="$general_params -c:v av1_qsv -preset $preset -look_ahead_depth 100 -global_quality $global_quality"
-        encoder_software="$general_params -c:v libaom-av1 -preset $software_preset -look_ahead_depth 100 -crf $cq_value"
+        encoder_software="$general_params -c:v librav1e -preset $software_preset -look_ahead_depth 100 -crf $cq_value"
         ;;
     vp9)
+        encoder_nvenc="$general_params -c:v vp9_nvenc -rc:v constqp -qp $qp_value -b:v 0K -tune:v hq -preset:v p$nvidia_preset -temporal-aq 1 -rc-lookahead 100"
         encoder_vaapi="$general_params -c:v vp9_vaapi -preset $preset -look_ahead_depth 100 -global_quality $global_quality"
         encoder_qsv="$general_params -c:v vp9_qsv -preset $preset -look_ahead_depth 100 -global_quality $global_quality"
         encoder_software="$general_params -c:v libvpx-vp9 -preset $software_preset -look_ahead_depth 100 -crf $cq_value  -speed 1"
@@ -464,6 +471,7 @@ exit
 fi
 
 # Try to encode with the GPU
+echo "Try GPU encode"
 echo "Running command: $ffmpeg_executable $init_hardware $options $decoder_format $encoder_format $ffmpeg_generic_options"
 eval $ffmpeg_executable $init_hardware $options $decoder_format $encoder_format $ffmpeg_generic_options
 
@@ -478,8 +486,25 @@ fi
 
 # If encoding not successful, and not exit with 255 (interrupted by user), and not software encoding, try with the second option
 if [[ $exit_code != 0 && $exit_code != 255 && $force_software != 1 && $force_copy_video != 1 ]]; then
+    echo "Try partial GPU encode"
     echo "Running command: $ffmpeg_executable $init_hardware $options $encoder_format $video_filter $ffmpeg_generic_options"
     eval $ffmpeg_executable $init_hardware $options $encoder_format $video_filter $ffmpeg_generic_options
+    exit_code=$?
+fi
+
+# If encoding not successful, and not exit with 255 (interrupted by user), and not software encoding, try with the second option
+if [[ $exit_code != 0 && $exit_code != 255 && $force_software != 1 && $force_copy_video != 1 ]]; then
+    echo "Try partial GPU encode"
+    echo "Running command: $ffmpeg_executable $options $encoder_format $video_filter $ffmpeg_generic_options"
+    eval $ffmpeg_executable $options $encoder_format $video_filter $ffmpeg_generic_options
+    exit_code=$?
+fi
+
+# If encoding not successful, and not exit with 255 (interrupted by user), and not software encoding, try with software
+if [[ $exit_code != 0 && $exit_code != 255 && $force_software != 1 && $force_copy_video != 1 ]]; then
+    echo "Try software encode"
+    echo "Running command: $ffmpeg_executable $options $encoder_software $ffmpeg_generic_options"
+    eval $ffmpeg_executable $init_hardware $options $encoder_software $ffmpeg_generic_options
     exit_code=$?
 fi
 
