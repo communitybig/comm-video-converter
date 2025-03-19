@@ -757,11 +757,12 @@ def build_convert_command(input_file, settings):
         "only_extract_subtitles": "only-extract-subtitles",
     }
 
-    # Process settings to environment variables
+    # Process settings to environment variables - FIXED: Properly handle all valid values
     for env_key, settings_key in settings_map.items():
         value = settings.get(settings_key)
-        if value:
-            env_vars[env_key] = value
+        if value not in [None, "", False]:
+            env_vars[env_key] = str(value)
+            print(f"Setting {env_key}={value}")
 
     # Garantir que temos um diretório de saída definido
     if "output_folder" not in env_vars and input_file:

@@ -353,7 +353,7 @@ class SettingsPage:
         self.audio_handling_combo.connect(
             "notify::selected",
             lambda w, p: self.settings_manager.save_setting(
-                "audio-handling", w.get_selected()
+                "audio-handling", AUDIO_OPTIONS[w.get_selected()]
             ),
         )
         self.custom_resolution_row.connect(
@@ -412,9 +412,6 @@ class SettingsPage:
         self.preset_combo.set_selected(self.settings_manager.load_setting("preset", 0))
         self.subtitle_extract_combo.set_selected(
             self.settings_manager.load_setting("subtitle-extract", 0)
-        )
-        self.audio_handling_combo.set_selected(
-            self.settings_manager.load_setting("audio-handling", 0)
         )
 
         # Audio settings with dropdown handling
@@ -482,3 +479,24 @@ class SettingsPage:
         self.only_extract_subtitles_check.set_active(
             self.settings_manager.load_setting("only-extract-subtitles", False)
         )
+
+        # Handle audio handling setting using string values
+        audio_handling = self.settings_manager.load_setting("audio-handling", "copy")
+
+        # Check if we have a numeric value (from older settings)
+        if isinstance(audio_handling, int):
+            # Convert to string value if it's a valid index
+            if 0 <= audio_handling < len(AUDIO_OPTIONS):
+                # Use the string value from now on
+                audio_handling = AUDIO_OPTIONS[audio_handling]
+                # Save the string value back to settings
+                self.settings_manager.save_setting("audio-handling", audio_handling)
+
+        # Find the index of the audio handling string in AUDIO_OPTIONS
+        if audio_handling in AUDIO_OPTIONS:
+            self.audio_handling_combo.set_selected(AUDIO_OPTIONS.index(audio_handling))
+        else:
+            # Default to "copy" if the value isn't found
+            self.audio_handling_combo.set_selected(
+                AUDIO_OPTIONS.index("copy") if "copy" in AUDIO_OPTIONS else 0
+            )

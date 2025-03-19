@@ -34,8 +34,8 @@ class JsonSettingsManager:
         "video-quality": 0,
         "video-codec": 0,
         "preset": 0,
-        "subtitle-extract": 0,
-        "audio-handling": 0,
+        "subtitle-extract": 0,  # Still using index-based for now
+        "audio-handling": "copy",  # Changed to use string value directly
         # Advanced audio settings
         "audio-bitrate": "",
         "audio-channels": "",

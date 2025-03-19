@@ -917,11 +917,16 @@ class ConversionPage:
                             f"Setting subtitle_extract={env_vars['subtitle_extract']}"
                         )
 
+                # Audio handling - now using direct string values
                 if "audio-handling" in settings:
-                    idx = int(settings["audio-handling"])
-                    if 0 <= idx < len(audio_mapping):
-                        env_vars["audio_handling"] = audio_mapping[idx]
-                        print(f"Setting audio_handling={env_vars['audio_handling']}")
+                    audio_handling = settings["audio-handling"]
+                    # Handle "Default (copy)" as "copy"
+                    if audio_handling == "Default (copy)":
+                        audio_handling = "copy"
+                    # Set the environment variable if it's a valid value
+                    if audio_handling in ["copy", "reencode", "none"]:
+                        env_vars["audio_handling"] = audio_handling
+                        print(f"Setting audio_handling={audio_handling}")
 
                 # Handle non-index settings directly
                 direct_settings_map = {
@@ -938,7 +943,7 @@ class ConversionPage:
                         env_vars[env_key] = str(value)
                         print(f"Setting {env_key}={env_vars[env_key]}")
 
-                # Handle boolean settings
+                # Handle boolean settings directly
                 bool_settings_map = {
                     "gpu-partial": "gpu_partial",
                     "force-copy-video": "force_copy_video",
