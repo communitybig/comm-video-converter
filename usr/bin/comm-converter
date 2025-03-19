@@ -470,21 +470,29 @@ if [[ $only_extract_subtitles = 1 ]]; then
 exit
 fi
 
-if [[ $encoder_format =~ .*nvenc.* ]]; then
-    video_filter_gpu=${video_filter/scale=/scale_cuda=}
-    # if have scale_cuda add ,hwdownload,format=nv12 after scale_cuda=value:value using sed
-    if [[ $video_filter_gpu =~ scale_cuda ]]; then
-        video_filter_gpu=$(sed -E 's/(scale_cuda=[^,]+:[^,]+)(.*)/\1,hwdownload,format=nv12\2/' <<<"$video_filter_gpu")
-    fi
-
-    #  verify if not have scale_cuda and have -vf, and add hwdownload,format=nv12,
-    if [[ $video_filter_gpu =~ -vf && ! $video_filter_gpu =~ scale_cuda ]]; then
-        video_filter_gpu=${video_filter_gpu/-vf /-vf hwdownload,format=nv12,}
-    fi
-
-else
-    video_filter_gpu=$video_filter
+video_filter_gpu=${video_filter/scale=/scale_vaapi=}
+# if have scale_cuda add ,hwdownload,format=nv12 after scale_cuda=value:value using sed
+if [[ $video_filter_gpu =~ scale_vaapi ]]; then
+    video_filter_gpu=$(sed -E 's/(scale_vaapi=[^,]+:[^,]+)(.*)/\1,hwdownload,format=nv12\2/' <<<"$video_filter_gpu")
 fi
+
+#  verify if not have scale_cuda and have -vf, and add hwdownload,format=nv12,
+if [[ $video_filter_gpu =~ -vf && ! $video_filter_gpu =~ scale_vaapi ]]; then
+    video_filter_gpu=${video_filter_gpu/-vf /-vf hwdownload,format=nv12,}
+fi
+
+if [[ $video_filter_gpu =~ hwdownload ]]; then
+    video_filter_gpu+=',hwupload'
+fi
+
+if [[ $encoder_format =~ .*nvenc.* ]]; then
+    video_filter_gpu=${video_filter_gpu/scale_vaapi=/scale_cuda=}
+fi
+
+if [[ $encoder_format =~ .*qsv.* ]]; then
+    video_filter_gpu=${video_filter_gpu/scale_vaapi=/scale_qsv=}
+fi
+
 
 # Try to encode with the GPU
 echo "Try GPU encode"
