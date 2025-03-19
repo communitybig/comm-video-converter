@@ -978,6 +978,10 @@ msgstr "Convert Video"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 183
 # File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 48
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 297
@@ -1031,9 +1035,13 @@ msgstr "Convert Video"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 359
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 109
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 359
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 109
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 359
 msgid "Comm Video Converter"
 msgstr "Comm Video Converter"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -1096,9 +1104,12 @@ msgstr "Comm Video Converter"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 332
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 384
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 384
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 384
 msgid "A powerful tool for converting video files to MP4 format."
 msgstr "A powerful tool for converting video files to MP4 format."
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -1161,9 +1172,12 @@ msgstr "A powerful tool for converting video files to MP4 format."
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 338
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 390
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 390
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 390
 msgid "• GPU-accelerated conversion for NVIDIA, AMD, and Intel GPUs"
 msgstr "• GPU-accelerated conversion for NVIDIA, AMD, and Intel GPUs"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -1226,9 +1240,12 @@ msgstr "• GPU-accelerated conversion for NVIDIA, AMD, and Intel GPUs"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 339
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 391
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 391
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 391
 msgid "• High-quality video processing with customizable settings"
 msgstr "• High-quality video processing with customizable settings"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -1291,9 +1308,12 @@ msgstr "• High-quality video processing with customizable settings"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 340
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 392
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 392
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 392
 msgid "• Support for various video codecs (H.264, H.265/HEVC, AV1, VP9)"
 msgstr "• Support for various video codecs (H.264, H.265/HEVC, AV1, VP9)"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -1354,6 +1374,7 @@ msgstr "• Support for various video codecs (H.264, H.265/HEVC, AV1, VP9)"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 322
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 322
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 341
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 393
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 393
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 393
 msgid "• Subtitle extraction and embedding"
@@ -1423,6 +1444,8 @@ msgstr "• Batch processing capabilities"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 235
 # File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 235
 # File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 235
@@ -1444,6 +1467,7 @@ msgstr "• Batch processing capabilities"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 360
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 412
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 412
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 412
 msgid ""
 "This application uses <b>FFmpeg</b> for reliable, high-performance video "
 "conversion. The GPU acceleration significantly reduces conversion time "
@@ -1453,6 +1477,8 @@ msgstr ""
 "conversion. The GPU acceleration significantly reduces conversion time "
 "compared to software-only processing."
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -1515,9 +1541,12 @@ msgstr ""
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 396
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 448
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 448
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 448
 msgid "Show dialog on startup"
 msgstr "Show dialog on startup"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -1578,6 +1607,7 @@ msgstr "Show dialog on startup"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 389
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 389
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 408
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 460
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 460
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 460
 msgid "Close"
@@ -1706,6 +1736,8 @@ msgstr "All files"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 355
 # File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 355
 # File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 355
@@ -1725,6 +1757,7 @@ msgstr "All files"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 473
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 473
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 492
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 544
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 544
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 544
 msgid "Select the output folder"
@@ -1867,6 +1900,8 @@ msgstr "The selected file does not exist: {0}"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 388
 # File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 267
 # File: comm-video-converter/usr/share/comm-video-converter/single_file_page.py, line: 388
@@ -1894,6 +1929,7 @@ msgstr "The selected file does not exist: {0}"
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 709
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 709
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 709
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 724
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 724
 msgid "Information"
 msgstr "Information"
@@ -2063,6 +2099,8 @@ msgstr "Converting..."
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 70
 # File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 70
 # File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 70
@@ -2084,9 +2122,12 @@ msgstr "Converting..."
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 146
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 146
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 161
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 161
 msgid "Error starting conversion: {0}"
 msgstr "Error starting conversion: {0}"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -2151,6 +2192,7 @@ msgstr "Error starting conversion: {0}"
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 190
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 190
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 190
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 205
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 205
 msgid "Starting process..."
 msgstr "Starting process..."
@@ -2278,6 +2320,8 @@ msgstr "Time remaining:"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 149
 # File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 149
 # File: comm-video-converter/usr/share/comm-video-converter/conversion.py, line: 149
@@ -2302,9 +2346,12 @@ msgstr "Time remaining:"
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 478
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 478
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 493
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 493
 msgid "No progress detected. Process may be stuck."
 msgstr "No progress detected. Process may be stuck."
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -2370,9 +2417,12 @@ msgstr "No progress detected. Process may be stuck."
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 519
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 519
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 534
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 534
 msgid "Conversion cancelled."
 msgstr "Conversion cancelled."
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -2450,9 +2500,12 @@ msgstr "Conversion cancelled."
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 521
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 521
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 536
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 536
 msgid "Cancelled"
 msgstr "Cancelled"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -2518,9 +2571,12 @@ msgstr "Cancelled"
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 544
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 544
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 559
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 559
 msgid "Completed!"
 msgstr "Completed!"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -2628,9 +2684,14 @@ msgstr "Completed!"
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 560
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 633
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 647
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 560
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 633
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 647
 msgid "Conversion completed successfully!"
 msgstr "Conversion completed successfully!"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -2693,6 +2754,7 @@ msgstr "Conversion completed successfully!"
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 577
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 577
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 592
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 592
 msgid ""
 "Conversion completed successfully!\n"
 "\n"
@@ -2702,6 +2764,8 @@ msgstr ""
 "\n"
 "The original file <b>{0}</b> was deleted."
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -2764,6 +2828,7 @@ msgstr ""
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 590
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 590
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 605
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 605
 msgid ""
 "Conversion completed successfully!\n"
 "\n"
@@ -2773,6 +2838,8 @@ msgstr ""
 "\n"
 "Could not delete the original file: {0}"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -2835,6 +2902,7 @@ msgstr ""
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 603
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 603
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 618
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 618
 msgid ""
 "Conversion completed successfully!\n"
 "\n"
@@ -2846,6 +2914,8 @@ msgstr ""
 "The original file was not deleted because the converted file size looks "
 "suspicious."
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -2911,9 +2981,12 @@ msgstr ""
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 659
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 659
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 674
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 674
 msgid "Error!"
 msgstr "Error!"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -2979,9 +3052,12 @@ msgstr "Error!"
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 658
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 658
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 673
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 673
 msgid "Conversion failed with code {0}"
 msgstr "Conversion failed with code {0}"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -3043,6 +3119,7 @@ msgstr "Conversion failed with code {0}"
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 672
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 672
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 672
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 687
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 687
 msgid ""
 "The conversion failed with error code {0}.\n"
@@ -3182,6 +3259,10 @@ msgstr "Multiple Files"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 78
 # File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 105
 # File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 78
@@ -3224,9 +3305,13 @@ msgstr "Multiple Files"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 47
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 146
 # File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 47
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 146
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 47
 msgid "Settings"
 msgstr "Settings"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -3289,9 +3374,12 @@ msgstr "Settings"
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 516
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 535
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 535
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 535
 msgid "Error"
 msgstr "Error"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -3345,6 +3433,7 @@ msgstr "Error"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 91
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 91
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 90
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 84
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 84
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 84
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 84
@@ -3513,6 +3602,8 @@ msgstr "software"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 78
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 78
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 78
@@ -3525,6 +3616,7 @@ msgstr "software"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 97
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 97
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 96
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 90
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 90
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 90
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 90
@@ -3578,6 +3670,8 @@ msgstr "GPU"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 79
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 79
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 79
@@ -3599,9 +3693,12 @@ msgstr "GPU"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 91
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 91
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 91
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 91
 msgid "Select hardware acceleration"
 msgstr "Select hardware acceleration"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -3664,9 +3761,12 @@ msgstr "Select hardware acceleration"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 97
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 97
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 97
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 97
 msgid "GPU partial mode"
 msgstr "GPU partial mode"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -3720,6 +3820,7 @@ msgstr "GPU partial mode"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 105
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 105
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 104
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 98
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 98
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 98
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 98
@@ -3865,6 +3966,8 @@ msgstr "verylow"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 91
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 112
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 141
@@ -3915,6 +4018,9 @@ msgstr "verylow"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 130
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 184
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 214
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 126
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 182
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 216
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 126
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 182
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 216
@@ -4016,6 +4122,8 @@ msgstr "medium"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 93
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 93
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 93
@@ -4028,6 +4136,7 @@ msgstr "medium"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 112
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 112
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 111
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 105
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 105
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 105
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 105
@@ -4081,6 +4190,8 @@ msgstr "Video quality"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 94
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 94
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 94
@@ -4093,6 +4204,7 @@ msgstr "Video quality"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 113
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 113
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 112
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 107
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 107
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 107
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 107
@@ -4261,6 +4373,8 @@ msgstr "vp9 (VP9)"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 103
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 103
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 103
@@ -4273,6 +4387,7 @@ msgstr "vp9 (VP9)"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 122
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 122
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 121
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 117
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 117
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 117
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 117
@@ -4326,6 +4441,8 @@ msgstr "Video codec"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 104
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 104
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 104
@@ -4347,9 +4464,12 @@ msgstr "Video codec"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 118
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 118
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 118
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 118
 msgid "Select encoding format"
 msgstr "Select encoding format"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -4454,9 +4574,14 @@ msgstr "Select encoding format"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 132
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 188
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 220
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 132
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 188
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 220
 msgid "Custom"
 msgstr "Custom"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -4519,9 +4644,12 @@ msgstr "Custom"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 137
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 137
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 137
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 137
 msgid "Video resolution"
 msgstr "Video resolution"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -4584,9 +4712,12 @@ msgstr "Video resolution"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 138
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 138
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 138
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 138
 msgid "Select output resolution"
 msgstr "Select output resolution"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -4649,9 +4780,12 @@ msgstr "Select output resolution"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 143
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 143
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 143
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 143
 msgid "Custom resolution"
 msgstr "Custom resolution"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -4705,6 +4839,7 @@ msgstr "Custom resolution"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 149
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 149
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 148
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 144
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 144
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 144
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 144
@@ -4873,6 +5008,8 @@ msgstr "veryslow"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 143
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 143
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 143
@@ -4885,6 +5022,7 @@ msgstr "veryslow"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 162
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 162
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 161
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 159
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 159
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 159
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 159
@@ -4938,6 +5076,8 @@ msgstr "Compression preset"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 144
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 144
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 144
@@ -4950,6 +5090,7 @@ msgstr "Compression preset"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 163
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 163
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 162
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 160
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 160
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 160
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 160
@@ -5102,6 +5243,8 @@ msgstr "none"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 153
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 153
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 153
@@ -5123,9 +5266,12 @@ msgstr "none"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 169
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 169
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 169
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 169
 msgid "Subtitle handling"
 msgstr "Subtitle handling"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -5188,9 +5334,12 @@ msgstr "Subtitle handling"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 177
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 177
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 177
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 177
 msgid "Audio Settings"
 msgstr "Audio Settings"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -5253,9 +5402,12 @@ msgstr "Audio Settings"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 193
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 193
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 193
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 193
 msgid "Audio bitrate"
 msgstr "Audio bitrate"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -5318,9 +5470,12 @@ msgstr "Audio bitrate"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 195
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 195
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 195
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 195
 msgid "Select common bitrate or enter custom value"
 msgstr "Select common bitrate or enter custom value"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -5383,9 +5538,12 @@ msgstr "Select common bitrate or enter custom value"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 201
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 201
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 201
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 201
 msgid "Custom bitrate"
 msgstr "Custom bitrate"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -5448,9 +5606,12 @@ msgstr "Custom bitrate"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 202
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 202
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 202
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 202
 msgid "Ex: 128k, 192k, 256k"
 msgstr "Ex: 128k, 192k, 256k"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -5513,9 +5674,12 @@ msgstr "Ex: 128k, 192k, 256k"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 225
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 225
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 225
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 225
 msgid "Audio channels"
 msgstr "Audio channels"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -5578,9 +5742,12 @@ msgstr "Audio channels"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 226
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 226
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 226
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 226
 msgid "Select common channel configuration"
 msgstr "Select common channel configuration"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -5643,9 +5810,12 @@ msgstr "Select common channel configuration"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 231
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 231
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 231
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 231
 msgid "Custom channels"
 msgstr "Custom channels"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -5699,6 +5869,7 @@ msgstr "Custom channels"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 231
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 231
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 230
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 232
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 232
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 232
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 232
@@ -5821,6 +5992,8 @@ msgstr "reencode"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 228
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 228
 # File: comm-video-converter/usr/share/comm-video-converter/settings_page.py, line: 228
@@ -5842,9 +6015,12 @@ msgstr "reencode"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 247
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 247
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 247
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 247
 msgid "Audio handling"
 msgstr "Audio handling"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -5907,9 +6083,12 @@ msgstr "Audio handling"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 255
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 255
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 255
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 255
 msgid "General Options"
 msgstr "General Options"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -5972,9 +6151,12 @@ msgstr "General Options"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 258
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 258
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 258
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 258
 msgid "Additional FFmpeg options"
 msgstr "Additional FFmpeg options"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -6037,9 +6219,12 @@ msgstr "Additional FFmpeg options"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 259
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 259
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 259
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 259
 msgid "Ex: -ss 60 -t 30"
 msgstr "Ex: -ss 60 -t 30"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -6102,9 +6287,12 @@ msgstr "Ex: -ss 60 -t 30"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 263
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 263
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 263
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 263
 msgid "Copy video without reencoding"
 msgstr "Copy video without reencoding"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -6167,9 +6355,12 @@ msgstr "Copy video without reencoding"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 265
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 265
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 265
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 265
 msgid "Faster but less compatible"
 msgstr "Faster but less compatible"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -6232,9 +6423,12 @@ msgstr "Faster but less compatible"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 269
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 269
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 269
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 269
 msgid "Only extract subtitles"
 msgstr "Only extract subtitles"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -6297,9 +6491,12 @@ msgstr "Only extract subtitles"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 272
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 272
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 272
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/settings_page.py, line: 272
 msgid "Extract subtitles to .srt files"
 msgstr "Extract subtitles to .srt files"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -6365,6 +6562,7 @@ msgstr "Extract subtitles to .srt files"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/settings_dialog.py, line: 303
 # File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 59
 # File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 59
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 68
 # File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 68
 # File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 68
 # File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 68
@@ -6516,6 +6714,8 @@ msgstr "Multiple files"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/progress_dialog.py, line: 60
 # File: comm-video-converter/usr/share/comm-video-converter/progress_dialog.py, line: 60
 # File: comm-video-converter/usr/share/comm-video-converter/progress_dialog.py, line: 60
@@ -6537,9 +6737,12 @@ msgstr "Multiple files"
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 146
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 147
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 147
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 147
 msgid "Progress"
 msgstr "Progress"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -6611,9 +6814,14 @@ msgstr "Progress"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/progress_page.py, line: 180
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/progress_page.py, line: 180
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/progress_page.py, line: 180
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/progress_page.py, line: 180
 msgid "Starting conversion..."
 msgstr "Starting conversion..."
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -6682,9 +6890,13 @@ msgstr "Starting conversion..."
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/progress_page.py, line: 251
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_handlers.py, line: 635
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/progress_page.py, line: 251
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_handlers.py, line: 635
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/progress_page.py, line: 251
 msgid "Cancel"
 msgstr "Cancel"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -6738,6 +6950,7 @@ msgstr "Cancel"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/progress_dialog.py, line: 119
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/progress_dialog.py, line: 119
 # File: comm-video-converter/usr/share/comm-video-converter/ui/dialogs/progress_dialog.py, line: 187
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/progress_page.py, line: 282
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/progress_page.py, line: 282
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/progress_page.py, line: 282
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/progress_page.py, line: 282
@@ -6827,6 +7040,10 @@ msgstr ""
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 235
 # File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 235
 # File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 235
@@ -6847,9 +7064,15 @@ msgstr ""
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 319
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 344
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 249
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 344
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 249
 msgid "Previous frame"
 msgstr "Previous frame"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -6909,9 +7132,15 @@ msgstr "Previous frame"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 326
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 351
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 258
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 351
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 258
 msgid "Back 1 second"
 msgstr "Back 1 second"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -6971,9 +7200,13 @@ msgstr "Back 1 second"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 333
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 358
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 267
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 358
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 267
 msgid "Back 10 seconds"
 msgstr "Back 10 seconds"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -7027,9 +7260,14 @@ msgstr "Back 10 seconds"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 260
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 366
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 365
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 365
 msgid "Extract current frame"
 msgstr "Extract current frame"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -7089,9 +7327,15 @@ msgstr "Extract current frame"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 349
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 372
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 283
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 372
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 283
 msgid "Forward 10 seconds"
 msgstr "Forward 10 seconds"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -7151,9 +7395,15 @@ msgstr "Forward 10 seconds"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 356
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 379
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 292
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 379
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 292
 msgid "Forward 1 second"
 msgstr "Forward 1 second"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -7213,9 +7463,13 @@ msgstr "Forward 1 second"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 363
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 386
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 301
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 386
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 301
 msgid "Next frame"
 msgstr "Next frame"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -7269,9 +7523,12 @@ msgstr "Next frame"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 303
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 409
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 408
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 408
 msgid "Trim"
 msgstr "Trim"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -7325,9 +7582,12 @@ msgstr "Trim"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 318
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 424
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 423
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 423
 msgid "Start:"
 msgstr "Start:"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -7399,9 +7659,13 @@ msgstr "Start:"
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 451
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 430
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 450
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 430
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 450
 msgid "Set"
 msgstr "Set"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -7455,9 +7719,14 @@ msgstr "Set"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 338
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 444
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 443
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 443
 msgid "End:"
 msgstr "End:"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -7517,9 +7786,15 @@ msgstr "End:"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 422
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 446
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 361
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 446
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 361
 msgid "End"
 msgstr "End"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -7579,9 +7854,15 @@ msgstr "End"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 434
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 463
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 373
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 463
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 373
 msgid "Duration:"
 msgstr "Duration:"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -7641,9 +7922,13 @@ msgstr "Duration:"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 449
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 478
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 388
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 478
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 388
 msgid "Reset trim points"
 msgstr "Reset trim points"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -7702,9 +7987,13 @@ msgstr "Reset trim points"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 1745
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 489
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1734
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 489
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1734
 msgid "Crop"
 msgstr "Crop"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -7758,9 +8047,14 @@ msgstr "Crop"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 417
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 523
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 522
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 522
 msgid "Left"
 msgstr "Left"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -8070,9 +8364,29 @@ msgstr "Left"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 524
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 559
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 738
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 541
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 572
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 603
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 634
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 689
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 722
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 755
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 786
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 817
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 848
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 879
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 912
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 943
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 453
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 489
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 524
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 559
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 738
 msgid "Reset to default"
 msgstr "Reset to default"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -8126,9 +8440,12 @@ msgstr "Reset to default"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 448
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 554
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 553
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 553
 msgid "Right"
 msgstr "Right"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -8182,9 +8499,12 @@ msgstr "Right"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 479
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 585
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 584
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 584
 msgid "Top"
 msgstr "Top"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -8238,9 +8558,14 @@ msgstr "Top"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 510
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 616
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 615
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 615
 msgid "Bottom"
 msgstr "Bottom"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -8300,9 +8625,15 @@ msgstr "Bottom"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 618
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 647
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 574
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 647
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 574
 msgid "Final size: calculating..."
 msgstr "Final size: calculating..."
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -8362,9 +8693,13 @@ msgstr "Final size: calculating..."
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 633
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 662
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 590
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 662
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 590
 msgid "Video Adjustments"
 msgstr "Video Adjustments"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -8421,9 +8756,12 @@ msgstr "Video Adjustments"
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 666
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 636
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 665
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 665
 msgid "Brightness"
 msgstr "Brightness"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -8480,9 +8818,12 @@ msgstr "Brightness"
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 667
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 637
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 666
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 666
 msgid "Between -1.0 and 1.0. Default: 0.0"
 msgstr "Between -1.0 and 1.0. Default: 0.0"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -8539,9 +8880,12 @@ msgstr "Between -1.0 and 1.0. Default: 0.0"
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 699
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 669
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 698
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 698
 msgid "Contrast"
 msgstr "Contrast"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -8617,9 +8961,13 @@ msgstr "Contrast"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 703
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 699
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 732
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 699
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 732
 msgid "Between 0.0 and 2.0. Default: 1.0"
 msgstr "Between 0.0 and 2.0. Default: 1.0"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -8675,6 +9023,7 @@ msgstr "Between 0.0 and 2.0. Default: 1.0"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 626
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 732
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 702
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 731
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 731
 msgid "Saturation"
 msgstr "Saturation"
@@ -8828,6 +9177,8 @@ msgstr "Between -3.0 and 3.0 EV. Default: 0.0"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 671
 # File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 671
 # File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 671
@@ -8847,9 +9198,12 @@ msgstr "Between -3.0 and 3.0 EV. Default: 0.0"
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 798
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 768
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 764
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 764
 msgid "Gamma"
 msgstr "Gamma"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -8963,9 +9317,15 @@ msgstr "Gamma"
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 796
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 827
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 858
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 765
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 796
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 827
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 858
 msgid "Between 0.0 and 16.0. Default: 1.0"
 msgstr "Between 0.0 and 16.0. Default: 1.0"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -9022,9 +9382,12 @@ msgstr "Between 0.0 and 16.0. Default: 1.0"
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 829
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 799
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 795
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 795
 msgid "Red Gamma"
 msgstr "Red Gamma"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -9081,9 +9444,12 @@ msgstr "Red Gamma"
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 860
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 830
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 826
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 826
 msgid "Green Gamma"
 msgstr "Green Gamma"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -9140,9 +9506,12 @@ msgstr "Green Gamma"
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 891
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 861
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 857
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 857
 msgid "Blue Gamma"
 msgstr "Blue Gamma"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -9199,9 +9568,12 @@ msgstr "Blue Gamma"
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 922
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 892
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 888
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 888
 msgid "Gamma Weight"
 msgstr "Gamma Weight"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -9258,9 +9630,12 @@ msgstr "Gamma Weight"
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 923
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 893
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 889
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 889
 msgid "Between 0.0 and 1.0. Default: 1.0"
 msgstr "Between 0.0 and 1.0. Default: 1.0"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -9317,9 +9692,12 @@ msgstr "Between 0.0 and 1.0. Default: 1.0"
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 955
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 925
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 921
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 921
 msgid "Hue"
 msgstr "Hue"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -9376,9 +9754,14 @@ msgstr "Hue"
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 956
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 926
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 922
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 922
 msgid "Between -3.14 and 3.14 radians. Default: 0.0"
 msgstr "Between -3.14 and 3.14 radians. Default: 0.0"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -9438,9 +9821,15 @@ msgstr "Between -3.14 and 3.14 radians. Default: 0.0"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 959
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 955
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 752
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 955
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 752
 msgid "Video Information"
 msgstr "Video Information"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -9500,9 +9889,15 @@ msgstr "Video Information"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 962
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 958
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 755
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 958
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 755
 msgid "Filename"
 msgstr "Filename"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -9682,9 +10077,27 @@ msgstr "Filename"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 781
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 787
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 793
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 959
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 965
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 971
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 978
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 984
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 990
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 996
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 756
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 762
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 768
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 775
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 781
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 787
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 793
 msgid "Unknown"
 msgstr "Unknown"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -9744,9 +10157,15 @@ msgstr "Unknown"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 968
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 964
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 761
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 964
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 761
 msgid "Resolution"
 msgstr "Resolution"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -9806,9 +10225,15 @@ msgstr "Resolution"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 974
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 970
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 767
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 970
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 767
 msgid "Codec"
 msgstr "Codec"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -9868,9 +10293,15 @@ msgstr "Codec"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 981
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 977
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 774
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 977
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 774
 msgid "Format"
 msgstr "Format"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -9930,9 +10361,15 @@ msgstr "Format"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 987
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 983
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 780
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 983
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 780
 msgid "File Size"
 msgstr "File Size"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -9992,9 +10429,15 @@ msgstr "File Size"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 993
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 989
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 786
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 989
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 786
 msgid "Duration"
 msgstr "Duration"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -10054,9 +10497,15 @@ msgstr "Duration"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 999
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 995
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 792
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 995
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 792
 msgid "Frame Rate"
 msgstr "Frame Rate"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -10212,9 +10661,13 @@ msgstr "Frame Rate"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 152
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 177
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 164
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 177
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 164
 msgid "Loading..."
 msgstr "Loading..."
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -10271,9 +10724,12 @@ msgstr "Loading..."
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1574
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 1564
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1535
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1535
 msgid "Save Frame As"
 msgstr "Save Frame As"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -10330,9 +10786,12 @@ msgstr "Save Frame As"
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1645
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 1635
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1606
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1606
 msgid "Frame Saved"
 msgstr "Frame Saved"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -10389,9 +10848,12 @@ msgstr "Frame Saved"
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1646
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 1636
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1607
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1607
 msgid "Current frame has been saved to {0}"
 msgstr "Current frame has been saved to {0}"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -10467,9 +10929,15 @@ msgstr "Current frame has been saved to {0}"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 1647
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1612
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1618
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1612
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1618
 msgid "Error saving frame: {0}"
 msgstr "Error saving frame: {0}"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -10527,6 +10995,8 @@ msgstr "Error saving frame: {0}"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 1560
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1717
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 1707
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1678
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_handlers.py, line: 113
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1678
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_handlers.py, line: 113
 msgid "End of video"
@@ -10621,6 +11091,10 @@ msgstr "Crop Video"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1544
 # File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1596
 # File: comm-video-converter/usr/share/comm-video-converter/video_preview_page.py, line: 1544
@@ -10657,6 +11131,10 @@ msgstr "Crop Video"
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1850
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 1770
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 1825
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1759
+# File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1811
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_handlers.py, line: 144
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_handlers.py, line: 169
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1759
 # File: comm-video-converter/usr/share/comm-video-converter/video_edit_page.py, line: 1811
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_handlers.py, line: 144
@@ -10720,6 +11198,8 @@ msgstr "Video Preview"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 140
 # File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 151
 # File: comm-video-converter/usr/share/comm-video-converter/comm-video-converter.py, line: 151
@@ -10738,9 +11218,12 @@ msgstr "Video Preview"
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 393
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 407
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 407
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 407
 msgid "Please select a video file first"
 msgstr "Please select a video file first"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -10792,6 +11275,7 @@ msgstr "Please select a video file first"
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 380
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 380
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 397
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 411
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 411
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 411
 msgid "Could not load the selected video file"
@@ -10973,6 +11457,10 @@ msgstr "Progress: {0} of {1} completed, {2} failed, {3} active"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 118
 # File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 29
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 119
@@ -11001,9 +11489,15 @@ msgstr "Progress: {0} of {1} completed, {2} failed, {3} active"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 37
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 144
 # File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 37
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 144
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 37
 msgid "Conversion"
 msgstr "Conversion"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -11084,9 +11578,15 @@ msgstr "Conversion"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 42
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 145
 # File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 42
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 145
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 42
 msgid "Video Edit"
 msgstr "Video Edit"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -11170,9 +11670,13 @@ msgstr "Video Edit"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 69
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 462
 # File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 69
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 462
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 69
 msgid "Help"
 msgstr "Help"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -11212,6 +11716,7 @@ msgstr "Help"
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 427
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 427
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 444
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 463
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 463
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 463
 msgid ""
@@ -11309,6 +11814,8 @@ msgstr "Delete original file"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 218
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 218
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 218
@@ -11323,9 +11830,12 @@ msgstr "Delete original file"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 342
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 394
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 394
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 394
 msgid "• Video preview with trimming and effects"
 msgstr "• Video preview with trimming and effects"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -11367,9 +11877,12 @@ msgstr "• Video preview with trimming and effects"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 64
 # File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 64
 # File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 64
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 64
 msgid "Menu"
 msgstr "Menu"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -11411,9 +11924,12 @@ msgstr "Menu"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 70
 # File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 70
 # File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 70
+# File: comm-video-converter/usr/share/comm-video-converter/ui/widgets/header_bar.py, line: 70
 msgid "Quit"
 msgstr "Quit"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -11443,9 +11959,12 @@ msgstr "Quit"
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 52
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 52
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 67
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 67
 msgid "Video Conversion"
 msgstr "Video Conversion"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -11475,9 +11994,12 @@ msgstr "Video Conversion"
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 191
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 191
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 206
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 206
 msgid "Starting FFmpeg process..."
 msgstr "Starting FFmpeg process..."
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -11507,6 +12029,7 @@ msgstr "Starting FFmpeg process..."
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 209
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 209
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 224
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 224
 msgid "Process cancelled by user"
 msgstr "Process cancelled by user"
 
@@ -11515,6 +12038,8 @@ msgstr "Process cancelled by user"
 msgid "Show Command Output"
 msgstr "Show Command Output"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -11541,6 +12066,7 @@ msgstr "Show Command Output"
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 439
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 439
 # File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 454
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 454
 msgid "Speed:"
 msgstr "Speed:"
 
@@ -11566,6 +12092,9 @@ msgstr "Convert"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/progress_page.py, line: 206
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/progress_page.py, line: 206
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/progress_page.py, line: 206
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/progress_page.py, line: 206
@@ -11593,6 +12122,8 @@ msgstr "Command Output"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 243
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 272
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 583
@@ -11601,9 +12132,12 @@ msgstr "Command Output"
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 600
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 658
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 658
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 658
 msgid "Select Video Files"
 msgstr "Select Video Files"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -11625,6 +12159,7 @@ msgstr "Select Video Files"
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 596
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 596
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 613
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 671
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 671
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 671
 msgid "Video Files"
@@ -11661,6 +12196,8 @@ msgstr "Error selecting files: {0}"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 454
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 483
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 362
@@ -11669,9 +12206,12 @@ msgstr "Error selecting files: {0}"
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 379
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 384
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 384
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 384
 msgid "Queue Processing Complete"
 msgstr "Queue Processing Complete"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -11695,9 +12235,14 @@ msgstr "Queue Processing Complete"
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 380
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 385
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 385
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 385
 msgid "All files in the queue have been processed."
 msgstr "All files in the queue have been processed."
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -11729,9 +12274,14 @@ msgstr "All files in the queue have been processed."
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 562
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 594
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 778
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 562
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 594
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 778
 msgid "Could not preview this video file"
 msgstr "Could not preview this video file"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -11755,6 +12305,7 @@ msgstr "Could not preview this video file"
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 549
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 603
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 603
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 603
 msgid "Error previewing file: {0}"
 msgstr "Error previewing file: {0}"
 
@@ -11773,12 +12324,15 @@ msgstr "Error previewing file: {0}"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 99
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 99
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 99
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 99
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 99
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 99
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 110
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 110
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 110
 msgid "Conversion Queue"
@@ -11799,17 +12353,22 @@ msgstr "Conversion Queue"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 157
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 157
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 157
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 157
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 157
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 157
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 173
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 173
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 173
 msgid "Clear Queue"
 msgstr "Clear Queue"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -11834,9 +12393,12 @@ msgstr "Clear Queue"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 179
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 179
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 179
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 179
 msgid "Add Files"
 msgstr "Add Files"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -11858,6 +12420,7 @@ msgstr "Add Files"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 170
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 170
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 189
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 225
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 225
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 225
 msgid "Convert All"
@@ -11918,6 +12481,8 @@ msgstr "Same as input folder"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 237
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 237
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 237
@@ -11926,9 +12491,12 @@ msgstr "Same as input folder"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 256
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 298
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 298
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 298
 msgid "Delete original files"
 msgstr "Delete original files"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -11952,9 +12520,12 @@ msgstr "Delete original files"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 514
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 566
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 566
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 566
 msgid "Please add files to the queue first."
 msgstr "Please add files to the queue first."
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -11978,9 +12549,12 @@ msgstr "Please add files to the queue first."
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 663
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 715
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 715
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 715
 msgid "Preview in editor"
 msgstr "Preview in editor"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -12004,9 +12578,12 @@ msgstr "Preview in editor"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 671
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 726
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 726
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 726
 msgid "Remove from queue"
 msgstr "Remove from queue"
 
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
@@ -12030,6 +12607,7 @@ msgstr "Remove from queue"
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 699
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 754
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 754
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 754
 msgid "Queue is empty. Add files to convert."
 msgstr "Queue is empty. Add files to convert."
 
@@ -12038,7 +12616,10 @@ msgstr "Queue is empty. Add files to convert."
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 627
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 685
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 685
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 685
 msgid "Select Folder with Video Files"
@@ -12049,7 +12630,10 @@ msgstr "Select Folder with Video Files"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 632
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 690
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 690
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 690
 msgid "Folders"
@@ -12060,8 +12644,12 @@ msgstr "Folders"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 673
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 713
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 731
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 787
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 731
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 787
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 731
@@ -12074,8 +12662,12 @@ msgstr "{} video files have been added to the queue."
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 674
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 714
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 736
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 791
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 736
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 791
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 736
@@ -12088,7 +12680,10 @@ msgstr "Files Added"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 678
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 743
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 743
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 743
 msgid "No Files Found"
@@ -12099,7 +12694,10 @@ msgstr "No Files Found"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 679
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 744
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 744
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 744
 msgid "No valid video files were found in the selected folder."
@@ -12110,7 +12708,10 @@ msgstr "No valid video files were found in the selected folder."
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 684
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 753
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 753
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 753
 msgid "Please select a folder, not a file."
@@ -12121,7 +12722,10 @@ msgstr "Please select a folder, not a file."
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 689
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 761
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 761
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 761
 msgid "Error selecting folder: {}"
@@ -12132,7 +12736,10 @@ msgstr "Error selecting folder: {}"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 719
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 799
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 799
 # File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 799
 msgid "Error selecting files: {}"
@@ -12143,7 +12750,10 @@ msgstr "Error selecting files: {}"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 180
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 213
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 213
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 213
 msgid "Add Folder"
@@ -12154,8 +12764,14 @@ msgstr "Add Folder"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 340
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2175
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_handlers.py, line: 639
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 274
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_handlers.py, line: 639
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 274
 msgid "Reset"
@@ -12164,7 +12780,10 @@ msgstr "Reset"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 342
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 276
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 276
 msgid "Reset all settings"
 msgstr "Reset all settings"
@@ -12172,7 +12791,10 @@ msgstr "Reset all settings"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 385
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 324
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 324
 msgid "Trim by Time"
 msgstr "Trim by Time"
@@ -12180,7 +12802,10 @@ msgstr "Trim by Time"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 404
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 343
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 343
 msgid "Start"
 msgstr "Start"
@@ -12188,7 +12813,10 @@ msgstr "Start"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 406
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 345
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 345
 msgid "Set timeline marked time as start"
 msgstr "Set timeline marked time as start"
@@ -12196,7 +12824,10 @@ msgstr "Set timeline marked time as start"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 423
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 362
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 362
 msgid "Set timeline marked time as end"
 msgstr "Set timeline marked time as end"
@@ -12204,7 +12835,10 @@ msgstr "Set timeline marked time as end"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 460
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 400
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 400
 msgid "Crop by Edges"
 msgstr "Crop by Edges"
@@ -12212,7 +12846,10 @@ msgstr "Crop by Edges"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 493
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 432
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 432
 msgid "Left Side"
 msgstr "Left Side"
@@ -12220,7 +12857,10 @@ msgstr "Left Side"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 524
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 468
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 468
 msgid "Right Side"
 msgstr "Right Side"
@@ -12228,7 +12868,10 @@ msgstr "Right Side"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 555
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 503
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 503
 msgid "Top Side"
 msgstr "Top Side"
@@ -12236,7 +12879,10 @@ msgstr "Top Side"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 586
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 538
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_ui.py, line: 538
 msgid "Bottom Side"
 msgstr "Bottom Side"
@@ -12244,7 +12890,10 @@ msgstr "Bottom Side"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2155
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_handlers.py, line: 619
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_handlers.py, line: 619
 msgid "Reset All Settings"
 msgstr "Reset All Settings"
@@ -12252,7 +12901,10 @@ msgstr "Reset All Settings"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2157
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_handlers.py, line: 621
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_handlers.py, line: 621
 msgid ""
 "Are you sure you want to reset all video editing settings to their default "
@@ -12264,7 +12916,10 @@ msgstr ""
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2265
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_handlers.py, line: 726
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_handlers.py, line: 726
 msgid "Settings Reset"
 msgstr "Settings Reset"
@@ -12272,7 +12927,10 @@ msgstr "Settings Reset"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_page.py, line: 2266
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_handlers.py, line: 727
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/video_edit_handlers.py, line: 727
 msgid "All video editing settings have been reset to their default values."
 msgstr "All video editing settings have been reset to their default values."
@@ -12280,6 +12938,9 @@ msgstr "All video editing settings have been reset to their default values."
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 105
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 105
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 105
 msgid "Show help"
@@ -12288,6 +12949,9 @@ msgstr "Show help"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 180
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 180
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 180
 msgid "Add video files to queue"
@@ -12296,6 +12960,9 @@ msgstr "Add video files to queue"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 253
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 253
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 253
 msgid "Save in the same folder as the original file"
@@ -12304,6 +12971,9 @@ msgstr "Save in the same folder as the original file"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 254
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 254
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 254
 msgid "Folder to save"
@@ -12312,6 +12982,9 @@ msgstr "Folder to save"
 #
 # #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
 #
+# #-#-#-#-#  comm-video-converter.pot (comm-video-converter)  #-#-#-#-#
+#
+# File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 271
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 271
 # File: comm-video-converter/usr/share/comm-video-converter/ui/pages/conversion_page.py, line: 271
 msgid "Select folder"
