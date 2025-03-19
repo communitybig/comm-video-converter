@@ -496,7 +496,7 @@ fi
 
 # Try to encode with the GPU
 echo "Try GPU encode"
-kdialog --msgbox "$ffmpeg_executable $init_hardware $options $decoder_format $encoder_format $video_filter_gpu $ffmpeg_generic_options"
+echo "$ffmpeg_executable $init_hardware $options $decoder_format $encoder_format $video_filter_gpu $ffmpeg_generic_options"
 eval $ffmpeg_executable $init_hardware $options $decoder_format $encoder_format $video_filter_gpu $ffmpeg_generic_options
 
 # Store the exit code while preserving $? for later checks
