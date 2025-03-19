@@ -52,7 +52,6 @@ class VideoEditPage:
         self.gamma_weight = self.settings.get_double("preview-gamma-weight", 1.0)
         self.fps = None  # Custom FPS value
         self.hue = self.settings.get_double("preview-hue", 0.0)
-        self.exposure = self.settings.get_double("preview-exposure", 0.0)
 
         # Frame extraction and caching
         self.frame_cache = {}  # Position -> Pixbuf
@@ -761,39 +760,6 @@ class VideoEditPage:
         saturation_row.add_suffix(saturation_box)
         adjustments_group.add(saturation_row)
 
-        # Exposure adjustment
-        exposure_row = Adw.ActionRow(title=_("Exposure"))
-        exposure_row.set_subtitle(_("Between -3.0 and 3.0 EV. Default: 0.0"))
-        exposure_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
-        exposure_box.set_margin_top(8)
-        exposure_box.set_margin_bottom(8)
-
-        self.exposure_scale = Gtk.Scale.new_with_range(
-            Gtk.Orientation.HORIZONTAL, -3.0, 3.0, 0.1
-        )
-        self.exposure_scale.set_value(self.exposure)
-        self.exposure_scale.set_size_request(
-            400, -1
-        )  # Double the width from 200 to 400
-        self.exposure_scale.set_draw_value(True)
-        self.exposure_scale.set_value_pos(Gtk.PositionType.RIGHT)
-        self.exposure_scale.connect("value-changed", self.on_exposure_changed)
-
-        # Add tooltip functionality to the exposure scale
-        self.add_tooltip_to_slider(self.exposure_scale, lambda x: f"{x:.2f}")
-
-        exposure_reset = Gtk.Button()
-        exposure_reset.set_icon_name("edit-undo-symbolic")
-        exposure_reset.add_css_class("flat")
-        exposure_reset.add_css_class("circular")
-        exposure_reset.set_tooltip_text(_("Reset to default"))
-        exposure_reset.connect("clicked", lambda b: self.reset_exposure())
-
-        exposure_box.append(self.exposure_scale)
-        exposure_box.append(exposure_reset)
-        exposure_row.add_suffix(exposure_box)
-        adjustments_group.add(exposure_row)
-
         # Gamma adjustment
         gamma_row = Adw.ActionRow(title=_("Gamma"))
         gamma_row.set_subtitle(_("Between 0.0 and 16.0. Default: 1.0"))
@@ -1444,11 +1410,6 @@ class VideoEditPage:
                 hue_degrees = self.hue * 180 / 3.14159  # Convert radians to degrees
                 filters.append(f"hue=h={hue_degrees}")
 
-            # Add exposure adjustment (separate filter)
-            if self.exposure != 0.0:
-                # Use proper exposure filter
-                filters.append(f"exposure=exposure={self.exposure}")
-
             # Add color adjustments
             eq_parts = []
             if self.brightness != 0:
@@ -1980,14 +1941,6 @@ class VideoEditPage:
             value_label.set_text(f"{self.hue:.2f}")
         self.extract_frame(self.current_position)
 
-    def on_exposure_changed(self, scale, value_label=None):
-        """Handle exposure slider changes"""
-        self.exposure = scale.get_value()
-        self.settings.set_double("preview-exposure", self.exposure)
-        if value_label:
-            value_label.set_text(f"{self.exposure:.1f}")
-        self.extract_frame(self.current_position)
-
     # Add reset functions for new adjustments
     def reset_gamma(self):
         """Reset gamma to default"""
@@ -2029,13 +1982,6 @@ class VideoEditPage:
         self.settings.reset("preview-hue")
         self.hue = self.settings.get_double("preview-hue")
         self.hue_scale.set_value(self.hue)
-        self.extract_frame(self.current_position)
-
-    def reset_exposure(self):
-        """Reset exposure to default"""
-        self.settings.reset("preview-exposure")
-        self.exposure = self.settings.get_double("preview-exposure")
-        self.exposure_scale.set_value(self.exposure)
         self.extract_frame(self.current_position)
 
     def on_slider_motion(self, controller, x, y):

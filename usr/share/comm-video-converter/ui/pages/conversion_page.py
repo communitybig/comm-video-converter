@@ -959,6 +959,8 @@ class ConversionPage:
                 if "video_resolution" in env_vars:
                     resolution = env_vars["video_resolution"]
                     if resolution and resolution.lower() != "default":
+                        # Replace x with : for FFmpeg scale filter
+                        resolution = resolution.replace("x", ":")
                         all_filters.append(f"scale={resolution}")
 
                 # Extract video editing settings if available
@@ -983,9 +985,22 @@ class ConversionPage:
                             - edit_page.crop_top
                             - edit_page.crop_bottom
                         )
-                        all_filters.append(
-                            f"crop={crop_width}:{crop_height}:{edit_page.crop_left}:{edit_page.crop_top}"
-                        )
+
+                        # Ensure crop dimensions are valid (positive values only)
+                        if (
+                            crop_width > 0
+                            and crop_height > 0
+                            and edit_page.crop_left >= 0
+                            and edit_page.crop_top >= 0
+                        ):
+                            all_filters.append(
+                                f"crop={crop_width}:{crop_height}:{edit_page.crop_left}:{edit_page.crop_top}"
+                            )
+                        else:
+                            # Log the issue but don't add invalid filter
+                            print(
+                                f"Skipping invalid crop filter: width={crop_width}, height={crop_height}, left={edit_page.crop_left}, top={edit_page.crop_top}"
+                            )
 
                     # Build video filters for color/gamma/etc adjustments
                     # Add hue adjustment
@@ -993,16 +1008,16 @@ class ConversionPage:
                         hue_degrees = edit_page.hue * 180 / 3.14159
                         all_filters.append(f"hue=h={hue_degrees}")
 
-                    # Add exposure adjustment
-                    if edit_page.exposure != 0.0:
-                        all_filters.append(f"exposure=exposure={edit_page.exposure}")
-
                     # Add eq filter for brightness, contrast, saturation, gamma, etc.
                     eq_parts = []
                     if edit_page.brightness != 0.0:
                         eq_parts.append(f"brightness={edit_page.brightness}")
                     if edit_page.contrast != 1.0:
-                        ff_contrast = (edit_page.contrast - 1.0) * 2
+                        # Double the difference from neutral (1.0) for stronger contrast effect
+                        # This gives a more pronounced visual change when adjusting contrast
+                        contrast_delta = edit_page.contrast - 1.0
+                        ff_contrast = 1.0 + (contrast_delta * 2.0)
+
                         eq_parts.append(f"contrast={ff_contrast}")
                     if edit_page.saturation != 1.0:
                         eq_parts.append(f"saturation={edit_page.saturation}")

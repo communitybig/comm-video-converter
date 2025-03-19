@@ -368,7 +368,7 @@ case $preset in
     *)         nvidia_preset=4 ;; # Default to medium
 esac
 
-general_params="-i \"$input_file\" $subtitle_cmd -map 0:v:0 $audio_cmd $video_filter"
+general_params="-i \"$input_file\" $subtitle_cmd -map 0:v:0 $audio_cmd"
 copy_video="$general_params -c:v copy"
 
 # Select appropriate encoder command based on the specified video encoder
@@ -470,33 +470,35 @@ if [[ $only_extract_subtitles = 1 ]]; then
 exit
 fi
 
+if [[ $encoder_format =~ .*nvenc.* ]]; then
+    video_filter_gpu=${video_filter/scale=/scale_cuda=}
+    # if have scale_cuda add ,hwdownload,format=nv12 after scale_cuda=value:value using sed
+    if [[ $video_filter_gpu =~ scale_cuda ]]; then
+        video_filter_gpu=$(sed -E 's/(scale_cuda=[^,]+:[^,]+)(.*)/\1,hwdownload,format=nv12\2/' <<<"$video_filter_gpu")
+    fi
+
+    #  verify if not have scale_cuda and have -vf, and add hwdownload,format=nv12,
+    if [[ $video_filter_gpu =~ -vf && ! $video_filter_gpu =~ scale_cuda ]]; then
+        video_filter_gpu=${video_filter_gpu/-vf /-vf hwdownload,format=nv12,}
+    fi
+
+else
+    video_filter_gpu=$video_filter
+fi
+
 # Try to encode with the GPU
 echo "Try GPU encode"
-echo "Running command: $ffmpeg_executable $init_hardware $options $decoder_format $encoder_format $ffmpeg_generic_options"
-eval $ffmpeg_executable $init_hardware $options $decoder_format $encoder_format $ffmpeg_generic_options
+echo "$ffmpeg_executable $init_hardware $options $decoder_format $encoder_format $video_filter_gpu $ffmpeg_generic_options"
+eval $ffmpeg_executable $init_hardware $options $decoder_format $encoder_format $video_filter_gpu $ffmpeg_generic_options
 
 # Store the exit code while preserving $? for later checks
 exit_code=$?
 
-if [[ $encoder_format =~ .*nvenc.* ]]; then
-    video_filter="-vf 'format=nv12,hwupload_cuda'"
-else
-    video_filter="-vf 'format=nv12,hwupload'"
-fi
-
 # If encoding not successful, and not exit with 255 (interrupted by user), and not software encoding, try with the second option
 if [[ $exit_code != 0 && $exit_code != 255 && $force_software != 1 && $force_copy_video != 1 ]]; then
     echo "Try partial GPU encode"
-    echo "Running command: $ffmpeg_executable $init_hardware $options $encoder_format $video_filter $ffmpeg_generic_options"
-    eval $ffmpeg_executable $init_hardware $options $encoder_format $video_filter $ffmpeg_generic_options
-    exit_code=$?
-fi
-
-# If encoding not successful, and not exit with 255 (interrupted by user), and not software encoding, try with the second option
-if [[ $exit_code != 0 && $exit_code != 255 && $force_software != 1 && $force_copy_video != 1 ]]; then
-    echo "Try partial GPU encode"
-    echo "Running command: $ffmpeg_executable $options $encoder_format $video_filter $ffmpeg_generic_options"
-    eval $ffmpeg_executable $options $encoder_format $video_filter $ffmpeg_generic_options
+    echo "Running command: $ffmpeg_executable $init_hardware $options $encoder_format $video_filter_gpu $ffmpeg_generic_options"
+    eval $ffmpeg_executable $init_hardware $options $encoder_format $video_filter_gpu $ffmpeg_generic_options
     exit_code=$?
 fi
 
@@ -504,7 +506,7 @@ fi
 if [[ $exit_code != 0 && $exit_code != 255 && $force_software != 1 && $force_copy_video != 1 ]]; then
     echo "Try software encode"
     echo "Running command: $ffmpeg_executable $options $encoder_software $ffmpeg_generic_options"
-    eval $ffmpeg_executable $init_hardware $options $encoder_software $ffmpeg_generic_options
+    eval $ffmpeg_executable $options $encoder_software $video_filter $ffmpeg_generic_options
     exit_code=$?
 fi
 

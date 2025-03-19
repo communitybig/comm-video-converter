@@ -60,7 +60,6 @@ class JsonSettingsManager:
         "preview-gamma-b": 1.0,
         "preview-gamma-weight": 1.0,
         "preview-hue": 0.0,
-        "preview-exposure": 0.0,
     }
 
     def __init__(self, schema_id):

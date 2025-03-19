@@ -14,6 +14,21 @@ import gettext
 _ = gettext.gettext  # Will use the already initialized translation
 
 
+def format_resolution(width, height):
+    """
+    Format resolution string with the correct separator for FFmpeg.
+    FFmpeg requires width:height format (not width×height).
+
+    Args:
+        width (int or str): Video width
+        height (int or str): Video height
+
+    Returns:
+        str: Formatted resolution string (e.g. "1920:1080")
+    """
+    return f"{width}:{height}"
+
+
 def run_with_progress_dialog(
     app, cmd, title_suffix, input_file=None, delete_original=False, env_vars=None
 ):
