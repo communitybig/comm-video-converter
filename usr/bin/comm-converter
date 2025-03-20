@@ -100,7 +100,7 @@ if [[ $# -eq 0 || $1 == "-h" || $1 == "--help" ]]; then
     echo -e "${COLOR_CYAN}You can specify various variables before the command. Below are the available options and examples:${COLOR_RESET}"
     echo ""
     echo -e "${COLOR_BLUE}1. Specifying the GPU:${COLOR_RESET}"
-    echo -e "   ${COLOR_CYAN}You can specify which GPU to use for the operation. Options include:${COLOR_GREEN} nvidia, amd, intel, software${COLOR_RESET}"
+    echo -e "   ${COLOR_CYAN}You can specify which GPU to use for the operation. Options include:${COLOR_GREEN} auto, nvidia, amd, intel, software${COLOR_RESET}"
     echo -e "   ${COLOR_CYAN}Example:${COLOR_RESET} ${COLOR_YELLOW}gpu=nvidia${COLOR_RESET} $0 ${COLOR_YELLOW}video.mkv${COLOR_RESET}"
     echo ""
     echo -e "${COLOR_BLUE}2. Specifying the Output File:${COLOR_RESET}"
@@ -307,6 +307,9 @@ elif [[ $audio_handling == "none" ]]; then
 fi
 
 
+# if video_quality is default, remove auto
+video_quality=${video_quality/default/}
+
 # If quality is not specified, use medium
 : ${video_quality:=medium}
 
@@ -401,7 +404,9 @@ case $video_encoder in
         ;;
 esac
 
-# If not specified the GPU, detect it
+# If gpu = auto change gpu to empty
+gpu=${gpu/auto/}
+# If gpu empty auto detect
 if [[ -z $gpu ]]; then
     devices=$(lspci)
 else
@@ -496,7 +501,7 @@ fi
 
 # Try to encode with the GPU
 echo "Try GPU encode"
-echo "$ffmpeg_executable $init_hardware $options $decoder_format $encoder_format $video_filter_gpu $ffmpeg_generic_options"
+echo "$ffmpeg_executable $init_hardware $options $decoder_format $encoder_format $video_filter_gpu $ffmpeg_generic_options" > ~/ffmpeg_command.log
 eval $ffmpeg_executable $init_hardware $options $decoder_format $encoder_format $video_filter_gpu $ffmpeg_generic_options
 
 # Store the exit code while preserving $? for later checks
@@ -505,8 +510,8 @@ exit_code=$?
 # If encoding not successful, and not exit with 255 (interrupted by user), and not software encoding, try with the second option
 if [[ $exit_code != 0 && $exit_code != 255 && $force_software != 1 && $force_copy_video != 1 ]]; then
     echo "Try partial GPU encode"
-    echo "Running command: $ffmpeg_executable $init_hardware $options $encoder_format $video_filter_gpu $ffmpeg_generic_options"
-    eval $ffmpeg_executable $init_hardware $options $encoder_format $video_filter_gpu $ffmpeg_generic_options
+    echo "Running command: $ffmpeg_executable $init_hardware $options $encoder_format $video_filter $ffmpeg_generic_options"
+    eval $ffmpeg_executable $init_hardware $options $encoder_format $video_filter $ffmpeg_generic_options
     exit_code=$?
 fi
 
@@ -522,4 +527,3 @@ if [[ $exit_code != 0 ]]; then
     echo -e "${COLOR_YELLOW}Conversion failed with exit code $exit_code.${COLOR_RESET}"
     exit $exit_code
 fi
-

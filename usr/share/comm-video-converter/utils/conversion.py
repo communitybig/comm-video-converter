@@ -764,9 +764,7 @@ def build_convert_command(input_file, settings):
             env_vars[env_key] = str(value)
             print(f"Setting {env_key}={value}")
 
-    # Garantir que temos um diretório de saída definido
     if "output_folder" not in env_vars and input_file:
-        # Se não estiver definido, use o diretório do arquivo de entrada
         env_vars["output_folder"] = os.path.dirname(input_file)
         print(
             f"Setting output folder to input file directory: {env_vars['output_folder']}"

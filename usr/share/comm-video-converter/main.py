@@ -14,12 +14,12 @@ from gi.repository import Gtk, Adw, Gio, GLib, Gdk
 
 # Import local modules
 from constants import APP_ID, VIDEO_FILE_MIME_TYPES
-from ui.widgets.header_bar import HeaderBar
-from ui.pages.conversion_page import ConversionPage
-from ui.pages.video_edit_page import VideoEditPage
-from ui.pages.settings_page import SettingsPage
-from ui.pages.progress_page import ProgressPage
-from core.json_settings_manager import JsonSettingsManager as SettingsManager
+from ui.header_bar import HeaderBar
+from ui.conversion_page import ConversionPage
+from ui.video_edit_page import VideoEditPage
+from ui.settings_page import SettingsPage
+from ui.progress_page import ProgressPage
+from utils.settings_manager import SettingsManager
 
 # Setup translation
 import gettext

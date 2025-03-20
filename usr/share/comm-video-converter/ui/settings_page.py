@@ -144,9 +144,9 @@ class SettingsPage:
         self.custom_resolution_row.set_tooltip_text(_("Ex: 1280x720, 1920x1080"))
         self.custom_resolution_row.set_visible(False)  # Initially hidden
 
-        # Connect combo box to show/hide custom entry
-        self.video_resolution_combo.connect(
-            "notify::selected", self._on_resolution_combo_changed
+        # Connect to changed signal for the custom entry
+        self.custom_resolution_row.connect(
+            "changed", self._on_custom_resolution_changed
         )
 
         encoding_group.add(self.video_resolution_combo)
@@ -306,56 +306,78 @@ class SettingsPage:
             self.settings_manager.save_setting("audio-channels", "")
 
     def _on_resolution_combo_changed(self, combo, param):
+        """Handle resolution combo selection change"""
         selected = combo.get_selected()
-        is_custom = (
-            selected == len(self.resolution_values) - 1
-        )  # Check if "Custom" is selected
-        self.custom_resolution_row.set_visible(is_custom)
 
-        # Update the setting unless it's custom
-        if not is_custom and selected > 0:  # Not default and not custom
-            self.settings_manager.save_setting(
-                "video-resolution", self.resolution_values[selected]
-            )
-        elif not is_custom and selected == 0:  # Default selected
-            self.settings_manager.save_setting("video-resolution", "")
+        # Show/hide custom entry based on selection
+        if selected == len(self.resolution_values) - 1:  # Custom option
+            self.custom_resolution_row.set_visible(True)
+
+            # Use the custom value if it's not empty
+            custom_value = self.custom_resolution_row.get_text()
+            if custom_value:
+                self.settings_manager.save_setting("video-resolution", custom_value)
+
+        else:
+            self.custom_resolution_row.set_visible(False)
+
+            if selected == 0:  # Default (no resolution change)
+                self.settings_manager.save_setting("video-resolution", "")
+            else:
+                # Save the selected standard resolution
+                resolution = self.resolution_values[selected]
+                self.settings_manager.save_setting("video-resolution", resolution)
+
+    def _on_custom_resolution_changed(self, entry):
+        """Save custom resolution when entry changes"""
+        value = entry.get_text()
+        if (
+            value
+            and self.video_resolution_combo.get_selected()
+            == len(self.resolution_values) - 1
+        ):
+            self.settings_manager.save_setting("video-resolution", value)
 
     def _connect_setting_signals(self):
         """Connect signals for saving settings"""
+        # Use direct value saving instead of indexes
+
+        # GPU selection
         self.gpu_combo.connect(
-            "notify::selected",
-            lambda w, p: self.settings_manager.save_setting(
-                "gpu-selection", w.get_selected()
-            ),
+            "notify::selected", lambda w, p: self._save_gpu_setting(w.get_selected())
         )
+
+        # Video quality
         self.video_quality_combo.connect(
             "notify::selected",
-            lambda w, p: self.settings_manager.save_setting(
-                "video-quality", w.get_selected()
-            ),
+            lambda w, p: self._save_quality_setting(w.get_selected()),
         )
+
+        # Video codec
         self.video_encoder_combo.connect(
-            "notify::selected",
-            lambda w, p: self.settings_manager.save_setting(
-                "video-codec", w.get_selected()
-            ),
+            "notify::selected", lambda w, p: self._save_codec_setting(w.get_selected())
         )
+
+        # Preset
         self.preset_combo.connect(
-            "notify::selected",
-            lambda w, p: self.settings_manager.save_setting("preset", w.get_selected()),
+            "notify::selected", lambda w, p: self._save_preset_setting(w.get_selected())
         )
+
+        # Subtitle extract
         self.subtitle_extract_combo.connect(
             "notify::selected",
-            lambda w, p: self.settings_manager.save_setting(
-                "subtitle-extract", w.get_selected()
-            ),
+            lambda w, p: self._save_subtitle_setting(w.get_selected()),
         )
+
+        # Audio handling - directly saves string value
         self.audio_handling_combo.connect(
             "notify::selected",
             lambda w, p: self.settings_manager.save_setting(
                 "audio-handling", AUDIO_OPTIONS[w.get_selected()]
             ),
         )
+
+        # Additional settings
         self.custom_resolution_row.connect(
             "changed",
             lambda w: self.settings_manager.save_setting(
@@ -397,106 +419,196 @@ class SettingsPage:
             ),
         )
 
+        # Connect resolution combo change
+        self.video_resolution_combo.connect(
+            "notify::selected", self._on_resolution_combo_changed
+        )
+
+    def _save_gpu_setting(self, index):
+        """Save GPU setting as direct value"""
+        # Map index to GPU value and save directly
+        if index == 0:  # Default/Auto
+            self.settings_manager.save_setting("gpu", "auto")
+        elif index == 1:  # nvidia
+            self.settings_manager.save_setting("gpu", "nvidia")
+        elif index == 2:  # amd
+            self.settings_manager.save_setting("gpu", "amd")
+        elif index == 3:  # intel
+            self.settings_manager.save_setting("gpu", "intel")
+        elif index == 4:  # software
+            self.settings_manager.save_setting("gpu", "software")
+
+    def _save_quality_setting(self, index):
+        """Save video quality setting as direct value"""
+        # Map index to quality value and save directly
+        if index == 0:  # Default
+            self.settings_manager.save_setting("video-quality", "default")
+        elif index == 1:  # veryhigh
+            self.settings_manager.save_setting("video-quality", "veryhigh")
+        elif index == 2:  # high
+            self.settings_manager.save_setting("video-quality", "high")
+        elif index == 3:  # medium
+            self.settings_manager.save_setting("video-quality", "medium")
+        elif index == 4:  # low
+            self.settings_manager.save_setting("video-quality", "low")
+        elif index == 5:  # verylow
+            self.settings_manager.save_setting("video-quality", "verylow")
+        elif index == 6:  # superlow
+            self.settings_manager.save_setting("video-quality", "superlow")
+
+    def _save_codec_setting(self, index):
+        """Save video codec setting as direct value"""
+        # Map index to codec value and save directly
+        if index == 0:  # Default (h264)
+            self.settings_manager.save_setting("video-codec", "h264")
+        elif index == 1:  # h264 (MP4)
+            self.settings_manager.save_setting("video-codec", "h264")
+        elif index == 2:  # h265 (HEVC)
+            self.settings_manager.save_setting("video-codec", "h265")
+        elif index == 3:  # av1 (AV1)
+            self.settings_manager.save_setting("video-codec", "av1")
+        elif index == 4:  # vp9 (VP9)
+            self.settings_manager.save_setting("video-codec", "vp9")
+
+    def _save_preset_setting(self, index):
+        """Save preset setting as direct value"""
+        # Map index to preset value and save directly
+        if index == 0:  # Default
+            self.settings_manager.save_setting("preset", "default")
+        elif index == 1:  # ultrafast
+            self.settings_manager.save_setting("preset", "ultrafast")
+        elif index == 2:  # veryfast
+            self.settings_manager.save_setting("preset", "veryfast")
+        elif index == 3:  # faster
+            self.settings_manager.save_setting("preset", "faster")
+        elif index == 4:  # medium
+            self.settings_manager.save_setting("preset", "medium")
+        elif index == 5:  # slow
+            self.settings_manager.save_setting("preset", "slow")
+        elif index == 6:  # veryslow
+            self.settings_manager.save_setting("preset", "veryslow")
+
+    def _save_subtitle_setting(self, index):
+        """Save subtitle setting as direct value"""
+        # Map index to subtitle handling value and save directly
+        if index == 0:  # Default (extract)
+            self.settings_manager.save_setting("subtitle-extract", "extract")
+        elif index == 1:  # extract (SRT)
+            self.settings_manager.save_setting("subtitle-extract", "extract")
+        elif index == 2:  # embedded
+            self.settings_manager.save_setting("subtitle-extract", "embedded")
+        elif index == 3:  # none
+            self.settings_manager.save_setting("subtitle-extract", "none")
+
     def _load_settings(self):
-        """Load all settings and update UI"""
-        # Encoding settings
-        self.gpu_combo.set_selected(
-            self.settings_manager.load_setting("gpu-selection", 0)
-        )
-        self.video_quality_combo.set_selected(
-            self.settings_manager.load_setting("video-quality", 0)
-        )
-        self.video_encoder_combo.set_selected(
-            self.settings_manager.load_setting("video-codec", 0)
-        )
-        self.preset_combo.set_selected(self.settings_manager.load_setting("preset", 0))
-        self.subtitle_extract_combo.set_selected(
-            self.settings_manager.load_setting("subtitle-extract", 0)
-        )
+        """Load settings and update UI components"""
+        # Load general options
+        # ...existing code...
 
-        # Audio settings with dropdown handling
-        audio_bitrate = self.settings_manager.load_setting("audio-bitrate", "")
-        audio_channels = self.settings_manager.load_setting("audio-channels", "")
+        # Load encoding settings using string values
 
-        # Handle bitrate setting
-        if not audio_bitrate:
-            self.audio_bitrate_combo.set_selected(0)  # Default
-        elif audio_bitrate in self.bitrate_values:
-            self.audio_bitrate_combo.set_selected(
-                self.bitrate_values.index(audio_bitrate)
-            )
+        # GPU selection
+        gpu_value = self.settings_manager.load_setting("gpu", "auto")
+        gpu_index = self._find_gpu_index(gpu_value)
+        self.gpu_combo.set_selected(gpu_index)
+
+        # Video quality
+        quality_value = self.settings_manager.load_setting("video-quality", "medium")
+        quality_index = self._find_quality_index(quality_value)
+        self.video_quality_combo.set_selected(quality_index)
+
+        # Video codec
+        codec_value = self.settings_manager.load_setting("video-codec", "h264")
+        codec_index = self._find_codec_index(codec_value)
+        self.video_encoder_combo.set_selected(codec_index)
+
+        # Preset
+        preset_value = self.settings_manager.load_setting("preset", "medium")
+        preset_index = self._find_preset_index(preset_value)
+        self.preset_combo.set_selected(preset_index)
+
+        # Subtitle extraction
+        subtitle_value = self.settings_manager.load_setting(
+            "subtitle-extract", "extract"
+        )
+        subtitle_index = self._find_subtitle_index(subtitle_value)
+        self.subtitle_extract_combo.set_selected(subtitle_index)
+
+        # Load video resolution setting
+        saved_resolution = self.settings_manager.load_setting("video-resolution", "")
+
+        if saved_resolution:
+            # Check if it's one of the standard resolutions
+            standard_index = -1
+            for i, res in enumerate(self.resolution_values):
+                if res == saved_resolution:
+                    standard_index = i
+                    break
+
+            if standard_index >= 0:
+                # Standard resolution found
+                self.video_resolution_combo.set_selected(standard_index)
+                self.custom_resolution_row.set_visible(False)
+            else:
+                # Must be a custom resolution
+                self.video_resolution_combo.set_selected(
+                    len(self.resolution_values) - 1
+                )  # Custom
+                self.custom_resolution_row.set_text(saved_resolution)
+                self.custom_resolution_row.set_visible(True)
         else:
-            # Custom value
-            self.audio_bitrate_combo.set_selected(
-                len(self.bitrate_values) - 1
-            )  # Custom option
-            self.custom_bitrate_row.set_text(audio_bitrate)
-            self.custom_bitrate_row.set_visible(True)
+            # No saved resolution, use default
+            self.video_resolution_combo.set_selected(0)
+            self.custom_resolution_row.set_visible(False)
 
-        # Handle channels setting
-        if not audio_channels:
-            self.audio_channels_combo.set_selected(0)  # Default
-        elif audio_channels in self.channels_values:
-            self.audio_channels_combo.set_selected(
-                self.channels_values.index(audio_channels)
-            )
-        else:
-            # Custom value
-            self.audio_channels_combo.set_selected(
-                len(self.channels_values) - 1
-            )  # Custom option
-            self.custom_channels_row.set_text(audio_channels)
-            self.custom_channels_row.set_visible(True)
+        # Load audio settings
+        # ...existing code...
 
-        # Video resolution with dropdown handling
-        video_resolution = self.settings_manager.load_setting("video-resolution", "")
+    def _find_gpu_index(self, value):
+        """Find index of GPU value in GPU_OPTIONS"""
+        value = value.lower()
+        for i, option in enumerate(GPU_OPTIONS):
+            if option.lower() == value or (i == 0 and value == "auto"):
+                return i
+        return 0  # Default to Auto-detect
 
-        # Handle video resolution setting
-        if not video_resolution:
-            self.video_resolution_combo.set_selected(0)  # Default
-        elif video_resolution in self.resolution_values:
-            self.video_resolution_combo.set_selected(
-                self.resolution_values.index(video_resolution)
-            )
-        else:
-            # Custom value
-            self.video_resolution_combo.set_selected(
-                len(self.resolution_values) - 1
-            )  # Custom option
-            self.custom_resolution_row.set_text(video_resolution)
-            self.custom_resolution_row.set_visible(True)
+    def _find_quality_index(self, value):
+        """Find index of quality value in VIDEO_QUALITY_OPTIONS"""
+        value = value.lower()
+        for i, option in enumerate(VIDEO_QUALITY_OPTIONS):
+            if option.lower() == value or (i == 0 and value == "default"):
+                return i
+        return 0  # Default to Default
 
-        # General options
-        self.options_entry.set_text(
-            self.settings_manager.load_setting("additional-options", "")
-        )
-        self.gpu_partial_check.set_active(
-            self.settings_manager.load_setting("gpu-partial", False)
-        )
-        self.force_copy_video_check.set_active(
-            self.settings_manager.load_setting("force-copy-video", False)
-        )
-        self.only_extract_subtitles_check.set_active(
-            self.settings_manager.load_setting("only-extract-subtitles", False)
-        )
+    def _find_codec_index(self, value):
+        """Find index of codec value in VIDEO_CODEC_OPTIONS"""
+        value = value.lower()
+        # Handle special cases
+        if value == "h264":
+            return 1  # h264 (MP4)
+        elif value == "h265":
+            return 2  # h265 (HEVC)
+        elif value == "av1":
+            return 3  # av1 (AV1)
+        elif value == "vp9":
+            return 4  # vp9 (VP9)
+        return 0  # Default to Default (h264)
 
-        # Handle audio handling setting using string values
-        audio_handling = self.settings_manager.load_setting("audio-handling", "copy")
+    def _find_preset_index(self, value):
+        """Find index of preset value in PRESET_OPTIONS"""
+        value = value.lower()
+        for i, option in enumerate(PRESET_OPTIONS):
+            if option.lower() == value or (i == 0 and value == "default"):
+                return i
+        return 0  # Default to Default
 
-        # Check if we have a numeric value (from older settings)
-        if isinstance(audio_handling, int):
-            # Convert to string value if it's a valid index
-            if 0 <= audio_handling < len(AUDIO_OPTIONS):
-                # Use the string value from now on
-                audio_handling = AUDIO_OPTIONS[audio_handling]
-                # Save the string value back to settings
-                self.settings_manager.save_setting("audio-handling", audio_handling)
-
-        # Find the index of the audio handling string in AUDIO_OPTIONS
-        if audio_handling in AUDIO_OPTIONS:
-            self.audio_handling_combo.set_selected(AUDIO_OPTIONS.index(audio_handling))
-        else:
-            # Default to "copy" if the value isn't found
-            self.audio_handling_combo.set_selected(
-                AUDIO_OPTIONS.index("copy") if "copy" in AUDIO_OPTIONS else 0
-            )
+    def _find_subtitle_index(self, value):
+        """Find index of subtitle value in SUBTITLE_OPTIONS"""
+        value = value.lower()
+        if value == "extract":
+            return 0  # Default (extract)
+        elif value == "embedded":
+            return 2  # embedded
+        elif value == "none":
+            return 3  # none
+        return 0  # Default to Default (extract)

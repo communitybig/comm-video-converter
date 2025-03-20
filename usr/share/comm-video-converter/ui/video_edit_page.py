@@ -1,12 +1,10 @@
 import os
 import gi
-import subprocess
-import json
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 gi.require_version("GdkPixbuf", "2.0")
-from gi.repository import Gtk, Adw, GLib, Gio, Gdk, GdkPixbuf
+from gi.repository import GLib
 
 # Setup translation
 import gettext
@@ -14,9 +12,22 @@ import gettext
 _ = gettext.gettext
 
 # Import the modules we've split off
-from ui.pages.video_edit_ui import VideoEditUI
-from ui.pages.video_processing import VideoProcessor
-from ui.pages.video_edit_handlers import VideoEditHandlers
+from ui.video_edit_ui import VideoEditUI
+from ui.video_processing import VideoProcessor
+from ui.video_edit_handlers import VideoEditHandlers
+from utils.video_adjustments import generate_video_filters
+
+# Import the centralized adjustment utilities
+from utils.video_adjustments import (
+    DEFAULT_VALUES,
+    FLOAT_THRESHOLD,
+    get_adjustment_value,
+    save_adjustment_value,
+    reset_adjustment,
+    ui_to_ffmpeg_contrast,
+    ui_to_ffmpeg_hue,
+    generate_all_filters,
+)
 
 
 class VideoEditPage:
@@ -213,3 +224,100 @@ class VideoEditPage:
         """Invalidate the cache for the current position - no longer needed"""
         # This is now a no-op since we're not caching frames
         pass
+
+    def extract_frame(self, position):
+        """Extract a frame at the specified position using FFmpeg"""
+        if not self.current_video_path:
+            print("Cannot extract frame - no video loaded")
+            return None
+
+        try:
+            # Get the filters using our shared utility
+            filters = generate_video_filters(
+                self.settings,
+                video_width=self.video_width,
+                video_height=self.video_height,
+            )
+
+            filter_arg = ",".join(filters) if filters else "null"
+
+            # Print the filter for debugging
+            print(f"FFmpeg filter: {filter_arg}")
+
+        except Exception as e:
+            print(f"Error extracting frame: {e}")
+            import traceback
+
+            traceback.print_exc()
+            return False
+
+        # Generate a temp filename for the frame
+        output_file = os.path.join(
+            self.temp_preview_dir, f"frame_{int(position * 100)}.jpg"
+        )
+
+        # Use the centralized filter utilities
+        filters = generate_all_filters(
+            self.settings, video_width=self.video_width, video_height=self.video_height
+        )
+
+        # Add video resolution filter if needed
+        video_resolution = self.settings.load_setting("video-resolution", "")
+        if video_resolution:
+            filters.insert(0, f"scale={video_resolution}")
+
+        filter_arg = ",".join(filters) if filters else "null"
+
+        # Print the filter for debugging
+        print(f"FFmpeg filter for frame extraction: {filter_arg}")
+
+    def on_brightness_changed(self, scale, value_label=None):
+        """Handle brightness slider changes"""
+        brightness = scale.get_value()
+
+        # Save to settings using the centralized utility
+        save_adjustment_value(self.settings, "brightness", brightness)
+
+        if value_label:
+            value_label.set_text(f"{brightness:.2f}")
+
+        # Update current frame with new settings
+        self.extract_frame(self.current_position)
+
+    def on_contrast_changed(self, scale, value_label=None):
+        """Handle contrast slider changes"""
+        contrast = scale.get_value()
+
+        # Save to settings using the centralized utility
+        save_adjustment_value(self.settings, "contrast", contrast)
+
+        if value_label:
+            value_label.set_text(f"{contrast:.2f}")
+
+        # For debugging, show the FFmpeg value
+        ff_contrast = ui_to_ffmpeg_contrast(contrast)
+        print(f"UI contrast: {contrast:.2f}, FFmpeg contrast: {ff_contrast:.2f}")
+
+        # Update current frame with new settings
+        self.extract_frame(self.current_position)
+
+    def reset_brightness(self):
+        """Reset brightness to default"""
+        reset_adjustment(self.settings, "brightness")
+        self.brightness = get_adjustment_value(self.settings, "brightness")
+        self.brightness_scale.set_value(self.brightness)
+        self.extract_frame(self.current_position)
+
+    def on_crop_value_changed(self, widget):
+        """Handle changes to crop spinbutton values with delayed update"""
+        # Get and store all crop values
+        self.crop_left = int(self.crop_left_spin.get_value())
+        self.crop_right = int(self.crop_right_spin.get_value())
+        self.crop_top = int(self.crop_top_spin.get_value())
+        self.crop_bottom = int(self.crop_bottom_spin.get_value())
+
+        # Save using the centralized utility
+        save_adjustment_value(self.settings, "crop_left", self.crop_left)
+        save_adjustment_value(self.settings, "crop_right", self.crop_right)
+        save_adjustment_value(self.settings, "crop_top", self.crop_top)
+        save_adjustment_value(self.settings, "crop_bottom", self.crop_bottom)
