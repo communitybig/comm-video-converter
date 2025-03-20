@@ -155,8 +155,8 @@ class VideoEditUI:
 
         # Add motion controller to show tooltip
         motion_controller = Gtk.EventControllerMotion.new()
-        motion_controller.connect("motion", self.page.handlers.on_adjustment_motion)
-        motion_controller.connect("leave", self.page.handlers.on_adjustment_leave)
+        motion_controller.connect("motion", self.page.on_adjustment_motion)
+        motion_controller.connect("leave", self.page.on_adjustment_leave)
         slider.add_controller(motion_controller)
 
     def add_tooltip_to_button(self, button, tooltip_text):
@@ -184,8 +184,8 @@ class VideoEditUI:
 
         # Add motion controller to show/hide tooltip
         motion_controller = Gtk.EventControllerMotion.new()
-        motion_controller.connect("enter", self.page.handlers.on_button_enter)
-        motion_controller.connect("leave", self.page.handlers.on_button_leave)
+        motion_controller.connect("enter", self.page.on_button_enter)
+        motion_controller.connect("leave", self.page.on_button_leave)
         button.add_controller(motion_controller)
 
         # Remove the standard tooltip if it exists
@@ -213,13 +213,13 @@ class VideoEditUI:
         self.position_scale.set_draw_value(False)
         self.position_scale.set_hexpand(True)
         self.page.position_changed_handler_id = self.position_scale.connect(
-            "value-changed", self.page.handlers.on_position_changed
+            "value-changed", self.page.on_position_changed
         )
 
         # Add motion controller for tooltip hover functionality
         motion_controller = Gtk.EventControllerMotion.new()
-        motion_controller.connect("motion", self.page.handlers.on_slider_motion)
-        motion_controller.connect("leave", self.page.handlers.on_slider_leave)
+        motion_controller.connect("motion", self.page.on_slider_motion)
+        motion_controller.connect("leave", self.page.on_slider_leave)
         self.position_scale.add_controller(motion_controller)
 
         # Store current hover position for tooltips
@@ -247,61 +247,49 @@ class VideoEditUI:
         prev_frame_button = Gtk.Button()
         prev_frame_button.set_icon_name("go-previous-symbolic")
         self.add_tooltip_to_button(prev_frame_button, _("Previous frame"))
-        prev_frame_button.connect(
-            "clicked", lambda b: self.page.handlers.seek_relative(-1 / 25)
-        )
+        prev_frame_button.connect("clicked", lambda b: self.page.seek_relative(-1 / 25))
         nav_box.append(prev_frame_button)
 
         # Step back 1 second
         step_back_button = Gtk.Button()
         step_back_button.set_icon_name("media-seek-backward-symbolic")
         self.add_tooltip_to_button(step_back_button, _("Back 1 second"))
-        step_back_button.connect(
-            "clicked", lambda b: self.page.handlers.seek_relative(-1)
-        )
+        step_back_button.connect("clicked", lambda b: self.page.seek_relative(-1))
         nav_box.append(step_back_button)
 
         # Step back 10 seconds
         step_back10_button = Gtk.Button()
         step_back10_button.set_icon_name("media-skip-backward-symbolic")
         self.add_tooltip_to_button(step_back10_button, _("Back 10 seconds"))
-        step_back10_button.connect(
-            "clicked", lambda b: self.page.handlers.seek_relative(-10)
-        )
+        step_back10_button.connect("clicked", lambda b: self.page.seek_relative(-10))
         nav_box.append(step_back10_button)
 
         # Reset button
         reset_button = Gtk.Button(label=_("Reset"))
         reset_button.add_css_class("destructive-action")  # Red styling for warning
         self.add_tooltip_to_button(reset_button, _("Reset all settings"))
-        reset_button.connect("clicked", self.page.handlers.on_reset_all_settings)
+        reset_button.connect("clicked", self.page.on_reset_all_settings)
         nav_box.append(reset_button)
 
         # Step forward 10 seconds
         step_fwd10_button = Gtk.Button()
         step_fwd10_button.set_icon_name("media-skip-forward-symbolic")
         self.add_tooltip_to_button(step_fwd10_button, _("Forward 10 seconds"))
-        step_fwd10_button.connect(
-            "clicked", lambda b: self.page.handlers.seek_relative(10)
-        )
+        step_fwd10_button.connect("clicked", lambda b: self.page.seek_relative(10))
         nav_box.append(step_fwd10_button)
 
         # Step forward 1 second
         step_fwd_button = Gtk.Button()
         step_fwd_button.set_icon_name("media-seek-forward-symbolic")
         self.add_tooltip_to_button(step_fwd_button, _("Forward 1 second"))
-        step_fwd_button.connect(
-            "clicked", lambda b: self.page.handlers.seek_relative(1)
-        )
+        step_fwd_button.connect("clicked", lambda b: self.page.seek_relative(1))
         nav_box.append(step_fwd_button)
 
         # Next frame button
         next_frame_button = Gtk.Button()
         next_frame_button.set_icon_name("go-next-symbolic")
         self.add_tooltip_to_button(next_frame_button, _("Next frame"))
-        next_frame_button.connect(
-            "clicked", lambda b: self.page.handlers.seek_relative(1 / 25)
-        )
+        next_frame_button.connect("clicked", lambda b: self.page.seek_relative(1 / 25))
         nav_box.append(next_frame_button)
 
         info_nav_box.append(nav_box)
@@ -344,7 +332,7 @@ class VideoEditUI:
         self.add_tooltip_to_button(
             set_start_button, _("Set timeline marked time as start")
         )
-        set_start_button.connect("clicked", self.page.handlers.on_set_start_time)
+        set_start_button.connect("clicked", self.page.on_set_start_time)
 
         start_box.append(set_start_button)
         start_box.append(self.start_time_label)
@@ -360,7 +348,7 @@ class VideoEditUI:
 
         set_end_button = Gtk.Button(label=_("End"))
         self.add_tooltip_to_button(set_end_button, _("Set timeline marked time as end"))
-        set_end_button.connect("clicked", self.page.handlers.on_set_end_time)
+        set_end_button.connect("clicked", self.page.on_set_end_time)
 
         end_box.append(set_end_button)
         end_box.append(self.end_time_label)
@@ -386,7 +374,7 @@ class VideoEditUI:
         reset_button.add_css_class("flat")
         reset_button.add_css_class("circular")
         self.add_tooltip_to_button(reset_button, _("Reset trim points"))
-        reset_button.connect("clicked", self.page.handlers.on_reset_trim_points)
+        reset_button.connect("clicked", self.page.on_reset_trim_points)
         trim_box.append(reset_button)
 
         # Add the trim box to the row and the row to the group
@@ -441,9 +429,7 @@ class VideoEditUI:
         self.crop_left_spin.set_adjustment(adjustment)
         self.crop_left_spin.set_numeric(True)
         self.crop_left_spin.set_width_chars(5)  # Set uniform width
-        self.crop_left_spin.connect(
-            "value-changed", self.page.handlers.on_crop_value_changed
-        )
+        self.crop_left_spin.connect("value-changed", self.page.on_crop_value_changed)
         left_input_box.append(self.crop_left_spin)
 
         left_reset = Gtk.Button()
@@ -451,9 +437,7 @@ class VideoEditUI:
         left_reset.add_css_class("flat")
         left_reset.add_css_class("circular")
         self.add_tooltip_to_button(left_reset, _("Reset to default"))
-        left_reset.connect(
-            "clicked", lambda b: self.page.handlers.reset_crop_value("left")
-        )
+        left_reset.connect("clicked", lambda b: self.page.reset_crop_value("left"))
         left_input_box.append(left_reset)
 
         left_box.append(left_input_box)
@@ -477,9 +461,7 @@ class VideoEditUI:
         self.crop_right_spin.set_adjustment(adjustment)
         self.crop_right_spin.set_numeric(True)
         self.crop_right_spin.set_width_chars(5)
-        self.crop_right_spin.connect(
-            "value-changed", self.page.handlers.on_crop_value_changed
-        )
+        self.crop_right_spin.connect("value-changed", self.page.on_crop_value_changed)
         right_input_box.append(self.crop_right_spin)
 
         right_reset = Gtk.Button()
@@ -487,9 +469,7 @@ class VideoEditUI:
         right_reset.add_css_class("flat")
         right_reset.add_css_class("circular")
         self.add_tooltip_to_button(right_reset, _("Reset to default"))
-        right_reset.connect(
-            "clicked", lambda b: self.page.handlers.reset_crop_value("right")
-        )
+        right_reset.connect("clicked", lambda b: self.page.reset_crop_value("right"))
         right_input_box.append(right_reset)
 
         right_box.append(right_input_box)
@@ -512,9 +492,7 @@ class VideoEditUI:
         self.crop_top_spin.set_adjustment(adjustment)
         self.crop_top_spin.set_numeric(True)
         self.crop_top_spin.set_width_chars(5)
-        self.crop_top_spin.connect(
-            "value-changed", self.page.handlers.on_crop_value_changed
-        )
+        self.crop_top_spin.connect("value-changed", self.page.on_crop_value_changed)
         top_input_box.append(self.crop_top_spin)
 
         top_reset = Gtk.Button()
@@ -522,9 +500,7 @@ class VideoEditUI:
         top_reset.add_css_class("flat")
         top_reset.add_css_class("circular")
         self.add_tooltip_to_button(top_reset, _("Reset to default"))
-        top_reset.connect(
-            "clicked", lambda b: self.page.handlers.reset_crop_value("top")
-        )
+        top_reset.connect("clicked", lambda b: self.page.reset_crop_value("top"))
         top_input_box.append(top_reset)
 
         top_box.append(top_input_box)
@@ -547,9 +523,7 @@ class VideoEditUI:
         self.crop_bottom_spin.set_adjustment(adjustment)
         self.crop_bottom_spin.set_numeric(True)
         self.crop_bottom_spin.set_width_chars(5)
-        self.crop_bottom_spin.connect(
-            "value-changed", self.page.handlers.on_crop_value_changed
-        )
+        self.crop_bottom_spin.connect("value-changed", self.page.on_crop_value_changed)
         bottom_input_box.append(self.crop_bottom_spin)
 
         bottom_reset = Gtk.Button()
@@ -557,9 +531,7 @@ class VideoEditUI:
         bottom_reset.add_css_class("flat")
         bottom_reset.add_css_class("circular")
         self.add_tooltip_to_button(bottom_reset, _("Reset to default"))
-        bottom_reset.connect(
-            "clicked", lambda b: self.page.handlers.reset_crop_value("bottom")
-        )
+        bottom_reset.connect("clicked", lambda b: self.page.reset_crop_value("bottom"))
         bottom_input_box.append(bottom_reset)
 
         bottom_box.append(bottom_input_box)
@@ -598,8 +570,8 @@ class VideoEditUI:
                 1.0,
                 0.05,
                 self.page.brightness,
-                self.page.handlers.on_brightness_changed,
-                self.page.handlers.reset_brightness,
+                self.page.on_brightness_changed,
+                self.page.reset_brightness,
             )
         )
 
@@ -611,8 +583,8 @@ class VideoEditUI:
                 2.0,
                 0.05,
                 self.page.contrast,
-                self.page.handlers.on_contrast_changed,
-                self.page.handlers.reset_contrast,
+                self.page.on_contrast_changed,
+                self.page.reset_contrast,
             )
         )
 
@@ -624,8 +596,8 @@ class VideoEditUI:
                 2.0,
                 0.05,
                 self.page.saturation,
-                self.page.handlers.on_saturation_changed,
-                self.page.handlers.reset_saturation,
+                self.page.on_saturation_changed,
+                self.page.reset_saturation,
             )
         )
 
@@ -637,8 +609,8 @@ class VideoEditUI:
                 16.0,
                 0.1,
                 self.page.gamma,
-                self.page.handlers.on_gamma_changed,
-                self.page.handlers.reset_gamma,
+                self.page.on_gamma_changed,
+                self.page.reset_gamma,
             )
         )
 
@@ -650,8 +622,8 @@ class VideoEditUI:
                 16.0,
                 0.1,
                 self.page.gamma_r,
-                self.page.handlers.on_gamma_r_changed,
-                self.page.handlers.reset_gamma_r,
+                self.page.on_gamma_r_changed,
+                self.page.reset_gamma_r,
             )
         )
 
@@ -663,8 +635,8 @@ class VideoEditUI:
                 16.0,
                 0.1,
                 self.page.gamma_g,
-                self.page.handlers.on_gamma_g_changed,
-                self.page.handlers.reset_gamma_g,
+                self.page.on_gamma_g_changed,
+                self.page.reset_gamma_g,
             )
         )
 
@@ -676,8 +648,8 @@ class VideoEditUI:
                 16.0,
                 0.1,
                 self.page.gamma_b,
-                self.page.handlers.on_gamma_b_changed,
-                self.page.handlers.reset_gamma_b,
+                self.page.on_gamma_b_changed,
+                self.page.reset_gamma_b,
             )
         )
 
@@ -689,8 +661,8 @@ class VideoEditUI:
                 1.0,
                 0.01,
                 self.page.gamma_weight,
-                self.page.handlers.on_gamma_weight_changed,
-                self.page.handlers.reset_gamma_weight,
+                self.page.on_gamma_weight_changed,
+                self.page.reset_gamma_weight,
             )
         )
 
@@ -702,10 +674,14 @@ class VideoEditUI:
                 3.14,
                 0.05,
                 self.page.hue,
-                self.page.handlers.on_hue_changed,
-                self.page.handlers.reset_hue,
+                self.page.on_hue_changed,
+                self.page.reset_hue,
             )
         )
+
+        reset_button = Gtk.Button(label=_("Reset"))
+        reset_button.connect("clicked", self.page.on_reset_all_settings)
+        adjustments_group.add(reset_button)
 
         return adjustments_group
 

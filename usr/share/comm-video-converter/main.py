@@ -763,33 +763,46 @@ class VideoConverterApp(Adw.Application):
             )
 
     def _on_files_selected(self, dialog, result):
-        """Handle selected files from file chooser dialog"""
         try:
             files = dialog.open_multiple_finish(result)
+            files_added = 0
+            first_file = None
+
             if files:
-                files_added = 0
                 for file in files:
                     file_path = file.get_path()
-                    if file_path and os.path.exists(file_path):
-                        files_added += self.process_path_recursively(file_path)
+                    if file_path:
+                        if self.add_file_to_queue(file_path):
+                            files_added += 1
+                            if not first_file:
+                                first_file = file_path
 
-                # Update last accessed directory if files were selected
-                if files_added > 0 and len(files) > 0:
-                    first_file = files[0].get_path()
+                # Show feedback message
+                if files_added > 0:
                     if first_file:
-                        self.last_accessed_directory = os.path.dirname(first_file)
-                        self.settings_manager.save_setting(
-                            "last-accessed-directory", self.last_accessed_directory
-                        )
-
-                        # Provide feedback about the number of files added
+                        message = _("Added {} files to the queue").format(files_added)
                         if files_added > 1:
-                            message = _(
-                                "{} video files have been added to the queue."
-                            ).format(files_added)
                             GLib.idle_add(
                                 lambda: self.show_info_dialog(_("Files Added"), message)
                             )
+
+                    # Update UI
+                    self.conversion_page.update_queue_display()
+
+                    # If in edit tab, load the first file into the editor
+                    if (
+                        first_file
+                        and hasattr(self, "stack")
+                        and self.stack.get_visible_child_name() == "edit"
+                    ):
+                        self.video_edit_page.set_video(first_file)
+                else:
+                    GLib.idle_add(
+                        lambda: self.show_info_dialog(
+                            _("No Files Added"),
+                            _("No valid video files were found in your selection."),
+                        )
+                    )
         except Exception as error:
             print(f"Error selecting files: {error}")
             # Capture error em uma variável local para evitar problemas de escopo

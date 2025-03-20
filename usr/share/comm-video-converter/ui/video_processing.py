@@ -146,12 +146,12 @@ class VideoProcessor:
             self.page.crop_right = 0
             self.page.crop_top = 0
             self.page.crop_bottom = 0
-            self.page.handlers.update_crop_spinbuttons()
+            self.page.update_crop_spinbuttons()
 
             # Reset trim points
             self.page.start_time = 0
             self.page.end_time = self.page.video_duration
-            self.page.handlers.update_trim_display()
+            self.page.update_trim_display()
 
             # Set current position to middle of video for better initial preview
             # (first frame is often black or blank)
@@ -311,8 +311,8 @@ class VideoProcessor:
 
                 # Update position tracking
                 self.page.current_position = position
-                self.page.handlers.update_position_display(position)
-                self.page.handlers.update_frame_counter(position)
+                self.page.update_position_display(position)
+                self.page.update_frame_counter(position)
 
                 return True
             else:
