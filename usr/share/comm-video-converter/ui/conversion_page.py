@@ -7,8 +7,7 @@ from gi.repository import Gtk, Adw, Gio, Pango, GLib
 
 from constants import CONVERT_SCRIPT_PATH
 from utils.conversion import run_with_progress_dialog
-from utils.video_adjustments import get_video_filter_string
-from utils.video_adjustments import print_debug_info
+from utils.video_settings import get_video_filter_string
 
 # Setup translation
 import gettext
@@ -878,14 +877,17 @@ class ConversionPage:
                     env_vars["audio_channels"] = audio_channels
 
                 # Use the centralized video filter utility to get consistent behavior
+                # FIX: Using correct parameter names (video_width/video_height instead of video_path)
+                video_width = getattr(self.app, "video_width", None)
+                video_height = getattr(self.app, "video_height", None)
+
                 video_filter = get_video_filter_string(
-                    self.app.settings_manager, video_path=self.current_file_path
+                    self.app.settings_manager,
+                    video_width=video_width,
+                    video_height=video_height,
                 )
 
                 if video_filter:
-                    # Print detailed debug info about video adjustments
-                    print_debug_info(self.app.settings_manager)
-
                     env_vars["video_filter"] = video_filter
                     print(f"Using video_filter: {env_vars['video_filter']}")
                 else:

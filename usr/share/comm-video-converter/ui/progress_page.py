@@ -274,30 +274,184 @@ class ConversionItem(Gtk.Box):
         self.terminal_buffer.delete_mark(end_mark)
 
     def on_cancel_clicked(self, button):
-        """Handle cancel button click"""
+        """Handle cancel button click with improved process termination"""
+        # Ensure os module is imported at the beginning of the method
+        from os.path import basename
+        import os
+        import signal
+        import subprocess
+
         # Set cancelled flag first to prevent error messages
         self.cancelled = True
+        print("Cancel button clicked, setting cancelled flag")
 
         # Update UI to show cancellation
         self.status_label.set_text(_("Cancelling..."))
         self.status_icon.set_from_icon_name("process-stop-symbolic")
         self.cancel_button.set_sensitive(False)
 
+        # Critical: Make sure app knows we're cancelling the current active conversion
+        if (
+            self.input_file
+            and hasattr(self.app, "current_processing_file")
+            and self.app.current_processing_file == self.input_file
+        ):
+            print(
+                f"Removing currently processing file from active status: {self.input_file}"
+            )
+            self.app.current_processing_file = None
+            self.app.currently_converting = False
+
+        # Force immediate removal from the conversion queue
+        if self.input_file and hasattr(self.app, "conversion_queue"):
+            if self.input_file in self.app.conversion_queue:
+                try:
+                    self.app.conversion_queue.remove(self.input_file)
+                    print(f"Directly removed {self.input_file} from queue")
+
+                    # Force update the queue display
+                    if hasattr(self.app, "conversion_page"):
+                        self.app.conversion_page.update_queue_display()
+
+                    # Add notification to terminal output with safe basename extraction
+                    try:
+                        filename = basename(
+                            self.input_file
+                        )  # Use the directly imported basename function
+                    except Exception:
+                        # Fallback in case of any error
+                        parts = self.input_file.split("/")
+                        filename = parts[-1] if parts else self.input_file
+
+                    self.add_output_text(f"Removed from queue: {filename}")
+                except Exception as e:
+                    print(f"Error removing from queue: {e}")
+
+        # CRITICAL: Make sure the file is COMPLETELY removed from the app's conversion queue
+        if self.input_file:
+            print(f"Ensuring {self.input_file} is removed from conversion queue")
+
+            # Direct queue manipulation - this ensures the file is fully removed
+            if (
+                hasattr(self.app, "conversion_queue")
+                and self.input_file in self.app.conversion_queue
+            ):
+                try:
+                    self.app.conversion_queue.remove(self.input_file)
+                    print(
+                        f"Directly removed {self.input_file} from app.conversion_queue"
+                    )
+                except Exception as e:
+                    print(f"Error removing from queue: {e}")
+
+            # Also try the standard method if it exists
+            if hasattr(self.app, "remove_from_queue"):
+                try:
+                    self.app.remove_from_queue(self.input_file)
+                    print(f"Removed via app.remove_from_queue: {self.input_file}")
+                except Exception as e:
+                    print(f"Error in remove_from_queue: {e}")
+
+            # Force UI update
+            if hasattr(self.app, "conversion_page") and hasattr(
+                self.app.conversion_page, "update_queue_display"
+            ):
+                try:
+                    self.app.conversion_page.update_queue_display()
+                    print("Updated queue display after removal")
+                except Exception as e:
+                    print(f"Error updating queue display: {e}")
+
+            # Add notification to terminal output
+            self.add_output_text(
+                f"Removed from queue: {os.path.basename(self.input_file)}"
+            )
+
         # Kill process
         if self.process:
             try:
                 import signal
+                import os
+                import subprocess
+                import psutil  # Try to use psutil for better process management
 
-                # Try to kill process group on Unix
+                print(f"Attempting to terminate process {self.process.pid}")
+
+                # Notify the app to remove this file from the conversion queue
+                if self.input_file and hasattr(self.app, "remove_from_queue"):
+                    print(f"Removing cancelled file from queue: {self.input_file}")
+                    self.app.remove_from_queue(self.input_file)
+
+                # First make sure conversion isn't already removed from list
+                found = False
+                for (
+                    conversion_id,
+                    info,
+                ) in self.app.progress_page.active_conversions.items():
+                    if info["item"] == self:
+                        found = True
+                        break
+
+                if not found:
+                    print("Warning: Conversion already removed from active_conversions")
+                    return
+
+                # Forceful termination without creating a separate thread
+                # This ensures we don't close the dialog before the process is killed
                 try:
-                    os.killpg(os.getpgid(self.process.pid), signal.SIGKILL)
-                except:
-                    # Fallback: try to kill just the process
-                    self.process.kill()
+                    print(f"Direct process kill for PID {self.process.pid}")
 
-                print("Process termination requested")
+                    # Try using psutil for better process tree killing
+                    try:
+                        import psutil
+
+                        parent = psutil.Process(self.process.pid)
+                        print(f"Found parent process: {parent}")
+
+                        # Kill all child processes
+                        for child in parent.children(recursive=True):
+                            print(f"Killing child process {child.pid}")
+                            child.kill()
+
+                        # Kill the parent
+                        parent.kill()
+                        print("Killed process tree using psutil")
+                    except ImportError:
+                        # Fallback to os.killpg
+                        print("psutil not available, using fallback kill methods")
+                        try:
+                            pgid = os.getpgid(self.process.pid)
+                            os.killpg(pgid, signal.SIGKILL)
+                            print(f"Sent SIGKILL to process group {pgid}")
+                        except Exception as e:
+                            print(
+                                f"Error with killpg: {e}, falling back to direct kill"
+                            )
+                            self.process.kill()
+
+                    # Wait a short time to ensure process is dead
+                    try:
+                        self.process.wait(timeout=0.5)
+                        print("Process termination confirmed")
+                    except subprocess.TimeoutExpired:
+                        print("Warning: Process still not terminated after timeout")
+                        # One more kill attempt
+                        try:
+                            self.process.kill()
+                        except:
+                            pass
+
+                except Exception as e:
+                    print(f"Error killing process: {e}")
+                    import traceback
+
+                    traceback.print_exc()
+
             except Exception as e:
-                print(f"Error terminating process: {e}")
+                print(f"Error initiating process termination: {e}")
+                import traceback
+
+                traceback.print_exc()
 
     def set_process(self, process):
         """Set the conversion process for monitoring"""

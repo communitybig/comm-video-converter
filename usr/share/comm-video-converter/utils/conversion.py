@@ -600,7 +600,7 @@ def monitor_progress(app, process, progress_item):
                                 error_msg = f"Could not delete the original file: {e}"
                                 GLib.idle_add(progress_item.add_output_text, error_msg)
                                 GLib.idle_add(
-                                    lambda: show_info_dialog_and_close_progress(
+                                    lambda e=e: show_info_dialog_and_close_progress(
                                         app,
                                         _(
                                             "Conversion completed successfully!\n\n"
@@ -738,32 +738,40 @@ def build_convert_command(input_file, settings):
     cmd = [CONVERT_SCRIPT_PATH, input_file]
     env_vars = os.environ.copy()
 
-    # Map settings to environment variables
-    settings_map = {
-        "output_file": "output-file",
-        "output_folder": "output-folder",
-        "gpu": "gpu-selection",
-        "video_quality": "video-quality",
-        "video_encoder": "video-codec",
-        "preset": "preset",
-        "subtitle_extract": "subtitle-extract",
-        "audio_handling": "audio-handling",
-        "audio_bitrate": "audio-bitrate",
-        "audio_channels": "audio-channels",
-        "video_resolution": "video-resolution",
-        "options": "additional-options",
-        "gpu_partial": "gpu-partial",
-        "force_copy_video": "force-copy-video",
-        "only_extract_subtitles": "only-extract-subtitles",
-    }
+    # Direct mapping of settings to environment variables
+    # These are the environment variables expected by the conversion script
+    setting_keys = [
+        "gpu",
+        "video-quality",
+        "video-codec",
+        "preset",
+        "subtitle-extract",
+        "audio-handling",
+        "audio-bitrate",
+        "audio-channels",
+        "video-resolution",
+        "additional-options",
+        "gpu-partial",
+        "force-copy-video",
+        "only-extract-subtitles",
+        "output-folder",
+    ]
 
-    # Process settings to environment variables - FIXED: Properly handle all valid values
-    for env_key, settings_key in settings_map.items():
-        value = settings.get(settings_key)
+    # Just convert dashes to underscores for environment variable names
+    for key in setting_keys:
+        value = (
+            settings.get_value(key)
+            if hasattr(settings, "get_value")
+            else settings.get(key)
+        )
+
+        # Skip empty values
         if value not in [None, "", False]:
+            env_key = key.replace("-", "_")
             env_vars[env_key] = str(value)
             print(f"Setting {env_key}={value}")
 
+    # Set default output folder if not specified
     if "output_folder" not in env_vars and input_file:
         env_vars["output_folder"] = os.path.dirname(input_file)
         print(

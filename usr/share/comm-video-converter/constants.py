@@ -71,5 +71,5 @@ PRESET_OPTIONS = [
     "slow",
     "veryslow",
 ]
-SUBTITLE_OPTIONS = ["Default (extract)", "extract (SRT)", "embedded", "none"]
-AUDIO_OPTIONS = ["Default (copy)", "copy", "reencode", "none"]
+SUBTITLE_OPTIONS = ["embedded", "extract (SRT)", "none"]
+AUDIO_OPTIONS = ["copy", "reencode", "none"]

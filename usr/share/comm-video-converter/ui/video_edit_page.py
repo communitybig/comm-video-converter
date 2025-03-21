@@ -4,7 +4,7 @@ import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 gi.require_version("GdkPixbuf", "2.0")
-from gi.repository import GLib, Gdk, GdkPixbuf, Gtk  # Added Gtk import here
+from gi.repository import GLib, Gdk, Gtk
 
 # Setup translation
 import gettext
@@ -14,18 +14,16 @@ _ = gettext.gettext
 # Import the modules we've split off
 from ui.video_edit_ui import VideoEditUI
 from ui.video_processing import VideoProcessor
-from utils.video_adjustments import generate_video_filters
 
-# Import the centralized adjustment utilities
-from utils.video_adjustments import (
-    DEFAULT_VALUES,
-    FLOAT_THRESHOLD,
+# Import from the unified video_settings module instead of separate modules
+from utils.video_settings import (
     get_adjustment_value,
     save_adjustment_value,
     reset_adjustment,
     ui_to_ffmpeg_contrast,
-    ui_to_ffmpeg_hue,
+    generate_video_filters,
     generate_all_filters,
+    VideoAdjustmentManager,  # Import from video_settings instead of video_adjustment_manager
 )
 
 
@@ -51,8 +49,6 @@ class VideoEditPage:
         self.video_fps = 25  # Default fps value
 
         # Initialize the adjustment manager
-        from utils.video_adjustment_manager import VideoAdjustmentManager
-
         self.adjustment_manager = VideoAdjustmentManager(self.settings, self)
 
         # Set properties directly from the adjustment manager
