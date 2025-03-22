@@ -500,8 +500,8 @@ fi
 
 
 # Try to encode with the GPU
-echo "Try GPU encode"
-echo "$ffmpeg_executable $init_hardware $options $decoder_format $encoder_format $video_filter_gpu $ffmpeg_generic_options" > ~/ffmpeg_command.log
+echo "Decode and encode GPU"
+echo "Running command: $ffmpeg_executable $init_hardware $options $decoder_format $encoder_format $video_filter_gpu $ffmpeg_generic_options" > ~/ffmpeg_command.log
 eval $ffmpeg_executable $init_hardware $options $decoder_format $encoder_format $video_filter_gpu $ffmpeg_generic_options
 
 # Store the exit code while preserving $? for later checks
@@ -509,7 +509,7 @@ exit_code=$?
 
 # If encoding not successful, and not exit with 255 (interrupted by user), and not software encoding, try with the second option
 if [[ $exit_code != 0 && $exit_code != 255 && $force_software != 1 && $force_copy_video != 1 ]]; then
-    echo "Try partial GPU encode"
+    echo "Encode GPU"
     echo "Running command: $ffmpeg_executable $init_hardware $options $encoder_format $video_filter $ffmpeg_generic_options"
     eval $ffmpeg_executable $init_hardware $options $encoder_format $video_filter $ffmpeg_generic_options
     exit_code=$?
@@ -517,7 +517,7 @@ fi
 
 # If encoding not successful, and not exit with 255 (interrupted by user), and not software encoding, try with software
 if [[ $exit_code != 0 && $exit_code != 255 && $force_software != 1 && $force_copy_video != 1 ]]; then
-    echo "Try software encode"
+    echo "Software encode"
     echo "Running command: $ffmpeg_executable $options $encoder_software $ffmpeg_generic_options"
     eval $ffmpeg_executable $options $encoder_software $video_filter $ffmpeg_generic_options
     exit_code=$?

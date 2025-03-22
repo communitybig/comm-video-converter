@@ -804,14 +804,7 @@ class VideoConverterApp(Adw.Application):
                         )
                     )
         except Exception as error:
-            print(f"Error selecting files: {error}")
-            # Capture error em uma variável local para evitar problemas de escopo
-            error_msg = str(error)
-            GLib.idle_add(
-                lambda: self.show_error_dialog(
-                    _("Error selecting files: {}").format(error_msg)
-                )
-            )
+            print(f"Files not selected: {error}")
 
 
 def main():

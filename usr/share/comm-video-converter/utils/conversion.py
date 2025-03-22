@@ -59,7 +59,6 @@ def run_with_progress_dialog(
             env_vars["output_file"] = os.path.basename(env_vars["output_file"])
             print(f"Using basename for output file: {env_vars['output_file']}")
 
-    # Título correto
     if not title_suffix or title_suffix == "Unknown file":
         if input_file:
             title_suffix = os.path.basename(input_file)
