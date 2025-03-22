@@ -172,10 +172,6 @@ class ConversionItem(Gtk.Box):
         status_box.set_margin_top(4)
         status_box.set_margin_bottom(4)
 
-        # Status icon
-        self.status_icon = Gtk.Image.new_from_icon_name("emblem-synchronizing-symbolic")
-        status_box.append(self.status_icon)
-
         # Status label
         self.status_label = Gtk.Label(label=_("Starting conversion..."))
         self.status_label.set_halign(Gtk.Align.START)

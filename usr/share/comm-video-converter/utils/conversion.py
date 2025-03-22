@@ -179,6 +179,13 @@ def monitor_progress(app, process, progress_item):
     video_fps_pattern = re.compile(r"Stream #\d+:\d+.*Video:.*\s(\d+(?:\.\d+)?)\s*fps")
     alt_fps_pattern = re.compile(r"Video:.*?(\d+(?:\.\d+)?)\s*(?:tbr|fps)")
 
+    # Encode mode
+    encode_mode_pattern = re.compile(r"Encode mode:\s*(.*)")
+
+    # Track when we detect the encode mode
+    encode_mode_detected = False
+    encode_mode = _("Unknown")  # Default value
+
     # Values to track progress
     duration_secs = None
     duration_str = None
@@ -205,252 +212,279 @@ def monitor_progress(app, process, progress_item):
     GLib.idle_add(progress_item.add_output_text, _("Starting FFmpeg process..."))
 
     try:
-        # Read output line by line
-        for line in iter(process.stderr.readline, ""):
-            # Reset timeout counter with each line of output
-            last_output_time = time.time()
+        import threading
 
-            # Print the raw output for debugging
-            print(f"FFMPEG: {line.strip()}")
+        # Queue to collect output from both streams
+        from queue import Queue, Empty
 
-            # Send output to terminal view
-            GLib.idle_add(progress_item.add_output_text, line)
+        output_queue = Queue()
 
-            # Check if the process was cancelled
-            if progress_item.was_cancelled():
-                print("Process was cancelled, stopping monitor thread")
-                GLib.idle_add(
-                    progress_item.add_output_text, _("Process cancelled by user")
-                )
-                break
+        # Threads to read from stdout and stderr
+        def read_stdout():
+            for line in iter(process.stdout.readline, ""):
+                if line:
+                    output_queue.put(("stdout", line))
+            output_queue.put(("stdout_end", None))
 
-            # Capture output file if available
-            if "Output #0" in line and "'" in line:
-                output_match = output_file_pattern.search(line)
-                if output_match:
-                    output_file = output_match.group(1)
-                    print(f"Detected output file: {output_file}")
-                    GLib.idle_add(
-                        progress_item.add_output_text, f"Output file: {output_file}"
-                    )
+        def read_stderr():
+            for line in iter(process.stderr.readline, ""):
+                if line:
+                    output_queue.put(("stderr", line))
+            output_queue.put(("stderr_end", None))
 
-            # Extract video frame rate from input stream info
-            if video_fps is None and "Stream #" in line and "Video:" in line:
-                # Try primary pattern first
-                fps_match = video_fps_pattern.search(line)
-                if fps_match:
-                    try:
-                        video_fps = float(fps_match.group(1))
-                        print(f"Detected video frame rate: {video_fps} fps")
+        # Start reader threads
+        stdout_thread = threading.Thread(target=read_stdout)
+        stderr_thread = threading.Thread(target=read_stderr)
+        stdout_thread.daemon = True
+        stderr_thread.daemon = True
+        stdout_thread.start()
+        stderr_thread.start()
+
+        # Flags to track when streams are done
+        stdout_done = False
+        stderr_done = False
+
+        # Process lines from both outputs as they come in
+        while not (stdout_done and stderr_done) and not progress_item.was_cancelled():
+            try:
+                try:
+                    source, line = output_queue.get(timeout=0.1)
+                except Empty:
+                    # This is normal - just check if we should continue waiting
+                    if time.time() - last_output_time > 15:
+                        timeout_msg = _("No progress detected. Process may be stuck.")
+                        GLib.idle_add(progress_item.update_status, timeout_msg)
+                        GLib.idle_add(progress_item.add_output_text, timeout_msg)
+                        print("Process may be stuck - no output for 15 seconds")
+                    continue
+
+                if source == "stdout_end":
+                    stdout_done = True
+                    continue
+                elif source == "stderr_end":
+                    stderr_done = True
+                    continue
+
+                # Reset timeout counter with each line of output
+                last_output_time = time.time()
+
+                # Skip processing if line is None
+                if line is None:
+                    continue
+
+                # Print the raw output for debugging
+                print(f"FFMPEG {source}: {line.strip()}")
+
+                # Send output to terminal view
+                GLib.idle_add(progress_item.add_output_text, line)
+
+                # Check for encode mode in both stdout and stderr
+                mode_match = encode_mode_pattern.search(line)
+                if mode_match:
+                    detected_mode = mode_match.group(1).strip()
+                    if detected_mode:  # Make sure we got a non-empty string
+                        encode_mode = detected_mode
+                        print(f"Detected encode mode from {source}: {encode_mode}")
                         GLib.idle_add(
                             progress_item.add_output_text,
-                            f"Detected video frame rate: {video_fps} fps",
+                            f"Detected encode mode: {encode_mode}",
                         )
-                    except (ValueError, TypeError) as e:
-                        print(f"Error converting fps: {e}")
-                else:
-                    # Try alternative pattern
-                    alt_match = alt_fps_pattern.search(line)
-                    if alt_match:
-                        try:
-                            video_fps = float(alt_match.group(1))
-                            print(
-                                f"Detected video frame rate (alt pattern): {video_fps} fps"
-                            )
+
+                # Continue with the rest of your existing parsing logic
+                if source == "stderr":
+                    # Original stderr processing for other patterns
+                    # Check if the process was cancelled
+                    if progress_item.was_cancelled():
+                        print("Process was cancelled, stopping monitor thread")
+                        GLib.idle_add(
+                            progress_item.add_output_text,
+                            _("Process cancelled by user"),
+                        )
+                        break
+
+                    # Capture output file if available
+                    if "Output #0" in line and "'" in line:
+                        output_match = output_file_pattern.search(line)
+                        if output_match:
+                            output_file = output_match.group(1)
+                            print(f"Detected output file: {output_file}")
                             GLib.idle_add(
                                 progress_item.add_output_text,
-                                f"Detected video frame rate: {video_fps} fps",
+                                f"Output file: {output_file}",
                             )
-                        except (ValueError, TypeError) as e:
-                            print(f"Error converting fps (alt pattern): {e}")
 
-            # Extract duration if not already done
-            if not duration_detected and "Duration" in line:
-                duration_match = duration_pattern.search(line)
-                if duration_match:
-                    try:
-                        duration_str = duration_match.group(1)
-                        h, m, rest = duration_str.split(":")
-                        s = rest.split(".")[0]  # Get seconds without milliseconds
-                        ms = rest.split(".")[1] if "." in rest else "0"
-
-                        # Calculate duration in seconds with millisecond precision
-                        duration_secs = (
-                            int(h) * 3600 + int(m) * 60 + int(s) + (int(ms) / 100)
-                        )
-                        duration_detected = True
-
-                        print(
-                            f"Detected duration: {duration_str} ({duration_secs:.3f} seconds)"
-                        )
-                        GLib.idle_add(
-                            progress_item.add_output_text,
-                            f"Detected duration: {duration_str}",
-                        )
-
-                        # Calculate total frames if we have both duration and fps
-                        if video_fps is not None and video_fps > 0:
-                            # Sanity check - make sure fps is reasonable (1-120)
-                            if 1 <= video_fps <= 120:
-                                total_frames = int(duration_secs * video_fps)
-                                print(f"Estimated total frames: {total_frames}")
-                                GLib.idle_add(
-                                    progress_item.add_output_text,
-                                    f"Estimated total frames: {total_frames}",
-                                )
-                            else:
-                                print(
-                                    f"Unreasonable fps detected: {video_fps}, not calculating total frames"
-                                )
-                    except Exception as e:
-                        print(f"Error parsing duration: {e}")
-
-            # Track current frame count when available
-            if "frame=" in line:
-                frame_match = frame_pattern.search(line)
-                if frame_match:
-                    try:
-                        current_frame = int(frame_match.group(1))
-                        max_current_frame = max(max_current_frame, current_frame)
-
-                        # Get info about current fps
-                        current_fps = None
-                        fps_match = fps_pattern.search(line)
+                    # Extract video frame rate from input stream info
+                    if video_fps is None and "Stream #" in line and "Video:" in line:
+                        # Try primary pattern first
+                        fps_match = video_fps_pattern.search(line)
                         if fps_match:
                             try:
-                                current_fps = float(fps_match.group(1))
-                            except (ValueError, TypeError):
-                                pass
+                                video_fps = float(fps_match.group(1))
+                                print(f"Detected video frame rate: {video_fps} fps")
+                                GLib.idle_add(
+                                    progress_item.add_output_text,
+                                    f"Detected video frame rate: {video_fps} fps",
+                                )
+                            except (ValueError, TypeError) as e:
+                                print(f"Error converting fps: {e}")
+                        else:
+                            # Try alternative pattern
+                            alt_match = alt_fps_pattern.search(line)
+                            if alt_match:
+                                try:
+                                    video_fps = float(alt_match.group(1))
+                                    print(
+                                        f"Detected video frame rate (alt pattern): {video_fps} fps"
+                                    )
+                                    GLib.idle_add(
+                                        progress_item.add_output_text,
+                                        f"Detected video frame rate: {video_fps} fps",
+                                    )
+                                except (ValueError, TypeError) as e:
+                                    print(f"Error converting fps (alt pattern): {e}")
 
-                        # If we don't have total frames yet but have duration
-                        if (
-                            total_frames is None
-                            and duration_secs is not None
-                            and duration_secs > 0
-                        ):
-                            if current_fps is not None and 1 <= current_fps <= 120:
-                                # Only use current_fps if it's reasonable
-                                total_frames = int(duration_secs * current_fps)
+                    # Extract duration if not already done
+                    if not duration_detected and "Duration" in line:
+                        duration_match = duration_pattern.search(line)
+                        if duration_match:
+                            try:
+                                duration_str = duration_match.group(1)
+                                h, m, rest = duration_str.split(":")
+                                s = rest.split(".")[
+                                    0
+                                ]  # Get seconds without milliseconds
+                                ms = rest.split(".")[1] if "." in rest else "0"
+
+                                # Calculate duration in seconds with millisecond precision
+                                duration_secs = (
+                                    int(h) * 3600
+                                    + int(m) * 60
+                                    + int(s)
+                                    + (int(ms) / 100)
+                                )
+                                duration_detected = True
+
                                 print(
-                                    f"Estimated total frames from current fps: {total_frames}"
+                                    f"Detected duration: {duration_str} ({duration_secs:.3f} seconds)"
                                 )
                                 GLib.idle_add(
                                     progress_item.add_output_text,
-                                    f"Estimated total frames: {total_frames} (from current fps: {current_fps})",
+                                    f"Detected duration: {duration_str}",
                                 )
 
-                        # Sanity check for frame estimate
-                        if (
-                            total_frames is not None
-                            and current_frame > total_frames * 1.5
-                        ):
-                            # Current frame count exceeds our total estimate by 50% - our estimate is likely wrong
-                            # Recalculate based on observed frame count
-                            if duration_secs and duration_secs > 0:
-                                processing_time = time.time() - processing_start_time
-                                # Estimate total frames based on elapsed time and observed frame count
-                                if (
-                                    processing_time > 5
-                                ):  # Only do this after 5 seconds of processing
-                                    estimated_total = (
-                                        int(
-                                            (current_frame * duration_secs)
-                                            / current_time_secs
-                                        )
-                                        if current_time_secs > 0
-                                        else 0
-                                    )
-                                    if estimated_total > total_frames:
-                                        print(
-                                            f"Adjusting total frame estimate from {total_frames} to {estimated_total}"
-                                        )
-                                        total_frames = estimated_total
+                                # Calculate total frames if we have both duration and fps
+                                if video_fps is not None and video_fps > 0:
+                                    # Sanity check - make sure fps is reasonable (1-120)
+                                    if 1 <= video_fps <= 120:
+                                        total_frames = int(duration_secs * video_fps)
+                                        print(f"Estimated total frames: {total_frames}")
                                         GLib.idle_add(
                                             progress_item.add_output_text,
-                                            f"Adjusted total frames estimate to {total_frames}",
+                                            f"Estimated total frames: {total_frames}",
                                         )
+                                    else:
+                                        print(
+                                            f"Unreasonable fps detected: {video_fps}, not calculating total frames"
+                                        )
+                            except Exception as e:
+                                print(f"Error parsing duration: {e}")
 
-                        # Calculate progress based on frames if total_frames is valid
-                        if (
-                            total_frames is not None
-                            and total_frames > 0
-                            and current_frame <= total_frames * 1.5
-                        ):
-                            # Cap progress at 99% until complete
-                            progress = min(0.99, current_frame / total_frames)
+                # Process frame counts from either stream
+                if "frame=" in line:
+                    frame_match = frame_pattern.search(line)
+                    if frame_match:
+                        try:
+                            current_frame = int(frame_match.group(1))
+                            max_current_frame = max(max_current_frame, current_frame)
 
-                            # Process time estimation
-                            processing_diff = time.time() - processing_start_time
-                            if len(progress_samples) >= sample_window:
-                                progress_samples.pop(0)
-
-                            if progress > 0:
-                                # Estimate remaining time
-                                eta_seconds = (processing_diff / progress) * (
-                                    1 - progress
-                                )
-                                progress_samples.append((progress, eta_seconds))
-
-                                # Calculate average ETA from recent samples
-                                if len(progress_samples) > 1:
-                                    fps_display = (
-                                        f"{current_fps:.1f}"
-                                        if current_fps is not None
-                                        else "N/A"
-                                    )
-                                    status_msg = f"_(Speed:) {fps_display} fps"
-                                    GLib.idle_add(
-                                        progress_item.update_progress,
-                                        progress,
-                                        f"{int(progress * 100)}%",
-                                    )
-                                    GLib.idle_add(
-                                        progress_item.update_status, status_msg
-                                    )
-
-                        # Fallback to time-based progress if frames approach isn't working
-                        elif (
-                            "time=" in line
-                            and duration_secs is not None
-                            and duration_secs > 0
-                        ):
-                            time_match = time_pattern.search(line)
-                            if time_match:
+                            # Get info about current fps
+                            current_fps = None
+                            fps_match = fps_pattern.search(line)
+                            if fps_match:
                                 try:
-                                    time_str = time_match.group(1)
-                                    h, m, rest = time_str.split(":")
-                                    s = rest.split(".")[
-                                        0
-                                    ]  # Get seconds without milliseconds
-                                    ms = rest.split(".")[1] if "." in rest else "0"
+                                    current_fps = float(fps_match.group(1))
+                                except (ValueError, TypeError):
+                                    pass
 
-                                    # Calculate current time in seconds
-                                    current_time_secs = (
-                                        int(h) * 3600
-                                        + int(m) * 60
-                                        + int(s)
-                                        + (int(ms) / 100)
+                            # If we don't have total frames yet but have duration
+                            if (
+                                total_frames is None
+                                and duration_secs is not None
+                                and duration_secs > 0
+                            ):
+                                if current_fps is not None and 1 <= current_fps <= 120:
+                                    # Only use current_fps if it's reasonable
+                                    total_frames = int(duration_secs * current_fps)
+                                    print(
+                                        f"Estimated total frames from current fps: {total_frames}"
                                     )
-                                    progress = min(
-                                        0.99, current_time_secs / duration_secs
+                                    GLib.idle_add(
+                                        progress_item.add_output_text,
+                                        f"Estimated total frames: {total_frames} (from current fps: {current_fps})",
                                     )
 
-                                    # Calculate processing time and ETA
-                                    processing_diff = (
+                            # Sanity check for frame estimate
+                            if (
+                                total_frames is not None
+                                and current_frame > total_frames * 1.5
+                            ):
+                                # Current frame count exceeds our total estimate by 50% - our estimate is likely wrong
+                                # Recalculate based on observed frame count
+                                if duration_secs and duration_secs > 0:
+                                    processing_time = (
                                         time.time() - processing_start_time
                                     )
-                                    if progress > 0:
-                                        eta_seconds = (processing_diff / progress) * (
-                                            1 - progress
+                                    # Estimate total frames based on elapsed time and observed frame count
+                                    if (
+                                        processing_time > 5
+                                    ):  # Only do this after 5 seconds of processing
+                                        estimated_total = (
+                                            int(
+                                                (current_frame * duration_secs)
+                                                / current_time_secs
+                                            )
+                                            if current_time_secs > 0
+                                            else 0
                                         )
+                                        if estimated_total > total_frames:
+                                            print(
+                                                f"Adjusting total frame estimate from {total_frames} to {estimated_total}"
+                                            )
+                                            total_frames = estimated_total
+                                            GLib.idle_add(
+                                                progress_item.add_output_text,
+                                                f"Adjusted total frames estimate to {total_frames}",
+                                            )
 
-                                        # Modified status message to show only percentage and speed
+                            # Calculate progress based on frames if total_frames is valid
+                            if (
+                                total_frames is not None
+                                and total_frames > 0
+                                and current_frame <= total_frames * 1.5
+                            ):
+                                # Cap progress at 99% until complete
+                                progress = min(0.99, current_frame / total_frames)
+
+                                # Process time estimation
+                                processing_diff = time.time() - processing_start_time
+                                if len(progress_samples) >= sample_window:
+                                    progress_samples.pop(0)
+
+                                if progress > 0:
+                                    # Estimate remaining time
+                                    eta_seconds = (processing_diff / progress) * (
+                                        1 - progress
+                                    )
+                                    progress_samples.append((progress, eta_seconds))
+
+                                    # Calculate average ETA from recent samples
+                                    if len(progress_samples) > 1:
                                         fps_display = (
                                             f"{current_fps:.1f}"
                                             if current_fps is not None
                                             else "N/A"
                                         )
-                                        status_msg = f"{_('Speed:')} {fps_display} fps"
+                                        status_msg = f"{_('Speed:')} {fps_display} fps\n{_('Mode:')} {encode_mode}"
                                         GLib.idle_add(
                                             progress_item.update_progress,
                                             progress,
@@ -459,49 +493,94 @@ def monitor_progress(app, process, progress_item):
                                         GLib.idle_add(
                                             progress_item.update_status, status_msg
                                         )
-                                except Exception as e:
-                                    print(f"Error calculating time progress: {e}")
 
-                        # If neither frame nor time progress works, show frames processed with fps if available
-                        else:
-                            # Modified status message for indeterminate progress
-                            if current_fps is not None:
-                                status_msg = f"Processing frame {current_frame} - Speed: {current_fps:.1f} fps"
+                            # Fallback to time-based progress if frames approach isn't working
+                            elif (
+                                "time=" in line
+                                and duration_secs is not None
+                                and duration_secs > 0
+                            ):
+                                time_match = time_pattern.search(line)
+                                if time_match:
+                                    try:
+                                        time_str = time_match.group(1)
+                                        h, m, rest = time_str.split(":")
+                                        s = rest.split(".")[
+                                            0
+                                        ]  # Get seconds without milliseconds
+                                        ms = rest.split(".")[1] if "." in rest else "0"
+
+                                        # Calculate current time in seconds
+                                        current_time_secs = (
+                                            int(h) * 3600
+                                            + int(m) * 60
+                                            + int(s)
+                                            + (int(ms) / 100)
+                                        )
+                                        progress = min(
+                                            0.99, current_time_secs / duration_secs
+                                        )
+
+                                        # Calculate processing time and ETA
+                                        processing_diff = (
+                                            time.time() - processing_start_time
+                                        )
+                                        if progress > 0:
+                                            eta_seconds = (
+                                                processing_diff / progress
+                                            ) * (1 - progress)
+
+                                            # Modified status message to show only percentage and speed
+                                            fps_display = (
+                                                f"{current_fps:.1f}"
+                                                if current_fps is not None
+                                                else "N/A"
+                                            )
+                                            status_msg = f"{_('Speed:')} {fps_display} fps\n{_('Mode:')} {encode_mode}"
+                                            GLib.idle_add(
+                                                progress_item.update_progress,
+                                                progress,
+                                                f"{int(progress * 100)}%",
+                                            )
+                                            GLib.idle_add(
+                                                progress_item.update_status, status_msg
+                                            )
+                                    except Exception as e:
+                                        print(f"Error calculating time progress: {e}")
+
+                            # If neither frame nor time progress works, show frames processed with fps if available
                             else:
-                                status_msg = f"Processing frame {current_frame}"
+                                # Modified status message for indeterminate progress
+                                if current_fps is not None:
+                                    status_msg = f"{_('Speed:')} {current_fps:.1f} fps\n{_('Mode:')} {encode_mode}"
+                                else:
+                                    status_msg = f"{_('Mode:')} {encode_mode}"
 
-                            # Use an arbitrary progress value based on frames processed
-                            if max_current_frame > 0:
-                                arbitrary_progress = min(
-                                    0.8,
-                                    (current_frame / (max_current_frame + 1000)) + 0.01,
-                                )
-                                GLib.idle_add(
-                                    progress_item.update_progress, arbitrary_progress
-                                )
-                            else:
-                                GLib.idle_add(progress_item.update_progress, 0.01)
+                                # Use an arbitrary progress value based on frames processed
+                                if max_current_frame > 0:
+                                    arbitrary_progress = min(
+                                        0.8,
+                                        (current_frame / (max_current_frame + 1000))
+                                        + 0.01,
+                                    )
+                                    GLib.idle_add(
+                                        progress_item.update_progress,
+                                        arbitrary_progress,
+                                    )
+                                else:
+                                    GLib.idle_add(progress_item.update_progress, 0.01)
 
-                            GLib.idle_add(progress_item.update_status, status_msg)
+                                GLib.idle_add(progress_item.update_status, status_msg)
 
-                    except Exception as e:
-                        print(f"Error processing frame progress: {e}")
+                        except Exception as e:
+                            print(f"Error processing frame progress: {e}")
 
-            # Check for timeout
-            if time.time() - last_output_time > 15:
-                timeout_msg = _("No progress detected. Process may be stuck.")
-                GLib.idle_add(progress_item.update_status, timeout_msg)
-                GLib.idle_add(progress_item.add_output_text, timeout_msg)
-                print("Process may be stuck - no output for 15 seconds")
+            except Exception as e:
+                if not isinstance(e, Empty):  # Don't log Empty exceptions
+                    print(f"Error processing output line: {e}")
+                    import traceback
 
-        # Also check stdout for any remaining output (though FFmpeg usually uses stderr)
-        for line in iter(process.stdout.readline, ""):
-            GLib.idle_add(progress_item.add_output_text, line)
-            print(f"FFMPEG stdout: {line.strip()}")
-
-            # Check if the process was cancelled
-            if progress_item.was_cancelled():
-                break
+                    traceback.print_exc()
 
     except (BrokenPipeError, IOError) as e:
         # This can happen if the process is killed during readline
