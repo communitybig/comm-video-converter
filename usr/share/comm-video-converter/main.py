@@ -7,6 +7,7 @@ import os
 import sys
 import gi
 from collections import deque
+import subprocess
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
@@ -108,6 +109,9 @@ class VideoConverterApp(Adw.Application):
         self.window.set_default_size(900, 620)
         self.window.set_title(_("Comm Video Converter"))
 
+        # Add close request handler to ensure processes are terminated
+        self.window.connect("close-request", self._on_window_close_request)
+
         # Set application icon
         self.set_application_icon()
 
@@ -130,6 +134,50 @@ class VideoConverterApp(Adw.Application):
 
         # Connect stack signals
         self.stack.connect("notify::visible-child", self.on_visible_child_changed)
+
+    def _on_window_close_request(self, window):
+        """Handle window close event to clean up running processes"""
+        # Check if we have active conversions
+        if self.progress_page and self.progress_page.has_active_conversions():
+            # Terminate all running processes
+            for (
+                conversion_id,
+                conversion,
+            ) in self.progress_page.active_conversions.items():
+                conversion_item = conversion["item"]
+                if conversion_item and conversion_item.process:
+                    try:
+                        print(
+                            f"Terminating process {conversion_item.process.pid} on application exit"
+                        )
+                        self.terminate_process_tree(conversion_item.process)
+                    except Exception as e:
+                        print(f"Error terminating process on exit: {e}")
+
+        # Continue with normal window close
+        return False  # False means continue with close, True would prevent close
+
+    def terminate_process_tree(self, process):
+        """Properly terminate a process and all its children"""
+        if not process:
+            return
+
+        try:
+            pid = process.pid
+            print(f"Terminating process tree for PID {pid}")
+            # First attempt: SIGTERM to process group
+            subprocess.run(
+                ["pkill", "-TERM", "-P", str(pid)],
+                stderr=subprocess.DEVNULL,
+                stdout=subprocess.DEVNULL,
+            )
+
+            # Then terminate the parent process
+            process.terminate()
+
+        except Exception as e:
+            print(f"Error terminating process tree: {e}")
+            return False
 
     def _create_pages(self):
         """Create and add all application pages"""

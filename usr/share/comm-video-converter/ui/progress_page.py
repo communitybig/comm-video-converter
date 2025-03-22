@@ -1,4 +1,6 @@
 import os
+import subprocess
+import re
 import gi
 
 gi.require_version("Gtk", "4.0")
@@ -22,17 +24,11 @@ class ProgressPage:
 
         # Root container using Box for vertical layout
         self.page = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        self.page.set_vexpand(True)
 
         # Create an overlay for proper vertical centering
         overlay = Gtk.Overlay()
         overlay.set_vexpand(True)
         self.page.append(overlay)
-
-        # Background that fills the entire space
-        background = Gtk.Box()
-        background.set_vexpand(True)
-        overlay.set_child(background)
 
         # Main content container with vertical centering
         centered_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
@@ -44,27 +40,20 @@ class ProgressPage:
         self.scrolled_window = Gtk.ScrolledWindow()
         self.scrolled_window.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
         self.scrolled_window.set_propagate_natural_height(True)  # Use natural height
-        self.scrolled_window.set_max_content_height(800)  # Limit max height
         centered_box.append(self.scrolled_window)
 
         # Main content box - no vertical expansion to allow centering
         self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        self.main_box.set_valign(Gtk.Align.CENTER)
         self.scrolled_window.set_child(self.main_box)
 
         # Use Adw.Clamp for responsive width constraints
         self.clamp = Adw.Clamp()
-        self.clamp.set_maximum_size(800)
+        self.clamp.set_maximum_size(1100)
         self.clamp.set_tightening_threshold(600)
         self.main_box.append(self.clamp)
 
         # Content box with proper GNOME margins (24px)
         self.content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        self.content_box.set_margin_top(24)
-        self.content_box.set_margin_bottom(24)
-        self.content_box.set_margin_start(24)
-        self.content_box.set_margin_end(24)
-        self.content_box.set_spacing(24)  # GNOME typically uses multiples of 6px
         self.clamp.set_child(self.content_box)
 
         # Dictionary to track active conversion processes
@@ -148,6 +137,12 @@ class ConversionItem(Gtk.Box):
         self.cancelled = False
         self.success = False
 
+        # Add patterns for detecting encode mode
+        self.encode_mode_pattern = re.compile(r"Encode mode:\s*(.*)")
+        self.ffmpeg_cmd_pattern = re.compile(r"Running command:\s*(.*)")
+        self.current_encode_mode = _("Unknown")
+        self.ffmpeg_command = ""
+
         self.set_margin_top(12)
         self.set_margin_bottom(12)
         self.set_margin_start(12)
@@ -197,16 +192,49 @@ class ConversionItem(Gtk.Box):
 
         self.append(progress_box)
 
+        # Add FFmpeg command display in an expander
+        self.cmd_expander = Gtk.Expander()
+        self.cmd_expander.set_label(_("Command"))
+        self.append(self.cmd_expander)
+
+        # Command details box
+        cmd_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        cmd_box.set_margin_top(8)
+        cmd_box.set_margin_bottom(8)
+
+        # Command text (scrollable for long commands)
+        cmd_scroll = Gtk.ScrolledWindow()
+        cmd_scroll.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        cmd_scroll.set_max_content_height(180)
+        cmd_scroll.set_min_content_height(60)
+
+        self.cmd_text = Gtk.Label()
+        self.cmd_text.set_text(_("Waiting for command..."))
+        self.cmd_text.set_selectable(True)
+        self.cmd_text.set_wrap(True)
+        self.cmd_text.set_wrap_mode(Pango.WrapMode.CHAR)  # Wrap at character level
+        self.cmd_text.set_justify(Gtk.Justification.LEFT)
+        self.cmd_text.set_xalign(0)
+        self.cmd_text.set_yalign(0)  # Align to top
+        self.cmd_text.add_css_class("terminal-text")
+        css_provider = Gtk.CssProvider()
+        css_provider.load_from_data(b".terminal-text { font-weight: normal; }")
+        self.cmd_text.get_style_context().add_provider(
+            css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        )
+
+        cmd_scroll.set_child(self.cmd_text)
+        cmd_box.append(cmd_scroll)
+
+        self.cmd_expander.set_child(cmd_box)
+
         # Terminal output in an expander
         self.terminal_expander = Gtk.Expander()
         self.terminal_expander.set_label(_("Command Output"))
-        self.terminal_expander.add_css_class("heading")
         self.append(self.terminal_expander)
 
         # Terminal output area
         terminal_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        terminal_box.set_margin_top(8)
-        terminal_box.set_margin_bottom(8)
 
         # Create scrolled window for the terminal
         terminal_scroll = Gtk.ScrolledWindow()
@@ -217,16 +245,9 @@ class ConversionItem(Gtk.Box):
         self.terminal_view.set_editable(False)
         self.terminal_view.set_cursor_visible(False)
         self.terminal_view.set_monospace(True)
-
-        # Use proper font styling - remove the default monospace class that might be bold
-        # and add a custom CSS class for normal weight monospace
         self.terminal_view.add_css_class("terminal-text")
 
-        # Create and apply custom CSS provider for the terminal font
-        css_provider = Gtk.CssProvider()
-        css_provider.load_from_data(
-            b".terminal-text { font-family: monospace; font-weight: normal; }"
-        )
+        # Apply custom CSS
         self.terminal_view.get_style_context().add_provider(
             css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         )
@@ -258,6 +279,30 @@ class ConversionItem(Gtk.Box):
         if not text.endswith("\n"):
             text += "\n"
 
+        # Check for encode mode information
+        mode_match = self.encode_mode_pattern.search(text)
+        if mode_match:
+            detected_mode = mode_match.group(1).strip()
+            if detected_mode:  # Make sure we got a non-empty string
+                self.current_encode_mode = detected_mode
+                # Update the status message with the encode mode
+                self.update_status(f"{_('Mode')}: {self.current_encode_mode}")
+
+        # Check for FFmpeg command
+        cmd_match = self.ffmpeg_cmd_pattern.search(text)
+        if cmd_match:
+            detected_cmd = cmd_match.group(1).strip()
+            if detected_cmd:  # Make sure we got a non-empty string
+                print(f"Detected FFmpeg command: {detected_cmd}")
+                # Store the command in the instance variable
+                self.ffmpeg_command = detected_cmd
+                # Update the command text display in the UI
+                self.cmd_text.set_text(detected_cmd)
+                # Add as a special entry to the terminal with highlighting
+                highlight_text = f"\n{_('FFmpeg command')}:\n{detected_cmd}\n"
+                end_iter = self.terminal_buffer.get_end_iter()
+                self.terminal_buffer.insert(end_iter, highlight_text)
+
         # Insert text at the end
         end_iter = self.terminal_buffer.get_end_iter()
         self.terminal_buffer.insert(end_iter, text)
@@ -270,184 +315,39 @@ class ConversionItem(Gtk.Box):
         self.terminal_buffer.delete_mark(end_mark)
 
     def on_cancel_clicked(self, button):
-        """Handle cancel button click with improved process termination"""
-        # Ensure os module is imported at the beginning of the method
-        from os.path import basename
-        import os
-        import signal
-        import subprocess
-
+        """Handle cancel button click with simplified process termination"""
         # Set cancelled flag first to prevent error messages
         self.cancelled = True
         print("Cancel button clicked, setting cancelled flag")
-
-        # Update UI to show cancellation
-        self.status_label.set_text(_("Cancelling..."))
-        self.status_icon.set_from_icon_name("process-stop-symbolic")
         self.cancel_button.set_sensitive(False)
-
-        # Critical: Make sure app knows we're cancelling the current active conversion
-        if (
-            self.input_file
-            and hasattr(self.app, "current_processing_file")
-            and self.app.current_processing_file == self.input_file
-        ):
-            print(
-                f"Removing currently processing file from active status: {self.input_file}"
-            )
-            self.app.current_processing_file = None
-            self.app.currently_converting = False
-
-        # Force immediate removal from the conversion queue
-        if self.input_file and hasattr(self.app, "conversion_queue"):
-            if self.input_file in self.app.conversion_queue:
-                try:
-                    self.app.conversion_queue.remove(self.input_file)
-                    print(f"Directly removed {self.input_file} from queue")
-
-                    # Force update the queue display
-                    if hasattr(self.app, "conversion_page"):
-                        self.app.conversion_page.update_queue_display()
-
-                    # Add notification to terminal output with safe basename extraction
-                    try:
-                        filename = basename(
-                            self.input_file
-                        )  # Use the directly imported basename function
-                    except Exception:
-                        # Fallback in case of any error
-                        parts = self.input_file.split("/")
-                        filename = parts[-1] if parts else self.input_file
-
-                    self.add_output_text(f"Removed from queue: {filename}")
-                except Exception as e:
-                    print(f"Error removing from queue: {e}")
-
-        # CRITICAL: Make sure the file is COMPLETELY removed from the app's conversion queue
-        if self.input_file:
-            print(f"Ensuring {self.input_file} is removed from conversion queue")
-
-            # Direct queue manipulation - this ensures the file is fully removed
-            if (
-                hasattr(self.app, "conversion_queue")
-                and self.input_file in self.app.conversion_queue
-            ):
-                try:
-                    self.app.conversion_queue.remove(self.input_file)
-                    print(
-                        f"Directly removed {self.input_file} from app.conversion_queue"
-                    )
-                except Exception as e:
-                    print(f"Error removing from queue: {e}")
-
-            # Also try the standard method if it exists
-            if hasattr(self.app, "remove_from_queue"):
-                try:
-                    self.app.remove_from_queue(self.input_file)
-                    print(f"Removed via app.remove_from_queue: {self.input_file}")
-                except Exception as e:
-                    print(f"Error in remove_from_queue: {e}")
-
-            # Force UI update
-            if hasattr(self.app, "conversion_page") and hasattr(
-                self.app.conversion_page, "update_queue_display"
-            ):
-                try:
-                    self.app.conversion_page.update_queue_display()
-                    print("Updated queue display after removal")
-                except Exception as e:
-                    print(f"Error updating queue display: {e}")
-
-            # Add notification to terminal output
-            self.add_output_text(
-                f"Removed from queue: {os.path.basename(self.input_file)}"
-            )
 
         # Kill process
         if self.process:
             try:
-                import signal
-                import os
-                import subprocess
-                import psutil  # Try to use psutil for better process management
-
-                print(f"Attempting to terminate process {self.process.pid}")
-
                 # Notify the app to remove this file from the conversion queue
                 if self.input_file and hasattr(self.app, "remove_from_queue"):
                     print(f"Removing cancelled file from queue: {self.input_file}")
                     self.app.remove_from_queue(self.input_file)
 
-                # First make sure conversion isn't already removed from list
-                found = False
-                for (
-                    conversion_id,
-                    info,
-                ) in self.app.progress_page.active_conversions.items():
-                    if info["item"] == self:
-                        found = True
-                        break
+                print(f"Terminating process with PID {self.process.pid}")
 
-                if not found:
-                    print("Warning: Conversion already removed from active_conversions")
-                    return
-
-                # Forceful termination without creating a separate thread
-                # This ensures we don't close the dialog before the process is killed
-                try:
-                    print(f"Direct process kill for PID {self.process.pid}")
-
-                    # Try using psutil for better process tree killing
+                # Use the app's terminate_process_tree method if available
+                if hasattr(self.app, "terminate_process_tree"):
+                    self.app.terminate_process_tree(self.process)
+                else:
+                    # Fallback to old termination method
+                    self.process.terminate()
                     try:
-                        import psutil
-
-                        parent = psutil.Process(self.process.pid)
-                        print(f"Found parent process: {parent}")
-
-                        # Kill all child processes
-                        for child in parent.children(recursive=True):
-                            print(f"Killing child process {child.pid}")
-                            child.kill()
-
-                        # Kill the parent
-                        parent.kill()
-                        print("Killed process tree using psutil")
-                    except ImportError:
-                        # Fallback to os.killpg
-                        print("psutil not available, using fallback kill methods")
-                        try:
-                            pgid = os.getpgid(self.process.pid)
-                            os.killpg(pgid, signal.SIGKILL)
-                            print(f"Sent SIGKILL to process group {pgid}")
-                        except Exception as e:
-                            print(
-                                f"Error with killpg: {e}, falling back to direct kill"
-                            )
-                            self.process.kill()
-
-                    # Wait a short time to ensure process is dead
-                    try:
-                        self.process.wait(timeout=0.5)
-                        print("Process termination confirmed")
+                        self.process.wait(timeout=1.0)
+                        print("Process terminated gracefully")
                     except subprocess.TimeoutExpired:
-                        print("Warning: Process still not terminated after timeout")
-                        # One more kill attempt
-                        try:
-                            self.process.kill()
-                        except:
-                            pass
-
-                except Exception as e:
-                    print(f"Error killing process: {e}")
-                    import traceback
-
-                    traceback.print_exc()
+                        print("Process didn't terminate in time, killing forcefully")
+                        self.process.kill()
 
             except Exception as e:
-                print(f"Error initiating process termination: {e}")
-                import traceback
+                print(f"Error killing process: {e}")
 
-                traceback.print_exc()
+        self.status_label.set_text(_("Conversion cancelled"))
 
     def set_process(self, process):
         """Set the conversion process for monitoring"""

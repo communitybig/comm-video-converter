@@ -501,7 +501,7 @@ fi
 
 # Try to encode with the GPU
 echo "Encode mode: Decode GPU, encode GPU"
-echo "Running command: $ffmpeg_executable $init_hardware $options $decoder_format $encoder_format $video_filter_gpu $ffmpeg_generic_options" > ~/ffmpeg_command.log
+echo "Running command: $ffmpeg_executable $init_hardware $options $decoder_format $encoder_format $video_filter_gpu $ffmpeg_generic_options"
 eval $ffmpeg_executable $init_hardware $options $decoder_format $encoder_format $video_filter_gpu $ffmpeg_generic_options
 
 # Store the exit code while preserving $? for later checks

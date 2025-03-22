@@ -75,12 +75,8 @@ def run_with_progress_dialog(
         # Print command for debugging
         print(f"Executing command: {cmd_str}")
 
-        # Create a process group so we can terminate all related processes
+        # Create a process with proper flags to ensure child processes are terminated
         kwargs = {}
-        if hasattr(os, "setsid"):  # Unix/Linux
-            kwargs["preexec_fn"] = os.setsid
-        elif hasattr(subprocess, "CREATE_NEW_PROCESS_GROUP"):  # Windows
-            kwargs["creationflags"] = subprocess.CREATE_NEW_PROCESS_GROUP
 
         # Print the final environment variables for debugging
         print("Final environment variables for conversion:")
@@ -91,7 +87,6 @@ def run_with_progress_dialog(
                 print(f"  {key}=<not set>")
 
         # Use PIPE for stdout and stderr to monitor progress
-        # CRITICAL: Never set cwd parameter - let the script handle paths
         process = subprocess.Popen(
             cmd,
             stdout=subprocess.PIPE,
@@ -109,7 +104,6 @@ def run_with_progress_dialog(
         )
 
         # Flag to track if this is part of a queue processing
-        # Store the file being processed for reliable tracking
         if input_file:
             app.current_processing_file = input_file
 
@@ -181,10 +175,12 @@ def monitor_progress(app, process, progress_item):
 
     # Encode mode
     encode_mode_pattern = re.compile(r"Encode mode:\s*(.*)")
+    running_command_pattern = re.compile(r"Running command:\s*(.*)")
 
     # Track when we detect the encode mode
     encode_mode_detected = False
     encode_mode = _("Unknown")  # Default value
+    full_command = None
 
     # Values to track progress
     duration_secs = None
@@ -284,10 +280,26 @@ def monitor_progress(app, process, progress_item):
                     detected_mode = mode_match.group(1).strip()
                     if detected_mode:  # Make sure we got a non-empty string
                         encode_mode = detected_mode
+                        encode_mode_detected = True
                         print(f"Detected encode mode from {source}: {encode_mode}")
                         GLib.idle_add(
                             progress_item.add_output_text,
                             f"Detected encode mode: {encode_mode}",
+                        )
+                        # Update the UI immediately with the encode mode
+                        GLib.idle_add(
+                            progress_item.update_status, f"{_('Mode:')} {encode_mode}"
+                        )
+
+                # Capture the full ffmpeg command for debugging
+                cmd_match = running_command_pattern.search(line)
+                if cmd_match:
+                    full_command = cmd_match.group(1).strip()
+                    if full_command:
+                        print(f"Detected full command: {full_command}")
+                        GLib.idle_add(
+                            progress_item.add_output_text,
+                            f"Full command: {full_command}",
                         )
 
                 # Continue with the rest of your existing parsing logic

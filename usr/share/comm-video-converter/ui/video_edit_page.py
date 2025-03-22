@@ -246,11 +246,6 @@ class VideoEditPage:
             traceback.print_exc()
             return False
 
-        # Generate a temp filename for the frame
-        output_file = os.path.join(
-            self.temp_preview_dir, f"frame_{int(position * 100)}.jpg"
-        )
-
         # Use the centralized filter utilities
         filters = generate_all_filters(
             self.settings, video_width=self.video_width, video_height=self.video_height

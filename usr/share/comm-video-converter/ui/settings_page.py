@@ -502,11 +502,6 @@ class SettingsPage:
 
     def _load_settings(self):
         """Load settings and update UI components"""
-        # Load general options
-        # ...existing code...
-
-        # Load encoding settings using string values
-
         # GPU selection
         gpu_value = self.settings_manager.load_setting("gpu", "auto")
         gpu_index = self._find_gpu_index(gpu_value)
@@ -560,9 +555,6 @@ class SettingsPage:
             # No saved resolution, use default
             self.video_resolution_combo.set_selected(0)
             self.custom_resolution_row.set_visible(False)
-
-        # Load audio settings
-        # ...existing code...
 
     def _find_gpu_index(self, value):
         """Find index of GPU value in GPU_OPTIONS"""

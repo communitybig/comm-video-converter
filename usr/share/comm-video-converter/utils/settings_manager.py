@@ -80,7 +80,7 @@ class SettingsManager:
                     self.settings = json.load(f)
                 print(f"Loaded settings from: {self.settings_file}")
             else:
-                print(f"Settings file not found, will use defaults")
+                print("Settings file not found, will use defaults")
                 self.settings = {}
         except Exception as e:
             print(f"Error loading settings: {e}")
