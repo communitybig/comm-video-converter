@@ -1793,3 +1793,12 @@ msgstr "Ingen filer lagt til"
 #: NEEDS WORK
 msgid "No valid video files were found in your selection."
 msgstr "Ingen gyldige videofiler ble funnet i ditt valg."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 487
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 539
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 555
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 557
+#: NEEDS WORK
+msgid "Mode:"
+msgstr "Modus:"

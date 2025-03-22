@@ -2207,3 +2207,12 @@ msgstr "未添加文件"
 #: NEEDS WORK
 msgid "No valid video files were found in your selection."
 msgstr "在您的选择中未找到有效的视频文件。"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 487
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 539
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 555
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 557
+#: NEEDS WORK
+msgid "Mode:"
+msgstr "模式："

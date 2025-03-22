@@ -1785,3 +1785,12 @@ msgstr "파일이 추가되지 않았습니다."
 #: NEEDS WORK
 msgid "No valid video files were found in your selection."
 msgstr "선택한 항목에서 유효한 비디오 파일을 찾을 수 없습니다."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 487
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 539
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 555
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 557
+#: NEEDS WORK
+msgid "Mode:"
+msgstr "모드:"

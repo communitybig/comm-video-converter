@@ -1792,3 +1792,12 @@ msgstr "Nema dodanih datoteka"
 #: NEEDS WORK
 msgid "No valid video files were found in your selection."
 msgstr "Nisu pronađene valjane video datoteke u vašem odabiru."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 487
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 539
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 555
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 557
+#: NEEDS WORK
+msgid "Mode:"
+msgstr "Način:"
