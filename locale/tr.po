@@ -2197,3 +2197,21 @@ msgstr "Kaydetmek için klasör"
 #: NEEDS WORK
 msgid "Select folder"
 msgstr "Klasör seçin"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 783
+#: NEEDS WORK
+msgid "Added {} files to the queue"
+msgstr "Kuyruğa {} dosya eklendi"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 802
+#: NEEDS WORK
+msgid "No Files Added"
+msgstr "Dosya Eklenmedi"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 803
+#: NEEDS WORK
+msgid "No valid video files were found in your selection."
+msgstr "Seçiminizde geçerli video dosyaları bulunamadı."

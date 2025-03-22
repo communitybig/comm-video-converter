@@ -1774,3 +1774,21 @@ msgstr "Zložka na uloženie"
 #: NEEDS WORK
 msgid "Select folder"
 msgstr "Vybrať priečinok"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 783
+#: NEEDS WORK
+msgid "Added {} files to the queue"
+msgstr "Pridané {} súbory do fronty"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 802
+#: NEEDS WORK
+msgid "No Files Added"
+msgstr "Žiadne súbory neboli pridané"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 803
+#: NEEDS WORK
+msgid "No valid video files were found in your selection."
+msgstr "Neboli nájdené žiadne platné video súbory vo vašom výbere."

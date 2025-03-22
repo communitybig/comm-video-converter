@@ -1777,3 +1777,21 @@ msgstr "Pasta para salvar"
 #: NEEDS WORK
 msgid "Select folder"
 msgstr "Selecionar pasta"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 783
+#: NEEDS WORK
+msgid "Added {} files to the queue"
+msgstr "Adicionados {} arquivos à fila"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 802
+#: NEEDS WORK
+msgid "No Files Added"
+msgstr "Nenhum arquivo adicionado"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 803
+#: NEEDS WORK
+msgid "No valid video files were found in your selection."
+msgstr "Nenhum arquivo de vídeo válido foi encontrado em sua seleção."

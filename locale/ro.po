@@ -1774,3 +1774,21 @@ msgstr "Folder de salvare"
 #: NEEDS WORK
 msgid "Select folder"
 msgstr "Selectați folderul"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 783
+#: NEEDS WORK
+msgid "Added {} files to the queue"
+msgstr "Adăugate {} fișiere în coadă"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 802
+#: NEEDS WORK
+msgid "No Files Added"
+msgstr "Nu au fost adăugate fișiere"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 803
+#: NEEDS WORK
+msgid "No valid video files were found in your selection."
+msgstr "Nu au fost găsite fișiere video valide în selecția dumneavoastră."

@@ -1775,3 +1775,21 @@ msgstr "Папка для сохранения"
 #: NEEDS WORK
 msgid "Select folder"
 msgstr "Выбрать папку"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 783
+#: NEEDS WORK
+msgid "Added {} files to the queue"
+msgstr "Добавлено {} файлов в очередь"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 802
+#: NEEDS WORK
+msgid "No Files Added"
+msgstr "Нет добавленных файлов"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 803
+#: NEEDS WORK
+msgid "No valid video files were found in your selection."
+msgstr "В вашем выборе не найдено действительных видеофайлов."

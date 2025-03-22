@@ -1777,3 +1777,21 @@ msgstr "Dossier de sauvegarde"
 #: NEEDS WORK
 msgid "Select folder"
 msgstr "Sélectionner le dossier"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 783
+#: NEEDS WORK
+msgid "Added {} files to the queue"
+msgstr "Ajouté {} fichiers à la file d'attente"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 802
+#: NEEDS WORK
+msgid "No Files Added"
+msgstr "Aucun fichier ajouté"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 803
+#: NEEDS WORK
+msgid "No valid video files were found in your selection."
+msgstr "Aucun fichier vidéo valide n'a été trouvé dans votre sélection."

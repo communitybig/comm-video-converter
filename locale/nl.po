@@ -1777,3 +1777,21 @@ msgstr "Map om op te slaan"
 #: NEEDS WORK
 msgid "Select folder"
 msgstr "Selecteer map"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 783
+#: NEEDS WORK
+msgid "Added {} files to the queue"
+msgstr "Toegevoegd {} bestanden aan de wachtrij"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 802
+#: NEEDS WORK
+msgid "No Files Added"
+msgstr "Geen bestanden toegevoegd"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 803
+#: NEEDS WORK
+msgid "No valid video files were found in your selection."
+msgstr "Er zijn geen geldige videobestanden gevonden in uw selectie."

@@ -1774,3 +1774,21 @@ msgstr "Mapa za spremanje"
 #: NEEDS WORK
 msgid "Select folder"
 msgstr "Odaberi mapu"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 783
+#: NEEDS WORK
+msgid "Added {} files to the queue"
+msgstr "Dodano {} datoteka u red čekanja"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 802
+#: NEEDS WORK
+msgid "No Files Added"
+msgstr "Nema dodanih datoteka"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 803
+#: NEEDS WORK
+msgid "No valid video files were found in your selection."
+msgstr "Nisu pronađene valjane video datoteke u vašem odabiru."

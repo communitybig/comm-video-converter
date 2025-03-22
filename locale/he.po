@@ -1769,3 +1769,21 @@ msgstr "תיקייה לשמירה"
 #: NEEDS WORK
 msgid "Select folder"
 msgstr "בחר תיקייה"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 783
+#: NEEDS WORK
+msgid "Added {} files to the queue"
+msgstr "נוספו {} קבצים לתור"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 802
+#: NEEDS WORK
+msgid "No Files Added"
+msgstr "לא נוספו קבצים"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 803
+#: NEEDS WORK
+msgid "No valid video files were found in your selection."
+msgstr "לא נמצאו קבצי וידאו תקפים בבחירה שלך."

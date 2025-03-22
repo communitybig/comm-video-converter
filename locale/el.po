@@ -1779,3 +1779,21 @@ msgstr "Φάκελος αποθήκευσης"
 #: NEEDS WORK
 msgid "Select folder"
 msgstr "Επιλέξτε φάκελο"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 783
+#: NEEDS WORK
+msgid "Added {} files to the queue"
+msgstr "Προστέθηκαν {} αρχεία στην ουρά"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 802
+#: NEEDS WORK
+msgid "No Files Added"
+msgstr "Δεν προστέθηκαν αρχεία"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 803
+#: NEEDS WORK
+msgid "No valid video files were found in your selection."
+msgstr "Δεν βρέθηκαν έγκυρα αρχεία βίντεο στην επιλογή σας."

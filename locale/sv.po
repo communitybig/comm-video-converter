@@ -1775,3 +1775,21 @@ msgstr "Mapp för att spara"
 #: NEEDS WORK
 msgid "Select folder"
 msgstr "Välj mapp"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 783
+#: NEEDS WORK
+msgid "Added {} files to the queue"
+msgstr "Lade till {} filer i kön"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 802
+#: NEEDS WORK
+msgid "No Files Added"
+msgstr "Inga filer tillagda"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 803
+#: NEEDS WORK
+msgid "No valid video files were found in your selection."
+msgstr "Inga giltiga videofiler hittades i ditt urval."

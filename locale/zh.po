@@ -2189,3 +2189,21 @@ msgstr "保存文件夹"
 #: NEEDS WORK
 msgid "Select folder"
 msgstr "选择文件夹"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 783
+#: NEEDS WORK
+msgid "Added {} files to the queue"
+msgstr "已将 {} 个文件添加到队列中"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 802
+#: NEEDS WORK
+msgid "No Files Added"
+msgstr "未添加文件"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 803
+#: NEEDS WORK
+msgid "No valid video files were found in your selection."
+msgstr "在您的选择中未找到有效的视频文件。"

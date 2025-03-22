@@ -1767,3 +1767,21 @@ msgstr "저장할 폴더"
 #: NEEDS WORK
 msgid "Select folder"
 msgstr "폴더 선택"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 783
+#: NEEDS WORK
+msgid "Added {} files to the queue"
+msgstr "{} 파일이 대기열에 추가되었습니다."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 802
+#: NEEDS WORK
+msgid "No Files Added"
+msgstr "파일이 추가되지 않았습니다."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 803
+#: NEEDS WORK
+msgid "No valid video files were found in your selection."
+msgstr "선택한 항목에서 유효한 비디오 파일을 찾을 수 없습니다."

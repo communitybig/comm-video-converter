@@ -1777,3 +1777,21 @@ msgstr "Carpeta para guardar"
 #: NEEDS WORK
 msgid "Select folder"
 msgstr "Seleccionar carpeta"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 783
+#: NEEDS WORK
+msgid "Added {} files to the queue"
+msgstr "Se añadieron {} archivos a la cola"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 802
+#: NEEDS WORK
+msgid "No Files Added"
+msgstr "No se han añadido archivos"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 803
+#: NEEDS WORK
+msgid "No valid video files were found in your selection."
+msgstr "No se encontraron archivos de video válidos en su selección."

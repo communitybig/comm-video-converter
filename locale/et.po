@@ -1775,3 +1775,21 @@ msgstr "Kaust, kuhu salvestada"
 #: NEEDS WORK
 msgid "Select folder"
 msgstr "Vali kaust"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 783
+#: NEEDS WORK
+msgid "Added {} files to the queue"
+msgstr "Lisatud {} faili järjekorda"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 802
+#: NEEDS WORK
+msgid "No Files Added"
+msgstr "Ei faile lisatud"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 803
+#: NEEDS WORK
+msgid "No valid video files were found in your selection."
+msgstr "Teie valikus ei leitud kehtivaid videofailide."

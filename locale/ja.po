@@ -1767,3 +1767,21 @@ msgstr "保存先フォルダー"
 #: NEEDS WORK
 msgid "Select folder"
 msgstr "フォルダーを選択"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 783
+#: NEEDS WORK
+msgid "Added {} files to the queue"
+msgstr "{}ファイルをキューに追加しました"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 802
+#: NEEDS WORK
+msgid "No Files Added"
+msgstr "ファイルが追加されていません"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 803
+#: NEEDS WORK
+msgid "No valid video files were found in your selection."
+msgstr "選択した中に有効なビデオファイルが見つかりませんでした。"

@@ -1774,3 +1774,21 @@ msgstr "Skrá til að vista"
 #: NEEDS WORK
 msgid "Select folder"
 msgstr "Veldu möppu"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 783
+#: NEEDS WORK
+msgid "Added {} files to the queue"
+msgstr "Bættum {} skrám við biðröðina"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 802
+#: NEEDS WORK
+msgid "No Files Added"
+msgstr "Engin ekki bætt við."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/main.py, line: 803
+#: NEEDS WORK
+msgid "No valid video files were found in your selection."
+msgstr "Engin gilt vefmyndaskrár fundust í vali þínu."
