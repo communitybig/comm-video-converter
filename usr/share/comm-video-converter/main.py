@@ -916,13 +916,6 @@ class VideoConverterApp(Adw.Application):
 
                 # Show feedback message
                 if files_added > 0:
-                    if first_file:
-                        message = _("Added {} files to the queue").format(files_added)
-                        if files_added > 1:
-                            GLib.idle_add(
-                                lambda: self.show_info_dialog(_("Files Added"), message)
-                            )
-
                     # Update UI
                     self.conversion_page.update_queue_display()
 

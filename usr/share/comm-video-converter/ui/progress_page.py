@@ -263,6 +263,9 @@ class ConversionItem(Gtk.Box):
         self.terminal_expander.set_label(_("Command Output"))
         self.append(self.terminal_expander)
 
+        # Connect to expanded signal to handle scrolling when opened
+        self.terminal_expander.connect("notify::expanded", self._on_terminal_expanded)
+
         # Terminal output area
         terminal_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         terminal_box.add_css_class("terminal-bg")
@@ -272,14 +275,14 @@ class ConversionItem(Gtk.Box):
         terminal_box.set_margin_bottom(4)
 
         # Create scrolled window for the terminal
-        terminal_scroll = Gtk.ScrolledWindow()
-        terminal_scroll.set_min_content_height(250)
+        self.terminal_scroll = Gtk.ScrolledWindow()
+        self.terminal_scroll.set_min_content_height(250)
 
         # Add padding to the terminal scrolled window container
-        terminal_scroll.set_margin_start(4)
-        terminal_scroll.set_margin_end(4)
-        terminal_scroll.set_margin_top(4)
-        terminal_scroll.set_margin_bottom(4)
+        self.terminal_scroll.set_margin_start(4)
+        self.terminal_scroll.set_margin_end(4)
+        self.terminal_scroll.set_margin_top(4)
+        self.terminal_scroll.set_margin_bottom(4)
 
         # Create terminal-like TextView with monospace font
         self.terminal_view = Gtk.TextView()
@@ -296,10 +299,17 @@ class ConversionItem(Gtk.Box):
         self.terminal_buffer = self.terminal_view.get_buffer()
 
         # Add text view to scrolled window
-        terminal_scroll.set_child(self.terminal_view)
-        terminal_box.append(terminal_scroll)
+        self.terminal_scroll.set_child(self.terminal_view)
+        terminal_box.append(self.terminal_scroll)
 
         self.terminal_expander.set_child(terminal_box)
+
+        # Flag to track if user is at the bottom of the text view
+        self.auto_scroll = True
+
+        # Add a scroll controller to detect when user manually scrolls
+        self.vadjustment = self.terminal_scroll.get_vadjustment()
+        self.vadjustment.connect("value-changed", self._on_scroll_value_changed)
 
         # Bottom action area with cancel button
         button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
@@ -314,20 +324,79 @@ class ConversionItem(Gtk.Box):
 
         self.append(button_box)
 
+    def _on_terminal_expanded(self, expander, param):
+        """Handle terminal expander state change to scroll to bottom when expanded"""
+        if expander.get_expanded():
+            # Schedule multiple scroll attempts with increasing delays
+            # First attempt - immediate
+            self._scroll_terminal_to_bottom()
+
+            # Second attempt - after layout is likely complete (100ms)
+            GLib.timeout_add(100, self._scroll_terminal_to_bottom)
+
+            # Third attempt - as a fallback (300ms)
+            GLib.timeout_add(300, self._scroll_terminal_to_bottom)
+
+    def _scroll_terminal_to_bottom(self):
+        """Scroll terminal to the bottom to show latest output"""
+        if (
+            not self.terminal_scroll
+            or not self.terminal_view
+            or not self.terminal_buffer
+        ):
+            return False
+
+        # Get the end position
+        end_iter = self.terminal_buffer.get_end_iter()
+
+        # Create a mark at the end
+        end_mark = self.terminal_buffer.create_mark("end", end_iter, False)
+
+        # Scroll to the mark
+        self.terminal_view.scroll_to_mark(end_mark, 0.0, False, 0.0, 0.0)
+
+        # Set auto_scroll to True since we're now at the bottom
+        self.auto_scroll = True
+
+        # Delete the temporary mark
+        self.terminal_buffer.delete_mark(end_mark)
+
+        return False  # Remove the timeout
+
+    def _on_scroll_value_changed(self, adjustment):
+        """Detect if user has manually scrolled away from bottom"""
+        if (
+            adjustment.get_value() + adjustment.get_page_size()
+            < adjustment.get_upper() - 10
+        ):
+            # User has scrolled up (with a 10px threshold for rounding errors)
+            self.auto_scroll = False
+        else:
+            # User is at the bottom
+            self.auto_scroll = True
+
     def add_output_text(self, text):
         """Add text to the terminal view."""
-        # Remove FFmpeg command detection as it's now handled in conversion.py
+        if not text:
+            return
 
         # Insert text at the end
         end_iter = self.terminal_buffer.get_end_iter()
         self.terminal_buffer.insert(end_iter, text)
 
-        # Scroll to the end
-        end_mark = self.terminal_buffer.create_mark(
-            None, self.terminal_buffer.get_end_iter(), False
-        )
-        self.terminal_view.scroll_to_mark(end_mark, 0.0, True, 0.0, 1.0)
-        self.terminal_buffer.delete_mark(end_mark)
+        # Only auto-scroll if user is at the bottom
+        if self.auto_scroll and self.terminal_expander.get_expanded():
+            # Scroll to the bottom on next idle cycle (after rendering)
+            GLib.idle_add(self._scroll_to_end_if_needed)
+
+    def _scroll_to_end_if_needed(self):
+        """Helper method to scroll to the end only if needed"""
+        if self.auto_scroll:
+            end_iter = self.terminal_buffer.get_end_iter()
+            end_mark = self.terminal_buffer.create_mark("end", end_iter, False)
+            self.terminal_view.scroll_to_mark(end_mark, 0.0, False, 0.0, 0.0)
+            self.terminal_buffer.delete_mark(end_mark)
+        return False  # Remove from idle queue
 
     def on_cancel_clicked(self, button):
         """Handle cancel button click with simplified process termination"""
