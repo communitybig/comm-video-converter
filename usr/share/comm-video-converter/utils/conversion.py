@@ -215,6 +215,41 @@ def monitor_progress(app, process, progress_item):
     GLib.idle_add(progress_item.update_status, _("Starting process..."))
     GLib.idle_add(progress_item.add_output_text, _("Starting FFmpeg process..."))
 
+    # Helper function to get user-friendly encode mode
+    def get_friendly_encode_mode(technical_mode):
+        """Convert technical encode mode to user-friendly message"""
+        if technical_mode in encode_mode_map:
+            return encode_mode_map[technical_mode]
+
+        # Check for GPU usage patterns if not in the map
+        technical_mode_lower = technical_mode.lower()
+        if "gpu" in technical_mode_lower:
+            if (
+                "decode gpu" in technical_mode_lower
+                and "encode gpu" in technical_mode_lower
+            ):
+                return _("Full GPU acceleration")
+            elif "encode gpu" in technical_mode_lower:
+                return _("GPU encoding")
+            else:
+                return _("GPU processing")
+
+        # Default to the original string if no pattern matches
+        return technical_mode
+
+    # Helper function to update status with consistent format
+    def update_status_with_mode_and_speed(fps_value=None):
+        fps_display = f"{fps_value:.1f}" if fps_value is not None else "N/A"
+        friendly_mode = get_friendly_encode_mode(encode_mode)
+
+        if fps_value is not None:
+            status_msg = f"{_('Speed')}: {fps_display} fps\n{friendly_mode}"
+        else:
+            status_msg = f"{friendly_mode}"
+
+        GLib.idle_add(progress_item.update_status, status_msg)
+        return friendly_mode
+
     try:
         import threading
 
@@ -290,10 +325,11 @@ def monitor_progress(app, process, progress_item):
                         encode_mode = detected_mode
                         encode_mode_detected = True
 
-                        # Convert technical mode to user-friendly message
-                        friendly_mode = detected_mode
-                        if detected_mode in encode_mode_map:
-                            friendly_mode = encode_mode_map[detected_mode]
+                        # Get user-friendly mode name using helper function
+                        friendly_mode = get_friendly_encode_mode(detected_mode)
+
+                        print(f"Detected encode mode from {source}: {encode_mode}")
+                        print(f"Converted to friendly mode: {friendly_mode}")
 
                         GLib.idle_add(
                             progress_item.add_output_text,
@@ -301,9 +337,7 @@ def monitor_progress(app, process, progress_item):
                         )
 
                         # Update the UI immediately with the friendly encode mode
-                        GLib.idle_add(
-                            progress_item.update_status, f"{_('Mode')}: {friendly_mode}"
-                        )
+                        GLib.idle_add(progress_item.update_status, f"{friendly_mode}")
 
                 # Check for FFmpeg command
                 cmd_match = running_command_pattern.search(line)
@@ -529,7 +563,7 @@ def monitor_progress(app, process, progress_item):
                                         if encode_mode in encode_mode_map:
                                             friendly_mode = encode_mode_map[encode_mode]
 
-                                        status_msg = f"{_('Speed')}: {fps_display} fps\n{_('Mode')}: {friendly_mode}"
+                                        status_msg = f"{_('Speed')}: {fps_display} fps\n{friendly_mode}"
                                         GLib.idle_add(
                                             progress_item.update_progress,
                                             progress,

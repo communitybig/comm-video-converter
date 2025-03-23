@@ -387,8 +387,6 @@ class ConversionItem(Gtk.Box):
     def mark_success(self):
         """Mark conversion as successful and update UI"""
         self.success = True
-        # Update status icon to success
-        self.status_icon.set_from_icon_name("emblem-ok-symbolic")
 
     def was_cancelled(self):
         """Return whether the conversion was cancelled by the user"""

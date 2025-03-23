@@ -3,7 +3,7 @@ import gi
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, Gio, Pango, GLib
+from gi.repository import Gtk, Adw, Gio, Pango, GLib, Gdk, GObject
 
 from constants import CONVERT_SCRIPT_PATH
 from utils.conversion import run_with_progress_dialog
@@ -136,8 +136,18 @@ class ConversionPage:
         self.queue_listbox.set_hexpand(True)
         self.queue_listbox.set_vexpand(True)
         self.queue_listbox.set_valign(Gtk.Align.FILL)
+
+        # Add CSS styling for drag and drop
         css_provider = Gtk.CssProvider()
         css_provider.load_from_data(b"""
+            .dragging {
+                opacity: 0.7;
+                background-color: alpha(@accent_color, 0.2);
+            }
+            .drag-hover {
+                border-bottom: 2px solid @accent_color;
+                background-color: alpha(@accent_color, 0.1);
+            }
             .transparent-background {
                 background-color: transparent;
             }
@@ -148,6 +158,12 @@ class ConversionPage:
             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
         )
         self.queue_listbox.add_css_class("transparent-background")
+
+        # Single instance of dragged row tracker
+        self.dragged_row = None
+
+        # Remove old conflicting controllers if they exist
+        self.queue_dragging_enabled = False
 
         queue_scroll.set_child(self.queue_listbox)
 
@@ -617,14 +633,13 @@ class ConversionPage:
             row = Gtk.ListBoxRow()
             row.set_activatable(True)
             row.file_path = file_path
+            row.index = index  # Store the index for drag and drop
             row.set_hexpand(True)
 
-            # Explicitly set all margins to 0
-            row.set_margin_start(0)
-            row.set_margin_end(0)
-            row.set_margin_top(0)
-            row.set_margin_bottom(0)
+            # Simplified drag and drop handling - apply to the listbox instead of individual rows
+            # Individual row-level DnD in GTK4 is causing assertion errors
 
+            # 1. NUMBER COLUMN - fixed width
             main_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
             main_box.set_spacing(12)
             main_box.set_hexpand(True)
@@ -709,6 +724,26 @@ class ConversionPage:
             buttons_box.set_valign(Gtk.Align.CENTER)
             buttons_box.set_margin_end(4)  # Minimal margin
 
+            # Info button to show file information
+            info_button = Gtk.Button.new_from_icon_name("info-symbolic")
+            info_button.add_css_class("flat")
+            info_button.add_css_class("circular")
+            info_button.set_tooltip_text(_("Show file information"))
+            info_button.connect(
+                "clicked", lambda b, fp=file_path: self.on_show_file_info(b, fp)
+            )
+            buttons_box.append(info_button)
+
+            # Play button to open in system video player
+            play_button = Gtk.Button.new_from_icon_name("media-playback-start-symbolic")
+            play_button.add_css_class("flat")
+            play_button.add_css_class("circular")
+            play_button.set_tooltip_text(_("Play in default video player"))
+            play_button.connect(
+                "clicked", lambda b, fp=file_path: self.on_play_file(b, fp)
+            )
+            buttons_box.append(play_button)
+
             # Edit/Preview button
             edit_button = Gtk.Button.new_from_icon_name("document-edit-symbolic")
             edit_button.add_css_class("flat")
@@ -737,6 +772,42 @@ class ConversionPage:
             if index % 2 == 1:
                 row.add_css_class("alternate-row")
             self.queue_listbox.append(row)
+
+        # Setup drag and drop on the listbox if we have items to reorder
+        if len(self.app.conversion_queue) > 1 and not self.queue_dragging_enabled:
+            # Remove any existing controllers to avoid duplication
+            if hasattr(self, "drag_source") and self.drag_source:
+                self.queue_listbox.remove_controller(self.drag_source)
+            if hasattr(self, "drop_target") and self.drop_target:
+                self.queue_listbox.remove_controller(self.drop_target)
+
+            # Create new drag source controller
+            self.drag_source = Gtk.DragSource.new()
+            self.drag_source.set_actions(Gdk.DragAction.MOVE)
+            self.drag_source.connect("prepare", self.on_drag_prepare_listbox)
+            self.drag_source.connect("drag-begin", self.on_drag_begin_listbox)
+            self.drag_source.connect("drag-end", self.on_drag_end_listbox)
+            self.queue_listbox.add_controller(self.drag_source)
+
+            # Create new drop target controller
+            self.drop_target = Gtk.DropTarget.new(
+                GObject.TYPE_STRING, Gdk.DragAction.MOVE
+            )
+            self.drop_target.connect("drop", self.on_drop_listbox)
+            self.drop_target.connect("motion", self.on_drag_motion_listbox)
+            self.queue_listbox.add_controller(self.drop_target)
+
+            self.queue_dragging_enabled = True
+
+        # Disable drag and drop if we don't need it
+        elif len(self.app.conversion_queue) <= 1 and self.queue_dragging_enabled:
+            if hasattr(self, "drag_source") and self.drag_source:
+                self.queue_listbox.remove_controller(self.drag_source)
+                self.drag_source = None
+            if hasattr(self, "drop_target") and self.drop_target:
+                self.queue_listbox.remove_controller(self.drop_target)
+                self.drop_target = None
+            self.queue_dragging_enabled = False
 
         # Show a message if the queue is empty
         if len(self.app.conversion_queue) == 0:
@@ -767,6 +838,103 @@ class ConversionPage:
         # Enable or disable convert button based on queue state
         self.convert_button.set_sensitive(len(self.app.conversion_queue) > 0)
 
+    # Unified drag and drop handlers for listbox
+    def on_drag_prepare_listbox(self, drag_source, x, y):
+        """Prepare data for drag operation from the listbox"""
+        row = self.queue_listbox.get_row_at_y(y)
+        if row and hasattr(row, "index"):
+            # Store the row being dragged for visual feedback
+            self.dragged_row = row
+
+            # Return content provider with row index as string
+            return Gdk.ContentProvider.new_for_value(str(row.index))
+        return None
+
+    def on_drag_begin_listbox(self, drag_source, drag):
+        """Handle start of drag operation"""
+        if self.dragged_row:
+            # Add visual styling
+            self.dragged_row.add_css_class("dragging")
+
+    def on_drag_end_listbox(self, drag_source, drag, delete_data):
+        """Clean up after drag operation"""
+        # Clear dragging state from all rows
+        for i in range(len(self.app.conversion_queue)):
+            row = self.queue_listbox.get_row_at_index(i)
+            if row:
+                row.remove_css_class("dragging")
+                row.remove_css_class("drag-hover")
+
+        # Clear reference to dragged row
+        self.dragged_row = None
+
+    def on_drag_motion_listbox(self, drop_target, x, y):
+        """Handle drag motion to show drop target position"""
+        # Clear all previous hover highlights
+        for i in range(len(self.app.conversion_queue)):
+            row = self.queue_listbox.get_row_at_index(i)
+            if row:
+                row.remove_css_class("drag-hover")
+
+        # Highlight the row under the pointer
+        target_row = self.queue_listbox.get_row_at_y(y)
+        if target_row and target_row != self.dragged_row:
+            target_row.add_css_class("drag-hover")
+
+        return Gdk.DragAction.MOVE
+
+    def on_drop_listbox(self, drop_target, value, x, y):
+        """Handle dropping to reorder queue items"""
+        try:
+            # Get source index from drag data
+            source_index = int(value)
+
+            # Get target row
+            target_row = self.queue_listbox.get_row_at_y(y)
+            if not target_row:
+                # If dropped outside any row, assume end of list
+                target_index = len(self.app.conversion_queue) - 1
+            else:
+                target_index = target_row.index
+
+                # If dropping onto self, do nothing
+                if source_index == target_index:
+                    return False
+
+            # Clear drag styling
+            for i in range(len(self.app.conversion_queue)):
+                row = self.queue_listbox.get_row_at_index(i)
+                if row:
+                    row.remove_css_class("dragging")
+                    row.remove_css_class("drag-hover")
+
+            # Reorder the queue - properly handle deque.pop() which doesn't take arguments
+            # First, get the item to move
+            item_to_move = self.app.conversion_queue[source_index]
+
+            # Create a new list from the deque, modify it, then recreate the deque
+            queue_list = list(self.app.conversion_queue)
+            del queue_list[source_index]
+            queue_list.insert(
+                target_index if target_index < source_index else target_index - 1,
+                item_to_move,
+            )
+
+            # Clear and refill the deque
+            self.app.conversion_queue.clear()
+            self.app.conversion_queue.extend(queue_list)
+
+            # Update the UI
+            self.update_queue_display()
+
+            return True
+        except Exception as e:
+            print(f"Error during drag and drop: {e}")
+            import traceback
+
+            traceback.print_exc()
+            return False
+
     def on_preview_file(self, button, file_path):
         """Preview a file in the video editor"""
         # Make sure we're using the specific file path that was clicked
@@ -782,6 +950,33 @@ class ConversionPage:
         """Remove a specific file from the queue"""
         self.app.remove_from_queue(file_path)
         self.update_queue_display()
+
+    def on_play_file(self, button, file_path):
+        """Play file in the default system video player"""
+        if file_path and os.path.exists(file_path):
+            print(f"Opening file in default video player: {file_path}")
+            try:
+                # Create a GFile for the file path
+                gfile = Gio.File.new_for_path(file_path)
+
+                # Create an AppInfo for the default handler for this file type
+                file_type = Gio.content_type_guess(file_path, None)[0]
+                app_info = Gio.AppInfo.get_default_for_type(file_type, False)
+
+                if app_info:
+                    # Launch the application with the file
+                    app_info.launch([gfile], None)
+                else:
+                    # Fallback using gtk_show
+                    Gtk.show_uri(self.app.window, gfile.get_uri(), Gdk.CURRENT_TIME)
+            except Exception as e:
+                print(f"Error opening file: {e}")
+                self.app.show_error_dialog(
+                    _("Could not open the video file with the default player")
+                )
+        else:
+            print(f"Error: Invalid file path: {file_path}")
+            self.app.show_error_dialog(_("Could not find this video file"))
 
     def get_selected_file_path(self):
         """Get currently selected file in queue or None"""
@@ -1049,3 +1244,69 @@ class ConversionPage:
         # If not using custom folder, clear the path
         if not use_custom_folder:
             self.app.settings_manager.save_setting("output-folder", "")
+
+    # Row-specific drag and drop handlers
+    def on_drag_prepare_row(self, drag_source, x, y, row):
+        """Prepare data for dragging a specific row"""
+        # Create content with the row index
+        content = Gdk.ContentProvider.new_for_value(row.index)
+        return content
+
+    def on_drag_begin_row(self, drag_source, drag, row):
+        """Handle start of drag operation for a specific row"""
+        # Add visual styling to indicate the row is being dragged
+        row.add_css_class("dragging")
+
+    def on_drag_end_row(self, drag_source, drag, delete_data, row):
+        """Clean up after drag operation completes"""
+        # Remove visual styling
+        row.remove_css_class("dragging")
+
+    def on_drop_enter(self, drop_target, x, y, row):
+        """Handle drag entering a potential drop target"""
+        # Add visual styling to indicate possible drop target
+        row.add_css_class("drag-hover")
+        return Gdk.DragAction.MOVE
+
+    def on_drop_leave(self, drop_target, row):
+        """Handle drag leaving a potential drop target"""
+        # Remove visual styling
+        row.remove_css_class("drag-hover")
+
+    def on_drop_motion_row(self, drop_target, x, y):
+        """Handle drag motion over a drop target"""
+        return Gdk.DragAction.MOVE
+
+    def on_drop_item(self, drop_target, value, x, y, target_row):
+        """Handle dropping item to reorder queue"""
+        try:
+            # Get the source index from the drag data
+            source_index = value
+            # Get the target index from the row
+            target_index = target_row.index
+
+            # Don't reorder if dropping at the same position
+            if source_index == target_index:
+                return False
+
+            # Reorder the queue
+            item = self.app.conversion_queue.pop(source_index)
+            self.app.conversion_queue.insert(target_index, item)
+
+            # Update the UI
+            self.update_queue_display()
+            return True
+        except Exception as e:
+            print(f"Error during drop operation: {e}")
+            return False
+
+    def on_show_file_info(self, button, file_path):
+        """Show detailed information about the video file"""
+        if file_path and os.path.exists(file_path):
+            from utils.file_info import VideoInfoDialog
+
+            info_dialog = VideoInfoDialog(self.app.window, file_path)
+            info_dialog.show()
+        else:
+            print(f"Error: Invalid file path: {file_path}")
+            self.app.show_error_dialog(_("Could not find this video file"))
