@@ -1848,3 +1848,253 @@ msgstr "Čekanje na naredbu..."
 #: NEEDS WORK
 msgid "Conversion cancelled"
 msgstr "Konverzija otkazana"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 36
+#: NEEDS WORK
+msgid "File Information"
+msgstr "Informacije o datoteci"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 95
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 748
+#: NEEDS WORK
+msgid "Analyzing video file..."
+msgstr "Analiziranje video datoteke..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 138
+#: NEEDS WORK
+msgid "Could not retrieve file information."
+msgstr "Nije moguće preuzeti informacije o datoteci."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 157
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 300
+#: NEEDS WORK
+msgid "Video Streams"
+msgstr "Video Struje"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 160
+#: NEEDS WORK
+msgid "Audio Streams"
+msgstr "Audio Struje"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 163
+#: NEEDS WORK
+msgid "Subtitles"
+msgstr "Titlovi"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 171
+#: NEEDS WORK
+msgid "General Information"
+msgstr "Opće informacije"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 176
+#: NEEDS WORK
+msgid "File Name"
+msgstr "Naziv datoteke"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 181
+#: NEEDS WORK
+msgid "Copy file name"
+msgstr "Kopiraj naziv datoteke"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 189
+#: NEEDS WORK
+msgid "Location"
+msgstr "Lokacija"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 194
+#: NEEDS WORK
+msgid "Open containing folder"
+msgstr "Otvorite mapu koja sadrži"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 211
+#: NEEDS WORK
+msgid "Copy file size"
+msgstr "Kopiraj veličinu datoteke"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 233
+#: NEEDS WORK
+msgid "Copy duration"
+msgstr "Trajanje kopiranja"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 250
+#: NEEDS WORK
+msgid "Copy format"
+msgstr "Kopiraj format"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 263
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 401
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 569
+#: NEEDS WORK
+msgid "Bitrate"
+msgstr "Bitrate"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 268
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 406
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 576
+#: NEEDS WORK
+msgid "Copy bitrate"
+msgstr "Kopiraj bitrate"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 313
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 483
+#: NEEDS WORK
+msgid "Copy codec"
+msgstr "Kopiraj kodek"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 345
+#: NEEDS WORK
+msgid "Copy resolution"
+msgstr "Kopiraj razlučivost"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 368
+#: NEEDS WORK
+msgid "Copy frame rate"
+msgstr "Kopiraj brzinu kadra"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 383
+#: NEEDS WORK
+msgid "Pixel Format"
+msgstr "Format piksela"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 388
+#: NEEDS WORK
+msgid "Copy pixel format"
+msgstr "Kopiraj format piksela"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 419
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 592
+#: NEEDS WORK
+msgid "Language"
+msgstr "Jezik"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 424
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 599
+#: NEEDS WORK
+msgid "Copy language code"
+msgstr "Kopiraj jezični kod"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 507
+#: NEEDS WORK
+msgid "Sample Rate"
+msgstr "Frekvencija uzorkovanja"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 514
+#: NEEDS WORK
+msgid "Copy sample rate"
+msgstr "Kopiraj uzorku brzinu"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 548
+#: NEEDS WORK
+msgid "Channels"
+msgstr "Kanali"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 555
+#: NEEDS WORK
+msgid "Copy channels"
+msgstr "Kopiraj kanale"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 636
+#: NEEDS WORK
+msgid "Copy value"
+msgstr "Kopiraj vrijednost"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 653
+#: NEEDS WORK
+msgid "Format Details"
+msgstr "Detalji formata"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 658
+#: NEEDS WORK
+msgid "Bitrate (bps)"
+msgstr "Bitrate (bps)"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 659
+#: NEEDS WORK
+msgid "Detection Score"
+msgstr "Rezultat detekcije"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 671
+#: NEEDS WORK
+msgid "Metadata"
+msgstr "Metapodaci"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 708
+#: NEEDS WORK
+msgid "Error retrieving file information"
+msgstr "Greška prilikom preuzimanja informacija o datoteci"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 716
+#: NEEDS WORK
+msgid "Retry"
+msgstr "Ponovno pokušaj"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 233
+#: NEEDS WORK
+msgid "GPU encoding"
+msgstr "GPU kodiranje"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 235
+#: NEEDS WORK
+msgid "GPU processing"
+msgstr "GPU obrada"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/conversion_page.py, line: 736
+#: NEEDS WORK
+msgid "Show file information"
+msgstr "Prikaži informacije o datoteci"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/conversion_page.py, line: 745
+#: NEEDS WORK
+msgid "Play in default video player"
+msgstr "Igraj u zadnjem video playeru"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/conversion_page.py, line: 979
+#: NEEDS WORK
+msgid "Could not open the video file with the default player"
+msgstr "Nije moguće otvoriti video datoteku s zadanim playerom."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/conversion_page.py, line: 983
+# File: comm-video-converter/usr/share/comm-video-converter/ui/conversion_page.py, line: 1316
+#: NEEDS WORK
+msgid "Could not find this video file"
+msgstr "Nije moguće pronaći ovu video datoteku."

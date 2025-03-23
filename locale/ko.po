@@ -1841,3 +1841,253 @@ msgstr "명령 대기 중..."
 #: NEEDS WORK
 msgid "Conversion cancelled"
 msgstr "변환이 취소되었습니다."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 36
+#: NEEDS WORK
+msgid "File Information"
+msgstr "파일 정보"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 95
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 748
+#: NEEDS WORK
+msgid "Analyzing video file..."
+msgstr "비디오 파일 분석 중..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 138
+#: NEEDS WORK
+msgid "Could not retrieve file information."
+msgstr "파일 정보를 가져올 수 없습니다."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 157
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 300
+#: NEEDS WORK
+msgid "Video Streams"
+msgstr "비디오 스트림"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 160
+#: NEEDS WORK
+msgid "Audio Streams"
+msgstr "오디오 스트림"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 163
+#: NEEDS WORK
+msgid "Subtitles"
+msgstr "자막"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 171
+#: NEEDS WORK
+msgid "General Information"
+msgstr "일반 정보"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 176
+#: NEEDS WORK
+msgid "File Name"
+msgstr "파일 이름"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 181
+#: NEEDS WORK
+msgid "Copy file name"
+msgstr "파일 이름 복사"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 189
+#: NEEDS WORK
+msgid "Location"
+msgstr "위치"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 194
+#: NEEDS WORK
+msgid "Open containing folder"
+msgstr "폴더 열기"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 211
+#: NEEDS WORK
+msgid "Copy file size"
+msgstr "파일 크기 복사"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 233
+#: NEEDS WORK
+msgid "Copy duration"
+msgstr "복사 기간"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 250
+#: NEEDS WORK
+msgid "Copy format"
+msgstr "형식 복사"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 263
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 401
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 569
+#: NEEDS WORK
+msgid "Bitrate"
+msgstr "비트 전송률"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 268
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 406
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 576
+#: NEEDS WORK
+msgid "Copy bitrate"
+msgstr "비트 전송률 복사"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 313
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 483
+#: NEEDS WORK
+msgid "Copy codec"
+msgstr "코덱 복사"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 345
+#: NEEDS WORK
+msgid "Copy resolution"
+msgstr "복사 해상도"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 368
+#: NEEDS WORK
+msgid "Copy frame rate"
+msgstr "프레임 속도 복사"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 383
+#: NEEDS WORK
+msgid "Pixel Format"
+msgstr "픽셀 형식"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 388
+#: NEEDS WORK
+msgid "Copy pixel format"
+msgstr "픽셀 형식 복사"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 419
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 592
+#: NEEDS WORK
+msgid "Language"
+msgstr "언어"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 424
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 599
+#: NEEDS WORK
+msgid "Copy language code"
+msgstr "언어 코드 복사"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 507
+#: NEEDS WORK
+msgid "Sample Rate"
+msgstr "샘플링 주파수"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 514
+#: NEEDS WORK
+msgid "Copy sample rate"
+msgstr "샘플링 속도 복사"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 548
+#: NEEDS WORK
+msgid "Channels"
+msgstr "채널"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 555
+#: NEEDS WORK
+msgid "Copy channels"
+msgstr "채널 복사"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 636
+#: NEEDS WORK
+msgid "Copy value"
+msgstr "값 복사"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 653
+#: NEEDS WORK
+msgid "Format Details"
+msgstr "형식 세부정보"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 658
+#: NEEDS WORK
+msgid "Bitrate (bps)"
+msgstr "비트 전송률 (bps)"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 659
+#: NEEDS WORK
+msgid "Detection Score"
+msgstr "탐지 점수"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 671
+#: NEEDS WORK
+msgid "Metadata"
+msgstr "메타데이터"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 708
+#: NEEDS WORK
+msgid "Error retrieving file information"
+msgstr "파일 정보 검색 오류"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 716
+#: NEEDS WORK
+msgid "Retry"
+msgstr "재시도"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 233
+#: NEEDS WORK
+msgid "GPU encoding"
+msgstr "GPU 인코딩"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 235
+#: NEEDS WORK
+msgid "GPU processing"
+msgstr "GPU 처리"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/conversion_page.py, line: 736
+#: NEEDS WORK
+msgid "Show file information"
+msgstr "파일 정보 표시"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/conversion_page.py, line: 745
+#: NEEDS WORK
+msgid "Play in default video player"
+msgstr "기본 비디오 플레이어에서 재생"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/conversion_page.py, line: 979
+#: NEEDS WORK
+msgid "Could not open the video file with the default player"
+msgstr "기본 플레이어로 비디오 파일을 열 수 없습니다."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/conversion_page.py, line: 983
+# File: comm-video-converter/usr/share/comm-video-converter/ui/conversion_page.py, line: 1316
+#: NEEDS WORK
+msgid "Could not find this video file"
+msgstr "이 비디오 파일을 찾을 수 없습니다."

@@ -1849,3 +1849,253 @@ msgstr "Ожидание команды..."
 #: NEEDS WORK
 msgid "Conversion cancelled"
 msgstr "Конвертация отменена"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 36
+#: NEEDS WORK
+msgid "File Information"
+msgstr "Информация о файле"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 95
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 748
+#: NEEDS WORK
+msgid "Analyzing video file..."
+msgstr "Анализ видеофайла..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 138
+#: NEEDS WORK
+msgid "Could not retrieve file information."
+msgstr "Не удалось получить информацию о файле."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 157
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 300
+#: NEEDS WORK
+msgid "Video Streams"
+msgstr "Видеопотоки"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 160
+#: NEEDS WORK
+msgid "Audio Streams"
+msgstr "Аудиопотоки"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 163
+#: NEEDS WORK
+msgid "Subtitles"
+msgstr "Субтитры"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 171
+#: NEEDS WORK
+msgid "General Information"
+msgstr "Общая информация"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 176
+#: NEEDS WORK
+msgid "File Name"
+msgstr "Имя файла"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 181
+#: NEEDS WORK
+msgid "Copy file name"
+msgstr "Скопировать имя файла"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 189
+#: NEEDS WORK
+msgid "Location"
+msgstr "Местоположение"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 194
+#: NEEDS WORK
+msgid "Open containing folder"
+msgstr "Открыть содержащую папку"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 211
+#: NEEDS WORK
+msgid "Copy file size"
+msgstr "Копировать размер файла"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 233
+#: NEEDS WORK
+msgid "Copy duration"
+msgstr "Копировать продолжительность"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 250
+#: NEEDS WORK
+msgid "Copy format"
+msgstr "Копировать формат"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 263
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 401
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 569
+#: NEEDS WORK
+msgid "Bitrate"
+msgstr "Битрейт"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 268
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 406
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 576
+#: NEEDS WORK
+msgid "Copy bitrate"
+msgstr "Копировать битрейт"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 313
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 483
+#: NEEDS WORK
+msgid "Copy codec"
+msgstr "Копировать кодек"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 345
+#: NEEDS WORK
+msgid "Copy resolution"
+msgstr "Копировать разрешение"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 368
+#: NEEDS WORK
+msgid "Copy frame rate"
+msgstr "Копировать частоту кадров"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 383
+#: NEEDS WORK
+msgid "Pixel Format"
+msgstr "Формат пикселя"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 388
+#: NEEDS WORK
+msgid "Copy pixel format"
+msgstr "Копировать формат пикселя"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 419
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 592
+#: NEEDS WORK
+msgid "Language"
+msgstr "Язык"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 424
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 599
+#: NEEDS WORK
+msgid "Copy language code"
+msgstr "Скопировать код языка"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 507
+#: NEEDS WORK
+msgid "Sample Rate"
+msgstr "Частота дискретизации"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 514
+#: NEEDS WORK
+msgid "Copy sample rate"
+msgstr "Копировать частоту дискретизации"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 548
+#: NEEDS WORK
+msgid "Channels"
+msgstr "Каналы"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 555
+#: NEEDS WORK
+msgid "Copy channels"
+msgstr "Копировать каналы"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 636
+#: NEEDS WORK
+msgid "Copy value"
+msgstr "Скопировать значение"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 653
+#: NEEDS WORK
+msgid "Format Details"
+msgstr "Формат деталей"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 658
+#: NEEDS WORK
+msgid "Bitrate (bps)"
+msgstr "Битрейт (бит в секунду)"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 659
+#: NEEDS WORK
+msgid "Detection Score"
+msgstr "Оценка обнаружения"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 671
+#: NEEDS WORK
+msgid "Metadata"
+msgstr "Метаданные"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 708
+#: NEEDS WORK
+msgid "Error retrieving file information"
+msgstr "Ошибка при получении информации о файле"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/file_info.py, line: 716
+#: NEEDS WORK
+msgid "Retry"
+msgstr "Повторить"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 233
+#: NEEDS WORK
+msgid "GPU encoding"
+msgstr "GPU кодирование"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 235
+#: NEEDS WORK
+msgid "GPU processing"
+msgstr "Обработка GPU"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/conversion_page.py, line: 736
+#: NEEDS WORK
+msgid "Show file information"
+msgstr "Показать информацию о файле"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/conversion_page.py, line: 745
+#: NEEDS WORK
+msgid "Play in default video player"
+msgstr "Воспроизвести в стандартном видеоплеере"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/conversion_page.py, line: 979
+#: NEEDS WORK
+msgid "Could not open the video file with the default player"
+msgstr "Не удалось открыть видеофайл с помощью плеера по умолчанию."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/conversion_page.py, line: 983
+# File: comm-video-converter/usr/share/comm-video-converter/ui/conversion_page.py, line: 1316
+#: NEEDS WORK
+msgid "Could not find this video file"
+msgstr "Не удалось найти этот видеофайл"
