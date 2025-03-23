@@ -1785,3 +1785,59 @@ msgstr "파일이 추가되지 않았습니다."
 #: NEEDS WORK
 msgid "No valid video files were found in your selection."
 msgstr "선택한 항목에서 유효한 비디오 파일을 찾을 수 없습니다."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 182
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 185
+#: NEEDS WORK
+msgid "Software encoding"
+msgstr "소프트웨어 인코딩"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 183
+#: NEEDS WORK
+msgid "Full GPU acceleration"
+msgstr "전체 GPU 가속"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 184
+#: NEEDS WORK
+msgid "Software Decoding and GPU encoding"
+msgstr "소프트웨어 디코딩 및 GPU 인코딩"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 305
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 532
+#: NEEDS WORK
+msgid "Mode"
+msgstr "모드"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 325
+#: NEEDS WORK
+msgid "FFmpeg command"
+msgstr "FFmpeg 명령"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 532
+#: NEEDS WORK
+msgid "Speed"
+msgstr "속도"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/progress_page.py, line: 220
+#: NEEDS WORK
+msgid "Command"
+msgstr "명령"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/progress_page.py, line: 242
+#: NEEDS WORK
+msgid "Waiting for command..."
+msgstr "명령 대기 중..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/progress_page.py, line: 365
+#: NEEDS WORK
+msgid "Conversion cancelled"
+msgstr "변환이 취소되었습니다."

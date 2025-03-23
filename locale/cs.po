@@ -1790,3 +1790,59 @@ msgstr "Žádné soubory nebyly přidány"
 #: NEEDS WORK
 msgid "No valid video files were found in your selection."
 msgstr "Nebyly nalezeny žádné platné video soubory ve vašem výběru."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 182
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 185
+#: NEEDS WORK
+msgid "Software encoding"
+msgstr "Kódování softwaru"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 183
+#: NEEDS WORK
+msgid "Full GPU acceleration"
+msgstr "Plné zrychlení GPU"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 184
+#: NEEDS WORK
+msgid "Software Decoding and GPU encoding"
+msgstr "Dekódování softwaru a kódování GPU"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 305
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 532
+#: NEEDS WORK
+msgid "Mode"
+msgstr "Režim"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 325
+#: NEEDS WORK
+msgid "FFmpeg command"
+msgstr "FFmpeg příkaz"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 532
+#: NEEDS WORK
+msgid "Speed"
+msgstr "Rychlost"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/progress_page.py, line: 220
+#: NEEDS WORK
+msgid "Command"
+msgstr "Příkaz"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/progress_page.py, line: 242
+#: NEEDS WORK
+msgid "Waiting for command..."
+msgstr "Čekání na příkaz..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/progress_page.py, line: 365
+#: NEEDS WORK
+msgid "Conversion cancelled"
+msgstr "Konverze zrušena"

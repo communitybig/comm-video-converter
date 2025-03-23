@@ -1793,3 +1793,59 @@ msgstr "Ei faile lisatud"
 #: NEEDS WORK
 msgid "No valid video files were found in your selection."
 msgstr "Teie valikus ei leitud kehtivaid videofailide."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 182
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 185
+#: NEEDS WORK
+msgid "Software encoding"
+msgstr "Tarkvara kodeerimine"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 183
+#: NEEDS WORK
+msgid "Full GPU acceleration"
+msgstr "Täielik GPU kiirus."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 184
+#: NEEDS WORK
+msgid "Software Decoding and GPU encoding"
+msgstr "Tarkvara dekodeerimine ja GPU kodeerimine"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 305
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 532
+#: NEEDS WORK
+msgid "Mode"
+msgstr "Režiim"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 325
+#: NEEDS WORK
+msgid "FFmpeg command"
+msgstr "FFmpeg käsk"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 532
+#: NEEDS WORK
+msgid "Speed"
+msgstr "Kiirus"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/progress_page.py, line: 220
+#: NEEDS WORK
+msgid "Command"
+msgstr "Käsk"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/progress_page.py, line: 242
+#: NEEDS WORK
+msgid "Waiting for command..."
+msgstr "Ootan käsku..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/progress_page.py, line: 365
+#: NEEDS WORK
+msgid "Conversion cancelled"
+msgstr "Muutmine tühistatud"

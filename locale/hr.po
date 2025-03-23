@@ -1792,3 +1792,59 @@ msgstr "Nema dodanih datoteka"
 #: NEEDS WORK
 msgid "No valid video files were found in your selection."
 msgstr "Nisu pronađene valjane video datoteke u vašem odabiru."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 182
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 185
+#: NEEDS WORK
+msgid "Software encoding"
+msgstr "Kodiranje softvera"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 183
+#: NEEDS WORK
+msgid "Full GPU acceleration"
+msgstr "Potpuna GPU akceleracija"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 184
+#: NEEDS WORK
+msgid "Software Decoding and GPU encoding"
+msgstr "Dekodiranje softvera i GPU kodiranje"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 305
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 532
+#: NEEDS WORK
+msgid "Mode"
+msgstr "Način"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 325
+#: NEEDS WORK
+msgid "FFmpeg command"
+msgstr "FFmpeg naredba"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 532
+#: NEEDS WORK
+msgid "Speed"
+msgstr "Brzina"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/progress_page.py, line: 220
+#: NEEDS WORK
+msgid "Command"
+msgstr "Naredba"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/progress_page.py, line: 242
+#: NEEDS WORK
+msgid "Waiting for command..."
+msgstr "Čekanje na naredbu..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/progress_page.py, line: 365
+#: NEEDS WORK
+msgid "Conversion cancelled"
+msgstr "Konverzija otkazana"

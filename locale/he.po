@@ -1787,3 +1787,59 @@ msgstr "לא נוספו קבצים"
 #: NEEDS WORK
 msgid "No valid video files were found in your selection."
 msgstr "לא נמצאו קבצי וידאו תקפים בבחירה שלך."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 182
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 185
+#: NEEDS WORK
+msgid "Software encoding"
+msgstr "קידוד תוכנה"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 183
+#: NEEDS WORK
+msgid "Full GPU acceleration"
+msgstr "האצה מלאה של GPU"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 184
+#: NEEDS WORK
+msgid "Software Decoding and GPU encoding"
+msgstr "פיענוח תוכנה וקידוד GPU"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 305
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 532
+#: NEEDS WORK
+msgid "Mode"
+msgstr "מצב"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 325
+#: NEEDS WORK
+msgid "FFmpeg command"
+msgstr "פקודת FFmpeg"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/utils/conversion.py, line: 532
+#: NEEDS WORK
+msgid "Speed"
+msgstr "מהירות"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/progress_page.py, line: 220
+#: NEEDS WORK
+msgid "Command"
+msgstr "פקודה"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/progress_page.py, line: 242
+#: NEEDS WORK
+msgid "Waiting for command..."
+msgstr "ממתין לפקודה..."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/progress_page.py, line: 365
+#: NEEDS WORK
+msgid "Conversion cancelled"
+msgstr "המרה בוטלה"
