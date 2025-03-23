@@ -28,32 +28,6 @@ class VideoInfoDialog:
         self.dialog.set_transient_for(parent_window)
         self.dialog.set_hide_on_close(True)
 
-        # Apply custom CSS for better readability
-        css_provider = Gtk.CssProvider()
-        css_provider.load_from_data(b"""
-            row label.title {
-                font-size: 15px;
-            }
-            
-            row label.subtitle {
-                font-size: 14px;
-            }
-            
-            preferencesgroup label.heading {
-                font-weight: bold;
-                font-size: 16px;
-            }
-            
-            expanderrow > box > box > label {
-                font-size: 15px;
-            }
-        """)
-
-        display = Gdk.Display.get_default()
-        Gtk.StyleContext.add_provider_for_display(
-            display, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-        )
-
         # Main content box
         content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
 
@@ -64,50 +38,6 @@ class VideoInfoDialog:
         header_bar.set_title_widget(title_label)
 
         content_box.append(header_bar)
-
-        # Apply custom CSS for better readability
-        css_provider = Gtk.CssProvider()
-        css_provider.load_from_data(b"""
-            row {
-                padding: 2px 0px;
-            }
-            
-            label.value-text {
-                font-size: 15px;
-            }
-            
-            label.dim-label {
-                font-size: 13px;
-            }
-            
-            label.heading {
-                font-weight: bold;
-                font-size: 16px;
-            }
-            
-            label.caption {
-                font-size: 13px;
-            }
-            
-            row expander-row {
-                padding: 4px 0px;
-            }
-            
-            expander-row label.heading {
-                font-weight: bold;
-            }
-            
-            row button.flat {
-                min-height: 34px;
-                min-width: 34px;
-            }
-        """)
-
-        Gtk.StyleContext.add_provider_for_display(
-            Gdk.Display.get_default(),
-            css_provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
-        )
 
         # Create main box for content with proper structure for scrolling
         main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
@@ -163,7 +93,6 @@ class VideoInfoDialog:
         self.loading_box.append(self.spinner)
 
         self.loading_label = Gtk.Label(label=_("Analyzing video file..."))
-        self.loading_label.add_css_class("dim-label")
         self.loading_box.append(self.loading_label)
 
         self.info_box.append(self.loading_box)
@@ -241,10 +170,11 @@ class VideoInfoDialog:
         """Add general file information"""
         group = Adw.PreferencesGroup(title=_("General Information"))
 
-        # File name
+        # File name - show the file name first, "File Name" as subtitle
         file_name = os.path.basename(self.file_path)
-        file_name_row = Adw.ActionRow(title=_("File Name"))
-        file_name_row.set_subtitle(file_name)
+        file_name_row = Adw.ActionRow(title=file_name)
+        file_name_row.set_subtitle(_("File Name"))
+
         # Add a copy button to copy the file name
         copy_button = Gtk.Button.new_from_icon_name("edit-copy-symbolic")
         copy_button.add_css_class("flat")
@@ -253,10 +183,11 @@ class VideoInfoDialog:
         file_name_row.add_suffix(copy_button)
         group.add(file_name_row)
 
-        # File path (location)
+        # File path (location) - show the directory first, "Location" as subtitle
         file_dir = os.path.dirname(self.file_path)
-        file_path_row = Adw.ActionRow(title=_("Location"))
-        file_path_row.set_subtitle(file_dir)
+        file_path_row = Adw.ActionRow(title=file_dir)
+        file_path_row.set_subtitle(_("Location"))
+
         # Add open folder button
         open_button = Gtk.Button.new_from_icon_name("folder-open-symbolic")
         open_button.add_css_class("flat")
@@ -267,51 +198,80 @@ class VideoInfoDialog:
         file_path_row.add_suffix(open_button)
         group.add(file_path_row)
 
-        # File size
+        # File size - show the size value first, "File Size" as subtitle
         if "format" in info and "size" in info["format"]:
             size_bytes = int(info["format"]["size"])
-            size_row = Adw.ActionRow(title=_("File Size"))
-            # Use the helper function for readable size
             size_str = format_file_size(size_bytes)
-            size_row.set_subtitle(size_str)
+            size_row = Adw.ActionRow(title=size_str)
+            size_row.set_subtitle(_("File Size"))
+
+            # Add copy button
+            copy_button = Gtk.Button.new_from_icon_name("edit-copy-symbolic")
+            copy_button.add_css_class("flat")
+            copy_button.set_tooltip_text(_("Copy file size"))
+            copy_button.connect(
+                "clicked", lambda btn: self._copy_to_clipboard(size_str)
+            )
+            size_row.add_suffix(copy_button)
+
             group.add(size_row)
 
-        # Duration
+        # Duration - show the duration value first, "Duration" as subtitle
         if "format" in info and "duration" in info["format"]:
             duration_secs = float(info["format"]["duration"])
             hours = int(duration_secs // 3600)
             minutes = int((duration_secs % 3600) // 60)
             seconds = duration_secs % 60
-            duration_row = Adw.ActionRow(title=_("Duration"))
-            duration_row.set_subtitle(f"{hours:02d}:{minutes:02d}:{seconds:06.3f}")
+            duration_time = f"{hours:02d}:{minutes:02d}:{seconds:06.3f}"
+            readable_duration = format_time_display(duration_secs)
 
-            # Add readable duration
-            duration_label = Gtk.Label(label=format_time_display(duration_secs))
-            duration_label.add_css_class("caption")
-            duration_label.add_css_class("dim-label")
-            duration_row.add_suffix(duration_label)
+            duration_row = Adw.ActionRow(title=duration_time)
+            duration_row.set_subtitle(_("Duration"))
+
+            # Add copy button
+            copy_button = Gtk.Button.new_from_icon_name("edit-copy-symbolic")
+            copy_button.add_css_class("flat")
+            copy_button.set_tooltip_text(_("Copy duration"))
+            copy_button.connect(
+                "clicked", lambda btn: self._copy_to_clipboard(duration_time)
+            )
+            duration_row.add_suffix(copy_button)
 
             group.add(duration_row)
 
-        # Format
-        if "format" in info and "format_name" in info["format"]:
-            format_row = Adw.ActionRow(title=_("Format"))
-            format_row.set_subtitle(info["format"]["format_name"])
+        # Format - show format name first, "Format" as subtitle
+        if "format_long_name" in info["format"]:
+            format_name = info["format"]["format_long_name"]
+            format_row = Adw.ActionRow(title=format_name)
+            format_row.set_subtitle(_("Format"))
 
-            # If we have a format_long_name, show it as a suffix
-            if "format_long_name" in info["format"]:
-                format_label = Gtk.Label(label=info["format"]["format_long_name"])
-                format_label.add_css_class("caption")
-                format_label.add_css_class("dim-label")
-                format_row.add_suffix(format_label)
+            # Add copy button
+            copy_button = Gtk.Button.new_from_icon_name("edit-copy-symbolic")
+            copy_button.add_css_class("flat")
+            copy_button.set_tooltip_text(_("Copy format"))
+            copy_button.connect(
+                "clicked", lambda btn: self._copy_to_clipboard(format_name)
+            )
+            format_row.add_suffix(copy_button)
 
             group.add(format_row)
 
-        # Bitrate
+        # Bitrate - show bitrate value first, "Bitrate" as subtitle
         if "format" in info and "bit_rate" in info["format"]:
             bit_rate = int(info["format"]["bit_rate"]) / 1000
-            bitrate_row = Adw.ActionRow(title=_("Bitrate"))
-            bitrate_row.set_subtitle(f"{bit_rate:.2f} kbps")
+            bitrate_value = f"{bit_rate:.2f} kbps"
+            bitrate_row = Adw.ActionRow(title=bitrate_value)
+            bitrate_row.set_subtitle(_("Bitrate"))
+
+            # Add copy button
+            copy_button = Gtk.Button.new_from_icon_name("edit-copy-symbolic")
+            copy_button.add_css_class("flat")
+            copy_button.set_tooltip_text(_("Copy bitrate"))
+            copy_button.connect(
+                "clicked", lambda btn: self._copy_to_clipboard(bitrate_value)
+            )
+            bitrate_row.add_suffix(copy_button)
+
             group.add(bitrate_row)
 
         self.info_box.append(group)
@@ -337,57 +297,44 @@ class VideoInfoDialog:
         """Add a group of streams (video, audio, subtitles)"""
         group = Adw.PreferencesGroup(title=title)
 
-        for idx, stream in enumerate(streams):
-            stream_title = f"{title.rstrip('s')} {idx + 1}"
-            stream_icon = None
+        # Special handling for video streams - display directly without expanders
+        if title == _("Video Streams"):
+            for idx, stream in enumerate(streams):
+                # Add important video info directly in the group
+                if "codec_name" in stream:
+                    codec_name = stream["codec_name"]
+                    if "profile" in stream:
+                        codec_name += f" ({stream['profile']})"
+                    codec_row = Adw.ActionRow(title=codec_name)
+                    codec_row.set_subtitle(_("Codec"))
 
-            # Add appropriate stream icon based on type
-            if stream.get("codec_type") == "video":
-                stream_icon = "video-x-generic-symbolic"
-            elif stream.get("codec_type") == "audio":
-                stream_icon = "audio-x-generic-symbolic"
-            elif stream.get("codec_type") == "subtitle":
-                stream_icon = "text-x-generic-symbolic"
+                    # Add copy button
+                    copy_button = Gtk.Button.new_from_icon_name("edit-copy-symbolic")
+                    copy_button.add_css_class("flat")
+                    copy_button.set_tooltip_text(_("Copy codec"))
+                    copy_button.connect(
+                        "clicked",
+                        lambda btn, val=codec_name: self._copy_to_clipboard(val),
+                    )
+                    codec_row.add_suffix(copy_button)
 
-            # Add language info to title
-            if "tags" in stream:
-                if "title" in stream["tags"]:
-                    stream_title += f" - {stream['tags']['title']}"
-                elif "language" in stream["tags"]:
-                    lang = stream["tags"]["language"]
-                    stream_title += f" - {lang.upper()}"
+                    group.add(codec_row)
 
-            expander = Adw.ExpanderRow(title=stream_title)
-
-            # Add icon suffix if we have one
-            if stream_icon:
-                icon = Gtk.Image.new_from_icon_name(stream_icon)
-                icon.add_css_class("dim-label")
-                expander.add_prefix(icon)
-
-            # Codec with icon
-            if "codec_name" in stream:
-                codec_row = Adw.ActionRow(title=_("Codec"))
-                codec_name = stream["codec_name"]
-                if "profile" in stream:
-                    codec_name += f" ({stream['profile']})"
-                codec_row.set_subtitle(codec_name)
-
-                # Add codec icon suffix
-                codec_icon = Gtk.Image.new_from_icon_name(
-                    "application-x-executable-symbolic"
-                )
-                codec_icon.add_css_class("dim-label")
-                codec_row.add_suffix(codec_icon)
-
-                expander.add_row(codec_row)
-
-            # Resolution for video streams
-            if stream.get("codec_type") == "video":
+                # Resolution
                 if "width" in stream and "height" in stream:
-                    res_row = Adw.ActionRow(title=_("Resolution"))
                     res_value = f"{stream['width']}×{stream['height']}"
-                    res_row.set_subtitle(res_value)
+                    res_row = Adw.ActionRow(title=res_value)
+                    res_row.set_subtitle(_("Resolution"))
+
+                    # Add copy button
+                    copy_button = Gtk.Button.new_from_icon_name("edit-copy-symbolic")
+                    copy_button.add_css_class("flat")
+                    copy_button.set_tooltip_text(_("Copy resolution"))
+                    copy_button.connect(
+                        "clicked",
+                        lambda btn, val=res_value: self._copy_to_clipboard(val),
+                    )
+                    res_row.add_suffix(copy_button)
 
                     # Add standard resolution label if applicable
                     if stream["height"] in [480, 720, 1080, 2160, 4320]:
@@ -403,99 +350,302 @@ class VideoInfoDialog:
                         res_label.add_css_class("accent")
                         res_row.add_suffix(res_label)
 
-                    expander.add_row(res_row)
+                    group.add(res_row)
 
+                # Frame rate
                 if "r_frame_rate" in stream:
                     try:
                         num, den = map(int, stream["r_frame_rate"].split("/"))
                         fps = num / den if den != 0 else 0
-                        fps_row = Adw.ActionRow(title=_("Frame Rate"))
-                        fps_row.set_subtitle(f"{fps:.3f} fps")
-                        expander.add_row(fps_row)
+                        fps_value = f"{fps:.3f} fps"
+                        fps_row = Adw.ActionRow(title=fps_value)
+                        fps_row.set_subtitle(_("Frame Rate"))
+
+                        # Add copy button
+                        copy_button = Gtk.Button.new_from_icon_name(
+                            "edit-copy-symbolic"
+                        )
+                        copy_button.add_css_class("flat")
+                        copy_button.set_tooltip_text(_("Copy frame rate"))
+                        copy_button.connect(
+                            "clicked",
+                            lambda btn, val=fps_value: self._copy_to_clipboard(val),
+                        )
+                        fps_row.add_suffix(copy_button)
+
+                        group.add(fps_row)
                     except (ValueError, ZeroDivisionError):
                         pass
 
                 # Pixel format
                 if "pix_fmt" in stream:
-                    pix_row = Adw.ActionRow(title=_("Pixel Format"))
-                    pix_row.set_subtitle(stream["pix_fmt"])
-                    expander.add_row(pix_row)
+                    pix_fmt = stream["pix_fmt"]
+                    pix_row = Adw.ActionRow(title=pix_fmt)
+                    pix_row.set_subtitle(_("Pixel Format"))
 
-            # Audio-specific information
-            elif stream.get("codec_type") == "audio":
-                # Sample rate
-                if "sample_rate" in stream:
-                    sample_row = Adw.ActionRow(title=_("Sample Rate"))
-                    sample_rate = int(stream["sample_rate"])
-                    sample_row.set_subtitle(f"{sample_rate:,} Hz")
+                    # Add copy button
+                    copy_button = Gtk.Button.new_from_icon_name("edit-copy-symbolic")
+                    copy_button.add_css_class("flat")
+                    copy_button.set_tooltip_text(_("Copy pixel format"))
+                    copy_button.connect(
+                        "clicked", lambda btn, val=pix_fmt: self._copy_to_clipboard(val)
+                    )
+                    pix_row.add_suffix(copy_button)
 
-                    # Add suffix for quality indicator
-                    if sample_rate >= 44100:
-                        quality_label = Gtk.Label(
-                            label="CD Quality"
-                            if sample_rate == 44100
-                            else "Hi-Res Audio"
-                        )
-                        quality_label.add_css_class("caption")
-                        quality_label.add_css_class("accent")
-                        sample_row.add_suffix(quality_label)
+                    group.add(pix_row)
 
-                    expander.add_row(sample_row)
-
-                # Channels
-                if "channels" in stream:
-                    channels_row = Adw.ActionRow(title=_("Channels"))
-                    channels = stream["channels"]
-                    channels_str = str(channels)
-                    if channels == 1:
-                        channels_str += " (Mono)"
-                    elif channels == 2:
-                        channels_str += " (Stereo)"
-                    elif channels == 6:
-                        channels_str += " (5.1 Surround)"
-                    elif channels == 8:
-                        channels_str += " (7.1 Surround)"
-                    channels_row.set_subtitle(channels_str)
-                    expander.add_row(channels_row)
-
-                # Bit rate
+                # Bit rate if present
                 if "bit_rate" in stream:
                     bit_rate = int(stream["bit_rate"]) / 1000
-                    bitrate_row = Adw.ActionRow(title=_("Bitrate"))
-                    bitrate_row.set_subtitle(f"{bit_rate:.2f} kbps")
-                    expander.add_row(bitrate_row)
+                    bitrate_value = f"{bit_rate:.2f} kbps"
+                    bitrate_row = Adw.ActionRow(title=bitrate_value)
+                    bitrate_row.set_subtitle(_("Bitrate"))
 
-            # Language and other tags
-            if "tags" in stream:
-                if "language" in stream["tags"]:
-                    lang_row = Adw.ActionRow(title=_("Language"))
-                    lang_row.set_subtitle(stream["tags"]["language"].upper())
+                    # Add copy button
+                    copy_button = Gtk.Button.new_from_icon_name("edit-copy-symbolic")
+                    copy_button.add_css_class("flat")
+                    copy_button.set_tooltip_text(_("Copy bitrate"))
+                    copy_button.connect(
+                        "clicked",
+                        lambda btn, val=bitrate_value: self._copy_to_clipboard(val),
+                    )
+                    bitrate_row.add_suffix(copy_button)
 
-                    # Try to get the full language name
-                    try:
-                        import locale
+                    group.add(bitrate_row)
 
-                        lang_code = stream["tags"]["language"]
-                        lang_obj = locale.setlocale(locale.LC_ALL, f"{lang_code}.UTF-8")
-                        if lang_obj:
-                            lang_name = locale.nl_langinfo(locale.LANG_NAME)
-                            if lang_name and lang_name != lang_code:
-                                lang_label = Gtk.Label(label=lang_name)
-                                lang_label.add_css_class("caption")
-                                lang_row.add_suffix(lang_label)
-                    except:
-                        pass  # Ignore language name lookup errors
+                # Add language info if available
+                if "tags" in stream and "language" in stream["tags"]:
+                    lang_code = stream["tags"]["language"].upper()
+                    lang_row = Adw.ActionRow(title=lang_code)
+                    lang_row.set_subtitle(_("Language"))
 
-                    expander.add_row(lang_row)
+                    # Add copy button
+                    copy_button = Gtk.Button.new_from_icon_name("edit-copy-symbolic")
+                    copy_button.add_css_class("flat")
+                    copy_button.set_tooltip_text(_("Copy language code"))
+                    copy_button.connect(
+                        "clicked",
+                        lambda btn, val=lang_code: self._copy_to_clipboard(val),
+                    )
+                    lang_row.add_suffix(copy_button)
 
-                # Display other tags except title and language
-                for tag, value in stream["tags"].items():
-                    if tag not in ["title", "language"] and value:
-                        tag_row = Adw.ActionRow(title=tag.capitalize())
-                        tag_row.set_subtitle(str(value))
-                        expander.add_row(tag_row)
+                    group.add(lang_row)
 
-            group.add(expander)
+                # Add a separator between multiple video streams if needed
+                if idx < len(streams) - 1:
+                    separator = Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL)
+                    separator.set_margin_top(8)
+                    separator.set_margin_bottom(8)
+                    group.add(separator)
+        else:
+            # For audio and subtitle streams, keep using expanders
+            for idx, stream in enumerate(streams):
+                # ...existing code for audio and subtitle streams...
+                stream_title = f"{title.rstrip('s')} {idx + 1}"
+                stream_icon = None
+
+                # Add appropriate stream icon based on type
+                if stream.get("codec_type") == "video":
+                    stream_icon = "video-x-generic-symbolic"
+                elif stream.get("codec_type") == "audio":
+                    stream_icon = "audio-x-generic-symbolic"
+                elif stream.get("codec_type") == "subtitle":
+                    stream_icon = "text-x-generic-symbolic"
+
+                # Add language info to title
+                if "tags" in stream:
+                    if "title" in stream["tags"]:
+                        stream_title += f" - {stream['tags']['title']}"
+                    elif "language" in stream["tags"]:
+                        lang = stream["tags"]["language"]
+                        stream_title += f" - {lang.upper()}"
+
+                expander = Adw.ExpanderRow(title=stream_title)
+
+                # Add icon suffix if we have one
+                if stream_icon:
+                    icon = Gtk.Image.new_from_icon_name(stream_icon)
+                    icon.add_css_class("dim-label")
+                    expander.add_prefix(icon)
+
+                # Codec with icon - show codec name first, "Codec" as subtitle
+                if "codec_name" in stream:
+                    codec_name = stream["codec_name"]
+                    if "profile" in stream:
+                        codec_name += f" ({stream['profile']})"
+                    codec_row = Adw.ActionRow(title=codec_name)
+                    codec_row.set_subtitle(_("Codec"))
+
+                    # Add copy button for codec
+                    codec_copy_button = Gtk.Button.new_from_icon_name(
+                        "edit-copy-symbolic"
+                    )
+                    codec_copy_button.add_css_class("flat")
+                    codec_copy_button.set_tooltip_text(_("Copy codec"))
+                    codec_copy_button.connect(
+                        "clicked",
+                        lambda btn, val=codec_name: self._copy_to_clipboard(val),
+                    )
+                    codec_row.add_suffix(codec_copy_button)
+
+                    # Add codec icon suffix
+                    codec_icon = Gtk.Image.new_from_icon_name(
+                        "application-x-executable-symbolic"
+                    )
+                    codec_icon.add_css_class("dim-label")
+                    codec_row.add_suffix(codec_icon)
+
+                    expander.add_row(codec_row)
+
+                # Audio-specific information
+                if stream.get("codec_type") == "audio":
+                    # ...existing code for audio...
+                    # Sample rate - show sample rate value first, "Sample Rate" as subtitle
+                    if "sample_rate" in stream:
+                        sample_rate = int(stream["sample_rate"])
+                        sample_value = f"{sample_rate:,} Hz"
+                        sample_row = Adw.ActionRow(title=sample_value)
+                        sample_row.set_subtitle(_("Sample Rate"))
+
+                        # Add copy button for sample rate
+                        sample_copy_button = Gtk.Button.new_from_icon_name(
+                            "edit-copy-symbolic"
+                        )
+                        sample_copy_button.add_css_class("flat")
+                        sample_copy_button.set_tooltip_text(_("Copy sample rate"))
+                        sample_copy_button.connect(
+                            "clicked",
+                            lambda btn, val=sample_value: self._copy_to_clipboard(val),
+                        )
+                        sample_row.add_suffix(sample_copy_button)
+
+                        # Add suffix for quality indicator
+                        if sample_rate >= 44100:
+                            quality_label = Gtk.Label(
+                                label="CD Quality"
+                                if sample_rate == 44100
+                                else "Hi-Res Audio"
+                            )
+                            quality_label.add_css_class("caption")
+                            quality_label.add_css_class("accent")
+                            sample_row.add_suffix(quality_label)
+
+                        expander.add_row(sample_row)
+
+                    # Channels - show channel value first, "Channels" as subtitle
+                    if "channels" in stream:
+                        channels = stream["channels"]
+                        channels_str = str(channels)
+                        if channels == 1:
+                            channels_str += " (Mono)"
+                        elif channels == 2:
+                            channels_str += " (Stereo)"
+                        elif channels == 6:
+                            channels_str += " (5.1 Surround)"
+                        elif channels == 8:
+                            channels_str += " (7.1 Surround)"
+
+                        channels_row = Adw.ActionRow(title=channels_str)
+                        channels_row.set_subtitle(_("Channels"))
+
+                        # Add copy button for channels
+                        channels_copy_button = Gtk.Button.new_from_icon_name(
+                            "edit-copy-symbolic"
+                        )
+                        channels_copy_button.add_css_class("flat")
+                        channels_copy_button.set_tooltip_text(_("Copy channels"))
+                        channels_copy_button.connect(
+                            "clicked",
+                            lambda btn, val=channels_str: self._copy_to_clipboard(val),
+                        )
+                        channels_row.add_suffix(channels_copy_button)
+
+                        expander.add_row(channels_row)
+
+                    # Bit rate - show bitrate value first, "Bitrate" as subtitle
+                    if "bit_rate" in stream:
+                        bit_rate = int(stream["bit_rate"]) / 1000
+                        bitrate_value = f"{bit_rate:.2f} kbps"
+                        bitrate_row = Adw.ActionRow(title=bitrate_value)
+                        bitrate_row.set_subtitle(_("Bitrate"))
+
+                        # Add copy button for bitrate
+                        bitrate_copy_button = Gtk.Button.new_from_icon_name(
+                            "edit-copy-symbolic"
+                        )
+                        bitrate_copy_button.add_css_class("flat")
+                        bitrate_copy_button.set_tooltip_text(_("Copy bitrate"))
+                        bitrate_copy_button.connect(
+                            "clicked",
+                            lambda btn, val=bitrate_value: self._copy_to_clipboard(val),
+                        )
+                        bitrate_row.add_suffix(bitrate_copy_button)
+
+                        expander.add_row(bitrate_row)
+
+                # ...existing code for the rest of the audio and subtitle stream info...
+
+                # Language and other tags
+                if "tags" in stream:
+                    if "language" in stream["tags"]:
+                        lang_code = stream["tags"]["language"].upper()
+                        lang_row = Adw.ActionRow(title=lang_code)
+                        lang_row.set_subtitle(_("Language"))
+
+                        # Add copy button for language
+                        lang_copy_button = Gtk.Button.new_from_icon_name(
+                            "edit-copy-symbolic"
+                        )
+                        lang_copy_button.add_css_class("flat")
+                        lang_copy_button.set_tooltip_text(_("Copy language code"))
+                        lang_copy_button.connect(
+                            "clicked",
+                            lambda btn, val=lang_code: self._copy_to_clipboard(val),
+                        )
+                        lang_row.add_suffix(lang_copy_button)
+
+                        # Try to get the full language name
+                        try:
+                            import locale
+
+                            lang_code_lower = stream["tags"]["language"]
+                            lang_obj = locale.setlocale(
+                                locale.LC_ALL, f"{lang_code_lower}.UTF-8"
+                            )
+                            if lang_obj:
+                                lang_name = locale.nl_langinfo(locale.LANG_NAME)
+                                if lang_name and lang_name != lang_code_lower:
+                                    lang_label = Gtk.Label(label=lang_name)
+                                    lang_label.add_css_class("caption")
+                                    lang_row.add_suffix(lang_label)
+                        except:
+                            pass  # Ignore language name lookup errors
+
+                        expander.add_row(lang_row)
+
+                    # Display other tags except title and language - value first, tag name as subtitle
+                    for tag, value in stream["tags"].items():
+                        if tag not in ["title", "language"] and value:
+                            tag_row = Adw.ActionRow(title=str(value))
+                            tag_row.set_subtitle(tag.capitalize())
+
+                            # Add copy button for tag value
+                            tag_copy_button = Gtk.Button.new_from_icon_name(
+                                "edit-copy-symbolic"
+                            )
+                            tag_copy_button.add_css_class("flat")
+                            tag_copy_button.set_tooltip_text(_("Copy value"))
+                            tag_copy_button.connect(
+                                "clicked",
+                                lambda btn, val=value: self._copy_to_clipboard(
+                                    str(val)
+                                ),
+                            )
+                            tag_row.add_suffix(tag_copy_button)
+
+                            expander.add_row(tag_row)
+
+                group.add(expander)
 
         self.info_box.append(group)
 
@@ -503,7 +653,7 @@ class VideoInfoDialog:
         """Add format-specific information"""
         group = Adw.PreferencesGroup(title=_("Format Details"))
 
-        # Add selected format fields
+        # Add selected format fields - value first, field name as subtitle
         format_fields = [
             ("format_long_name", _("Format")),
             ("bit_rate", _("Bitrate (bps)")),
@@ -512,8 +662,9 @@ class VideoInfoDialog:
 
         for field, title in format_fields:
             if field in format_data:
-                row = Adw.ActionRow(title=title)
-                row.set_subtitle(str(format_data[field]))
+                value = str(format_data[field])
+                row = Adw.ActionRow(title=value)
+                row.set_subtitle(title)
                 group.add(row)
 
         # Add metadata
@@ -525,8 +676,9 @@ class VideoInfoDialog:
 
             for tag, value in format_data["tags"].items():
                 if value:  # Only add non-empty values
-                    tag_row = Adw.ActionRow(title=tag.capitalize())
-                    tag_row.set_subtitle(str(value))
+                    # Value first, tag name as subtitle
+                    tag_row = Adw.ActionRow(title=str(value))
+                    tag_row.set_subtitle(tag.capitalize())
                     metadata_expander.add_row(tag_row)
                     rows_added = True
 
@@ -555,12 +707,10 @@ class VideoInfoDialog:
         error_box.append(error_icon)
 
         error_label = Gtk.Label(label=_("Error retrieving file information"))
-        error_label.add_css_class("title-2")
         error_box.append(error_label)
 
         error_details = Gtk.Label(label=message)
         error_details.set_wrap(True)
-        error_details.add_css_class("dim-label")
         error_box.append(error_details)
 
         # Add a retry button
@@ -597,7 +747,6 @@ class VideoInfoDialog:
         self.loading_box.append(self.spinner)
 
         self.loading_label = Gtk.Label(label=_("Analyzing video file..."))
-        self.loading_label.add_css_class("dim-label")
         self.loading_box.append(self.loading_label)
 
         self.info_box.append(self.loading_box)
