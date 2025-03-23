@@ -1,13 +1,12 @@
 import os
 import subprocess
 import json
-import re
 import gi
 import threading
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, GLib, Pango, Gdk
+from gi.repository import Gtk, Adw, GLib, Gdk
 
 # For translations
 import gettext
@@ -60,7 +59,6 @@ class VideoInfoDialog:
 
         # Add header bar with proper title
         header_bar = Adw.HeaderBar()
-        file_name = os.path.basename(file_path)
         title_label = Gtk.Label(label=_("File Information"))
         title_label.add_css_class("title")
         header_bar.set_title_widget(title_label)
@@ -272,7 +270,6 @@ class VideoInfoDialog:
         # File size
         if "format" in info and "size" in info["format"]:
             size_bytes = int(info["format"]["size"])
-            size_mb = size_bytes / (1024 * 1024)
             size_row = Adw.ActionRow(title=_("File Size"))
             # Use the helper function for readable size
             size_str = format_file_size(size_bytes)
@@ -620,9 +617,6 @@ def get_video_file_info(file_path):
         Dictionary containing file information or None on error
     """
     try:
-        # Import threading here to avoid circular import
-        import threading
-
         # Ensure file exists
         if not os.path.exists(file_path):
             return None

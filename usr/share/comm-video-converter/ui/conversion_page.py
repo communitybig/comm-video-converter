@@ -718,51 +718,55 @@ class ConversionPage:
                 spacer.set_size_request(70, 1)
                 main_box.append(spacer)
 
-            # 4. BUTTONS COLUMN - minimal margin
+            # 4. BUTTONS COLUMN - create a proper linked button group
             buttons_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-            buttons_box.set_spacing(4)
             buttons_box.set_valign(Gtk.Align.CENTER)
             buttons_box.set_margin_end(4)  # Minimal margin
 
+            # Create a linked button box for a cohesive UI
+            action_buttons = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+            action_buttons.add_css_class(
+                "linked"
+            )  # This makes buttons appear connected
+            action_buttons.set_valign(Gtk.Align.CENTER)
+
             # Info button to show file information
-            info_button = Gtk.Button.new_from_icon_name("info-symbolic")
+            info_button = Gtk.Button.new_from_icon_name("help-about-symbolic")
             info_button.add_css_class("flat")
-            info_button.add_css_class("circular")
             info_button.set_tooltip_text(_("Show file information"))
             info_button.connect(
                 "clicked", lambda b, fp=file_path: self.on_show_file_info(b, fp)
             )
-            buttons_box.append(info_button)
+            action_buttons.append(info_button)
 
             # Play button to open in system video player
             play_button = Gtk.Button.new_from_icon_name("media-playback-start-symbolic")
             play_button.add_css_class("flat")
-            play_button.add_css_class("circular")
             play_button.set_tooltip_text(_("Play in default video player"))
             play_button.connect(
                 "clicked", lambda b, fp=file_path: self.on_play_file(b, fp)
             )
-            buttons_box.append(play_button)
+            action_buttons.append(play_button)
 
-            # Edit/Preview button
-            edit_button = Gtk.Button.new_from_icon_name("document-edit-symbolic")
-            edit_button.add_css_class("flat")
-            edit_button.add_css_class("circular")
-            edit_button.set_tooltip_text(_("Preview in editor"))
-            # Use lambda to properly capture the specific file_path in the closure
-            edit_button.connect(
-                "clicked", lambda b, fp=file_path: self.on_preview_file(b, fp)
-            )
-            buttons_box.append(edit_button)
+            # # Edit/Preview button
+            # edit_button = Gtk.Button.new_from_icon_name("document-edit-symbolic")
+            # edit_button.add_css_class("flat")
+            # edit_button.set_tooltip_text(_("Preview in editor"))
+            # # Use lambda to properly capture the specific file_path in the closure
+            # edit_button.connect(
+            #     "clicked", lambda b, fp=file_path: self.on_preview_file(b, fp)
+            # )
+            # action_buttons.append(edit_button)
 
-            # Remove button
+            # Remove button - with destructive styling
             remove_button = Gtk.Button.new_from_icon_name("user-trash-symbolic")
             remove_button.add_css_class("flat")
-            remove_button.add_css_class("circular")
             remove_button.set_tooltip_text(_("Remove from queue"))
             remove_button.connect("clicked", self.on_remove_from_queue, file_path)
-            buttons_box.append(remove_button)
+            action_buttons.append(remove_button)
 
+            # Add the linked button box to the main buttons container
+            buttons_box.append(action_buttons)
             main_box.append(buttons_box)
 
             # Set the main box as the row's child
