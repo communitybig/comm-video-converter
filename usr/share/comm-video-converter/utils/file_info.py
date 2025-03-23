@@ -223,7 +223,6 @@ class VideoInfoDialog:
             minutes = int((duration_secs % 3600) // 60)
             seconds = duration_secs % 60
             duration_time = f"{hours:02d}:{minutes:02d}:{seconds:06.3f}"
-            readable_duration = format_time_display(duration_secs)
 
             duration_row = Adw.ActionRow(title=duration_time)
             duration_row.set_subtitle(_("Duration"))
@@ -326,16 +325,6 @@ class VideoInfoDialog:
                     res_row = Adw.ActionRow(title=res_value)
                     res_row.set_subtitle(_("Resolution"))
 
-                    # Add copy button
-                    copy_button = Gtk.Button.new_from_icon_name("edit-copy-symbolic")
-                    copy_button.add_css_class("flat")
-                    copy_button.set_tooltip_text(_("Copy resolution"))
-                    copy_button.connect(
-                        "clicked",
-                        lambda btn, val=res_value: self._copy_to_clipboard(val),
-                    )
-                    res_row.add_suffix(copy_button)
-
                     # Add standard resolution label if applicable
                     if stream["height"] in [480, 720, 1080, 2160, 4320]:
                         resolution_labels = {
@@ -349,6 +338,16 @@ class VideoInfoDialog:
                         res_label.add_css_class("caption")
                         res_label.add_css_class("accent")
                         res_row.add_suffix(res_label)
+
+                    # Add copy button
+                    copy_button = Gtk.Button.new_from_icon_name("edit-copy-symbolic")
+                    copy_button.add_css_class("flat")
+                    copy_button.set_tooltip_text(_("Copy resolution"))
+                    copy_button.connect(
+                        "clicked",
+                        lambda btn, val=res_value: self._copy_to_clipboard(val),
+                    )
+                    res_row.add_suffix(copy_button)
 
                     group.add(res_row)
 
