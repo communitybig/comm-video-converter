@@ -165,16 +165,105 @@ class VideoConverterApp(Adw.Application):
         try:
             pid = process.pid
             print(f"Terminating process tree for PID {pid}")
-            # First attempt: SIGTERM to process group
-            subprocess.run(
-                ["pkill", "-TERM", "-P", str(pid)],
-                stderr=subprocess.DEVNULL,
-                stdout=subprocess.DEVNULL,
-            )
 
-            # Then terminate the parent process
-            process.terminate()
+            # First try: Use more reliable signal handling through pkill
+            try:
+                # Kill any FFmpeg processes that might have been started by our process
+                # This helps catch alternative commands or FFmpeg processes that might be orphaned
+                subprocess.run(
+                    ["pkill", "-TERM", "-P", str(pid)],
+                    stderr=subprocess.DEVNULL,
+                    stdout=subprocess.DEVNULL,
+                )
 
+                # Also attempt to kill any FFmpeg processes by name, but only those started by our app
+                # This is safer than killing every FFmpeg process system-wide
+                try:
+                    subprocess.run(
+                        ["pgrep", "-P", str(pid), "ffmpeg"],
+                        stderr=subprocess.PIPE,
+                        stdout=subprocess.PIPE,
+                        text=True,
+                        check=False,
+                    )
+                except Exception as e:
+                    print(f"Error finding ffmpeg processes: {e}")
+
+                # Terminate the parent process
+                process.terminate()
+
+                # Wait briefly for termination
+                try:
+                    process.wait(timeout=0.5)
+                    print(f"Process {pid} terminated gracefully")
+                    return True
+                except subprocess.TimeoutExpired:
+                    # If still running, use SIGKILL on the process group
+                    subprocess.run(
+                        ["pkill", "-KILL", "-P", str(pid)],
+                        stderr=subprocess.DEVNULL,
+                        stdout=subprocess.DEVNULL,
+                    )
+
+                    # Kill the parent process
+                    process.kill()
+
+                    # Wait briefly to verify termination
+                    try:
+                        process.wait(timeout=0.5)
+                        print(f"Process {pid} killed forcefully")
+                        return True
+                    except subprocess.TimeoutExpired:
+                        print(f"Warning: Process {pid} still running after SIGKILL")
+                        return False
+
+            except Exception as e:
+                # Fallback to direct process termination
+                print(f"Error using pkill, trying direct process termination: {e}")
+
+                # Try to find and kill FFmpeg processes that might be associated with this conversion
+                try:
+                    # Find potential child processes more safely using ps
+                    ps_output = subprocess.check_output(
+                        ["ps", "-o", "pid", "--ppid", str(pid)],
+                        stderr=subprocess.DEVNULL,
+                        text=True,
+                    )
+
+                    # Parse the output to get child PIDs
+                    child_pids = []
+                    for line in ps_output.strip().split("\n")[1:]:  # Skip header
+                        if line.strip().isdigit():
+                            child_pids.append(int(line.strip()))
+
+                    # Kill each child process
+                    for child_pid in child_pids:
+                        try:
+                            os.kill(child_pid, 15)  # SIGTERM
+                            print(f"Sent SIGTERM to child process {child_pid}")
+                        except ProcessLookupError:
+                            pass  # Process already gone
+                        except Exception as e:
+                            print(f"Error killing child {child_pid}: {e}")
+
+                except Exception as e:
+                    print(f"Error finding child processes: {e}")
+
+                # Terminate the main process
+                process.terminate()
+
+                try:
+                    process.wait(timeout=0.5)
+                    return True
+                except subprocess.TimeoutExpired:
+                    process.kill()
+
+                    try:
+                        process.wait(timeout=0.5)
+                        return True
+                    except subprocess.TimeoutExpired:
+                        print(f"Warning: Process {pid} could not be killed")
+                        return False
         except Exception as e:
             print(f"Error terminating process tree: {e}")
             return False

@@ -173,9 +173,17 @@ def monitor_progress(app, process, progress_item):
     video_fps_pattern = re.compile(r"Stream #\d+:\d+.*Video:.*\s(\d+(?:\.\d+)?)\s*fps")
     alt_fps_pattern = re.compile(r"Video:.*?(\d+(?:\.\d+)?)\s*(?:tbr|fps)")
 
-    # Encode mode
+    # Encode mode and command patterns
     encode_mode_pattern = re.compile(r"Encode mode:\s*(.*)")
     running_command_pattern = re.compile(r"Running command:\s*(.*)")
+
+    # Map technical encode modes to user-friendly translations
+    encode_mode_map = {
+        "": _("Software encoding"),
+        "Decode GPU, encode GPU": _("Full GPU acceleration"),
+        "Decode Software, Encode GPU": _("Software Decoding and GPU encoding"),
+        "Decode Software, Encode Software": _("Software encoding"),
+    }
 
     # Track when we detect the encode mode
     encode_mode_detected = False
@@ -281,28 +289,47 @@ def monitor_progress(app, process, progress_item):
                     if detected_mode:  # Make sure we got a non-empty string
                         encode_mode = detected_mode
                         encode_mode_detected = True
-                        print(f"Detected encode mode from {source}: {encode_mode}")
+
+                        # Convert technical mode to user-friendly message
+                        friendly_mode = detected_mode
+                        if detected_mode in encode_mode_map:
+                            friendly_mode = encode_mode_map[detected_mode]
+
                         GLib.idle_add(
                             progress_item.add_output_text,
-                            f"Detected encode mode: {encode_mode}",
-                        )
-                        # Update the UI immediately with the encode mode
-                        GLib.idle_add(
-                            progress_item.update_status, f"{_('Mode:')} {encode_mode}"
+                            f"Detected encode mode: {encode_mode} ({friendly_mode})",
                         )
 
-                # Capture the full ffmpeg command for debugging
+                        # Update the UI immediately with the friendly encode mode
+                        GLib.idle_add(
+                            progress_item.update_status, f"{_('Mode')}: {friendly_mode}"
+                        )
+
+                # Check for FFmpeg command
                 cmd_match = running_command_pattern.search(line)
                 if cmd_match:
-                    full_command = cmd_match.group(1).strip()
-                    if full_command:
-                        print(f"Detected full command: {full_command}")
+                    detected_cmd = cmd_match.group(1).strip()
+                    if detected_cmd:  # Make sure we got a non-empty string
+                        print(f"Detected FFmpeg command: {detected_cmd}")
+                        full_command = detected_cmd
+
+                        # Update the command text display in the UI
                         GLib.idle_add(
-                            progress_item.add_output_text,
-                            f"Full command: {full_command}",
+                            lambda: progress_item.cmd_text.set_text(detected_cmd)
                         )
 
-                # Continue with the rest of your existing parsing logic
+                        # Don't automatically expand the command expander anymore
+                        # Let the user click on it when they want to see the command
+
+                        # Add as a special entry to the terminal with highlighting
+                        highlight_text = f"\n{_('FFmpeg command')}:\n{detected_cmd}\n"
+                        GLib.idle_add(
+                            lambda: progress_item.terminal_buffer.insert(
+                                progress_item.terminal_buffer.get_end_iter(),
+                                highlight_text,
+                            )
+                        )
+
                 if source == "stderr":
                     # Original stderr processing for other patterns
                     # Check if the process was cancelled
@@ -496,7 +523,13 @@ def monitor_progress(app, process, progress_item):
                                             if current_fps is not None
                                             else "N/A"
                                         )
-                                        status_msg = f"{_('Speed:')} {fps_display} fps\n{_('Mode:')} {encode_mode}"
+
+                                        # Get the friendly encode mode for display
+                                        friendly_mode = encode_mode
+                                        if encode_mode in encode_mode_map:
+                                            friendly_mode = encode_mode_map[encode_mode]
+
+                                        status_msg = f"{_('Speed')}: {fps_display} fps\n{_('Mode')}: {friendly_mode}"
                                         GLib.idle_add(
                                             progress_item.update_progress,
                                             progress,
@@ -548,7 +581,15 @@ def monitor_progress(app, process, progress_item):
                                                 if current_fps is not None
                                                 else "N/A"
                                             )
-                                            status_msg = f"{_('Speed:')} {fps_display} fps\n{_('Mode:')} {encode_mode}"
+
+                                            # Get the friendly encode mode for display
+                                            friendly_mode = encode_mode
+                                            if encode_mode in encode_mode_map:
+                                                friendly_mode = encode_mode_map[
+                                                    encode_mode
+                                                ]
+
+                                            status_msg = f"{_('Speed:')} {fps_display} fps\n{friendly_mode}"
                                             GLib.idle_add(
                                                 progress_item.update_progress,
                                                 progress,
@@ -564,9 +605,19 @@ def monitor_progress(app, process, progress_item):
                             else:
                                 # Modified status message for indeterminate progress
                                 if current_fps is not None:
-                                    status_msg = f"{_('Speed:')} {current_fps:.1f} fps\n{_('Mode:')} {encode_mode}"
+                                    # Get the friendly encode mode for display
+                                    friendly_mode = encode_mode
+                                    if encode_mode in encode_mode_map:
+                                        friendly_mode = encode_mode_map[encode_mode]
+
+                                    status_msg = f"{_('Speed:')} {current_fps:.1f} fps\n{friendly_mode}"
                                 else:
-                                    status_msg = f"{_('Mode:')} {encode_mode}"
+                                    # Get the friendly encode mode for display
+                                    friendly_mode = encode_mode
+                                    if encode_mode in encode_mode_map:
+                                        friendly_mode = encode_mode_map[encode_mode]
+
+                                    status_msg = f"{friendly_mode}"
 
                                 # Use an arbitrary progress value based on frames processed
                                 if max_current_frame > 0:
@@ -610,11 +661,38 @@ def monitor_progress(app, process, progress_item):
             # If process was cancelled, try to terminate it
             try:
                 if process.poll() is None:  # If process is still running
-                    process.kill()
-                    process.wait(timeout=2)
-                    term_msg = "Process terminated after cancellation"
-                    print(term_msg)
-                    GLib.idle_add(progress_item.add_output_text, term_msg)
+                    # Use app's terminate_process_tree method for more reliable termination
+                    if hasattr(app, "terminate_process_tree"):
+                        app.terminate_process_tree(process)
+                    else:
+                        process.kill()
+
+                    # Wait with timeout to avoid hanging
+                    try:
+                        process.wait(timeout=2)
+                        term_msg = "Process terminated after cancellation"
+                        print(term_msg)
+                        GLib.idle_add(progress_item.add_output_text, term_msg)
+                    except subprocess.TimeoutExpired:
+                        error_msg = "Process didn't terminate within timeout, may still be running"
+                        print(error_msg)
+                        GLib.idle_add(progress_item.add_output_text, error_msg)
+
+                        # As a last resort, try to kill any orphaned ffmpeg processes with the same input file
+                        if (
+                            hasattr(progress_item, "input_file_path")
+                            and progress_item.input_file_path
+                        ):
+                            try:
+                                # Create a safe version of the filename to use in grep
+                                safe_filename = os.path.basename(
+                                    progress_item.input_file_path
+                                ).replace("'", "'\\''")
+                                kill_cmd = f"pkill -KILL -f 'ffmpeg.*{safe_filename}'"
+                                print(f"Attempting emergency cleanup: {kill_cmd}")
+                                os.system(kill_cmd)
+                            except Exception as e:
+                                print(f"Emergency cleanup failed: {e}")
             except Exception as e:
                 error_msg = f"Error killing process after cancellation: {e}"
                 print(error_msg)

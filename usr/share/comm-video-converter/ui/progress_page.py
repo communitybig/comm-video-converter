@@ -137,11 +137,8 @@ class ConversionItem(Gtk.Box):
         self.cancelled = False
         self.success = False
 
-        # Add patterns for detecting encode mode
-        self.encode_mode_pattern = re.compile(r"Encode mode:\s*(.*)")
-        self.ffmpeg_cmd_pattern = re.compile(r"Running command:\s*(.*)")
+        # Remove the command pattern detection as it's now handled in conversion.py
         self.current_encode_mode = _("Unknown")
-        self.ffmpeg_command = ""
 
         self.set_margin_top(12)
         self.set_margin_bottom(12)
@@ -192,6 +189,32 @@ class ConversionItem(Gtk.Box):
 
         self.append(progress_box)
 
+        # Add CSS styling for command and terminal areas using GNOME/Adwaita guidelines
+        css_provider = Gtk.CssProvider()
+        css_provider.load_from_data(b"""
+            .terminal-text { 
+                font-weight: normal;
+                background-color: transparent;
+            }
+            .command-bg {
+                background-color: alpha(@secondary_sidebar_bg_color, 1);
+                border: 1px solid @borders;
+                border-radius: 6px;
+            }
+            .terminal-bg {
+                background-color: alpha(@secondary_sidebar_bg_color, 1);
+                border: 1px solid @borders;
+                border-radius: 6px;
+            }
+            /* Add margins to the text content inside ScrolledWindow to prevent scrollbar overlap */
+            textview, label {
+                margin-right: 8px;
+            }
+        """)
+        Gtk.StyleContext.add_provider_for_display(
+            self.get_display(), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        )
+
         # Add FFmpeg command display in an expander
         self.cmd_expander = Gtk.Expander()
         self.cmd_expander.set_label(_("Command"))
@@ -199,6 +222,7 @@ class ConversionItem(Gtk.Box):
 
         # Command details box
         cmd_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        cmd_box.add_css_class("command-bg")
         cmd_box.set_margin_top(8)
         cmd_box.set_margin_bottom(8)
 
@@ -207,6 +231,12 @@ class ConversionItem(Gtk.Box):
         cmd_scroll.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         cmd_scroll.set_max_content_height(180)
         cmd_scroll.set_min_content_height(60)
+
+        # Add padding to the scrolled window container
+        cmd_scroll.set_margin_start(4)
+        cmd_scroll.set_margin_end(4)
+        cmd_scroll.set_margin_top(4)
+        cmd_scroll.set_margin_bottom(4)
 
         self.cmd_text = Gtk.Label()
         self.cmd_text.set_text(_("Waiting for command..."))
@@ -217,8 +247,8 @@ class ConversionItem(Gtk.Box):
         self.cmd_text.set_xalign(0)
         self.cmd_text.set_yalign(0)  # Align to top
         self.cmd_text.add_css_class("terminal-text")
-        css_provider = Gtk.CssProvider()
-        css_provider.load_from_data(b".terminal-text { font-weight: normal; }")
+
+        # Override the inline CSS provider with the one that includes transparent background
         self.cmd_text.get_style_context().add_provider(
             css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         )
@@ -235,10 +265,21 @@ class ConversionItem(Gtk.Box):
 
         # Terminal output area
         terminal_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        terminal_box.add_css_class("terminal-bg")
+        terminal_box.set_margin_start(4)
+        terminal_box.set_margin_end(4)
+        terminal_box.set_margin_top(4)
+        terminal_box.set_margin_bottom(4)
 
         # Create scrolled window for the terminal
         terminal_scroll = Gtk.ScrolledWindow()
         terminal_scroll.set_min_content_height(250)
+
+        # Add padding to the terminal scrolled window container
+        terminal_scroll.set_margin_start(4)
+        terminal_scroll.set_margin_end(4)
+        terminal_scroll.set_margin_top(4)
+        terminal_scroll.set_margin_bottom(4)
 
         # Create terminal-like TextView with monospace font
         self.terminal_view = Gtk.TextView()
@@ -275,33 +316,7 @@ class ConversionItem(Gtk.Box):
 
     def add_output_text(self, text):
         """Add text to the terminal view."""
-        # Add newline if needed
-        if not text.endswith("\n"):
-            text += "\n"
-
-        # Check for encode mode information
-        mode_match = self.encode_mode_pattern.search(text)
-        if mode_match:
-            detected_mode = mode_match.group(1).strip()
-            if detected_mode:  # Make sure we got a non-empty string
-                self.current_encode_mode = detected_mode
-                # Update the status message with the encode mode
-                self.update_status(f"{_('Mode')}: {self.current_encode_mode}")
-
-        # Check for FFmpeg command
-        cmd_match = self.ffmpeg_cmd_pattern.search(text)
-        if cmd_match:
-            detected_cmd = cmd_match.group(1).strip()
-            if detected_cmd:  # Make sure we got a non-empty string
-                print(f"Detected FFmpeg command: {detected_cmd}")
-                # Store the command in the instance variable
-                self.ffmpeg_command = detected_cmd
-                # Update the command text display in the UI
-                self.cmd_text.set_text(detected_cmd)
-                # Add as a special entry to the terminal with highlighting
-                highlight_text = f"\n{_('FFmpeg command')}:\n{detected_cmd}\n"
-                end_iter = self.terminal_buffer.get_end_iter()
-                self.terminal_buffer.insert(end_iter, highlight_text)
+        # Remove FFmpeg command detection as it's now handled in conversion.py
 
         # Insert text at the end
         end_iter = self.terminal_buffer.get_end_iter()
