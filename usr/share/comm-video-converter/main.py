@@ -60,12 +60,15 @@ class VideoConverterApp(Adw.Application):
         self.auto_convert = False
         self.queue_display_widgets = []
 
-        # Video editing state
+        # Video editing state - initialize with reset values
         self.trim_start_time = 0
         self.trim_end_time = None
         self.video_duration = 0
         self.crop_x = self.crop_y = self.crop_width = self.crop_height = 0
         self.crop_enabled = False
+
+        # Reset trim settings in the actual settings storage
+        self.reset_trim_settings()
 
         # Add a tracking variable to prevent double loading during previews
         self.previewing_specific_file = False
@@ -93,6 +96,9 @@ class VideoConverterApp(Adw.Application):
         # Create window if it doesn't exist
         if not hasattr(self, "window") or self.window is None:
             self._create_window()
+
+        # Reset trim settings on startup
+        self.reset_trim_settings()
 
         # Present window and process any queued files
         self.window.present()
@@ -650,7 +656,13 @@ class VideoConverterApp(Adw.Application):
 
     def get_trim_times(self):
         """Get the current trim start and end times"""
-        return self.trim_start_time, self.trim_end_time, self.video_duration
+        # Always use the latest values from settings to ensure consistency
+        start_time = self.settings_manager.load_setting("video-trim-start", 0.0)
+        end_time_setting = self.settings_manager.load_setting("video-trim-end", -1.0)
+        end_time = None if end_time_setting < 0 else end_time_setting
+
+        print(f"get_trim_times: start={start_time}, end={end_time}")
+        return start_time, end_time, self.video_duration
 
     def set_crop_params(self, x, y, width, height, enabled=True):
         """Set the crop parameters for video cropping"""
@@ -672,6 +684,28 @@ class VideoConverterApp(Adw.Application):
         """Reset crop parameters"""
         self.crop_x = self.crop_y = self.crop_width = self.crop_height = 0
         self.crop_enabled = False
+
+    def reset_trim_settings(self):
+        """Reset trim settings in the app and in the settings storage"""
+        # Reset in-memory values
+        self.trim_start_time = 0
+        self.trim_end_time = None
+        self.video_duration = 0
+
+        # Reset persistent settings
+        self.settings_manager.save_setting("video-trim-start", 0.0)
+        self.settings_manager.save_setting("video-trim-end", -1.0)
+
+        # Notify any attached pages that trim settings have been reset
+        if hasattr(self, "video_edit_page") and self.video_edit_page:
+            if hasattr(self.video_edit_page, "start_time"):
+                self.video_edit_page.start_time = 0
+            if hasattr(self.video_edit_page, "end_time"):
+                self.video_edit_page.end_time = None
+            if hasattr(self.video_edit_page, "update_trim_display"):
+                self.video_edit_page.update_trim_display()
+
+        print("Trim settings have been reset")
 
     # Dialog helpers
     def show_error_dialog(self, message):

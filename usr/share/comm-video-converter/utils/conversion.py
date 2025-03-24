@@ -342,8 +342,8 @@ def monitor_progress(app, process, progress_item):
                 if line is None:
                     continue
 
-                # Print the raw output for debugging
-                print(f"FFMPEG {source}: {line.strip()}")
+                # Print the raw output for debugging with a simpler format
+                print(f"FFMPEG: {line.strip()}")
 
                 # Send output to terminal view
                 GLib.idle_add(progress_item.add_output_text, line)
@@ -375,9 +375,6 @@ def monitor_progress(app, process, progress_item):
                 if cmd_match:
                     detected_cmd = cmd_match.group(1).strip()
                     if detected_cmd:  # Make sure we got a non-empty string
-                        print(f"Detected FFmpeg command: {detected_cmd}")
-                        full_command = detected_cmd
-
                         # Update the command text display in the UI
                         GLib.idle_add(
                             lambda: progress_item.cmd_text.set_text(detected_cmd)

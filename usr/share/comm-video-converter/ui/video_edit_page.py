@@ -31,7 +31,6 @@ class VideoEditPage:
     def __init__(self, app):
         self.app = app
 
-        # Use the app's settings_manager instead of creating a new Gio.Settings instance
         self.settings = app.settings_manager
 
         self.current_video_path = None
@@ -332,14 +331,80 @@ class VideoEditPage:
 
     def on_set_start_time(self, button):
         """Set the current position as the start time for trimming"""
-        self.start_time = self.current_position
+        new_start_time = self.current_position
+
+        # Validate that start_time is less than end_time (if end_time is set)
+        if self.end_time is not None and new_start_time >= self.end_time:
+            # Show warning to user
+            secondary_text = _(
+                "Start time must be less than end time. Please select an earlier position."
+            )
+
+            dialog = Gtk.MessageDialog(
+                transient_for=self.app.window,
+                modal=True,
+                message_type=Gtk.MessageType.WARNING,
+                buttons=Gtk.ButtonsType.OK,
+                text=_("Invalid trim start time"),
+            )
+
+            # Create a box for the secondary text
+            content_area = dialog.get_content_area()
+            secondary_label = Gtk.Label(label=secondary_text)
+            secondary_label.set_wrap(True)
+            secondary_label.set_xalign(0)
+            secondary_label.add_css_class("dim-label")
+            secondary_label.set_margin_start(18)
+            secondary_label.set_margin_end(18)
+            secondary_label.set_margin_bottom(12)
+            content_area.append(secondary_label)
+
+            dialog.connect("response", lambda dialog, response: dialog.destroy())
+            dialog.show()
+            return
+
+        # Set the valid start time
+        self.start_time = new_start_time
         # Save to settings
         self.settings.save_setting("video-trim-start", self.start_time)
         self.update_trim_display()
 
     def on_set_end_time(self, button):
         """Set the current position as the end time for trimming"""
-        self.end_time = self.current_position
+        new_end_time = self.current_position
+
+        # Validate that end_time is greater than start_time
+        if new_end_time <= self.start_time:
+            # Show warning to user
+            secondary_text = _(
+                "End time must be greater than start time. Please select a later position."
+            )
+
+            dialog = Gtk.MessageDialog(
+                transient_for=self.app.window,
+                modal=True,
+                message_type=Gtk.MessageType.WARNING,
+                buttons=Gtk.ButtonsType.OK,
+                text=_("Invalid trim end time"),
+            )
+
+            # Create a box for the secondary text
+            content_area = dialog.get_content_area()
+            secondary_label = Gtk.Label(label=secondary_text)
+            secondary_label.set_wrap(True)
+            secondary_label.set_xalign(0)
+            secondary_label.add_css_class("dim-label")
+            secondary_label.set_margin_start(18)
+            secondary_label.set_margin_end(18)
+            secondary_label.set_margin_bottom(12)
+            content_area.append(secondary_label)
+
+            dialog.connect("response", lambda dialog, response: dialog.destroy())
+            dialog.show()
+            return
+
+        # Set the valid end time
+        self.end_time = new_end_time
         # Save to settings
         self.settings.save_setting("video-trim-end", self.end_time)
         self.update_trim_display()

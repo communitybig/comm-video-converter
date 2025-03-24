@@ -1025,6 +1025,11 @@ class ConversionPage:
         # Build environment variables
         env_vars = os.environ.copy()  # Start with current environment
 
+        # Generate up-to-date trim options before starting conversion
+        trim_config = self.generate_trim_options()
+        trim_start = trim_config["start_time"]
+        trim_end = trim_config["end_time"]
+
         # Load app settings for conversion
         try:
             if hasattr(self.app, "settings_manager"):
@@ -1097,23 +1102,7 @@ class ConversionPage:
                     "additional-options", ""
                 )
 
-                # Get trim settings first by checking for object attributes (set in _get_trim_command_options)
-                # and if not available, get directly from settings
-                trim_start = getattr(self, "trim_start_time", 0)
-                trim_end = getattr(self, "trim_end_time", None)
-
-                # If we haven't called _get_trim_command_options yet, get values directly from settings
-                if trim_start == 0 and trim_end is None:
-                    trim_start = self.app.settings_manager.load_setting(
-                        "video-trim-start", 0.0
-                    )
-                    trim_end_setting = self.app.settings_manager.load_setting(
-                        "video-trim-end", -1.0
-                    )
-                    trim_end = None if trim_end_setting < 0 else trim_end_setting
-
-                # Add trim parameters as FFmpeg command-line options via the options variable
-                # This ensures they're passed directly to FFmpeg in the correct format
+                # Now use the updated trim values from our generate_trim_options method
                 if trim_start > 0:
                     # Format time as HH:MM:SS.mmm for FFmpeg
                     start_str = self._format_time_ffmpeg(trim_start)
@@ -1126,7 +1115,7 @@ class ConversionPage:
 
                     print(f"Adding trim start to options: -ss {start_str}")
 
-                if trim_end is not None and trim_start > 0:
+                if trim_end is not None:
                     # Calculate duration between start and end
                     duration_secs = trim_end - trim_start
                     duration_str = self._format_time_ffmpeg(duration_secs)
@@ -1139,9 +1128,6 @@ class ConversionPage:
                 if additional_options:
                     env_vars["options"] = additional_options
                     print(f"Setting options={additional_options}")
-
-                # We don't need to set the trim_start, trim_end, or trim_duration env vars anymore
-                # as they're now included in the options variable directly
 
         except Exception as e:
             print(f"Error setting up conversion environment: {e}")
@@ -1358,3 +1344,44 @@ class ConversionPage:
         else:
             print(f"Error: Invalid file path: {file_path}")
             self.app.show_error_dialog(_("Could not find this video file"))
+
+    def generate_trim_options(self):
+        """
+        Generate trim options with the most up-to-date values
+        and update the object attributes and environment variables.
+        Should be called right before conversion starts.
+        """
+        # Always get the latest trim values directly from the app
+        start_time, end_time, duration = self.app.get_trim_times()
+
+        # Get video total duration if available
+        video_duration = getattr(self.app, "video_duration", None)
+
+        # If we don't have values from the app, check settings
+        if start_time == 0 and end_time is None:
+            start_time = self.app.settings_manager.load_setting("video-trim-start", 0.0)
+            end_time_setting = self.app.settings_manager.load_setting(
+                "video-trim-end", -1.0
+            )
+            end_time = None if end_time_setting < 0 else end_time_setting
+            print(
+                f"Using trim settings from settings: start={start_time}, end={end_time}"
+            )
+        else:
+            print(
+                f"Using trim settings from app state: start={start_time}, end={end_time}"
+            )
+
+        # Validate that end_time is not less than or equal to start_time
+        if end_time is not None and end_time <= start_time:
+            print("WARNING: Invalid trim values detected (end_time <= start_time)")
+            end_time = None
+            self.app.settings_manager.save_setting("video-trim-end", -1.0)
+
+        # Always update the object attributes for consistency
+        self.trim_start_time = start_time
+        self.trim_end_time = end_time
+        self.trim_duration = duration
+
+        # Return a dictionary with trim configuration to be used by force_start_conversion
+        return {"start_time": start_time, "end_time": end_time, "duration": duration}

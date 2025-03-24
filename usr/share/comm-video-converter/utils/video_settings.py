@@ -206,34 +206,6 @@ def generate_video_filters(settings, video_width=None, video_height=None):
     return filters
 
 
-def generate_trim_options(settings, include_all=False):
-    """
-    Generate FFmpeg trim options for command-line use.
-
-    Args:
-        settings: Settings manager
-        include_all: Whether to include options even if they're at default values
-
-    Returns:
-        List of trim options (e.g. ["-ss", "10.5", "-to", "60.2"])
-    """
-    options = []
-
-    # Get trim values
-    trim_start = get_adjustment_value(settings, "trim_start")
-    trim_end = get_adjustment_value(settings, "trim_end")
-
-    # Only add start time if it's not at the beginning or include_all is True
-    if trim_start > 0.0 or include_all:
-        options.extend(["-ss", f"{trim_start:.3f}"])
-
-    # Only add end time if it's set (not -1) or include_all is True
-    if trim_end > 0.0 or (include_all and trim_end >= 0):
-        options.extend(["-to", f"{trim_end:.3f}"])
-
-    return options
-
-
 def get_ffmpeg_filter_string(settings, video_width=None, video_height=None):
     """Get the complete FFmpeg filter string for command-line use"""
     filters = generate_video_filters(settings, video_width, video_height)

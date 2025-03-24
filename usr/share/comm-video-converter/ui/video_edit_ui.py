@@ -328,7 +328,7 @@ class VideoEditUI:
         self.start_time_label.set_halign(Gtk.Align.START)
         self.start_time_label.set_width_chars(8)
 
-        set_start_button = Gtk.Button(label=_("Start"))
+        set_start_button = Gtk.Button(label=_("Start time"))
         self.add_tooltip_to_button(
             set_start_button, _("Set timeline marked time as start")
         )
@@ -346,7 +346,7 @@ class VideoEditUI:
         self.end_time_label.set_halign(Gtk.Align.START)
         self.end_time_label.set_width_chars(8)
 
-        set_end_button = Gtk.Button(label=_("End"))
+        set_end_button = Gtk.Button(label=_("End time"))
         self.add_tooltip_to_button(set_end_button, _("Set timeline marked time as end"))
         set_end_button.connect("clicked", self.page.on_set_end_time)
 
@@ -678,10 +678,6 @@ class VideoEditUI:
                 self.page.reset_hue,
             )
         )
-
-        reset_button = Gtk.Button(label=_("Reset"))
-        reset_button.connect("clicked", self.page.on_reset_all_settings)
-        adjustments_group.add(reset_button)
 
         return adjustments_group
 
