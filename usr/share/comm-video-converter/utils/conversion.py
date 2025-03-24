@@ -59,6 +59,15 @@ def run_with_progress_dialog(
             env_vars["output_file"] = os.path.basename(env_vars["output_file"])
             print(f"Using basename for output file: {env_vars['output_file']}")
 
+    # Ensure trim environment variables are properly set
+    # Print trim-related environment variables for debugging
+    if "trim_start" in env_vars:
+        print(f"Trim setting: trim_start={env_vars['trim_start']}")
+    if "trim_end" in env_vars:
+        print(f"Trim setting: trim_end={env_vars['trim_end']}")
+    if "trim_duration" in env_vars:
+        print(f"Trim setting: trim_duration={env_vars['trim_duration']}")
+
     if not title_suffix or title_suffix == "Unknown file":
         if input_file:
             title_suffix = os.path.basename(input_file)
@@ -80,11 +89,33 @@ def run_with_progress_dialog(
 
         # Print the final environment variables for debugging
         print("Final environment variables for conversion:")
-        for key in ["output_folder", "output_file"]:
-            if key in env_vars:
-                print(f"  {key}={env_vars[key]}")
-            else:
-                print(f"  {key}=<not set>")
+        for key in sorted([
+            k
+            for k in env_vars.keys()
+            if k
+            in [
+                "gpu",
+                "video_quality",
+                "video_encoder",
+                "preset",
+                "subtitle_extract",
+                "audio_handling",
+                "audio_bitrate",
+                "audio_channels",
+                "video_resolution",
+                "options",
+                "gpu_partial",
+                "force_copy_video",
+                "only_extract_subtitles",
+                "video_filter",
+                "output_folder",
+                "output_file",
+                "trim_start",
+                "trim_end",
+                "trim_duration",
+            ]
+        ]):
+            print(f"  {key}={env_vars[key]}")
 
         # Use PIPE for stdout and stderr to monitor progress
         process = subprocess.Popen(
@@ -972,6 +1003,18 @@ def build_convert_command(input_file, settings):
             env_key = key.replace("-", "_")
             env_vars[env_key] = str(value)
             print(f"Setting {env_key}={value}")
+
+    # Add trim times to environment variables
+    trim_start = settings.get_value("video-trim-start")
+    trim_end = settings.get_value("video-trim-end")
+
+    if trim_start > 0:
+        env_vars["trim_start"] = str(trim_start)
+        print(f"Setting trim_start={trim_start}")
+
+    if trim_end > 0:
+        env_vars["trim_end"] = str(trim_end)
+        print(f"Setting trim_end={trim_end}")
 
     # Set default output folder if not specified
     if "output_folder" not in env_vars and input_file:

@@ -640,6 +640,14 @@ class VideoConverterApp(Adw.Application):
         self.trim_end_time = end_time
         self.video_duration = duration
 
+        # Save trim times to settings for use by conversion
+        self.settings_manager.save_setting("video-trim-start", start_time)
+        # Use -1 to indicate no end time (full video)
+        end_value = -1.0 if end_time is None else end_time
+        self.settings_manager.save_setting("video-trim-end", end_value)
+
+        print(f"Saved trim times to settings: start={start_time}, end={end_value}")
+
     def get_trim_times(self):
         """Get the current trim start and end times"""
         return self.trim_start_time, self.trim_end_time, self.video_duration

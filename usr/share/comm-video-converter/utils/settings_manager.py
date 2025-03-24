@@ -52,6 +52,9 @@ class SettingsManager:
         "preview-gamma-b": 1.0,
         "preview-gamma-weight": 1.0,
         "preview-hue": 0.0,
+        # Video trim settings
+        "video-trim-start": 0.0,
+        "video-trim-end": -1.0,  # -1 means no end time (use full video)
     }
 
     def __init__(self, app_id, dev_mode=False, dev_settings_file=None):

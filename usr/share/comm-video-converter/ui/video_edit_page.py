@@ -37,8 +37,12 @@ class VideoEditPage:
         self.current_video_path = None
         self.video_duration = 0  # Duration in seconds
         self.current_position = 0  # Current position in seconds
-        self.start_time = 0
-        self.end_time = None  # None means end of video
+
+        # Load trim settings from settings manager
+        self.start_time = self.settings.load_setting("video-trim-start", 0.0)
+        end_time_setting = self.settings.load_setting("video-trim-end", -1.0)
+        self.end_time = None if end_time_setting < 0 else end_time_setting
+
         self.position_update_id = None
         self.position_changed_handler_id = None  # Store handler ID for blocking
         self.crop_update_timeout_id = None  # Timer ID for delayed crop updates
@@ -329,17 +333,24 @@ class VideoEditPage:
     def on_set_start_time(self, button):
         """Set the current position as the start time for trimming"""
         self.start_time = self.current_position
+        # Save to settings
+        self.settings.save_setting("video-trim-start", self.start_time)
         self.update_trim_display()
 
     def on_set_end_time(self, button):
         """Set the current position as the end time for trimming"""
         self.end_time = self.current_position
+        # Save to settings
+        self.settings.save_setting("video-trim-end", self.end_time)
         self.update_trim_display()
 
     def on_reset_trim_points(self, button):
         """Reset trim points to full video"""
         self.start_time = 0
         self.end_time = None  # None means end of video
+        # Save to settings
+        self.settings.save_setting("video-trim-start", 0.0)
+        self.settings.save_setting("video-trim-end", -1.0)  # -1 means no end trim
         self.update_trim_display()
 
     def update_trim_display(self):
@@ -1023,6 +1034,11 @@ class VideoEditPage:
         # Reset trim points
         self.start_time = 0
         self.end_time = None
+
+        # Save reset trim values to settings
+        self.settings.save_setting("video-trim-start", 0.0)
+        self.settings.save_setting("video-trim-end", -1.0)
+
         self.update_trim_display()
 
         # We don't need to update UI - already done by adjustment_manager
