@@ -1080,11 +1080,84 @@ class ConversionPage:
                 if audio_channels:
                     env_vars["audio_channels"] = audio_channels
 
-                # Use the centralized video filter utility to get consistent behavior
-                # FIX: Using correct parameter names (video_width/video_height instead of video_path)
+                # Get crop values first to check if we need to retrieve video dimensions
+                crop_left = self.app.settings_manager.load_setting(
+                    "preview-crop-left", 0
+                )
+                crop_right = self.app.settings_manager.load_setting(
+                    "preview-crop-right", 0
+                )
+                crop_top = self.app.settings_manager.load_setting("preview-crop-top", 0)
+                crop_bottom = self.app.settings_manager.load_setting(
+                    "preview-crop-bottom", 0
+                )
+
+                # Try to get video dimensions if there are crop values
                 video_width = getattr(self.app, "video_width", None)
                 video_height = getattr(self.app, "video_height", None)
 
+                # If we need to crop and don't have dimensions, try to get them
+                if (
+                    crop_left > 0 or crop_right > 0 or crop_top > 0 or crop_bottom > 0
+                ) and (video_width is None or video_height is None):
+                    try:
+                        import subprocess
+                        import json
+
+                        print(
+                            f"Getting video dimensions for {input_file} using ffprobe"
+                        )
+                        cmd = [
+                            "ffprobe",
+                            "-v",
+                            "error",
+                            "-select_streams",
+                            "v:0",
+                            "-show_entries",
+                            "stream=width,height",
+                            "-of",
+                            "json",
+                            input_file,
+                        ]
+
+                        result = subprocess.run(cmd, capture_output=True, text=True)
+                        if result.returncode == 0:
+                            data = json.loads(result.stdout)
+                            if "streams" in data and len(data["streams"]) > 0:
+                                video_width = int(data["streams"][0].get("width", 0))
+                                video_height = int(data["streams"][0].get("height", 0))
+                                print(
+                                    f"Detected video dimensions: {video_width}x{video_height}"
+                                )
+
+                                # Store these dimensions for future use
+                                self.app.video_width = video_width
+                                self.app.video_height = video_height
+                            else:
+                                print("No video streams found in file")
+                        else:
+                            print(f"ffprobe error: {result.stderr}")
+                    except Exception as e:
+                        print(f"Error getting video dimensions: {e}")
+                        import traceback
+
+                        traceback.print_exc()
+
+                # Important: Apply crop values to settings manager so they'll be included in video_filter
+                if crop_left > 0 or crop_right > 0 or crop_top > 0 or crop_bottom > 0:
+                    print(
+                        f"Setting crop values in settings: left={crop_left}, right={crop_right}, top={crop_top}, bottom={crop_bottom}"
+                    )
+
+                    # Save crop values to settings
+                    self.app.settings_manager.set_int("preview-crop-left", crop_left)
+                    self.app.settings_manager.set_int("preview-crop-right", crop_right)
+                    self.app.settings_manager.set_int("preview-crop-top", crop_top)
+                    self.app.settings_manager.set_int(
+                        "preview-crop-bottom", crop_bottom
+                    )
+
+                # Get the unified video filter string AFTER setting crop values
                 video_filter = get_video_filter_string(
                     self.app.settings_manager,
                     video_width=video_width,
@@ -1128,6 +1201,12 @@ class ConversionPage:
                 if additional_options:
                     env_vars["options"] = additional_options
                     print(f"Setting options={additional_options}")
+
+                # REMOVED: Separate crop handling - this is now done through the video_filter mechanism
+                # We still pass the dimensions to the environment for other potential uses
+                if video_width is not None and video_height is not None:
+                    env_vars["video_width"] = str(video_width)
+                    env_vars["video_height"] = str(video_height)
 
         except Exception as e:
             print(f"Error setting up conversion environment: {e}")
@@ -1195,6 +1274,17 @@ class ConversionPage:
                 "trim_start",
                 "trim_end",
                 "trim_duration",
+                # Add the new crop environment variables
+                "crop_x",
+                "crop_y",
+                "crop_width",
+                "crop_height",
+                "crop_left",
+                "crop_right",
+                "crop_top",
+                "crop_bottom",
+                "video_width",
+                "video_height",
             ]
         }
 

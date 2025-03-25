@@ -37,6 +37,9 @@ class VideoEditPage:
         self.video_duration = 0  # Duration in seconds
         self.current_position = 0  # Current position in seconds
 
+        # Reset crop values at initialization
+        self.reset_crop_values()
+
         # Load trim settings from settings manager
         self.start_time = self.settings.load_setting("video-trim-start", 0.0)
         end_time_setting = self.settings.load_setting("video-trim-end", -1.0)
@@ -1110,3 +1113,17 @@ class VideoEditPage:
         # Just extract a new frame with reset values
         self.invalidate_current_frame_cache()
         self.processor.extract_frame(self.current_position)
+
+    def reset_crop_values(self):
+        """Reset crop values to 0 and update settings"""
+        # Reset crop values to zero
+        self.settings.save_setting("preview-crop-left", 0)
+        self.settings.save_setting("preview-crop-right", 0)
+        self.settings.save_setting("preview-crop-top", 0)
+        self.settings.save_setting("preview-crop-bottom", 0)
+
+        # Reset trim values while we're at it
+        self.settings.save_setting("video-trim-start", 0.0)
+        self.settings.save_setting("video-trim-end", -1.0)
+
+        print("Crop and trim values have been reset on program start")

@@ -125,8 +125,13 @@ def generate_video_filters(settings, video_width=None, video_height=None):
         "saturation": get_adjustment_value(settings, "saturation"),
         "gamma": get_adjustment_value(settings, "gamma"),
         "hue": get_adjustment_value(settings, "hue"),
+        "crop_left": get_adjustment_value(settings, "crop_left"),
+        "crop_right": get_adjustment_value(settings, "crop_right"),
+        "crop_top": get_adjustment_value(settings, "crop_top"),
+        "crop_bottom": get_adjustment_value(settings, "crop_bottom"),
     }
     print(f"Video adjustment values: {debug_values}")
+    print(f"Video dimensions for crop: width={video_width}, height={video_height}")
 
     # 1. Add crop filter if needed
     crop_left = get_adjustment_value(settings, "crop_left")
@@ -139,11 +144,22 @@ def generate_video_filters(settings, video_width=None, video_height=None):
         and video_width is not None
         and video_height is not None
     ):
+        # Calculate the final dimensions after cropping
         crop_width = video_width - crop_left - crop_right
         crop_height = video_height - crop_top - crop_bottom
 
         if crop_width > 0 and crop_height > 0:
-            filters.append(f"crop={crop_width}:{crop_height}:{crop_left}:{crop_top}")
+            crop_filter = f"crop={crop_width}:{crop_height}:{crop_left}:{crop_top}"
+            filters.append(crop_filter)
+            print(f"Adding crop filter: {crop_filter}")
+        else:
+            print(f"Invalid crop dimensions: width={crop_width}, height={crop_height}")
+    elif crop_left > 0 or crop_right > 0 or crop_top > 0 or crop_bottom > 0:
+        # We have crop values but are missing dimensions
+        print(
+            f"Cannot apply crop: Missing video dimensions. Have left={crop_left}, right={crop_right}, top={crop_top}, bottom={crop_bottom}"
+        )
+        print(f"Video dimensions required: width={video_width}, height={video_height}")
 
     # 2. Add hue adjustment
     hue = get_adjustment_value(settings, "hue")
