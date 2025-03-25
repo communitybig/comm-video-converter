@@ -2099,3 +2099,39 @@ msgstr "Ei voitu avata videota oletussoittimella."
 #: NEEDS WORK
 msgid "Could not find this video file"
 msgstr "Tätä videotiedostoa ei löytynyt."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 342
+#: NEEDS WORK
+msgid "Start time must be less than end time. Please select an earlier position."
+msgstr "Aloitusaika on oltava aikarajasta aikarajan jälkeen. Valitse aikaisempi kohta."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 351
+#: NEEDS WORK
+msgid "Invalid trim start time"
+msgstr "Virheellinen leikkausalkuaika"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 382
+#: NEEDS WORK
+msgid "End time must be greater than start time. Please select a later position."
+msgstr "Loppuaika on oltava suurempi kuin aloitusaika. Valitse myöhempi sijainti."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 391
+#: NEEDS WORK
+msgid "Invalid trim end time"
+msgstr "Virheellinen leikkausajan loppu"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_ui.py, line: 331
+#: NEEDS WORK
+msgid "Start time"
+msgstr "Aloitusaika"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_ui.py, line: 349
+#: NEEDS WORK
+msgid "End time"
+msgstr "Loppuaika"

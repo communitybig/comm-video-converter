@@ -2098,3 +2098,39 @@ msgstr "Nije moguće otvoriti video datoteku s zadanim playerom."
 #: NEEDS WORK
 msgid "Could not find this video file"
 msgstr "Nije moguće pronaći ovu video datoteku."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 342
+#: NEEDS WORK
+msgid "Start time must be less than end time. Please select an earlier position."
+msgstr "Vrijeme početka mora biti manje od vremena završetka. Molimo odaberite raniju poziciju."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 351
+#: NEEDS WORK
+msgid "Invalid trim start time"
+msgstr "Nevažeće vrijeme početka trimanja"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 382
+#: NEEDS WORK
+msgid "End time must be greater than start time. Please select a later position."
+msgstr "Vrijeme završetka mora biti veće od vremena početka. Molimo odaberite kasniju poziciju."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 391
+#: NEEDS WORK
+msgid "Invalid trim end time"
+msgstr "Nevažeće vrijeme završetka trimanja"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_ui.py, line: 331
+#: NEEDS WORK
+msgid "Start time"
+msgstr "Vrijeme početka"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_ui.py, line: 349
+#: NEEDS WORK
+msgid "End time"
+msgstr "Vrijeme završetka"

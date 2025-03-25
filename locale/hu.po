@@ -2101,3 +2101,43 @@ msgstr "Nem sikerült megnyitni a videófájlt az alapértelmezett lejátszóval
 #: NEEDS WORK
 msgid "Could not find this video file"
 msgstr "Nem található ez a videófájl."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 342
+#: NEEDS WORK
+msgid "Start time must be less than end time. Please select an earlier position."
+msgstr ""
+"A kezdési időpontnak korábbinak kell lennie, mint a befejezési időpont. Kérjük, válasszon egy "
+"korábbi pozíciót."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 351
+#: NEEDS WORK
+msgid "Invalid trim start time"
+msgstr "Érvénytelen vágás kezdési időpont"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 382
+#: NEEDS WORK
+msgid "End time must be greater than start time. Please select a later position."
+msgstr ""
+"A befejező időpontnak nagyobbnak kell lennie a kezdő időpontnál. Kérjük, válasszon egy későbbi "
+"időpontot."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 391
+#: NEEDS WORK
+msgid "Invalid trim end time"
+msgstr "Érvénytelen vágási végidő"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_ui.py, line: 331
+#: NEEDS WORK
+msgid "Start time"
+msgstr "Kezdési idő"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_ui.py, line: 349
+#: NEEDS WORK
+msgid "End time"
+msgstr "Befejezés ideje"

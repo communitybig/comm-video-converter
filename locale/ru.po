@@ -2099,3 +2099,39 @@ msgstr "Не удалось открыть видеофайл с помощью 
 #: NEEDS WORK
 msgid "Could not find this video file"
 msgstr "Не удалось найти этот видеофайл"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 342
+#: NEEDS WORK
+msgid "Start time must be less than end time. Please select an earlier position."
+msgstr "Время начала должно быть меньше времени окончания. Пожалуйста, выберите более раннюю позицию."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 351
+#: NEEDS WORK
+msgid "Invalid trim start time"
+msgstr "Неверное время начала обрезки"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 382
+#: NEEDS WORK
+msgid "End time must be greater than start time. Please select a later position."
+msgstr "Время окончания должно быть больше времени начала. Пожалуйста, выберите более позднюю позицию."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 391
+#: NEEDS WORK
+msgid "Invalid trim end time"
+msgstr "Неверное время окончания обрезки"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_ui.py, line: 331
+#: NEEDS WORK
+msgid "Start time"
+msgstr "Время начала"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_ui.py, line: 349
+#: NEEDS WORK
+msgid "End time"
+msgstr "Время окончания"

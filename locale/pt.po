@@ -2101,3 +2101,43 @@ msgstr "Não foi possível abrir o arquivo de vídeo com o reprodutor padrão."
 #: NEEDS WORK
 msgid "Could not find this video file"
 msgstr "Não foi possível encontrar este arquivo de vídeo."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 342
+#: NEEDS WORK
+msgid "Start time must be less than end time. Please select an earlier position."
+msgstr ""
+"O horário de início deve ser menor que o horário de término. Por favor, selecione uma posição "
+"anterior."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 351
+#: NEEDS WORK
+msgid "Invalid trim start time"
+msgstr "Hora de início de recorte inválida"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 382
+#: NEEDS WORK
+msgid "End time must be greater than start time. Please select a later position."
+msgstr ""
+"O horário de término deve ser maior que o horário de início. Por favor, selecione uma posição "
+"posterior."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 391
+#: NEEDS WORK
+msgid "Invalid trim end time"
+msgstr "Tempo final de corte inválido"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_ui.py, line: 331
+#: NEEDS WORK
+msgid "Start time"
+msgstr "Hora de início"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_ui.py, line: 349
+#: NEEDS WORK
+msgid "End time"
+msgstr "Hora de término"

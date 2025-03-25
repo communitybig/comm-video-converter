@@ -2098,3 +2098,43 @@ msgstr "Nu s-a putut deschide fișierul video cu playerul implicit."
 #: NEEDS WORK
 msgid "Could not find this video file"
 msgstr "Nu s-a putut găsi acest fișier video."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 342
+#: NEEDS WORK
+msgid "Start time must be less than end time. Please select an earlier position."
+msgstr ""
+"Ora de început trebuie să fie mai mică decât ora de sfârșit. Vă rugăm să selectați o poziție "
+"anterioară."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 351
+#: NEEDS WORK
+msgid "Invalid trim start time"
+msgstr "Timp de început al tăierii invalid"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 382
+#: NEEDS WORK
+msgid "End time must be greater than start time. Please select a later position."
+msgstr ""
+"Timpul de încheiere trebuie să fie mai mare decât timpul de început. Vă rugăm să selectați o "
+"poziție ulterioară."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 391
+#: NEEDS WORK
+msgid "Invalid trim end time"
+msgstr "Timp de tăiere final invalid"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_ui.py, line: 331
+#: NEEDS WORK
+msgid "Start time"
+msgstr "Timp de început"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_ui.py, line: 349
+#: NEEDS WORK
+msgid "End time"
+msgstr "Timp de încheiere"

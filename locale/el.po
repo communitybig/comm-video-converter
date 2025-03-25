@@ -2103,3 +2103,43 @@ msgstr "Δεν ήταν δυνατή η ανοίγμα του αρχείου β�
 #: NEEDS WORK
 msgid "Could not find this video file"
 msgstr "Δεν ήταν δυνατή η εύρεση αυτού του αρχείου βίντεο."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 342
+#: NEEDS WORK
+msgid "Start time must be less than end time. Please select an earlier position."
+msgstr ""
+"Ο χρόνος έναρξης πρέπει να είναι μικρότερος από τον χρόνο λήξης. Παρακαλώ επιλέξτε μια προηγούμενη "
+"θέση."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 351
+#: NEEDS WORK
+msgid "Invalid trim start time"
+msgstr "Μη έγκυρη ώρα έναρξης περικοπής"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 382
+#: NEEDS WORK
+msgid "End time must be greater than start time. Please select a later position."
+msgstr ""
+"Ο χρόνος λήξης πρέπει να είναι μεγαλύτερος από τον χρόνο έναρξης. Παρακαλώ επιλέξτε μια "
+"μεταγενέστερη θέση."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 391
+#: NEEDS WORK
+msgid "Invalid trim end time"
+msgstr "Μη έγκυρη ώρα λήξης περικοπής"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_ui.py, line: 331
+#: NEEDS WORK
+msgid "Start time"
+msgstr "Ώρα έναρξης"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_ui.py, line: 349
+#: NEEDS WORK
+msgid "End time"
+msgstr "Τέλος χρόνου"

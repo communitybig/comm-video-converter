@@ -2100,3 +2100,39 @@ msgstr "Nie można otworzyć pliku wideo w domyślnym odtwarzaczu."
 #: NEEDS WORK
 msgid "Could not find this video file"
 msgstr "Nie można znaleźć tego pliku wideo"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 342
+#: NEEDS WORK
+msgid "Start time must be less than end time. Please select an earlier position."
+msgstr "Czas rozpoczęcia musi być wcześniejszy niż czas zakończenia. Proszę wybrać wcześniejszą pozycję."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 351
+#: NEEDS WORK
+msgid "Invalid trim start time"
+msgstr "Nieprawidłowy czas rozpoczęcia przycinania"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 382
+#: NEEDS WORK
+msgid "End time must be greater than start time. Please select a later position."
+msgstr "Czas zakończenia musi być większy niż czas rozpoczęcia. Proszę wybrać późniejszą pozycję."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 391
+#: NEEDS WORK
+msgid "Invalid trim end time"
+msgstr "Nieprawidłowy czas zakończenia przycinania"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_ui.py, line: 331
+#: NEEDS WORK
+msgid "Start time"
+msgstr "Czas rozpoczęcia"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_ui.py, line: 349
+#: NEEDS WORK
+msgid "End time"
+msgstr "Czas zakończenia"

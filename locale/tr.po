@@ -2521,3 +2521,39 @@ msgstr "Varsayılan oynatıcı ile video dosyası açılamadı."
 #: NEEDS WORK
 msgid "Could not find this video file"
 msgstr "Bu video dosyası bulunamadı."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 342
+#: NEEDS WORK
+msgid "Start time must be less than end time. Please select an earlier position."
+msgstr "Başlangıç zamanı bitiş zamanından küçük olmalıdır. Lütfen daha erken bir konum seçin."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 351
+#: NEEDS WORK
+msgid "Invalid trim start time"
+msgstr "Geçersiz kesme başlangıç zamanı"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 382
+#: NEEDS WORK
+msgid "End time must be greater than start time. Please select a later position."
+msgstr "Bitiş zamanı başlangıç zamanından büyük olmalıdır. Lütfen daha sonraki bir konum seçin."
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_page.py, line: 391
+#: NEEDS WORK
+msgid "Invalid trim end time"
+msgstr "Geçersiz kesme sonu zamanı"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_ui.py, line: 331
+#: NEEDS WORK
+msgid "Start time"
+msgstr "Başlangıç zamanı"
+
+# 
+# File: comm-video-converter/usr/share/comm-video-converter/ui/video_edit_ui.py, line: 349
+#: NEEDS WORK
+msgid "End time"
+msgstr "Bitiş zamanı"
